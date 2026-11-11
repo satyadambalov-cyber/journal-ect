@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#0b0f14"/>
+  <rect x="64" y="96" width="384" height="10" fill="#f59e0b"/>
+  <text x="256" y="330" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="200" font-style="italic" font-weight="700" fill="#e8e6e1">ECT</text>
+  <rect x="64" y="392" width="384" height="4" fill="#e8e6e1" opacity=".5"/>
+  <polyline points="96,450 176,428 248,438 330,410 416,420" fill="none" stroke="#f59e0b" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

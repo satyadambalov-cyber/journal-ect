@@ -1,0 +1,67 @@
+name: Édition quotidienne
+
+on:
+  schedule:
+    - cron: "30 4 * * *"   # tous les jours à 4h30 UTC (5h30 l'hiver / 6h30 l'été à Paris)
+  workflow_dispatch:         # bouton « Run workflow » pour lancer à la main
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: edition
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm install --no-audit --no-fund
+
+      - name: Indicateurs clés (PIB, dette, inflation…)
+        if: github.event_name != 'push'
+        continue-on-error: true
+        run: node scripts/indicators.mjs
+
+      # Génère l'édition (sauf lors d'un simple push de code)
+      - name: Générer l'édition du jour
+        if: github.event_name != 'push'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL }}
+        continue-on-error: true
+        run: node scripts/update.mjs
+
+      - name: Enregistrer l'édition dans le dépôt
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "journal-bot"
+          git config user.email "journal-bot@users.noreply.github.com"
+          git add public/data
+          git diff --cached --quiet || git commit -m "Édition du $(date -u +%F)"
+          git push
+
+      - name: Icônes PNG pour iPhone
+        run: |
+          sudo apt-get install -y -qq librsvg2-bin > /dev/null
+          for s in 180 192 512; do rsvg-convert -w $s -h $s public/icons/icon.svg -o public/icons/icon-$s.png; done
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+      - id: deploy
+        uses: actions/deploy-pages@v4

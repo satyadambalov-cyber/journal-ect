@@ -1,0 +1,11 @@
+{
+  "name": "journal-ect",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "update": "node scripts/update.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "latest"
+  }
+}

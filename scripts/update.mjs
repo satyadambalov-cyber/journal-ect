@@ -98,10 +98,10 @@ Réponds UNIQUEMENT avec un objet JSON valide, sans texte autour.`;
 const SCHEMA = `{
  "notion_du_jour": {"titre": str, "definition": str (3-4 phrases niveau ECT1), "exemple": str, "matiere": "Économie"|"Droit"|"Management"},
  "rubriques": {
-   "eco":   [ARTICLE x5],
-   "droit": [ARTICLE x5],
-   "mgmt":  [ARTICLE x5],
-   "monde": [ARTICLE x5]
+   "eco":   [ARTICLE x4],
+   "droit": [ARTICLE x3],
+   "mgmt":  [ARTICLE x3],
+   "monde": [ARTICLE x3]
  },
  "langues": {
    "en": {"id": str, "titre": str, "resume": str (80-110 mots en anglais, niveau B2), "phrase": str (phrase clé à retenir, en anglais), "traduction": str},

@@ -91,6 +91,7 @@ Règles absolues :
 - Tu n'utilises QUE les articles fournis, identifiés par leur "id". N'invente aucun fait, chiffre, date ou source. Si un détail n'est pas dans le titre/chapeau, reste général et prudent.
 - Les explications de contexte et de notions peuvent venir de tes connaissances générales (cours), mais doivent être exactes et de niveau ECT1 : définis chaque notion technique simplement, ne suppose aucun acquis de 2e année.
 - Privilégie les sujets exploitables aux concours. Évite faits divers, sport, people.
+- Rubrique "monde" : UNIQUEMENT des actualités concernant le monde anglophone (Royaume-Uni, États-Unis, Irlande, Canada, Australie, Inde…) ou hispanophone (Espagne, Amérique latine). Exclus tout autre pays. Même règle pour les questions de quiz "monde".
 - Pour le droit, si les articles juridiques sont rares, prends l'actualité ayant la plus forte dimension juridique (loi, régulation, procès, décision, directive UE).
 - Le quiz porte en priorité sur les actualités du jour ET sur des notions de cours (définitions, auteurs, mécanismes). Une seule bonne réponse, 4 choix.
 Réponds UNIQUEMENT avec un objet JSON valide, sans texte autour.`;

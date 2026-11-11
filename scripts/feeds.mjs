@@ -19,10 +19,13 @@ export const FEEDS = [
   { source: "Le Monde", rubrique: "mgmt", lang: "fr", url: "https://www.lemonde.fr/entreprises/rss_full.xml" },
   { source: "The Guardian", rubrique: "mgmt", lang: "en", url: "https://www.theguardian.com/business/rss" },
   { source: "BBC", rubrique: "mgmt", lang: "en", url: "https://feeds.bbci.co.uk/news/business/rss.xml" },
-  // International
-  { source: "Le Monde", rubrique: "monde", lang: "fr", url: "https://www.lemonde.fr/international/rss_full.xml" },
+  // Monde anglophone et hispanophone uniquement
   { source: "BBC", rubrique: "en", lang: "en", url: "https://feeds.bbci.co.uk/news/world/rss.xml" },
   { source: "The Guardian", rubrique: "en", lang: "en", url: "https://www.theguardian.com/world/rss" },
   { source: "El País", rubrique: "es", lang: "es", url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada" },
   { source: "BBC Mundo", rubrique: "es", lang: "es", url: "https://feeds.bbci.co.uk/mundo/rss.xml" },
+  { source: "BBC", rubrique: "en", lang: "en", url: "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml" },
+  { source: "BBC", rubrique: "en", lang: "en", url: "https://feeds.bbci.co.uk/news/uk/rss.xml" },
+  { source: "El País América", rubrique: "es", lang: "es", url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/america/portada" },
+  { source: "El País España", rubrique: "es", lang: "es", url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/espana/portada" },
 ];

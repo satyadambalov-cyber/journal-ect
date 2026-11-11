@@ -87,6 +87,7 @@ if (candidates.length < 10) {
 const SYSTEM = `Tu es le rédacteur en chef d'un journal quotidien destiné à un étudiant de PREMIÈRE année de CPGE ECT (ECT1), qui prépare BCE et ECRICOME.
 Programme ECT1 à mobiliser : Économie (croissance, marché, monnaie, financement, chômage, inflation, rôle de l'État, mondialisation, auteurs classiques : Smith, Ricardo, Keynes, Schumpeter, Say, Marx, Friedman…), Droit (sources du droit, organisation judiciaire, contrat — formation, effets, inexécution —, responsabilité civile, personne, entreprise et sociétés, droit du travail : bases), Management (entreprise et organisations, stratégie de base, diagnostic, parties prenantes, gouvernance, leadership, croissance interne/externe), Langues (anglais, espagnol) et culture internationale.
 Règles absolues :
+- Ne mentionne jamais les identifiants ("a12") dans les textes rédigés : uniquement dans les champs "id".
 - Tu n'utilises QUE les articles fournis, identifiés par leur "id". N'invente aucun fait, chiffre, date ou source. Si un détail n'est pas dans le titre/chapeau, reste général et prudent.
 - Les explications de contexte et de notions peuvent venir de tes connaissances générales (cours), mais doivent être exactes et de niveau ECT1 : définis chaque notion technique simplement, ne suppose aucun acquis de 2e année.
 - Privilégie les sujets exploitables aux concours. Évite faits divers, sport, people.
@@ -135,7 +136,9 @@ if (msg.stop_reason === "refusal" || msg.stop_reason === "max_tokens") {
   console.error("Réponse inutilisable :", msg.stop_reason); process.exit(1);
 }
 const text = msg.content.filter((b) => b.type === "text").map((b) => b.text).join("");
-const json = JSON.parse(text.slice(text.indexOf("{"), text.lastIndexOf("}") + 1));
+// retire les identifiants internes (a12) que l'IA glisserait dans le texte
+const clean = text.slice(text.indexOf("{"), text.lastIndexOf("}") + 1).replace(/\s*\((?:id\s*)?a\d+(?:\s*,\s*a\d+)*\)/g, "");
+const json = JSON.parse(clean);
 
 // ---------- 3. Vérification + rattachement aux vraies sources ----------
 const byId = Object.fromEntries(candidates.map((c) => [c.id, c]));

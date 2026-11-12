@@ -285,7 +285,7 @@ function gradeCard(ok) {
 
 // ---------- classement entre amis (Supabase) ----------
 // Clé « publishable » : faite pour être publique, la sécurité vient des règles de la base.
-const SUPA_URL = "", SUPA_KEY = "";
+const SUPA_URL = "https://jeqkvsmemcheoxkufili.supabase.co", SUPA_KEY = "sb_publishable_IEAwkHUKKvU-_kPstfMB2Q_ZJAlY2w0";
 const supa = (path, opts = {}) => fetch(`${SUPA_URL}/rest/v1/${path}`, {
   ...opts, headers: { apikey: SUPA_KEY, Authorization: `Bearer ${SUPA_KEY}`, "Content-Type": "application/json", ...(opts.headers || {}) },
 });

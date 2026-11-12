@@ -158,6 +158,67 @@ function une() {
     <button class="choice" data-goto="quiz" style="text-align:center;font-weight:700">${done === total && total ? "Voir ma correction" : "Commencer le quiz du jour →"}</button>`;
 }
 
+// ---------- banque d'exemples (toutes les éditions archivées) ----------
+async function loadBank() {
+  if (state.bank) return;
+  state.bank = "loading";
+  let idx = [];
+  try { idx = await loadJSON("data/index.json"); } catch {}
+  const eds = await Promise.all(idx.map((d) => loadJSON(`data/archive/${d}.json`).catch(() => null)));
+  state.eds = eds.filter(Boolean);
+  const seen = new Set(), items = [];
+  eds.filter(Boolean).forEach((ed) => Object.entries(ed.rubriques || {}).forEach(([rub, list]) => list.forEach((a) => {
+    if (seen.has(a.lien)) return; seen.add(a.lien);
+    items.push({ ...a, rub, theme: a.theme || RUB[rub]?.nom || "Autres" });
+  })));
+  state.bank = items.sort((a, b) => new Date(b.date) - new Date(a.date));
+  if (state.tab === "exemples" || state.tab === "quiz") render();
+}
+
+// ---------- points faibles : refaire les questions ratées de la matière la plus faible ----------
+function pointsFaibles(agg) {
+  const weak = Object.keys(RUB).filter((m) => agg[m]?.n >= 3)
+    .sort((a, b) => agg[a].ok / agg[a].n - agg[b].ok / agg[b].n)[0];
+  if (!weak) return `<div class="section-title"><span>Tes points faibles</span></div><p class="lead">Termine quelques quiz : l'appli repérera ta matière la plus fragile et te fera retravailler tes erreurs.</p>`;
+  if (!Array.isArray(state.bank)) { loadBank(); return ""; }
+  const missed = [];
+  state.eds.forEach((ed) => (ed.quiz || []).forEach((q, i) => {
+    const a = state.answers[ed.date]?.[i];
+    if (q.matiere === weak && a !== undefined && a !== q.bonne) missed.push({ ...q, key: `${ed.date}:${i}` });
+  }));
+  const retry = (state.retry ||= {});
+  const p = Math.round((100 * agg[weak].ok) / agg[weak].n);
+  return `<div class="section-title" style="border-color:${RUB[weak].c}"><span>Tes points faibles : ${RUB[weak].nom}</span><span>${p}%</span></div>
+    <p class="lead">${missed.length ? "Refais les questions que tu as ratées dans cette matière." : "Aucune erreur à refaire pour l'instant dans cette matière."}</p>
+    ${missed.slice(0, 5).map((q) => {
+      const a = retry[q.key], answered = a !== undefined;
+      return `<div class="q" style="--c:${RUB[weak].c}"><p class="qt">${esc(q.question)}</p>
+        ${q.choix.map((c, j) => `<button class="choice ${answered && j === q.bonne ? "ok" : ""} ${answered && j === a && a !== q.bonne ? "ko" : ""}" data-retry="${q.key}" data-c="${j}" ${answered ? "disabled" : ""}>${String.fromCharCode(65 + j)}. ${esc(c)}</button>`).join("")}
+        ${answered ? `<div class="expl"><b>${a === q.bonne ? "✓ Cette fois c'est bon !" : "✗ Encore raté."}</b> ${esc(q.explication)}</div>` : ""}</div>`;
+    }).join("")}`;
+}
+
+function exemples() {
+  if (!Array.isArray(state.bank)) { loadBank(); return `<div class="empty"><p>Chargement de tes exemples…</p></div>`; }
+  const q = (state.bankQ || "").toLowerCase(), th = state.bankTheme || "";
+  const counts = {};
+  state.bank.forEach((a) => (counts[a.theme] = (counts[a.theme] || 0) + 1));
+  const list = state.bank.filter((a) => (!th || a.theme === th) &&
+    (!q || [a.titre, a.resume, a.copie, ...(a.notions || [])].join(" ").toLowerCase().includes(q)));
+  return `<div class="section-title"><span>Banque d'exemples</span><span>${state.bank.length} actus</span></div>
+    <p class="lead">Toutes les actus depuis le début, classées par thème du programme. Avant une dissert, ouvre le thème et pioche tes exemples datés.</p>
+    <input id="bankq" class="search" type="search" placeholder="Rechercher : inflation, Keynes, contrat…" value="${esc(state.bankQ || "")}">
+    <div class="chips"><button class="chip ${th ? "" : "on"}" data-theme="">Tous</button>${Object.keys(counts).sort().map((t) =>
+      `<button class="chip ${t === th ? "on" : ""}" data-theme="${esc(t)}">${esc(t)} <small>${counts[t]}</small></button>`).join("")}</div>
+    ${list.map((a) => `<details class="card" style="--c:${RUB[a.rub]?.c}">
+      <summary><div class="meta"><span class="pill">${esc(a.theme)}</span><span>${fmtDate(a.date, { day: "numeric", month: "short", year: "numeric" })}</span></div>
+        <h3>${esc(a.titre)}</h3><p class="resume">${esc(a.resume)}</p></summary>
+      <div class="body"><div class="block"><h4>Dans ta copie</h4><p>${esc(a.copie)}</p></div>
+        <div class="tags">${(a.notions || []).map((n) => `<span class="tag">${esc(n)}</span>`).join("")}</div>
+        <div class="src"><a href="${esc(a.lien)}" target="_blank" rel="noopener">Lire sur ${esc(a.source)} ↗</a></div></div>
+    </details>`).join("") || `<div class="empty"><p>Aucun exemple pour cette recherche.</p></div>`}`;
+}
+
 // ---------- quiz & progression ----------
 function recordResult() {
   const ed = state.ed, ans = state.answers[ed.date] || {};
@@ -217,6 +278,7 @@ function quiz() {
       const s = agg[m] || { ok: 0, n: 0 }, p = s.n ? Math.round((100 * s.ok) / s.n) : 0;
       return `<div class="bar" style="--c:${RUB[m].c}">${RUB[m].nom} — ${s.ok}/${s.n} (${p}%)<div class="track"><div class="fill" style="width:${p}%"></div></div></div>`;
     }).join("")}</div>
+    ${pointsFaibles(agg)}
     <div class="section-title"><span>Historique</span><span>${days.length} jours</span></div>
     <table class="hist">${days.slice(0, 30).map((k) => `<tr><td>${fmtDate(k, { weekday: "short", day: "numeric", month: "short" })}</td><td>${hist[k].ok}/${hist[k].n}</td></tr>`).join("") || "<tr><td>Aucun quiz terminé pour l'instant.</td></tr>"}</table>
     <p class="trad" style="margin-top:18px">Ta progression est enregistrée sur ce téléphone.
@@ -235,7 +297,7 @@ function render() {
   $("#dateline").textContent = fmtDate(ed.date + "T12:00", { weekday: "long", day: "numeric", month: "long" });
   const counts = Object.keys(RUB).map((k) => `${RUB[k].nom.split(" ")[0]} <b>${(ed.rubriques?.[k] || []).length}</b>`);
   $("#ticker").innerHTML = [...counts, `Quiz <b>${(ed.quiz || []).length}</b>`, `MàJ <b>${fmtHour(ed.genere_le)}</b>`].map((s) => `<span>${s}</span>`).join("");
-  v.innerHTML = state.tab === "une" ? une() : state.tab === "quiz" ? quiz() : rubrique(state.tab);
+  v.innerHTML = state.tab === "une" ? une() : state.tab === "quiz" ? quiz() : state.tab === "exemples" ? exemples() : rubrique(state.tab);
 }
 
 // ---------- événements ----------
@@ -246,6 +308,12 @@ $("#tabs").onclick = (e) => {
 $("#view").addEventListener("click", (e) => {
   const go = e.target.closest("[data-goto]");
   if (go) { e.preventDefault(); state.tab = go.dataset.goto; store.set("tab", state.tab); render(); scrollTo(0, 0); return; }
+
+  const rt = e.target.closest("[data-retry]");
+  if (rt && !rt.disabled) { (state.retry ||= {})[rt.dataset.retry] = +rt.dataset.c; const y = scrollY; render(); scrollTo(0, y); return; }
+
+  const chip = e.target.closest("[data-theme]");
+  if (chip) { state.bankTheme = chip.dataset.theme; render(); return; }
 
   const r = e.target.closest("[data-read]");
   if (r) { const u = r.dataset.read; state.read[u] = !state.read[u]; store.set("read", state.read); render(); return; }
@@ -273,6 +341,12 @@ $("#view").addEventListener("click", (e) => {
     try { const d = JSON.parse(txt); for (const k in d) if (d[k] != null) store.set(k, d[k]); location.reload(); }
     catch { alert("Sauvegarde invalide."); }
   }
+});
+
+$("#view").addEventListener("input", (e) => {
+  if (e.target.id !== "bankq") return;
+  state.bankQ = e.target.value; render();
+  const i = $("#bankq"); i.focus(); i.setSelectionRange(i.value.length, i.value.length);
 });
 
 // ---------- démarrage ----------

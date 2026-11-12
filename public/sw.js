@@ -1,5 +1,5 @@
 // Service worker : l'app s'ouvre même hors connexion (dernière édition en cache).
-const CACHE = "ect-v1";
+const CACHE = "ect-v2";
 const SHELL = ["./", "index.html", "styles.css", "app.js", "manifest.webmanifest", "icons/icon-180.png", "icons/icon.svg"];
 
 self.addEventListener("install", (e) => {

@@ -208,8 +208,8 @@ function exemples() {
   return `<div class="section-title"><span>Banque d'exemples</span><span>${state.bank.length} actus</span></div>
     <p class="lead">Toutes les actus depuis le début, classées par thème du programme. Avant une dissert, ouvre le thème et pioche tes exemples datés.</p>
     <input id="bankq" class="search" type="search" placeholder="Rechercher : inflation, Keynes, contrat…" value="${esc(state.bankQ || "")}">
-    <div class="chips"><button class="chip ${th ? "" : "on"}" data-theme="">Tous</button>${Object.keys(counts).sort().map((t) =>
-      `<button class="chip ${t === th ? "on" : ""}" data-theme="${esc(t)}">${esc(t)} <small>${counts[t]}</small></button>`).join("")}</div>
+    <div class="chips"><button class="chip ${th ? "" : "on"}" data-btheme="">Tous</button>${Object.keys(counts).sort().map((t) =>
+      `<button class="chip ${t === th ? "on" : ""}" data-btheme="${esc(t)}">${esc(t)} <small>${counts[t]}</small></button>`).join("")}</div>
     ${list.map((a) => `<details class="card" style="--c:${RUB[a.rub]?.c}">
       <summary><div class="meta"><span class="pill">${esc(a.theme)}</span><span>${fmtDate(a.date, { day: "numeric", month: "short", year: "numeric" })}</span></div>
         <h3>${esc(a.titre)}</h3><p class="resume">${esc(a.resume)}</p></summary>
@@ -446,8 +446,8 @@ $("#view").addEventListener("click", (e) => {
   const rt = e.target.closest("[data-retry]");
   if (rt && !rt.disabled) { (state.retry ||= {})[rt.dataset.retry] = +rt.dataset.c; const y = scrollY; render(); scrollTo(0, y); return; }
 
-  const chip = e.target.closest("[data-theme]");
-  if (chip) { state.bankTheme = chip.dataset.theme; render(); return; }
+  const chip = e.target.closest("[data-btheme]");
+  if (chip) { state.bankTheme = chip.dataset.btheme; render(); return; }
 
   const r = e.target.closest("[data-read]");
   if (r) { const u = r.dataset.read; state.read[u] = !state.read[u]; store.set("read", state.read); render(); return; }

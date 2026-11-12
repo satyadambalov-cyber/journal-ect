@@ -219,6 +219,126 @@ function exemples() {
     </details>`).join("") || `<div class="empty"><p>Aucun exemple pour cette recherche.</p></div>`}`;
 }
 
+// ---------- fiches de cours (révision espacée, méthode Leitner) ----------
+const BOXES = [0, 1, 3, 7, 15, 30]; // jours avant de revoir une carte selon sa « boîte »
+const NEW_PER_DAY = 12;
+const today = () => new Date().toISOString().slice(0, 10);
+const addDays = (n) => { const d = new Date(); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
+const cardId = (c) => { let h = 0; for (const ch of c.q) h = (h * 31 + ch.charCodeAt(0)) | 0; return "c" + (h >>> 0).toString(36); };
+
+async function loadCards() {
+  if (state.cards) return;
+  state.cards = "loading";
+  try { state.cards = (await loadJSON("data/cartes.json")).cartes.map((c) => ({ ...c, id: cardId(c) })); }
+  catch { state.cards = []; }
+  render();
+}
+
+function fichesQueue() {
+  const prog = store.get("leitner", {}), t = today(), m = state.ficheMat || "";
+  const pool = state.cards.filter((c) => !m || c.m === m);
+  const due = pool.filter((c) => prog[c.id] && prog[c.id].due <= t);
+  const newToday = store.get("newDay", {});
+  const left = Math.max(0, NEW_PER_DAY - (newToday[t] || 0));
+  // nouvelles cartes : on alterne éco / droit / mgmt
+  const groups = {}; pool.filter((c) => !prog[c.id]).forEach((c) => (groups[c.m] ||= []).push(c));
+  const mixed = []; for (let i = 0; mixed.length < left && Object.values(groups).some((g) => g[i]); i++) Object.values(groups).forEach((g) => g[i] && mixed.push(g[i]));
+  const fresh = mixed.slice(0, left);
+  return [...due, ...fresh];
+}
+
+function fiches() {
+  if (!Array.isArray(state.cards)) { loadCards(); return `<div class="empty"><p>Chargement des fiches…</p></div>`; }
+  const prog = store.get("leitner", {}), m = state.ficheMat || "";
+  const queue = fichesQueue(), c = queue[0];
+  const known = Object.values(prog).filter((p) => p.box >= 3).length;
+  const mats = { "": "Tout", eco: "Éco", droit: "Droit", mgmt: "Mgmt" };
+  return `<p class="lead">Les fiches de ton cours. Chaque carte revient au bon moment : le jour même si tu la rates, puis à J+1, J+3, J+7, J+15 et J+30 quand tu la sais.</p>
+    <div class="chips">${Object.entries(mats).map(([k, v]) => `<button class="chip ${k === m ? "on" : ""}" data-fmat="${k}">${v}</button>`).join("")}</div>
+    <div class="stats" style="grid-template-columns:repeat(3,1fr)">
+      <div class="stat"><b>${queue.length}</b><span>à réviser</span></div>
+      <div class="stat"><b>${known}</b><span>bien sues</span></div>
+      <div class="stat"><b>${state.cards.length}</b><span>fiches</span></div>
+    </div>
+    ${c ? `<div class="q flash" style="--c:${RUB[c.m]?.c}">
+        <div class="meta"><span class="pill">${esc(c.ch)}</span><span class="lvl">${prog[c.id] ? "boîte " + prog[c.id].box : "nouvelle"}</span></div>
+        <p class="qt">${esc(c.q)}</p>
+        ${state.showBack ? `<div class="expl">${esc(c.r)}</div>
+          <div class="flash-btns"><button class="choice ko" data-grade="0">✗ À revoir</button><button class="choice ok" data-grade="1">✓ Je savais</button></div>`
+        : `<button class="choice" data-flip style="text-align:center;font-weight:700">Voir la réponse</button>`}
+      </div>`
+    : `<div class="final"><div class="kicker">Bravo</div><b>✓</b><div class="trad">Plus rien à réviser aujourd'hui${m ? " dans cette matière" : ""}. Reviens demain.</div></div>`}`;
+}
+
+function gradeCard(ok) {
+  const c = fichesQueue()[0]; if (!c) return;
+  const prog = store.get("leitner", {}), t = today();
+  if (!prog[c.id]) { const n = store.get("newDay", {}); n[t] = (n[t] || 0) + 1; store.set("newDay", { [t]: n[t] }); }
+  const box = ok ? Math.min((prog[c.id]?.box ?? 0) + 1, BOXES.length - 1) : 0;
+  prog[c.id] = { box, due: ok ? addDays(BOXES[box]) : t };
+  if (!ok) { // une carte ratée repasse en fin de file aujourd'hui
+    state.cards.push(state.cards.splice(state.cards.indexOf(c), 1)[0]);
+  }
+  store.set("leitner", prog);
+  state.showBack = false;
+}
+
+// ---------- classement entre amis (Supabase) ----------
+// Clé « publishable » : faite pour être publique, la sécurité vient des règles de la base.
+const SUPA_URL = "", SUPA_KEY = "";
+const supa = (path, opts = {}) => fetch(`${SUPA_URL}/rest/v1/${path}`, {
+  ...opts, headers: { apikey: SUPA_KEY, Authorization: `Bearer ${SUPA_KEY}`, "Content-Type": "application/json", ...(opts.headers || {}) },
+});
+
+async function sendScore() {
+  const me = store.get("me", null), ed = state.ed;
+  if (!SUPA_URL || !me || !ed) return;
+  const h = store.get("history", {})[ed.date]; if (!h) return;
+  try {
+    await supa("scores?on_conflict=pseudo,groupe,jour", {
+      method: "POST", headers: { Prefer: "resolution=merge-duplicates" },
+      body: JSON.stringify({ pseudo: me.pseudo, groupe: me.groupe, jour: ed.date, score: h.ok, total: h.n }),
+    });
+  } catch {}
+}
+
+async function loadBoard() {
+  const me = store.get("me", null);
+  if (!SUPA_URL || !me) return;
+  state.board = "loading";
+  const since = addDays(-6);
+  try {
+    const r = await supa(`scores?select=pseudo,jour,score,total&groupe=eq.${encodeURIComponent(me.groupe)}&jour=gte.${since}`);
+    const rows = await r.json();
+    const by = {};
+    rows.forEach((x) => { const p = (by[x.pseudo] ||= { pseudo: x.pseudo, pts: 0, n: 0, jours: 0 }); p.pts += x.score; p.n += x.total; p.jours++; });
+    state.board = Object.values(by).sort((a, b) => b.pts - a.pts || b.jours - a.jours);
+  } catch { state.board = "error"; }
+  render();
+}
+
+function classement() {
+  if (!SUPA_URL) return `<div class="empty"><p>Le classement arrive bientôt.</p></div>`;
+  const me = store.get("me", null);
+  if (!me) return `<p class="lead">Choisis un pseudo et le code de ton groupe d'amis. Seuls ceux qui ont le même code apparaissent dans votre classement.</p>
+    <input id="pseudo" class="search" maxlength="20" placeholder="Ton pseudo">
+    <input id="groupe" class="search" maxlength="30" placeholder="Code du groupe (ex : ect1-condorcet)">
+    <button class="choice" id="join" style="text-align:center;font-weight:700">Rejoindre le classement</button>`;
+  if (state.board === undefined) { loadBoard(); return `<div class="empty"><p>Chargement…</p></div>`; }
+  if (state.board === "loading") return `<div class="empty"><p>Chargement…</p></div>`;
+  if (state.board === "error") return `<div class="empty"><p>Classement indisponible pour l'instant (connexion ?).</p></div>`;
+  return `<p class="lead">Groupe <b>${esc(me.groupe)}</b> · points des 7 derniers jours (1 bonne réponse = 1 point).</p>
+    <table class="hist board">${state.board.map((p, i) => `<tr class="${p.pseudo === me.pseudo ? "me" : ""}"><td>${["🥇", "🥈", "🥉"][i] || i + 1} ${esc(p.pseudo)}</td><td>${p.jours} j · ${p.n ? Math.round((100 * p.pts) / p.n) : 0}%</td><td><b>${p.pts}</b></td></tr>`).join("") || "<tr><td>Personne n'a encore joué cette semaine.</td></tr>"}</table>
+    <p class="trad" style="margin-top:14px">Ton score est envoyé automatiquement quand tu termines le quiz du jour. <button class="read-btn" id="leave">Changer de pseudo</button></p>`;
+}
+
+function reviser() {
+  const sub = state.sub || "quiz";
+  const tabs = { quiz: "Quiz du jour", fiches: "Fiches de cours", classement: "Classement" };
+  return `<div class="chips seg">${Object.entries(tabs).map(([k, v]) => `<button class="chip ${k === sub ? "on" : ""}" data-sub="${k}">${v}</button>`).join("")}</div>`
+    + (sub === "fiches" ? fiches() : sub === "classement" ? classement() : quiz());
+}
+
 // ---------- quiz & progression ----------
 function recordResult() {
   const ed = state.ed, ans = state.answers[ed.date] || {};
@@ -297,7 +417,7 @@ function render() {
   $("#dateline").textContent = fmtDate(ed.date + "T12:00", { weekday: "long", day: "numeric", month: "long" });
   const counts = Object.keys(RUB).map((k) => `${RUB[k].nom.split(" ")[0]} <b>${(ed.rubriques?.[k] || []).length}</b>`);
   $("#ticker").innerHTML = [...counts, `Quiz <b>${(ed.quiz || []).length}</b>`, `MàJ <b>${fmtHour(ed.genere_le)}</b>`].map((s) => `<span>${s}</span>`).join("");
-  v.innerHTML = state.tab === "une" ? une() : state.tab === "quiz" ? quiz() : state.tab === "exemples" ? exemples() : rubrique(state.tab);
+  v.innerHTML = state.tab === "une" ? une() : state.tab === "quiz" ? reviser() : state.tab === "exemples" ? exemples() : rubrique(state.tab);
 }
 
 // ---------- événements ----------
@@ -308,6 +428,20 @@ $("#tabs").onclick = (e) => {
 $("#view").addEventListener("click", (e) => {
   const go = e.target.closest("[data-goto]");
   if (go) { e.preventDefault(); state.tab = go.dataset.goto; store.set("tab", state.tab); render(); scrollTo(0, 0); return; }
+
+  const sb = e.target.closest("[data-sub]");
+  if (sb) { state.sub = sb.dataset.sub; if (state.sub === "classement") state.board = undefined; render(); return; }
+  const fm = e.target.closest("[data-fmat]");
+  if (fm) { state.ficheMat = fm.dataset.fmat; state.showBack = false; render(); return; }
+  if (e.target.closest("[data-flip]")) { state.showBack = true; render(); return; }
+  const gr = e.target.closest("[data-grade]");
+  if (gr) { gradeCard(gr.dataset.grade === "1"); render(); return; }
+  if (e.target.id === "join") {
+    const pseudo = $("#pseudo").value.trim(), groupe = $("#groupe").value.trim().toLowerCase();
+    if (!pseudo || !groupe) return alert("Remplis ton pseudo et le code du groupe.");
+    store.set("me", { pseudo, groupe }); state.board = undefined; sendScore().then(() => { state.board = undefined; render(); }); return;
+  }
+  if (e.target.id === "leave") { store.set("me", null); state.board = undefined; render(); return; }
 
   const rt = e.target.closest("[data-retry]");
   if (rt && !rt.disabled) { (state.retry ||= {})[rt.dataset.retry] = +rt.dataset.c; const y = scrollY; render(); scrollTo(0, y); return; }
@@ -326,7 +460,7 @@ $("#view").addEventListener("click", (e) => {
     if (j === ed.quiz[i].bonne) { state.stats.streak++; state.stats.best = Math.max(state.stats.best, state.stats.streak); }
     else state.stats.streak = 0;
     store.set("stats", state.stats);
-    if (Object.keys(state.answers[ed.date]).length === ed.quiz.length) recordResult();
+    if (Object.keys(state.answers[ed.date]).length === ed.quiz.length) { recordResult(); sendScore(); }
     const y = scrollY; render(); scrollTo(0, y); return;
   }
 

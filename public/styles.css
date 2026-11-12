@@ -147,3 +147,12 @@ main { padding: 16px; max-width: 680px; margin: 0 auto; outline: none; }
 .chip small { color: var(--muted); }
 .chip.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .chip.on small { color: inherit; opacity: .7; }
+
+/* ---- Réviser : onglets, fiches, classement ---- */
+.chips.seg { padding-bottom: 14px; }
+.flash .qt { font-size: 18px; }
+.flash-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.flash-btns .choice { text-align: center; font-weight: 700; margin: 0; }
+.board td { padding: 9px 0; }
+.board td:nth-child(2) { color: var(--muted); text-align: right; padding-right: 12px; }
+.board tr.me td { color: var(--accent); font-weight: 700; }

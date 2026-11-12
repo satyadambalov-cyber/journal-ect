@@ -96,6 +96,13 @@ Règles absolues :
 - Le quiz porte en priorité sur les actualités du jour ET sur des notions de cours (définitions, auteurs, mécanismes). Une seule bonne réponse, 4 choix.
 Réponds UNIQUEMENT avec un objet JSON valide, sans texte autour.`;
 
+// Thèmes fixes du programme : servent à la « banque d'exemples » de l'appli
+const THEMES = ["Croissance et conjoncture", "Inflation et monnaie", "Emploi et chômage", "Finances publiques et rôle de l'État",
+  "Banques et marchés financiers", "Mondialisation et commerce international", "Concurrence et marchés",
+  "Sources et institutions du droit", "Contrat", "Responsabilité", "Droit du travail", "Droit des entreprises et des sociétés",
+  "Stratégie d'entreprise", "Gouvernance et parties prenantes", "Organisation et ressources humaines",
+  "Innovation et numérique", "Transition écologique", "Géopolitique et relations internationales"];
+
 const SCHEMA = `{
  "notion_du_jour": {"titre": str, "definition": str (3-4 phrases niveau ECT1), "exemple": str, "matiere": "Économie"|"Droit"|"Management"},
  "rubriques": {
@@ -111,7 +118,7 @@ const SCHEMA = `{
  },
  "quiz": [QUESTION x9 : 3 "eco", 2 "droit", 2 "mgmt", 2 "monde"]
 }
-ARTICLE = {"id": str (id d'un article fourni), "titre": str (titre clair en français), "resume": str (3-4 phrases), "contexte": str (pourquoi c'est important, 2-3 phrases), "notions": [str x2-4 notions du programme], "copie": str (comment l'utiliser dans une dissertation/étude de cas : idée d'accroche, de partie ou d'exemple, 2-3 phrases), "niveau": 1|2|3 (difficulté)}
+ARTICLE = {"id": str (id d'un article fourni), "theme": UN SEUL parmi ${JSON.stringify(THEMES)}, "titre": str (titre clair en français), "resume": str (3-4 phrases), "contexte": str (pourquoi c'est important, 2-3 phrases), "notions": [str x2-4 notions du programme], "copie": str (comment l'utiliser dans une dissertation/étude de cas : idée d'accroche, de partie ou d'exemple, 2-3 phrases), "niveau": 1|2|3 (difficulté)}
 QUESTION = {"matiere": "eco"|"droit"|"mgmt"|"monde", "question": str, "choix": [str x4], "bonne": 0-3, "explication": str (2-3 phrases), "id": str|null (article lié éventuel)}`;
 
 const today = new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Paris" });
@@ -146,6 +153,7 @@ const byId = Object.fromEntries(candidates.map((c) => [c.id, c]));
 const attach = (a) => {
   const src = byId[a?.id];
   if (!src) return null; // article inventé -> supprimé
+  if (!THEMES.includes(a.theme)) delete a.theme;
   return { ...a, source: src.source, lien: src.link, date: src.date, titre_original: src.title };
 };
 for (const k of Object.keys(json.rubriques || {})) {

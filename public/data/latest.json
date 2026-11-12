@@ -1,443 +1,444 @@
 {
- "date": "2026-11-11",
- "genere_le": "2026-11-11T19:01:44.339Z",
- "modele": "claude-opus-5-5",
+ "date": "2026-11-12",
+ "genere_le": "2026-11-12T05:32:08.521Z",
+ "modele": "claude-sonnet-5-5",
  "notion_du_jour": {
-  "titre": "Le pouvoir d'achat",
-  "definition": "Le pouvoir d'achat est la quantité de biens et de services qu'un revenu permet d'acheter. Il dépend de deux éléments : l'évolution du revenu nominal (le montant en euros) et l'évolution des prix (l'inflation). Si les revenus augmentent plus vite que les prix, le pouvoir d'achat progresse. Dans le cas contraire, il recule. On raisonne alors en termes réels, c'est-à-dire en retirant l'effet de la hausse des prix.",
-  "exemple": "Si un salaire augmente de 2 % sur un an alors que les prix augmentent de 5 %, le salaire réel baisse d'environ 3 % : le salarié gagne plus d'euros mais peut acheter moins de choses. C'est l'une des colères exprimées lors de la grève générale en Espagne (a16) et l'enjeu de la hausse des tarifs du gaz en France (a68).",
-  "matiere": "Économie"
+  "titre": "La gouvernance d'entreprise et le pouvoir du conseil d'administration",
+  "definition": "La gouvernance désigne l'ensemble des règles et des organes qui dirigent et contrôlent une entreprise. Dans une société anonyme, le conseil d'administration est élu par les actionnaires, nomme et peut révoquer le dirigeant, et contrôle sa gestion. Il doit concilier l'intérêt des actionnaires et celui des autres parties prenantes (salariés, clients, partenaires). Un dirigeant fondateur n'est donc pas inamovible, surtout s'il détient peu de droits de vote.",
+  "exemple": "Chez Nvidia, le conseil d'administration serait réuni pour décider du sort de son PDG et cofondateur, Jensen Huang, dont la participation au capital reste modeste. Le cours de l'action a chuté après des révélations sur sa vie privée.",
+  "matiere": "Management"
  },
  "rubriques": {
   "eco": [
    {
-    "id": "a16",
-    "titre": "Espagne : une grève générale qui révèle le décalage entre croissance et vie quotidienne",
-    "resume": "L'Espagne a connu sa première grève générale depuis quatorze ans, à dix-huit jours d'élections législatives anticipées. Le mouvement dénonce la crise du logement et les difficultés de pouvoir d'achat. Selon Le Monde, il illustre le décalage entre les bonnes performances de l'économie espagnole et les difficultés quotidiennes d'une partie de la population. Ce mécontentement s'impose désormais au cœur de la campagne électorale.",
-    "contexte": "Une économie peut afficher une croissance solide du PIB sans que tous les ménages en ressentent les bénéfices. La croissance mesure la production globale, pas sa répartition ni le coût de la vie. Le logement pèse lourd dans le budget des ménages et devient donc un enjeu politique majeur.",
+    "id": "a5",
+    "titre": "TVA à 0 % sur les produits de première nécessité : une mesure anti-inflation efficace ?",
+    "resume": "Un député du Rassemblement national affirme que la suppression de la TVA sur les produits de première nécessité a fait baisser l'ensemble des prix en Espagne et en Pologne. Le fact-checking de franceinfo juge l'efficacité de cette mesure très limitée. Elle est présentée comme une réponse à l'inflation et à la baisse du pouvoir d'achat.",
+    "contexte": "La TVA est un impôt indirect sur la consommation, et son allègement est un outil de politique budgétaire. Le débat porte sur son effet réel sur les prix et sur son coût pour les finances publiques.",
     "notions": [
-     "Croissance économique et PIB",
-     "Pouvoir d'achat",
-     "Répartition des revenus",
-     "Conflits sociaux et syndicats"
-    ],
-    "copie": "Excellente accroche pour un sujet du type « La croissance suffit-elle à améliorer le niveau de vie ? ». Elle permet de distinguer croissance (augmentation de la production) et développement ou bien-être. On peut l'utiliser dans une partie sur les limites du PIB comme indicateur.",
-    "niveau": 1,
-    "source": "Le Monde",
-    "lien": "https://www.lemonde.fr/international/article/2026/11/11/espagne-une-greve-generale-sur-fond-de-crise-du-logement-et-de-colere-sur-le-pouvoir-d-achat_6809018_3210.html",
-    "date": "2026-11-11T18:15:14.000Z",
-    "titre_original": "Espagne : une grève générale sur fond de crise du logement et de colère à cause du pouvoir d’achat"
-   },
-   {
-    "id": "a68",
-    "titre": "Gaz : nouvelle hausse de 5,8 % des tarifs en décembre",
-    "resume": "Les tarifs du gaz vont augmenter de 5,8 % en décembre, après une hausse de 6 % en novembre. Les foyers concernés sont ceux qui ont souscrit une offre indexée sur le prix repère. Une question se pose alors pour les consommateurs : faut-il changer de contrat ou de fournisseur pour limiter l'impact sur la facture ?",
-    "contexte": "L'énergie est un poste de dépense contraint : on ne peut pas facilement s'en passer, surtout en hiver. Sa hausse alimente l'inflation et réduit le pouvoir d'achat des ménages. L'ouverture du marché du gaz à la concurrence permet en théorie au consommateur de comparer les offres.",
-    "notions": [
+     "TVA (impôt indirect)",
      "Inflation",
      "Pouvoir d'achat",
-     "Marché et concurrence",
-     "Contrat (indexation du prix)"
+     "Politique budgétaire"
     ],
-    "copie": "Exemple concret pour illustrer une inflation d'origine énergétique, souvent appelée inflation par les coûts. Attention au calcul : deux hausses successives de 6 % puis 5,8 % ne s'additionnent pas, elles se multiplient (environ +12,1 % au total). C'est aussi un bon exemple de clause d'indexation dans un contrat.",
-    "niveau": 1,
-    "source": "franceinfo",
-    "lien": "https://www.franceinfo.fr/environnement/energie/hausse-du-prix-du-gaz-faut-il-changer-de-contrat-pour-reduire-sa-facture_8277929.html#xtor=RSS-3-%5Beconomie%5D",
-    "date": "2026-11-11T15:09:21.000Z",
-    "titre_original": "Hausse du prix du gaz : faut-il changer de contrat pour r&#xE9;duire sa facture ?"
-   },
-   {
-    "id": "a103",
-    "titre": "BCE : espèces et euro numérique, « les deux faces d'une même pièce »",
-    "resume": "Piero Cipollone, responsable de la Banque centrale européenne, a prononcé un discours intitulé « Cash and the digital euro: two sides of the same coin ». Le titre suggère que la BCE présente l'euro numérique comme un complément des espèces plutôt que comme leur remplaçant. Le contenu détaillé n'est pas fourni : on retiendra surtout le message général sur la coexistence des deux formes de monnaie.",
-    "contexte": "Le projet d'euro numérique vise à créer une monnaie de banque centrale utilisable sous forme électronique par le grand public, comme les billets aujourd'hui. L'enjeu est de préserver la souveraineté monétaire européenne face aux solutions de paiement privées et étrangères. Il pose aussi des questions sur le rôle des banques commerciales.",
-    "notions": [
-     "Monnaie et formes de la monnaie",
-     "Banque centrale (BCE)",
-     "Monnaie fiduciaire et scripturale",
-     "Souveraineté monétaire"
-    ],
-    "copie": "Utile dans un sujet sur la monnaie, pour montrer l'évolution de ses formes : monnaie marchandise, fiduciaire (billets), scripturale (comptes bancaires), puis numérique. On peut l'employer en conclusion comme ouverture sur l'avenir de la monnaie.",
+    "copie": "Utilisez cet exemple pour discuter les limites d'une politique de soutien par les prix : l'État renonce à des recettes sans garantie que la baisse soit répercutée aux consommateurs. Il peut servir d'accroche à une dissertation sur les remèdes à l'inflation.",
     "niveau": 2,
-    "source": "BCE",
-    "lien": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp261110~9422461bad.en.html",
-    "date": "2026-11-10T14:00:00.000Z",
-    "titre_original": "Piero Cipollone: Cash and the digital euro: two sides of the same coin"
+    "source": "franceinfo",
+    "lien": "https://www.franceinfo.fr/vrai-ou-fake/vrai-ou-faux-la-tva-a-0-sur-les-produits-de-premiere-necessite-a-t-elle-fait-baisser-l-ensemble-des-prix-en-espagne-et-en-pologne-comme-l-affirme-sebastien-chenu_8276051.html#xtor=RSS-3-%5Beconomie%5D",
+    "date": "2026-11-12T05:06:47.000Z",
+    "titre_original": "VRAI OU FAUX. La TVA &#xE0; 0% sur les produits de premi&#xE8;re n&#xE9;cessit&#xE9; a-t-elle \"fait baisser l'ensemble des prix\" en Espagne et en Pologne, comme l'affirme S&#xE9;bastien Chenu&#xA0;?"
    },
    {
-    "id": "a87",
-    "titre": "Introduction en bourse d'Anthropic : une demande énorme, mais des risques",
-    "resume": "Selon le Financial Times, l'introduction en bourse (IPO) d'Anthropic, entreprise d'intelligence artificielle, suscite une demande considérable qui promet des débuts spectaculaires. Le journal alerte toutefois sur des ventes discrètes par des initiés et sur des financements « circulaires » dans la chaîne d'approvisionnement. Ces éléments pourraient provoquer des difficultés après la cotation. Les débuts sur le Nasdaq sont annoncés pour le 19 novembre (a46).",
-    "contexte": "Une introduction en bourse permet à une entreprise de lever des capitaux en vendant ses actions au public : c'est un financement direct, sans passer par une banque prêteuse. L'engouement autour de l'IA fait craindre à certains une surévaluation, voire une bulle spéculative.",
+    "id": "a7",
+    "titre": "Aides publiques aux entreprises : CIR et pacte Dutreil sous le feu des critiques",
+    "resume": "Dans une tribune, un économiste et un journaliste déplorent que le projet de budget 2027 ne réforme ni le crédit d'impôt recherche (CIR) ni le pacte Dutreil. Ils critiquent leur coût et leur efficacité. Ils demandent que la collectivité en ait pour son argent.",
+    "contexte": "Les aides publiques aux entreprises soulèvent la question de l'efficacité de la dépense publique et du rôle de l'État dans l'économie. Le CIR vise à encourager la recherche et l'innovation, source de croissance.",
     "notions": [
-     "Financement direct et marchés financiers",
-     "Action et capital social",
-     "Bulle spéculative",
-     "Innovation (Schumpeter)"
+     "Rôle de l'État",
+     "Dépense publique",
+     "Innovation et croissance",
+     "Évaluation des politiques publiques"
     ],
-    "copie": "Exemple idéal pour illustrer le financement direct par opposition au financement indirect (crédit bancaire). On peut aussi mobiliser Schumpeter : les vagues d'innovation attirent les capitaux et peuvent nourrir des excès financiers.",
+    "copie": "Appuyez-vous sur ce débat pour une partie sur les limites de l'intervention de l'État : risque d'effet d'aubaine et besoin d'évaluation. Vous pouvez l'opposer à Schumpeter pour qui l'innovation est le moteur de la croissance.",
+    "niveau": 2,
+    "source": "Le Monde",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/12/credit-d-impot-recherche-pacte-dutreil-quitte-a-mettre-un-pognon-de-dingue-dans-les-aides-publiques-aux-entreprises-encore-faudrait-il-que-la-collectivite-en-ait-pour-son-argent_6809058_3232.html",
+    "date": "2026-11-12T05:00:42.000Z",
+    "titre_original": "Crédit d’impôt recherche, pacte Dutreil… : « Quitte à mettre un “pognon de dingue” dans les aides publiques aux entreprises, encore faudrait-il que la collectivité en ait pour son argent »"
+   },
+   {
+    "id": "a47",
+    "titre": "Hausse du smic : 164 branches professionnelles dans l'illégalité selon la CGT",
+    "resume": "Le gouvernement a annoncé une revalorisation du smic prévue le 1er décembre. La CGT pointe que 164 branches professionnelles auraient alors une rémunération de base inférieure au smic. Ces branches se retrouveraient en non-conformité.",
+    "contexte": "Le smic est le salaire minimum légal et un instrument de protection des bas salaires. Les accords de branche, issus de la négociation collective, doivent le respecter.",
+    "notions": [
+     "Smic",
+     "Négociation collective",
+     "Droit du travail",
+     "Pouvoir d'achat"
+    ],
+    "copie": "Cet exemple illustre l'articulation entre loi et conventions collectives, avec la hiérarchie des normes. Il sert aussi à discuter l'effet du salaire minimum sur l'emploi et sur le pouvoir d'achat.",
+    "niveau": 2,
+    "source": "Le Monde",
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/12/la-hausse-du-smic-mettra-164-branches-professionnelles-dans-l-illegalite-pointe-la-cgt_6809037_3234.html",
+    "date": "2026-11-12T01:18:19.000Z",
+    "titre_original": "La hausse du smic mettra 164 branches professionnelles dans « l’illégalité », pointe la CGT"
+   },
+   {
+    "id": "a10",
+    "titre": "UE et Royaume-Uni : report d'une taxe de 10 % sur les voitures électriques",
+    "resume": "Selon le Financial Times, l'Union européenne et le Royaume-Uni s'apprêteraient à retarder un droit de douane de 10 % sur les voitures électriques. Les constructeurs européens avaient averti que cette taxe les rendrait plus vulnérables à la concurrence chinoise.",
+    "contexte": "Les droits de douane sont un instrument de protectionnisme qui renchérit les importations. Ils posent la question de l'arbitrage entre libre-échange et protection de l'industrie nationale.",
+    "notions": [
+     "Protectionnisme",
+     "Droits de douane",
+     "Mondialisation",
+     "Avantage comparatif (Ricardo)"
+    ],
+    "copie": "Mobilisez ce cas pour opposer Ricardo et le libre-échange aux arguments du protectionnisme. Il peut servir d'exemple dans un sujet sur les effets de la mondialisation sur l'industrie.",
     "niveau": 2,
     "source": "Financial Times",
-    "lien": "https://www.ft.com/content/26fd23df-830e-481b-a3bc-19bcab48c5f6",
-    "date": "2026-11-11T10:23:49.000Z",
-    "titre_original": "Anthropic’s IPO is too important to fail"
+    "lien": "https://www.ft.com/content/b6c31ee9-0837-4fb0-83d9-a0e70100d0a3?syn-25a6b1a6=1",
+    "date": "2026-11-12T05:00:21.000Z",
+    "titre_original": "EU and UK set to delay 10% tariff on electric cars"
    }
   ],
   "droit": [
    {
-    "id": "a66",
-    "titre": "L'UE veut mieux protéger les consommateurs en ligne avec une « loi sur l'équité numérique »",
-    "resume": "La Commission européenne a présenté un projet de « loi sur l'équité numérique ». Il vise notamment les influenceurs, les « interfaces trompeuses » et les jeux vidéo. Le texte prévoit des amendes pouvant atteindre 6 % du chiffre d'affaires mondial des contrevenants.",
-    "contexte": "Le droit de l'Union européenne est une source importante du droit français. La Commission a l'initiative des textes, qui doivent ensuite être adoptés par le Parlement européen et le Conseil. Les interfaces trompeuses (en anglais « dark patterns ») poussent l'internaute à consentir sans vraiment le vouloir, ce qui interroge la qualité du consentement au contrat.",
+    "id": "a8",
+    "titre": "Projet de loi « casseur-payeur » : un débat sur les libertés publiques",
+    "resume": "Dans une tribune, des avocats et des personnalités dénoncent le projet de loi « casseur-payeur », qu'ils jugent dissuasif pour le droit de manifester. Ils y voient une punition collective. Le texte n'est pas encore définitivement adopté.",
+    "contexte": "Le texte oppose la liberté de manifester à l'ordre public. Il pose aussi la question de la responsabilité : peut-on faire payer des dommages à des personnes qui n'en sont pas les auteurs directs ?",
     "notions": [
-     "Sources du droit : droit de l'Union européenne",
-     "Formation du contrat : consentement",
-     "Protection du consommateur",
-     "Sanction et régulation"
+     "Responsabilité civile",
+     "Libertés fondamentales",
+     "Processus législatif",
+     "Ordre public"
     ],
-    "copie": "Exemple pour un sujet sur les sources du droit : l'UE produit des normes qui s'imposent aux États membres. En droit des contrats, on peut le rapprocher des vices du consentement, en particulier le dol, qui consiste à tromper pour obtenir le consentement. Le montant des amendes, calculé sur le chiffre d'affaires mondial, montre la volonté de dissuader les grandes plateformes.",
+    "copie": "Utilisez ce débat pour illustrer la tension entre liberté et sécurité en droit. Il rappelle que la responsabilité civile repose en principe sur une faute, un dommage et un lien de causalité.",
     "niveau": 2,
     "source": "Le Monde",
-    "lien": "https://www.lemonde.fr/economie/article/2026/11/11/influenceurs-interfaces-trompeuses-jeux-video-l-ue-veut-mieux-proteger-les-consommateurs-en-ligne_6808994_3234.html",
-    "date": "2026-11-11T15:39:21.000Z",
-    "titre_original": "Influenceurs, « interfaces trompeuses », jeux vidéo : l’UE veut mieux protéger les consommateurs en ligne"
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/12/veritable-punition-collective-le-projet-de-loi-casseur-payeur-dissuadera-de-manifester-et-viendra-museler-l-expression-de-toute-opposition-au-pouvoir_6809055_3232.html",
+    "date": "2026-11-12T05:00:33.000Z",
+    "titre_original": "« Véritable punition collective, le projet de loi “casseur-payeur” dissuadera de manifester et viendra museler l’expression de toute opposition au pouvoir »"
    },
    {
-    "id": "a88",
-    "titre": "Un juge américain maintient la plainte en diffamation de Donald Trump contre la BBC",
-    "resume": "Un juge américain a refusé de rejeter la plainte pour diffamation déposée par Donald Trump contre la BBC. Le président américain reproche au groupe audiovisuel public britannique un montage vidéo trompeur de ses propos tenus le jour de l'assaut du Capitole. L'affaire va donc pouvoir se poursuivre devant la justice.",
-    "contexte": "La diffamation consiste à porter atteinte à l'honneur ou à la réputation d'une personne en lui imputant un fait précis. Elle oppose deux principes : la liberté d'expression et de la presse, et la protection de la réputation. Refuser de rejeter une plainte ne signifie pas donner raison au plaignant : cela veut seulement dire que le procès peut avoir lieu.",
+    "id": "a67",
+    "titre": "Référendum et Constitution : plus de cent constitutionnalistes critiquent la proposition du RN",
+    "resume": "Plus de cent constitutionnalistes jugent irrégulière la proposition de Marine Le Pen de changer la Constitution par référendum. Le président du Conseil constitutionnel avait déjà émis des réserves mi-octobre. Cette proposition est un élément phare du programme du RN.",
+    "contexte": "La Constitution fixe les procédures de sa révision. Le débat touche à la hiérarchie des normes et au rôle du Conseil constitutionnel, gardien de la conformité des lois à la Constitution.",
     "notions": [
-     "Droits de la personnalité",
-     "Responsabilité et réparation du préjudice",
-     "Liberté d'expression",
-     "Procès et procédure"
+     "Hiérarchie des normes",
+     "Constitution",
+     "Conseil constitutionnel",
+     "Sources du droit"
     ],
-    "copie": "Utile pour montrer que la justice doit concilier des droits fondamentaux concurrents. En France, la diffamation est encadrée par la loi du 29 juillet 1881 sur la liberté de la presse. Attention à bien distinguer la recevabilité d'une demande (peut-elle être jugée ?) et son bien-fondé (est-elle justifiée ?).",
-    "niveau": 2,
+    "copie": "Cet exemple sert à rappeler que la Constitution est au sommet de la hiérarchie des normes et se révise selon une procédure précise. Il peut introduire une réflexion sur la souveraineté populaire et l'État de droit.",
+    "niveau": 3,
     "source": "franceinfo",
-    "lien": "https://www.franceinfo.fr/economie/medias/un-juge-americain-refuse-de-rejeter-la-plainte-pour-diffamation-de-donald-trump-contre-la-bbc_8277491.html#xtor=RSS-3-%5Beconomie%5D",
-    "date": "2026-11-11T10:14:30.000Z",
-    "titre_original": "Un juge am&#xE9;ricain refuse de rejeter la plainte pour diffamation de Donald Trump contre la BBC"
+    "lien": "https://www.franceinfo.fr/politique/marine-le-pen/plus-de-cent-constitutionnalistes-critiquent-le-referendum-pour-changer-la-constitution-tel-que-propose-par-marine-le-pen_8278388.html#xtor=RSS-3-%5Beconomie%5D",
+    "date": "2026-11-11T22:53:01.000Z",
+    "titre_original": "Plus de cent constitutionnalistes critiquent le r&#xE9;f&#xE9;rendum pour changer la Constitution tel que propos&#xE9; par Marine Le Pen"
    },
    {
-    "id": "a7",
-    "titre": "Atteinte à la vie privée : la cour d'appel de Paris infirme partiellement un jugement",
-    "resume": "Benjamin Amar, ancien haut cadre de la CGT, avait gagné en première instance, en mars 2025, un procès pour atteinte à la vie privée. Il contestait la divulgation d'éléments d'une enquête pénale pour viol ouverte contre lui, puis classée sans suite. La cour d'appel de Paris vient d'infirmer partiellement ce jugement.",
-    "contexte": "Cette affaire illustre le principe du double degré de juridiction : une partie mécontente peut faire rejuger l'affaire en appel. Le droit au respect de la vie privée est protégé par l'article 9 du Code civil. Un classement sans suite est la décision du procureur de ne pas engager de poursuites ; ce n'est pas un jugement d'innocence ni de culpabilité.",
+    "id": "a82",
+    "titre": "Vie privée et enquête pénale : un jugement partiellement infirmé en appel",
+    "resume": "Un ancien haut cadre de la CGT avait gagné en première instance un procès pour atteinte à la vie privée, après la divulgation d'éléments d'une enquête pour viol classée sans suite. La cour d'appel de Paris vient de réformer partiellement ce jugement de mars 2025.",
+    "contexte": "Le litige oppose le droit au respect de la vie privée et la liberté d'informer. Il montre aussi le rôle de l'appel, qui permet de rejuger une affaire sur le fond.",
     "notions": [
-     "Organisation judiciaire : appel et double degré de juridiction",
-     "Droit au respect de la vie privée (art. 9 C. civ.)",
-     "Présomption d'innocence",
-     "Droits de la personnalité"
+     "Organisation judiciaire (appel)",
+     "Droits de la personnalité",
+     "Responsabilité civile",
+     "Présomption d'innocence"
     ],
-    "copie": "Exemple précis pour expliquer le vocabulaire judiciaire : « infirmer » signifie que la cour d'appel annule ou modifie la décision de première instance, alors que « confirmer » signifie la maintenir. Bon support pour un sujet sur la personne juridique et la protection de sa vie privée face à l'information du public.",
+    "copie": "Utilisez ce cas pour illustrer le double degré de juridiction et la mise en balance de droits fondamentaux. Il peut nourrir une partie sur les limites de la liberté d'expression.",
     "niveau": 2,
     "source": "Le Monde",
     "lien": "https://www.lemonde.fr/politique/article/2026/11/11/accusation-de-viol-classee-sans-suite-un-ancien-haut-cadre-de-la-cgt-essuie-un-revers-dans-sa-contre-offensive-judiciaire_6809020_823448.html",
-    "date": "2026-11-11T18:38:15.000Z",
+    "date": "2026-11-11T18:38:12.000Z",
     "titre_original": "Accusation de viol classée sans suite : un ancien haut cadre de la CGT essuie un revers dans sa contre-offensive judiciaire"
    }
   ],
   "mgmt": [
    {
-    "id": "a25",
-    "titre": "Royaume-Uni : Poundland se protège de ses créanciers et cherche un repreneur",
-    "resume": "La chaîne de magasins discount Poundland a déposé un avis d'intention de nommer des administrateurs. Cette démarche la protège de ses créanciers jusqu'à jeudi. Le fondateur de l'enseigne a écrit au roi pour demander de l'aide. Selon la BBC (a1), l'entreprise devrait obtenir un délai supplémentaire pour trouver un acheteur.",
-    "contexte": "Lorsqu'une entreprise ne peut plus payer ses dettes, des procédures spécifiques suspendent les poursuites des créanciers pour tenter de la sauver. La procédure britannique d'« administration » est proche, dans l'esprit, des procédures collectives françaises comme le redressement judiciaire. De nombreuses parties prenantes sont concernées : salariés, fournisseurs, banques et clients.",
+    "id": "a30",
+    "titre": "Nvidia : la pression monte sur son PDG Jensen Huang",
+    "resume": "Le futur du PDG de Nvidia est en question après des informations sur une seconde liaison extraconjugale. Le conseil d'administration serait réuni pour décider de son sort. Le titre a nettement reculé en bourse après la clôture.",
+    "contexte": "Le cas illustre le rôle du conseil d'administration, le contrôle du dirigeant et l'impact d'une crise de réputation sur la valeur de l'entreprise. Un dirigeant fondateur concentre souvent une forte dimension symbolique.",
     "notions": [
-     "Entreprise en difficulté",
+     "Gouvernance",
+     "Conseil d'administration",
      "Parties prenantes",
-     "Stratégie de prix bas (discount)",
-     "Reprise d'entreprise (croissance externe pour l'acquéreur)"
+     "Leadership"
     ],
-    "copie": "Étude de cas type : identifier les parties prenantes et leurs intérêts divergents (les créanciers veulent être payés, les salariés veulent garder leur emploi). Bonne illustration du fait qu'un positionnement discount ne garantit pas la survie si les coûts augmentent ou si la concurrence se durcit.",
-    "niveau": 1,
-    "source": "BBC",
-    "lien": "https://www.bbc.co.uk/news/videos/cm4gndjd4nnno?at_medium=RSS&at_campaign=rss",
-    "date": "2026-11-11T17:59:35.000Z",
-    "titre_original": "Poundland founder writes to King for help"
-   },
-   {
-    "id": "a13",
-    "titre": "ITV réduit ses budgets de programmes avant l'enquête sur son rachat par Sky",
-    "resume": "Le diffuseur britannique ITV prévoit de réduire son budget de programmes, alors que les dépenses de production audiovisuelle au Royaume-Uni ont chuté de plus de 2 milliards de livres. Le groupe vise 30 millions de livres d'économies qu'il qualifie de « temporaires ». Ces décisions interviennent avant une enquête sur son rachat par Sky.",
-    "contexte": "Un rachat est une opération de croissance externe : une entreprise se développe en acquérant une autre entreprise. Quand l'opération est importante, les autorités de concurrence peuvent l'examiner pour vérifier qu'elle ne nuit pas aux consommateurs. Le secteur audiovisuel traverse une période difficile, ce qui pousse les acteurs à réduire leurs coûts.",
-    "notions": [
-     "Croissance externe (fusion-acquisition)",
-     "Contrôle des concentrations",
-     "Diagnostic externe (environnement sectoriel)",
-     "Réduction des coûts"
-    ],
-    "copie": "Exemple pour comparer croissance interne et croissance externe : le rachat permet de grandir vite, mais il est soumis au contrôle des autorités. Dans une étude de cas, on peut relier la baisse des dépenses du secteur, élément du diagnostic externe, aux choix de l'entreprise.",
+    "copie": "Servez-vous de ce cas pour traiter le risque de dépendance à un dirigeant charismatique et le rôle de contre-pouvoir du conseil. Il peut ouvrir un sujet sur la gouvernance et la création de valeur.",
     "niveau": 2,
-    "source": "The Guardian",
-    "lien": "https://www.theguardian.com/business/2026/nov/11/itv-cut-costs-falling-advertising-sales",
-    "date": "2026-11-11T18:21:25.000Z",
-    "titre_original": "ITV to cut show budgets as UK TV and film production spend drops by more than £2bn"
+    "source": "BBC",
+    "lien": "https://www.bbc.co.uk/news/articles/ckgel338xql3o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-12T04:18:33.000Z",
+    "titre_original": "What we know as pressure builds on embattled Nvidia CEO Jensen Huang"
    },
    {
-    "id": "a55",
-    "titre": "Bricolage : face à la baisse des ventes, les enseignes misent sur les petits prix",
-    "resume": "Le marché du bricolage connaît un coup d'arrêt depuis trois ans. Pour attirer de nouveaux clients, les enseignes multiplient les offres à petits prix. Lidl a notamment lancé à Marseille un magasin éphémère uniquement consacré à ce secteur.",
-    "contexte": "Quand un marché stagne, les entreprises doivent revoir leur stratégie pour conquérir des clients. L'arrivée d'un acteur de la grande distribution discount comme Lidl sur ce marché accentue la concurrence. Le magasin éphémère permet de tester un concept à moindre coût.",
+    "id": "a0",
+    "titre": "Low cost et dégradation du travail : l'enquête d'une sociologue",
+    "resume": "La sociologue Cyrine Gardes décrit dans son enquête les conséquences sociales peu visibles du modèle low cost. Elle met en avant une dégradation du travail pour des milliers de salariés des enseignes à bas coût.",
+    "contexte": "Le low cost est une stratégie de domination par les coûts. Il pose la question de qui supporte la baisse des prix : salariés, fournisseurs ou entreprise.",
     "notions": [
-     "Stratégie de domination par les coûts (Porter)",
-     "Diagnostic externe : marché et concurrence",
-     "Diversification",
-     "Intensité concurrentielle"
+     "Stratégie de domination par les coûts",
+     "Parties prenantes",
+     "Conditions de travail",
+     "Diagnostic stratégique"
     ],
-    "copie": "Illustration directe des stratégies génériques de Porter : domination par les coûts (prix bas) contre différenciation (offre unique). On peut aussi présenter le magasin éphémère de Lidl comme un test de diversification vers un nouveau métier.",
+    "copie": "Cet exemple permet d'analyser les limites d'une stratégie de coûts bas, avec des risques sociaux, de turnover et de réputation. Il alimente une réflexion sur la responsabilité sociale de l'entreprise.",
     "niveau": 1,
-    "source": "franceinfo",
-    "lien": "https://www.franceinfo.fr/economie/bricolage-face-a-la-baisse-des-ventes-les-enseignes-misent-sur-les-petits-prix_8277962.html#xtor=RSS-3-%5Beconomie%5D",
-    "date": "2026-11-11T16:29:43.000Z",
-    "titre_original": "Bricolage : face &#xE0; la baisse des ventes, les enseignes misent sur les petits prix"
+    "source": "Le Monde",
+    "lien": "https://www.lemonde.fr/vie-au-travail/article/2026/11/12/le-low-cost-contre-le-travail-dans-les-coulisses-des-enseignes-a-bas-cout_6809061_6768900.html",
+    "date": "2026-11-12T05:30:07.000Z",
+    "titre_original": "« Le Low Cost contre le travail » : dans les coulisses des enseignes à bas coût"
+   },
+   {
+    "id": "a54",
+    "titre": "Poundland : un délai supplémentaire pour trouver un repreneur",
+    "resume": "Selon la BBC, la chaîne de magasins à prix bas Poundland, qui se rapprochait d'une procédure d'administration, disposerait de plus de temps pour trouver un acheteur. Des discussions d'urgence se poursuivent.",
+    "contexte": "Les difficultés d'une enseigne de discount montrent les risques financiers d'un modèle à faibles marges. Une reprise est une forme de croissance externe pour l'acquéreur.",
+    "notions": [
+     "Défaillance d'entreprise",
+     "Croissance externe",
+     "Diagnostic financier",
+     "Stratégie low cost"
+    ],
+    "copie": "Utilisez ce cas pour illustrer les difficultés d'un modèle fondé sur les volumes et les faibles marges. Il peut aussi servir d'exemple de recherche d'un repreneur pour sauver une entreprise.",
+    "niveau": 2,
+    "source": "BBC",
+    "lien": "https://www.bbc.co.uk/news/articles/c3702jjkez4ko?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-12T00:49:05.000Z",
+    "titre_original": "Poundland set for more time to secure a rescue deal as emergency talks continue"
    }
   ],
   "monde": [
    {
-    "id": "a39",
-    "titre": "Ukraine : les négociations d'Abou Dhabi débouchent sur un échange de prisonniers, pas sur la paix",
-    "resume": "La Russie et l'Ukraine ont accepté le « plus grand échange de prisonniers » de la guerre, lors de leurs premiers pourparlers sous médiation américaine depuis février. Les discussions ont toutefois peu progressé vers un accord de paix global. Selon la BBC (a21), elles ont porté sur l'architecture de sécurité européenne d'après-guerre. Des émissaires américains doivent rencontrer séparément Vladimir Poutine à Moscou et Volodymyr Zelensky à Dublin jeudi.",
-    "contexte": "La guerre en Ukraine remet en cause l'ordre de sécurité européen et pèse sur l'économie mondiale (énergie, matières premières, dépenses militaires). Les États-Unis jouent le rôle de médiateur. D'après le Financial Times (a75), ces négociations reprennent après une pause d'environ neuf mois, liée à la guerre en Iran.",
+    "id": "a58",
+    "titre": "Mississippi : le démocrate Scott Colom remporte le Sénat",
+    "resume": "Le démocrate Scott Colom a battu la sénatrice républicaine sortante Cindy Hyde-Smith. Il devient le premier sénateur noir élu de l'État depuis la période de la Reconstruction. Il s'agit aussi de la première victoire démocrate au Sénat dans cet État depuis 1982.",
+    "contexte": "Ce résultat des élections de mi-mandat (midterms) pèse sur l'équilibre politique à Washington. Il illustre aussi les évolutions de l'électorat dans le Sud américain.",
     "notions": [
-     "Géopolitique et mondialisation",
-     "Sécurité européenne",
-     "Diplomatie et médiation",
-     "Chocs d'offre (énergie)"
+     "Midterms",
+     "Sénat américain",
+     "Système fédéral",
+     "Séparation des pouvoirs"
     ],
-    "copie": "Utile dans un sujet sur les limites de la mondialisation ou sur le retour des logiques de puissance. On peut opposer l'idée libérale selon laquelle le commerce favorise la paix (le « doux commerce » de Montesquieu) à la réalité des conflits entre États interdépendants.",
-    "niveau": 2,
+    "copie": "Utilisez cet exemple pour montrer comment les élections de mi-mandat servent de sanction ou de contrepoids au président. Il peut illustrer le jeu des checks and balances.",
+    "niveau": 1,
     "source": "The Guardian",
-    "lien": "https://www.theguardian.com/world/2026/nov/11/ukraine-talks-in-abu-dhabi-bring-progress-on-prisoners-but-not-on-peace",
-    "date": "2026-11-11T17:03:43.000Z",
-    "titre_original": "Ukraine talks in Abu Dhabi bring progress on prisoners but not on peace"
+    "lien": "https://www.theguardian.com/us-news/2026/nov/11/scott-colom-mississippi-senate-race",
+    "date": "2026-11-12T00:11:12.000Z",
+    "titre_original": "Democrat Scott Colom unseats Cindy Hyde-Smith in stunning Mississippi Senate win"
    },
    {
-    "id": "a70",
-    "titre": "Friedrich Merz menace de priver de fonds européens les États qui ne soutiennent pas l'Ukraine",
-    "resume": "L'Allemagne réclame que tous les États de l'Union européenne, sans exception, contribuent financièrement au soutien de Kiev. La Bulgarie, la Hongrie, la Slovaquie et la République tchèque ont souhaité être exemptées du prochain mécanisme de financement. Le chancelier Friedrich Merz menace de les priver de fonds européens.",
-    "contexte": "Cette tension montre les difficultés de l'UE à parler d'une seule voix. Elle pose la question de la solidarité entre États membres et de la conditionnalité des fonds européens, c'est-à-dire le fait de lier le versement d'aides au respect de certains engagements.",
+    "id": "a76",
+    "titre": "Espagne : manifestations massives pour le logement et le pouvoir d'achat",
+    "resume": "Des centaines de milliers de personnes ont manifesté en Espagne lors d'une grève appelée par les principaux syndicats. La mobilisation s'inscrit dans la crise du logement née fin septembre, après l'expulsion d'une Madrilène de 87 ans.",
+    "contexte": "La hausse des loyers et des prix du logement pèse sur le pouvoir d'achat. Le sujet relie marché immobilier, inégalités et politiques publiques du logement.",
     "notions": [
-     "Union européenne et budget européen",
-     "Conditionnalité des aides",
-     "Rôle de l'État et action publique",
-     "Coopération internationale"
+     "Marché du logement",
+     "Pouvoir d'achat",
+     "Syndicats et grève",
+     "Inflation"
     ],
-    "copie": "Bon exemple pour un sujet sur la construction européenne et ses limites : l'intégration économique ne garantit pas l'unité politique. Peut servir d'illustration dans une partie sur les divisions internes de l'UE.",
+    "copie": "Appuyez-vous sur ce cas pour montrer les limites du marché face à un bien essentiel comme le logement. Il peut introduire un développement sur l'intervention de l'État.",
     "niveau": 2,
-    "source": "Le Monde",
-    "lien": "https://www.lemonde.fr/international/article/2026/11/11/friedrich-merz-menace-de-priver-de-fonds-europeens-les-pays-de-l-ue-qui-ne-soutiennent-pas-l-ukraine_6808988_3210.html",
-    "date": "2026-11-11T15:00:11.000Z",
-    "titre_original": "Friedrich Merz menace de priver de fonds européens les pays de l’UE qui ne soutiennent pas l’Ukraine"
+    "source": "franceinfo",
+    "lien": "https://www.franceinfo.fr/monde/espagne/en-espagne-une-greve-generale-pour-defendre-l-acces-au-logement-et-le-pouvoir-d-achat_8277731.html#xtor=RSS-3-%5Beconomie%5D",
+    "date": "2026-11-11T21:01:15.000Z",
+    "titre_original": "En Espagne, des centaines de milliers de personnes ont manifest&#xE9; pour l'acc&#xE8;s au logement et le pouvoir d'achat"
    },
    {
-    "id": "a5",
-    "titre": "Suède : le Parlement ouvre la voie à la déchéance de nationalité des binationaux",
-    "resume": "Le Parlement suédois a adopté une révision constitutionnelle permettant de retirer la nationalité aux binationaux. Elle vise les citoyennetés obtenues par fraude et les personnes condamnées pour des crimes portant gravement atteinte aux « intérêts vitaux » du pays. Les modalités d'application restent à définir par le prochain gouvernement.",
-    "contexte": "Passer par une révision de la Constitution montre l'importance du sujet : la Constitution est la norme la plus élevée de l'ordre juridique interne. La mesure ne vise que les binationaux, car retirer sa nationalité à une personne qui n'en a qu'une la rendrait apatride, c'est-à-dire sans aucune nationalité, ce que le droit international cherche à éviter.",
+    "id": "a56",
+    "titre": "Royaume-Uni : le Premier ministre Burnham et le rapprochement avec l'UE",
+    "resume": "Selon la BBC, la position du Premier ministre en faveur de liens plus étroits avec l'Union européenne provoque des remous dans son parti et chez les autres. Elle pousse aussi les députés à réfléchir à la stratégie de leurs dirigeants.",
+    "contexte": "Le Brexit a modifié les relations commerciales et politiques entre le Royaume-Uni et l'UE. La question de leur rapprochement reste centrale dans le débat britannique.",
     "notions": [
-     "Hiérarchie des normes (Constitution)",
-     "Personne juridique et nationalité",
-     "État de droit",
-     "Sources du droit"
+     "Brexit",
+     "Union européenne",
+     "Commerce international",
+     "Intégration économique"
     ],
-    "copie": "Exemple pour illustrer la hiérarchie des normes et la procédure de révision constitutionnelle. Utile aussi en culture générale pour un sujet sur la citoyenneté ou la sécurité dans les démocraties européennes. Le débat a également existé en France.",
+    "copie": "Cet exemple sert à discuter les coûts et bénéfices de l'intégration économique, avec le marché unique et les barrières non tarifaires. Il peut nourrir une introduction sur la mondialisation et ses reculs.",
     "niveau": 2,
-    "source": "Le Monde",
-    "lien": "https://www.lemonde.fr/international/article/2026/11/11/en-suede-le-parlement-ouvre-la-voie-a-la-decheance-de-nationalite-des-binationaux_6809021_3210.html",
-    "date": "2026-11-11T18:40:40.000Z",
-    "titre_original": "En Suède, le Parlement ouvre la voie à la déchéance de nationalité des binationaux"
+    "source": "BBC",
+    "lien": "https://www.bbc.co.uk/news/articles/cr78251892z7o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-12T00:30:48.000Z",
+    "titre_original": "Burnham's push for closer EU ties causes ripples in his party and others"
    }
   ]
  },
  "langues": {
   "en": {
-   "id": "a18",
-   "titre": "Consultant doctors in England call off two-day pay strike",
-   "resume": "Senior hospital doctors in England have called off the 48-hour strike they had planned for 25 and 26 November. The decision came after the health secretary agreed to formal negotiations about their grievances, which mainly concern pay. NHS chiefs had been worried about how hospitals would cope during the walkout, so they welcomed the announcement. The suspension does not mean the dispute is over: it simply gives both sides time to talk. This case shows how the threat of a strike can be used as a bargaining tool to bring an employer, here the government, to the negotiating table.",
-   "phrase": "The strike was suspended to allow for formal negotiations with the government.",
-   "traduction": "La grève a été suspendue pour permettre des négociations formelles avec le gouvernement.",
-   "source": "The Guardian",
-   "lien": "https://www.theguardian.com/society/2026/nov/11/consultant-doctors-in-england-call-off-nhs-strike",
-   "date": "2026-11-11T18:11:42.000Z"
+   "id": "a33",
+   "titre": "Government could force media industry to improve safeguards",
+   "resume": "The British government could force the media industry to improve protection for people who raise concerns, following the allegations against entertainer David Walliams. According to the BBC, Culture Secretary Lisa Nandy could make it compulsory for companies to join an industry watchdog. The aim would be to protect whistleblowers, meaning people who report wrongdoing inside an organisation. Many newspapers say the television industry must tackle abuse. The case shows how pressure from the public and the press can push ministers to consider regulation when self-regulation looks too weak. Companies may soon face stricter rules and more scrutiny of how they handle complaints.",
+   "phrase": "The government could force participation in an industry watchdog to protect whistleblowers.",
+   "traduction": "Le gouvernement pourrait imposer la participation à un organisme de contrôle du secteur afin de protéger les lanceurs d'alerte.",
+   "vocab_note": "",
+   "source": "BBC",
+   "lien": "https://www.bbc.co.uk/news/articles/cm3egj20v5x4o?at_medium=RSS&at_campaign=rss",
+   "date": "2026-11-12T04:01:50.000Z"
   },
   "es": {
-   "id": "a95",
-   "titre": "3 claves de la primera huelga general en España en 14 años",
-   "resume": "A menos de veinte días de las elecciones generales, los españoles fueron convocados este miércoles a una huelga general, la primera en catorce años. El objetivo principal es protestar contra la crisis de la vivienda y el alto costo de la vida. Muchos jóvenes y familias tienen dificultades para pagar el alquiler. Según BBC Mundo, la situación presenta una paradoja: el gobierno defiende la huelga, mientras que la oposición la critica. Esta movilización social se ha convertido en un tema central de la campaña electoral y muestra el malestar de una parte de la población.",
-   "phrase": "Los españoles protestan por la crisis de la vivienda y el alto costo de la vida.",
-   "traduction": "Les Espagnols protestent contre la crise du logement et le coût élevé de la vie.",
-   "source": "BBC Mundo",
-   "lien": "https://www.bbc.com/mundo/articles/cmlyly7jwq24o?at_medium=RSS&at_campaign=rss",
-   "date": "2026-11-11T04:58:21.000Z"
+   "id": "a76",
+   "titre": "Decenas de miles de personas claman por la vivienda en España",
+   "resume": "Decenas de miles de personas se manifestaron bajo la lluvia en toda España para reclamar medidas contra la crisis de la vivienda. Los principales sindicatos convocaron una huelga general, la primera en catorce años. Los manifestantes protestan por el alto coste de la vida y por la pérdida de poder adquisitivo de los salarios. El movimiento nació a finales de septiembre tras el desahucio de una mujer de 87 años en Madrid. El seguimiento de la huelga fue desigual según los territorios. El Gobierno apoyó las reivindicaciones, mientras que la oposición criticó a los sindicatos y la huelga.",
+   "phrase": "Los españoles protestaron por la crisis de la vivienda y el alto costo de la vida.",
+   "traduction": "Les Espagnols ont protesté contre la crise du logement et le coût élevé de la vie.",
+   "source": "franceinfo",
+   "lien": "https://www.franceinfo.fr/monde/espagne/en-espagne-une-greve-generale-pour-defendre-l-acces-au-logement-et-le-pouvoir-d-achat_8277731.html#xtor=RSS-3-%5Beconomie%5D",
+   "date": "2026-11-11T21:01:15.000Z"
   },
   "vocab": [
    {
-    "mot": "to call off",
+    "mot": "whistleblower",
     "langue": "en",
-    "traduction": "annuler",
-    "exemple": "The doctors called off their strike after the government agreed to talks."
+    "traduction": "lanceur d'alerte",
+    "exemple": "The law aims to protect whistleblowers from retaliation."
    },
    {
-    "mot": "grievance",
+    "mot": "watchdog",
     "langue": "en",
-    "traduction": "grief, motif de mécontentement, revendication",
-    "exemple": "The union presented its grievances about low pay to management."
+    "traduction": "organisme de contrôle",
+    "exemple": "The industry watchdog opened an investigation."
    },
    {
-    "mot": "takeover",
+    "mot": "shares",
     "langue": "en",
-    "traduction": "rachat, prise de contrôle",
-    "exemple": "The takeover of ITV by Sky will be examined by the authorities."
+    "traduction": "actions",
+    "exemple": "The company's shares fell sharply after the announcement."
    },
    {
-    "mot": "la huelga general",
-    "langue": "es",
-    "traduction": "la grève générale",
-    "exemple": "La huelga general paralizó varias ciudades de España."
+    "mot": "tariff",
+    "langue": "en",
+    "traduction": "droit de douane",
+    "exemple": "The tariff on imported cars was delayed."
    },
    {
-    "mot": "el seguimiento",
+    "mot": "la huelga",
     "langue": "es",
-    "traduction": "le taux de participation (à une grève)",
-    "exemple": "La patronal CEOE cifró el seguimiento de la huelga en el 5 %."
+    "traduction": "la grève",
+    "exemple": "Los sindicatos convocaron una huelga general."
    },
    {
-    "mot": "la vivienda",
+    "mot": "el desahucio",
     "langue": "es",
-    "traduction": "le logement",
-    "exemple": "El precio de la vivienda no deja de subir en las grandes ciudades."
+    "traduction": "l'expulsion (locative)",
+    "exemple": "El desahucio provocó un gran movimiento de protesta."
    }
   ]
  },
  "quiz": [
   {
    "matiere": "eco",
-   "question": "Les tarifs du gaz augmentent de 6 % en novembre puis de 5,8 % en décembre. Quelle est la hausse totale approximative sur les deux mois ?",
+   "question": "La TVA est un impôt :",
    "choix": [
-    "11,8 %",
-    "12,1 %",
-    "5,9 %",
-    "0,2 %"
+    "Direct sur le revenu",
+    "Indirect sur la consommation",
+    "Direct sur le patrimoine",
+    "Sur les bénéfices des sociétés"
    ],
    "bonne": 1,
-   "explication": "Des hausses successives se multiplient : 1,06 × 1,058 ≈ 1,121, soit environ +12,1 %. Additionner les pourcentages (11,8 %) est une erreur classique, car la seconde hausse s'applique à un prix déjà augmenté.",
-   "id": "a68",
-   "lien": "https://www.franceinfo.fr/environnement/energie/hausse-du-prix-du-gaz-faut-il-changer-de-contrat-pour-reduire-sa-facture_8277929.html#xtor=RSS-3-%5Beconomie%5D"
+   "explication": "La TVA est payée par le consommateur final sur ses achats : c'est un impôt indirect sur la consommation. Les entreprises la collectent pour l'État.",
+   "id": "a5",
+   "lien": "https://www.franceinfo.fr/vrai-ou-fake/vrai-ou-faux-la-tva-a-0-sur-les-produits-de-premiere-necessite-a-t-elle-fait-baisser-l-ensemble-des-prix-en-espagne-et-en-pologne-comme-l-affirme-sebastien-chenu_8276051.html#xtor=RSS-3-%5Beconomie%5D"
   },
   {
    "matiere": "eco",
-   "question": "Une introduction en bourse (IPO), comme celle d'Anthropic, est un exemple de :",
+   "question": "Quel auteur défend la théorie des avantages comparatifs, argument en faveur du libre-échange ?",
    "choix": [
-    "Financement indirect par crédit bancaire",
-    "Autofinancement",
-    "Financement direct sur les marchés financiers",
-    "Création monétaire par la banque centrale"
+    "Keynes",
+    "Marx",
+    "Ricardo",
+    "Friedman"
    ],
    "bonne": 2,
-   "explication": "Lors d'une IPO, l'entreprise vend ses actions directement aux investisseurs sur un marché financier, sans intermédiaire prêteur. C'est donc un financement direct, à distinguer du financement indirect où une banque accorde un crédit.",
-   "id": "a87",
-   "lien": "https://www.ft.com/content/26fd23df-830e-481b-a3bc-19bcab48c5f6"
+   "explication": "David Ricardo montre que chaque pays gagne à se spécialiser dans la production où il est relativement le plus efficace. Cela justifie le libre-échange face au protectionnisme.",
+   "id": "a10",
+   "lien": "https://www.ft.com/content/b6c31ee9-0837-4fb0-83d9-a0e70100d0a3?syn-25a6b1a6=1"
   },
   {
    "matiere": "eco",
-   "question": "Le salaire réel correspond :",
+   "question": "Le smic est :",
    "choix": [
-    "Au salaire brut avant cotisations sociales",
-    "Au salaire nominal corrigé de l'évolution des prix",
-    "Au salaire minimum fixé par l'État",
-    "Au salaire versé en espèces"
+    "Le salaire moyen des cadres",
+    "Le salaire minimum légal",
+    "Une allocation chômage",
+    "Un impôt sur les salaires"
    ],
    "bonne": 1,
-   "explication": "Le salaire réel mesure ce que le salaire permet réellement d'acheter, une fois retiré l'effet de l'inflation. C'est lui qui détermine le pouvoir d'achat, au cœur de la grève générale en Espagne.",
-   "id": "a16",
-   "lien": "https://www.lemonde.fr/international/article/2026/11/11/espagne-une-greve-generale-sur-fond-de-crise-du-logement-et-de-colere-sur-le-pouvoir-d-achat_6809018_3210.html"
+   "explication": "Le smic est le salaire horaire minimum fixé par la loi, que aucun employeur ne peut ne pas respecter. Il est revalorisé régulièrement.",
+   "id": "a47",
+   "lien": "https://www.lemonde.fr/economie/article/2026/11/12/la-hausse-du-smic-mettra-164-branches-professionnelles-dans-l-illegalite-pointe-la-cgt_6809037_3234.html"
   },
   {
    "matiere": "droit",
-   "question": "Lorsqu'une cour d'appel « infirme » un jugement de première instance, elle :",
+   "question": "Au sommet de la hiérarchie des normes en droit interne français se trouve :",
    "choix": [
-    "Le confirme intégralement",
-    "L'annule ou le modifie",
-    "Renvoie l'affaire devant le Conseil constitutionnel",
-    "Le rend définitif sans examen"
+    "La loi ordinaire",
+    "Le règlement",
+    "La Constitution",
+    "Le contrat"
    ],
-   "bonne": 1,
-   "explication": "Infirmer signifie remettre en cause, en tout ou en partie, la décision des premiers juges. C'est le contraire de confirmer. Dans l'affaire Benjamin Amar, la cour d'appel de Paris a partiellement infirmé le jugement de mars 2025.",
-   "id": "a7",
-   "lien": "https://www.lemonde.fr/politique/article/2026/11/11/accusation-de-viol-classee-sans-suite-un-ancien-haut-cadre-de-la-cgt-essuie-un-revers-dans-sa-contre-offensive-judiciaire_6809020_823448.html"
+   "bonne": 2,
+   "explication": "La Constitution est la norme suprême en droit interne. Les lois et règlements doivent lui être conformes, ce que contrôle le Conseil constitutionnel.",
+   "id": "a67",
+   "lien": "https://www.franceinfo.fr/politique/marine-le-pen/plus-de-cent-constitutionnalistes-critiquent-le-referendum-pour-changer-la-constitution-tel-que-propose-par-marine-le-pen_8278388.html#xtor=RSS-3-%5Beconomie%5D"
   },
   {
    "matiere": "droit",
-   "question": "Dans l'Union européenne, quelle institution dispose en principe de l'initiative des textes législatifs, comme le projet de « loi sur l'équité numérique » ?",
+   "question": "La responsabilité civile délictuelle suppose classiquement :",
    "choix": [
-    "Le Parlement européen",
-    "La Cour de justice de l'UE",
-    "La Commission européenne",
-    "La Banque centrale européenne"
-   ],
-   "bonne": 2,
-   "explication": "La Commission européenne propose les textes. Le Parlement européen et le Conseil les adoptent ensuite. La Cour de justice, elle, interprète le droit de l'UE et veille à son respect.",
-   "id": "a66",
-   "lien": "https://www.lemonde.fr/economie/article/2026/11/11/influenceurs-interfaces-trompeuses-jeux-video-l-ue-veut-mieux-proteger-les-consommateurs-en-ligne_6808994_3234.html"
-  },
-  {
-   "matiere": "mgmt",
-   "question": "Le rachat d'ITV par Sky constitue pour Sky une stratégie de :",
-   "choix": [
-    "Croissance interne",
-    "Croissance externe",
-    "Externalisation",
-    "Recentrage par cession"
-   ],
-   "bonne": 1,
-   "explication": "La croissance externe consiste à se développer en acquérant ou en fusionnant avec d'autres entreprises. La croissance interne repose au contraire sur les propres moyens de l'entreprise, par exemple de nouveaux investissements ou de nouvelles usines.",
-   "id": "a13",
-   "lien": "https://www.theguardian.com/business/2026/nov/11/itv-cut-costs-falling-advertising-sales"
-  },
-  {
-   "matiere": "mgmt",
-   "question": "Selon Michael Porter, une enseigne qui attire les clients grâce à des prix plus bas que ses concurrents adopte une stratégie de :",
-   "choix": [
-    "Différenciation",
-    "Domination par les coûts",
-    "Intégration verticale",
-    "Diversification conglomérale"
-   ],
-   "bonne": 1,
-   "explication": "La domination par les coûts consiste à produire moins cher que les concurrents pour proposer des prix bas. Les enseignes de bricolage, et Lidl avec son magasin éphémère, misent sur cette logique face à un marché en recul.",
-   "id": "a55",
-   "lien": "https://www.franceinfo.fr/economie/bricolage-face-a-la-baisse-des-ventes-les-enseignes-misent-sur-les-petits-prix_8277962.html#xtor=RSS-3-%5Beconomie%5D"
-  },
-  {
-   "matiere": "monde",
-   "question": "Quel résultat concret ont obtenu les négociations entre la Russie et l'Ukraine à Abou Dhabi ?",
-   "choix": [
-    "Un cessez-le-feu immédiat",
-    "Un traité de paix définitif",
-    "Le plus grand échange de prisonniers de la guerre",
-    "L'adhésion de l'Ukraine à l'OTAN"
-   ],
-   "bonne": 2,
-   "explication": "Les deux parties ont accepté le « plus grand échange de prisonniers » de la guerre, mais elles n'ont guère progressé vers un accord de paix global. Des émissaires américains doivent rencontrer séparément Poutine et Zelensky.",
-   "id": "a39",
-   "lien": "https://www.theguardian.com/world/2026/nov/11/ukraine-talks-in-abu-dhabi-bring-progress-on-prisoners-but-not-on-peace"
-  },
-  {
-   "matiere": "monde",
-   "question": "Pourquoi la réforme suédoise de déchéance de nationalité vise-t-elle uniquement les binationaux ?",
-   "choix": [
-    "Pour éviter de rendre une personne apatride",
-    "Parce que l'UE interdit toute déchéance",
-    "Parce que les binationaux ne paient pas d'impôts",
-    "Pour faciliter les naturalisations"
+    "Une faute, un dommage et un lien de causalité",
+    "Un contrat signé",
+    "Une condamnation pénale",
+    "Un jugement en appel"
    ],
    "bonne": 0,
-   "explication": "Retirer sa nationalité à une personne qui n'en possède qu'une la rendrait apatride, c'est-à-dire sans aucune nationalité, ce que le droit international cherche à éviter. Viser les binationaux permet de leur laisser une autre nationalité.",
-   "id": "a5",
-   "lien": "https://www.lemonde.fr/international/article/2026/11/11/en-suede-le-parlement-ouvre-la-voie-a-la-decheance-de-nationalite-des-binationaux_6809021_3210.html"
+   "explication": "Selon l'article 1240 du Code civil, celui qui cause un dommage par sa faute doit le réparer. Il faut donc faute, dommage et lien de causalité.",
+   "id": "a8",
+   "lien": "https://www.lemonde.fr/idees/article/2026/11/12/veritable-punition-collective-le-projet-de-loi-casseur-payeur-dissuadera-de-manifester-et-viendra-museler-l-expression-de-toute-opposition-au-pouvoir_6809055_3232.html"
+  },
+  {
+   "matiere": "mgmt",
+   "question": "Le conseil d'administration d'une société anonyme :",
+   "choix": [
+    "Est élu par les salariés",
+    "Nomme et contrôle le dirigeant",
+    "Fixe les prix des produits",
+    "Remplace l'assemblée générale"
+   ],
+   "bonne": 1,
+   "explication": "Le conseil d'administration, issu des actionnaires, nomme le dirigeant, peut le révoquer et contrôle sa gestion. Il est un organe central de la gouvernance.",
+   "id": "a30",
+   "lien": "https://www.bbc.co.uk/news/articles/ckgel338xql3o?at_medium=RSS&at_campaign=rss"
+  },
+  {
+   "matiere": "mgmt",
+   "question": "Une stratégie de domination par les coûts consiste à :",
+   "choix": [
+    "Vendre des produits uniques et chers",
+    "Proposer les prix les plus bas grâce à des coûts réduits",
+    "Se concentrer sur un seul client",
+    "Éviter toute concurrence"
+   ],
+   "bonne": 1,
+   "explication": "Selon Porter, l'entreprise cherche à avoir des coûts inférieurs à ses concurrents pour vendre moins cher. Le low cost en est un exemple.",
+   "id": "a0",
+   "lien": "https://www.lemonde.fr/vie-au-travail/article/2026/11/12/le-low-cost-contre-le-travail-dans-les-coulisses-des-enseignes-a-bas-cout_6809061_6768900.html"
+  },
+  {
+   "matiere": "monde",
+   "question": "Les « midterms » aux États-Unis sont :",
+   "choix": [
+    "L'élection présidentielle",
+    "Les élections de mi-mandat du Congrès",
+    "Les primaires des partis",
+    "Le vote du budget"
+   ],
+   "bonne": 1,
+   "explication": "Elles ont lieu au milieu du mandat présidentiel et renouvellent la Chambre des représentants et une partie du Sénat.",
+   "id": "a58",
+   "lien": "https://www.theguardian.com/us-news/2026/nov/11/scott-colom-mississippi-senate-race"
+  },
+  {
+   "matiere": "monde",
+   "question": "Quel événement a lancé les manifestations massives du 11 novembre en Espagne ?",
+   "choix": [
+    "Une grève générale contre la crise du logement et le coût de la vie",
+    "Une élection municipale",
+    "Une réforme de la retraite",
+    "Un référendum"
+   ],
+   "bonne": 0,
+   "explication": "Les principaux syndicats ont appelé à une grève générale, la première en 14 ans. Elle visait la crise du logement et la perte de pouvoir d'achat.",
+   "id": "a76",
+   "lien": "https://www.franceinfo.fr/monde/espagne/en-espagne-une-greve-generale-pour-defendre-l-acces-au-logement-et-le-pouvoir-d-achat_8277731.html#xtor=RSS-3-%5Beconomie%5D"
   }
  ]
 }

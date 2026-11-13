@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-12T05:31:20.426Z",
+ "maj": "2026-11-13T05:29:09.857Z",
  "indicateurs": [
   {
    "id": "pib",
@@ -164,10 +164,10 @@
     "Commerce international",
     "Compétitivité"
    ],
-   "valeur": 1.1127,
-   "periode": "2026-11-11",
-   "precedent": 1.1214,
-   "periode_prec": "2026-11-10"
+   "valeur": 1.1081,
+   "periode": "2026-11-12",
+   "precedent": 1.1127,
+   "periode_prec": "2026-11-11"
   }
  ]
 }

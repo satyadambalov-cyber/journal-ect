@@ -119,7 +119,9 @@ const SCHEMA = `{
    "traduction": [{"sens": "fr>en"|"en>fr"|"fr>es"|"es>fr", "phrase": str (phrase de niveau concours, liée à l'actu), "corrige": str, "astuce": str (point de grammaire ou de vocabulaire piège)} x4 : une de chaque sens],
    "pieges": [{"langue": "en"|"es", "question": str (en français : choisir la bonne forme, faux-ami, temps, préposition…), "choix": [str x4], "bonne": 0-3, "explication": str} x6 : 3 en, 3 es]
  },
- "plan": {"matiere": "Économie"|"Droit"|"Management", "sujet": str (question à traiter de façon argumentée et structurée, au format des épreuves ECT : économie, droit ou management, inspirée de l'actu du jour ; JAMAIS de dissertation d'ESH, épreuve de la voie ECG), "analyse": str (définition des termes, enjeux, 2-3 phrases), "problematique": str, "parties": [{"titre": str, "sous": [str x2]} x2-3], "exemples": [str x2-3 exemples précis issus des articles du jour ou de références de cours sûres]},
+ "plan": {"matiere": "Économie (QRA)"|"Droit (veille juridique)" (alterne d'un jour à l'autre), "sujet": str (format concours ECT : soit une question à réponse argumentée d'économie, soit un sujet de veille juridique sur un champ précis du thème « Libertés individuelles et activité économique des entreprises » ; inspiré de l'actu ; JAMAIS de dissertation d'ESH), "analyse": str (définition précise des termes et tension, 2-3 phrases), "problematique": str, "parties": [{"titre": str, "sous": [str x2]} x2 EXACTEMENT (plan en 2 parties et 2 sous-parties)], "exemples": [str x2-3 auteurs/théories (QRA) ou fondements juridiques et exemples réels récents (veille)]},
+ "cas_pratique": {"faits": str (situation fictive de 80-120 mots, niveau ECT1 : contrat, responsabilité, sources du droit, organisation judiciaire, entreprise et sociétés), "question": str, "qualification": str (faits traduits en termes juridiques, sans règle de droit), "probleme": str (question juridique abstraite, jamais « M. X peut-il… »), "majeure": str (règles de droit exactes ; ne cite un article ou un arrêt que si tu es certain de son numéro et de son contenu), "conclusion": str (application aux faits et conséquences juridiques)},
+ "maths": [{"titre": str, "niveau": 1|2|3, "enonce": str (exercice type DS sur le chapitre indiqué, notations texte simples : x², √, a/b, ≤), "etapes": [str x3-6 correction pas à pas, chaque calcul justifié], "resultat": str, "piege": str (l'erreur classique à éviter)} x2 (un niveau 1 ou 2, un niveau 2 ou 3)],
  "quiz": [QUESTION x9 : 3 "eco", 2 "droit", 2 "mgmt", 2 "monde"]
 }
 ARTICLE = {"id": str (id d'un article fourni), "theme": UN SEUL parmi ${JSON.stringify(THEMES)}, "titre": str (titre clair en français), "resume": str (3-4 phrases), "contexte": str (pourquoi c'est important, 2-3 phrases), "notions": [str x2-4 notions du programme], "copie": str (comment l'utiliser dans une copie d'économie, de droit ou une étude de cas de management : idée d'accroche, de partie ou d'exemple, 2-3 phrases), "niveau": 1|2|3 (difficulté)}
@@ -127,7 +129,9 @@ TROUS = {"texte": str (60-90 mots inspirés d'un article du jour, avec exactemen
 QUESTION = {"matiere": "eco"|"droit"|"mgmt"|"monde", "question": str, "choix": [str x4], "bonne": 0-3, "explication": str (2-3 phrases), "id": str|null (article lié éventuel)}`;
 
 const today = new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Paris" });
-const userMsg = `Nous sommes le ${today}. Voici les articles récents (JSON). Le champ "hint" est la rubrique suggérée par le flux, tu peux le réaffecter.
+// Chapitre de maths en cours (à mettre à jour au fil de l'année, ou via la variable GitHub MATHS_CHAPITRE)
+const MATHS = process.env.MATHS_CHAPITRE || "Chapitre 1 — Calculer et résoudre : priorités, fractions, puissances, racines carrées, développer, identités remarquables, factoriser, fractions littérales, équations (produit nul, quotient nul, x² = a), inéquations, tableaux de signe, systèmes 2×2 par substitution";
+const userMsg = `Nous sommes le ${today}. Chapitre de maths en cours (exercices "maths") : ${MATHS}. Voici les articles récents (JSON). Le champ "hint" est la rubrique suggérée par le flux, tu peux le réaffecter.
 Produis l'édition du jour selon ce schéma :
 ${SCHEMA}
 
@@ -178,6 +182,8 @@ if (json.langues) {
   json.langues.traduction = (json.langues.traduction || []).filter((t) => t.phrase && t.corrige);
 }
 if (!json.plan?.sujet || !Array.isArray(json.plan.parties)) delete json.plan;
+if (!json.cas_pratique?.faits || !json.cas_pratique?.conclusion) delete json.cas_pratique;
+json.maths = (json.maths || []).filter((m) => m.enonce && Array.isArray(m.etapes) && m.etapes.length);
 json.quiz = (json.quiz || []).filter((q) => Array.isArray(q.choix) && q.choix.length === 4 && q.bonne >= 0 && q.bonne < 4)
   .map((q) => ({ ...q, lien: byId[q.id]?.link || null }));
 

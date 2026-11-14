@@ -153,7 +153,7 @@ function aujourdhui() {
     ["Quiz du jour", `${qDone}/${qTot}`, qTot && qDone === qTot, "reviser:quiz"],
     ["Vocabulaire EN/ES", nVocab === 0 ? "rien à revoir" : `${nVocab} mots`, nVocab === 0, "langues:vocab"],
     ...(trTot ? [["Textes à trous", `${trDone}/${trTot}`, trDone === trTot, "langues:trous"]] : []),
-    ...(ed?.plan ? [["Plan du jour", ed.plan.matiere, store.get("plans", {})[ed.date], "reviser:plan"]] : []),
+    ...(ed?.plan ? [["Sujet argumenté", ed.plan.matiere, store.get("plans", {})[ed.date], "reviser:plan"]] : []),
   ];
   const done = items.filter((i) => i[2]).length;
   const brief = ed ? Object.keys(RUB).map((k) => (ed.rubriques?.[k] || []).slice(0, 1).map((a) =>
@@ -204,7 +204,7 @@ function rubrique(key) {
     eco: "Conjoncture, politique monétaire, marchés, entreprises — et les auteurs à mobiliser.",
     droit: "Lois, réformes, décisions : la règle, sa portée, son intérêt pour l'épreuve.",
     mgmt: "Stratégies, gouvernance, transformations : des exemples prêts pour l'étude de cas.",
-    monde: "Le monde anglophone et hispanophone : utile en ESH et en langues.",
+    monde: "Le monde anglophone et hispanophone : utile en économie et en langues.",
   }[key];
   return title(RUB[key].nom, `${list.length} sujets`, RUB[key].c) + `<p class="lead">${intro}</p>` + list.map((a) => articleCard(a, key)).join("");
 }
@@ -217,7 +217,7 @@ function exemples() {
   const list = state.bank.filter((a) => (!th || a.theme === th) &&
     (!q || [a.titre, a.resume, a.copie, ...(a.notions || [])].join(" ").toLowerCase().includes(q)));
   return title("Banque d'exemples", `${state.bank.length} actus`) + `
-    <p class="lead">Toutes les actus depuis le début, classées par thème du programme. Avant une dissert, ouvre le thème et pioche tes exemples datés.</p>
+    <p class="lead">Toutes les actus depuis le début, classées par thème du programme. Avant un DS ou une khôlle, ouvre le thème et pioche tes exemples datés.</p>
     <input id="bankq" class="search" type="search" placeholder="Rechercher : inflation, Keynes, contrat…" value="${esc(state.bankQ || "")}">
     <div class="chips"><button class="chip ${th ? "" : "on"}" data-btheme="">Tous</button>${Object.keys(counts).sort().map((t) =>
       `<button class="chip ${t === th ? "on" : ""}" data-btheme="${esc(t)}">${esc(t)} <small>${counts[t]}</small></button>`).join("")}</div>
@@ -378,7 +378,7 @@ function planCard(p, date, open) {
       <div class="block"><h4>Problématique</h4><p>${esc(p.problematique)}</p></div>
       ${p.parties.map((x, i) => `<div class="block"><h4>${["I", "II", "III"][i]}. ${esc(x.titre)}</h4>${(x.sous || []).map((s, j) => `<p>${"AB"[j] || "•"}. ${esc(s)}</p>`).join("")}</div>`).join("")}
       ${p.exemples?.length ? `<div class="block"><h4>Exemples à placer</h4>${p.exemples.map((e) => `<p>• ${esc(e)}</p>`).join("")}</div>` : ""}`
-    : `<p class="lead" style="margin:0 0 6px">Prends 10 minutes : définis les termes, trouve une problématique et un plan en 2 ou 3 parties sur une feuille. Ensuite, compare.</p>${bigBtn("Voir le plan type", `data-plan="${date}"`)}`}
+    : `<p class="lead" style="margin:0 0 6px">Prends 10 minutes : définis les notions, trouve la question centrale et organise ta réponse en 2 ou 3 idées avec un mécanisme et un exemple chacune. Ensuite, compare.</p>${bigBtn("Voir la réponse type", `data-plan="${date}"`)}`}
   </div>`;
 }
 
@@ -391,24 +391,25 @@ function plans() {
     if (list.length) older = title("Sujets précédents", `${list.length}`) + list.map((e) =>
       `<details class="card"><summary><div class="meta"><span class="pill">${esc(e.plan.matiere)}</span><span>${fmtDate(e.date)}</span></div><h3>${esc(e.plan.sujet)}</h3></summary><div class="body">${planCard(e.plan, e.date, true)}</div></details>`).join("");
   }
-  return title("Sujet du jour") + now + older;
+  return title("Sujet argumenté du jour") + now + older;
 }
 
 const METHODES = [
-  { t: "Dissertation d'ESH", m: "eco", e: [
-    "Analyse du sujet (15 min) : définis chaque terme, délimite dans le temps et l'espace, repère les mots-clés et la question implicite.",
-    "Problématique : une vraie question qui crée une tension (pas une reformulation du sujet).",
-    "Plan en 2 ou 3 parties, chacune avec 2 ou 3 sous-parties. Chaque sous-partie = 1 idée + 1 mécanisme + 1 auteur + 1 exemple chiffré ou daté.",
-    "Introduction : accroche (actu ou fait marquant), définitions, problématique, annonce du plan.",
-    "Transitions entre les parties, conclusion qui répond à la problématique puis ouvre.",
-    "Gestion du temps (4 h) : 1 h de brouillon max, rédige l'intro et la conclusion au brouillon, garde 10 min de relecture."] },
+  { t: "Économie : réponse argumentée", m: "eco", e: [
+    "Lis la question et repère les notions à définir et ce qu'on te demande vraiment (expliquer, montrer, analyser, discuter).",
+    "Exploite les documents s'il y en a : relève les données utiles, cite-les (doc. 1, chiffre, date) sans les paraphraser.",
+    "Organise ta réponse en 2 ou 3 idées. Chaque idée = notion définie + mécanisme expliqué étape par étape + exemple ou chiffre (+ auteur si pertinent).",
+    "Introduction courte : définitions et annonce de la structure. Conclusion : réponse claire à la question.",
+    "Les points viennent surtout des mécanismes bien enchaînés et des notions exactes du programme ECT.",
+    "Gère ton temps : brouillon bref, garde 10 min de relecture."] },
   { t: "Cas pratique de droit", m: "droit", e: [
     "Résume les faits utiles et qualifie-les juridiquement (qui sont les parties, quel contrat, quel dommage…).",
     "Pose le problème de droit sous forme de question juridique abstraite.",
     "Majeure : énonce la règle (article du Code civil, jurisprudence), avec ses conditions.",
     "Mineure : vérifie chaque condition au regard des faits, une par une.",
     "Conclusion : réponds clairement à la question posée. Un problème = un syllogisme.",
-    "Cite toujours les articles : la précision fait la différence."] },
+    "Cite toujours les articles : la précision fait la différence.",
+    "Questions de cours ou analyse de documents juridiques : définis, cite la règle, explique sa portée avec un exemple."] },
   { t: "Étude de cas de management", m: "mgmt", e: [
     "Lis d'abord les questions, puis les annexes en notant les informations utiles pour chacune.",
     "Pour chaque réponse : notion du cours définie → application au cas avec des éléments chiffrés ou cités des annexes → conclusion.",
@@ -420,10 +421,15 @@ const METHODES = [
     "Version : comprends tout le texte avant de traduire, garde le sens et le registre, relis en français pour la fluidité.",
     "Thème : méfie-toi des faux-amis et des calques ; vérifie les temps, accords et prépositions.",
     "Chaque jour : 10 min de vocabulaire et un article lu en entier."] },
+  { t: "Culture générale : dissertation", m: "droit", e: [
+    "Analyse chaque mot du sujet et le lien avec le thème de l'année ; cherche le paradoxe ou la tension.",
+    "Problématique, puis plan en 2 ou 3 parties qui progressent (pas un simple oui / non).",
+    "Chaque paragraphe : une idée, une référence précise (œuvre, auteur, citation) analysée, pas juste citée.",
+    "Garde une fiche de références sur le thème de l'année et enrichis-la toute l'année."] },
   { t: "Khôlles", m: "mgmt", e: [
     "Prépare-toi la veille : relis la fiche du chapitre et 2 exemples d'actu sur le thème.",
     "Pendant la préparation : plan clair au brouillon, ne rédige pas tout.",
-    "À l'oral : annonce ton plan, parle lentement, regarde l'examinateur, cite auteurs et exemples.",
+    "À l'oral : annonce ta structure, parle lentement, regarde l'examinateur, cite auteurs, articles et exemples.",
     "Après : note les remarques reçues dans l'agenda de l'appli et refais les questions ratées."] },
 ];
 function methodes() {
@@ -479,7 +485,7 @@ function reviser() {
   const s = state.sub.reviser;
   const body = s === "quiz" ? (state.ed ? quiz() : loading("Pas de quiz aujourd'hui.")) : s === "plan" ? plans()
     : s === "methodes" ? methodes() : s === "classement" ? classement() : fiches();
-  return subtabs("reviser", { fiches: "Fiches", quiz: "Quiz", plan: "Plans de dissert", methodes: "Méthodes", classement: "Classement" }) + body;
+  return subtabs("reviser", { fiches: "Fiches", quiz: "Quiz", plan: "Sujets argumentés", methodes: "Méthodes", classement: "Classement" }) + body;
 }
 
 // =====================================================================
@@ -554,7 +560,7 @@ function langues() {
 //  MOI : agenda, notes, stats, sauvegarde
 // =====================================================================
 const TYPES = ["DS", "Khôlle", "Concours blanc", "Devoir maison", "Autre"];
-const MATS_AG = { eco: "ESH", droit: "Droit", mgmt: "Management", maths: "Maths", en: "Anglais", es: "Espagnol", cg: "Culture générale" };
+const MATS_AG = { eco: "Économie", droit: "Droit", mgmt: "Management", maths: "Maths", en: "Anglais", es: "Espagnol", cg: "Culture générale" };
 
 function agenda() {
   const ev = store.get("agenda", []).sort((a, b) => a.date.localeCompare(b.date));

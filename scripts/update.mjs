@@ -114,11 +114,16 @@ const SCHEMA = `{
  "langues": {
    "en": {"id": str, "titre": str, "resume": str (80-110 mots en anglais, niveau B2), "phrase": str (phrase clé à retenir, en anglais), "traduction": str},
    "es": {"id": str, "titre": str, "resume": str (80-110 mots en espagnol, niveau B1-B2), "phrase": str, "traduction": str},
-   "vocab": [{"mot": str, "langue": "en"|"es", "traduction": str, "exemple": str} x6]
+   "vocab": [{"mot": str, "langue": "en"|"es", "traduction": str, "exemple": str} x8 (4 en, 4 es, vocabulaire éco/politique/société utile aux concours)],
+   "trous": {"en": TROUS, "es": TROUS},
+   "traduction": [{"sens": "fr>en"|"en>fr"|"fr>es"|"es>fr", "phrase": str (phrase de niveau concours, liée à l'actu), "corrige": str, "astuce": str (point de grammaire ou de vocabulaire piège)} x4 : une de chaque sens],
+   "pieges": [{"langue": "en"|"es", "question": str (en français : choisir la bonne forme, faux-ami, temps, préposition…), "choix": [str x4], "bonne": 0-3, "explication": str} x6 : 3 en, 3 es]
  },
+ "plan": {"matiere": "ESH"|"Droit"|"Management", "sujet": str (sujet de dissertation / question de type concours ECT inspiré de l'actu du jour), "analyse": str (définition des termes, enjeux, 2-3 phrases), "problematique": str, "parties": [{"titre": str, "sous": [str x2]} x2-3], "exemples": [str x2-3 exemples précis issus des articles du jour ou de références de cours sûres]},
  "quiz": [QUESTION x9 : 3 "eco", 2 "droit", 2 "mgmt", 2 "monde"]
 }
 ARTICLE = {"id": str (id d'un article fourni), "theme": UN SEUL parmi ${JSON.stringify(THEMES)}, "titre": str (titre clair en français), "resume": str (3-4 phrases), "contexte": str (pourquoi c'est important, 2-3 phrases), "notions": [str x2-4 notions du programme], "copie": str (comment l'utiliser dans une dissertation/étude de cas : idée d'accroche, de partie ou d'exemple, 2-3 phrases), "niveau": 1|2|3 (difficulté)}
+TROUS = {"texte": str (60-90 mots inspirés d'un article du jour, avec exactement 6 blancs notés {1} à {6}), "blancs": [{"choix": [str x3], "bonne": 0-2, "explication": str (courte, en français)} x6] : on teste vocabulaire, prépositions, temps et connecteurs}
 QUESTION = {"matiere": "eco"|"droit"|"mgmt"|"monde", "question": str, "choix": [str x4], "bonne": 0-3, "explication": str (2-3 phrases), "id": str|null (article lié éventuel)}`;
 
 const today = new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Paris" });
@@ -163,6 +168,16 @@ for (const l of ["en", "es"]) if (json.langues?.[l]) {
   const src = byId[json.langues[l].id];
   json.langues[l] = src ? { ...json.langues[l], source: src.source, lien: src.link, date: src.date } : null;
 }
+const okQ = (q, n) => Array.isArray(q?.choix) && q.choix.length === n && q.bonne >= 0 && q.bonne < n;
+if (json.langues) {
+  for (const l of ["en", "es"]) {
+    const t = json.langues.trous?.[l];
+    if (t && !(Array.isArray(t.blancs) && t.blancs.length && t.blancs.every((b) => okQ(b, 3)))) delete json.langues.trous[l];
+  }
+  json.langues.pieges = (json.langues.pieges || []).filter((q) => okQ(q, 4));
+  json.langues.traduction = (json.langues.traduction || []).filter((t) => t.phrase && t.corrige);
+}
+if (!json.plan?.sujet || !Array.isArray(json.plan.parties)) delete json.plan;
 json.quiz = (json.quiz || []).filter((q) => Array.isArray(q.choix) && q.choix.length === 4 && q.bonne >= 0 && q.bonne < 4)
   .map((q) => ({ ...q, lien: byId[q.id]?.link || null }));
 

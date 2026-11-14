@@ -153,7 +153,8 @@ function aujourdhui() {
     ["Quiz du jour", `${qDone}/${qTot}`, qTot && qDone === qTot, "reviser:quiz"],
     ["Vocabulaire EN/ES", nVocab === 0 ? "rien à revoir" : `${nVocab} mots`, nVocab === 0, "langues:vocab"],
     ...(trTot ? [["Textes à trous", `${trDone}/${trTot}`, trDone === trTot, "langues:trous"]] : []),
-    ...(ed?.plan ? [["Sujet argumenté", ed.plan.matiere, store.get("plans", {})[ed.date], "reviser:plan"]] : []),
+    ...(ed?.maths?.length ? [["Exercices de maths", `${ed.maths.length} exos`, ed.maths.every((m, i) => store.get("vus", {})[`maths:${ed.date}:${i}`]), "reviser:entrainement"]] : []),
+    ...(ed?.cas_pratique ? [["Cas pratique de droit", "syllogisme", store.get("vus", {})[`cas:${ed.date}`], "reviser:entrainement"]] : []),
   ];
   const done = items.filter((i) => i[2]).length;
   const brief = ed ? Object.keys(RUB).map((k) => (ed.rubriques?.[k] || []).slice(0, 1).map((a) =>
@@ -369,71 +370,126 @@ function quiz() {
     ${pointsFaibles(aggregat())}`;
 }
 
+// ---------- entraînement : maths, cas pratique, sujet (format ECT) ----------
+const reveal = (k, label) => state.shown[k] || store.get("vus", {})[k] ? null : bigBtn(label, `data-vu="${k}"`);
+
 function planCard(p, date, open) {
-  const vu = store.get("plans", {})[date];
+  const k = `plan:${date}`, btn = open ? null : reveal(k, "Voir le plan type");
   return `<div class="q" style="--c:var(--accent)">
     <div class="meta"><span class="pill">${esc(p.matiere)}</span><span>${fmtDate(date)}</span></div>
     <p class="qt">${esc(p.sujet)}</p>
-    ${open || vu ? `<div class="block"><h4>Analyse du sujet</h4><p>${esc(p.analyse)}</p></div>
+    ${btn ? `<p class="lead" style="margin:0 0 6px">Prends 15 minutes au brouillon : définis chaque terme, trouve la tension, écris ta problématique et un plan en 2 parties et 2 sous-parties. Ensuite, compare.</p>${btn}`
+    : `<div class="block"><h4>Analyse des termes</h4><p>${esc(p.analyse)}</p></div>
       <div class="block"><h4>Problématique</h4><p>${esc(p.problematique)}</p></div>
       ${p.parties.map((x, i) => `<div class="block"><h4>${["I", "II", "III"][i]}. ${esc(x.titre)}</h4>${(x.sous || []).map((s, j) => `<p>${"AB"[j] || "•"}. ${esc(s)}</p>`).join("")}</div>`).join("")}
-      ${p.exemples?.length ? `<div class="block"><h4>Exemples à placer</h4>${p.exemples.map((e) => `<p>• ${esc(e)}</p>`).join("")}</div>` : ""}`
-    : `<p class="lead" style="margin:0 0 6px">Prends 10 minutes : définis les notions, trouve la question centrale et organise ta réponse en 2 ou 3 idées avec un mécanisme et un exemple chacune. Ensuite, compare.</p>${bigBtn("Voir la réponse type", `data-plan="${date}"`)}`}
+      ${p.exemples?.length ? `<div class="block"><h4>À mobiliser</h4>${p.exemples.map((e) => `<p>• ${esc(e)}</p>`).join("")}</div>` : ""}`}
   </div>`;
 }
 
-function plans() {
-  const ed = state.ed;
-  const now = ed?.plan ? planCard(ed.plan, ed.date) : `<p class="lead">Pas de sujet aujourd'hui : il sera généré avec la prochaine édition.</p>`;
-  let older = "";
-  if (bankReady()) {
-    const list = state.eds.filter((e) => e.plan && e.date !== ed?.date);
-    if (list.length) older = title("Sujets précédents", `${list.length}`) + list.map((e) =>
-      `<details class="card"><summary><div class="meta"><span class="pill">${esc(e.plan.matiere)}</span><span>${fmtDate(e.date)}</span></div><h3>${esc(e.plan.sujet)}</h3></summary><div class="body">${planCard(e.plan, e.date, true)}</div></details>`).join("");
-  }
-  return title("Sujet argumenté du jour") + now + older;
+function casCard(c, date) {
+  const btn = reveal(`cas:${date}`, "Voir le corrigé en syllogisme");
+  return `<div class="q" style="--c:var(--droit)">
+    <div class="meta"><span class="pill">Cas pratique</span><span>${fmtDate(date)}</span></div>
+    <p>${esc(c.faits)}</p><p class="qt">${esc(c.question)}</p>
+    ${btn ? `<p class="lead" style="margin:0 0 6px">Rédige les 4 étapes : qualification des faits, problème juridique, majeure, conclusion.</p>${btn}`
+    : [["1. Qualification des faits", c.qualification], ["2. Problème juridique", c.probleme], ["3. Majeure", c.majeure], ["4. Conclusion", c.conclusion]]
+      .map(([h, t]) => `<div class="block"><h4>${h}</h4><p>${esc(t)}</p></div>`).join("")}
+  </div>`;
 }
 
+function mathsCard(m, k) {
+  const btn = reveal(k, "Voir la correction");
+  return `<div class="q" style="--c:var(--accent)">
+    <div class="meta"><span class="pill">Maths</span><span class="lvl">${lvl(m.niveau)}</span></div>
+    <h3 style="margin:4px 0">${esc(m.titre)}</h3><p class="math">${esc(m.enonce)}</p>
+    ${btn || `<div class="block"><h4>Correction</h4>${m.etapes.map((s) => `<p class="math">${esc(s)}</p>`).join("")}</div>
+      <div class="expl"><b>Résultat :</b> <span class="math">${esc(m.resultat)}</span>${m.piege ? `<br><b>Piège :</b> ${esc(m.piege)}` : ""}</div>`}
+  </div>`;
+}
+
+function entrainement() {
+  const ed = state.ed, s = state.trainSub || "maths";
+  const chips = `<div class="chips">${Object.entries({ maths: "Maths", cas: "Cas pratique", sujet: "QRA / veille" }).map(([k, v]) =>
+    `<button class="chip ${k === s ? "on" : ""}" data-train="${k}">${v}</button>`).join("")}</div>`;
+  const vide = `<p class="lead">Rien aujourd'hui : ça arrive avec la prochaine édition du matin.</p>`;
+  let html = "", older = "";
+  const eds = bankReady() ? state.eds.filter((e) => e.date !== ed?.date) : [];
+  if (s === "maths") {
+    html = `<p class="lead">Deux exercices par jour sur le chapitre en cours, corrigés pas à pas. Fais-les sur papier avant de regarder.</p>` +
+      ((ed?.maths || []).map((m, i) => mathsCard(m, `maths:${ed.date}:${i}`)).join("") || vide);
+    older = eds.filter((e) => e.maths?.length).slice(0, 20).map((e) => e.maths.map((m, i) =>
+      `<details class="card"><summary><div class="meta"><span class="pill">Maths</span><span>${fmtDate(e.date)}</span></div><h3>${esc(m.titre)}</h3></summary><div class="body">${mathsCard(m, `maths:${e.date}:${i}`)}</div></details>`).join("")).join("");
+  } else if (s === "cas") {
+    html = ed?.cas_pratique ? casCard(ed.cas_pratique, ed.date) : vide;
+    older = eds.filter((e) => e.cas_pratique).slice(0, 20).map((e) =>
+      `<details class="card"><summary><div class="meta"><span class="pill">Cas pratique</span><span>${fmtDate(e.date)}</span></div><h3>${esc(e.cas_pratique.question)}</h3></summary><div class="body">${casCard(e.cas_pratique, e.date)}</div></details>`).join("");
+  } else {
+    html = ed?.plan ? planCard(ed.plan, ed.date) : vide;
+    older = eds.filter((e) => e.plan).slice(0, 20).map((e) =>
+      `<details class="card"><summary><div class="meta"><span class="pill">${esc(e.plan.matiere)}</span><span>${fmtDate(e.date)}</span></div><h3>${esc(e.plan.sujet)}</h3></summary><div class="body">${planCard(e.plan, e.date, true)}</div></details>`).join("");
+  }
+  return chips + html + (older ? title("Jours précédents") + older : "");
+}
+
+// Méthodes : reprises de la méthodologie de ton prof (ECT 2026/2027)
 const METHODES = [
-  { t: "Économie : réponse argumentée", m: "eco", e: [
-    "Lis la question et repère les notions à définir et ce qu'on te demande vraiment (expliquer, montrer, analyser, discuter).",
-    "Exploite les documents s'il y en a : relève les données utiles, cite-les (doc. 1, chiffre, date) sans les paraphraser.",
-    "Organise ta réponse en 2 ou 3 idées. Chaque idée = notion définie + mécanisme expliqué étape par étape + exemple ou chiffre (+ auteur si pertinent).",
-    "Introduction courte : définitions et annonce de la structure. Conclusion : réponse claire à la question.",
-    "Les points viennent surtout des mécanismes bien enchaînés et des notions exactes du programme ECT.",
-    "Gère ton temps : brouillon bref, garde 10 min de relecture."] },
-  { t: "Cas pratique de droit", m: "droit", e: [
-    "Résume les faits utiles et qualifie-les juridiquement (qui sont les parties, quel contrat, quel dommage…).",
-    "Pose le problème de droit sous forme de question juridique abstraite.",
-    "Majeure : énonce la règle (article du Code civil, jurisprudence), avec ses conditions.",
-    "Mineure : vérifie chaque condition au regard des faits, une par une.",
-    "Conclusion : réponds clairement à la question posée. Un problème = un syllogisme.",
-    "Cite toujours les articles : la précision fait la différence.",
-    "Questions de cours ou analyse de documents juridiques : définis, cite la règle, explique sa portée avec un exemple."] },
-  { t: "Étude de cas de management", m: "mgmt", e: [
+  { t: "Structure de l'épreuve de droit et d'économie", m: "eco", e: [
+    "Deux parties de poids égal : Économie et Droit, chacune en 2 ou 3 exercices.",
+    "Économie : analyse d'un dossier documentaire (questions avec calculs, sans plan) + question à réponse argumentée (QRA). Note de synthèse à l'ESSEC.",
+    "Droit : cas pratique (syllogisme) + analyse d'une décision de justice, et/ou réflexion de veille juridique.",
+    "Exemple en 2 h : dossier 25 min, QRA 35 min, cas pratique 35 min, décision de justice 25 min."] },
+  { t: "Économie : analyse d'un dossier", m: "eco", e: [
+    "Réponds de façon structurée sans plan : définition, mécanisme, appui sur le document.",
+    "Pose tous les calculs (VA = CA − CI, productivité, taux de variation, IHH…) puis interprète-les.",
+    "Discute les affirmations du document : un chiffre ne prouve pas tout (ex : productivité en hausse ≠ salariés plus efficaces, effet des machines ou de l'externalisation)."] },
+  { t: "Économie : question à réponse argumentée (QRA)", m: "eco", e: [
+    "Brouillon : interroge chaque terme du sujet (double sens, liens entre eux) pour faire apparaître des tensions.",
+    "Mobilise les connaissances théoriques précises (auteurs, théories) liées au sujet, et vérifie que chacune y répond.",
+    "Construis un plan en 2 parties et 2 sous-parties qui répond à ta problématique.",
+    "Introduction : accroche, définitions et liens entre les termes, problématique personnelle, annonce des 2 parties.",
+    "Développement : dans chaque sous-partie, un ou plusieurs auteurs et théories expliqués et illustrés par des données récentes.",
+    "Plus développée à Ecricome qu'à l'ESSEC. À l'ESSEC, ne réutilise pas le dossier de la note de synthèse."] },
+  { t: "Économie : note de synthèse", m: "eco", e: [
+    "500 mots (± 10 %), compte-les régulièrement.",
+    "Brouillon en tableau : une colonne par document, idées principales reformulées.",
+    "Regroupe les idées en grandes catégories : plan souvent binaire (constats / solutions, causes / conséquences).",
+    "Intro de 10 lignes max (accroche, problématique, annonce), puis 2 parties et 2 sous-parties avec plan apparent.",
+    "Tous les documents mobilisés, aucune connaissance extérieure, pas de paraphrase, titre imposé respecté."] },
+  { t: "Droit : cas pratique (syllogisme)", m: "droit", e: [
+    "Qualification des faits (la mineure) : traduis la situation en termes juridiques (chaque partie, le lien qui les unit), sans encore parler de droit.",
+    "Problème juridique : une question abstraite, valable pour tous les cas similaires (jamais « Madame X peut-elle… ? »).",
+    "Majeure : les règles de droit applicables (loi, jurisprudence).",
+    "Conclusion : applique les règles aux faits, réponds à la question et précise les conséquences juridiques."] },
+  { t: "Droit : analyse d'une décision de justice", m: "droit", e: [
+    "Identification : juridiction, date, lieu (une décision de 1re instance n'a pas la portée d'un arrêt de la Cour de cassation).",
+    "Parties et qualité procédurale : demandeur / défendeur, appelant / intimé, demandeur / défendeur au pourvoi (pas les noms propres).",
+    "Qualification juridique des faits, chronologique, sans paraphrase ni détail inutile.",
+    "Problème de droit, sous forme de question abstraite.",
+    "Procédure : tableau degré / juridiction / parties / sens de la décision.",
+    "Moyens (arguments juridiques) et prétentions (ce qui est réclamé) : ne pas les confondre.",
+    "Solution : explique le raisonnement du juge (le motif), sans recopier."] },
+  { t: "Droit : veille juridique", m: "droit", e: [
+    "Thème imposé : « Libertés individuelles et activité économique des entreprises ». Ne traite que le champ précis du sujet.",
+    "Introduction : accroche tirée de l'actualité, définition précise des termes, problématique, annonce des 2 parties.",
+    "Développement : 2 parties et 2 sous-parties ; chacune = une idée, son fondement juridique, une brève explication, un exemple réel et récent.",
+    "Conclusion très brève : une ou deux phrases qui répondent à la problématique."] },
+  { t: "Management : étude de cas", m: "mgmt", e: [
     "Lis d'abord les questions, puis les annexes en notant les informations utiles pour chacune.",
     "Pour chaque réponse : notion du cours définie → application au cas avec des éléments chiffrés ou cités des annexes → conclusion.",
-    "Mobilise les outils : PESTEL, 5 forces de Porter, SWOT, chaîne de valeur, matrice BCG, stratégies génériques.",
-    "Structure tes réponses avec des titres et des paragraphes courts. Pas de récitation de cours sans lien avec le cas."] },
+    "Mobilise les outils : PESTEL, forces de Porter, diagnostic interne, modèle LCAG.",
+    "Pas de récitation de cours sans lien avec le cas."] },
   { t: "Langues : essay et traduction", m: "monde", e: [
-    "Essay : intro (accroche + problématique + annonce), 2 ou 3 paragraphes argumentés avec exemples d'actu, conclusion. Respecte le nombre de mots.",
-    "Utilise des connecteurs variés (however, whereas, moreover / sin embargo, mientras que, además).",
-    "Version : comprends tout le texte avant de traduire, garde le sens et le registre, relis en français pour la fluidité.",
-    "Thème : méfie-toi des faux-amis et des calques ; vérifie les temps, accords et prépositions.",
-    "Chaque jour : 10 min de vocabulaire et un article lu en entier."] },
-  { t: "Culture générale : dissertation", m: "droit", e: [
-    "Analyse chaque mot du sujet et le lien avec le thème de l'année ; cherche le paradoxe ou la tension.",
-    "Problématique, puis plan en 2 ou 3 parties qui progressent (pas un simple oui / non).",
-    "Chaque paragraphe : une idée, une référence précise (œuvre, auteur, citation) analysée, pas juste citée.",
-    "Garde une fiche de références sur le thème de l'année et enrichis-la toute l'année."] },
-  { t: "Khôlles", m: "mgmt", e: [
-    "Prépare-toi la veille : relis la fiche du chapitre et 2 exemples d'actu sur le thème.",
-    "Pendant la préparation : plan clair au brouillon, ne rédige pas tout.",
-    "À l'oral : annonce ta structure, parle lentement, regarde l'examinateur, cite auteurs, articles et exemples.",
-    "Après : note les remarques reçues dans l'agenda de l'appli et refais les questions ratées."] },
+    "Essay : intro (accroche, problématique, annonce), 2 ou 3 paragraphes argumentés avec exemples d'actu, conclusion. Respecte le nombre de mots.",
+    "Varie les connecteurs (however, whereas, moreover / sin embargo, mientras que, además).",
+    "Version : comprends tout le texte avant de traduire ; thème : méfie-toi des faux-amis et des calques."] },
+  { t: "Maths : le premier geste", m: "mgmt", e: [
+    "Calculer → je souligne l'opération prioritaire. Simplifier une fraction → je décompose haut et bas.",
+    "Développer → les flèches, puis tous les produits avec leur signe. Factoriser → facteur commun, sinon identité.",
+    "Résoudre → je reconnais la forme (produit nul, quotient nul, x² = a…). Inéquation → je retourne le signe si je divise par un négatif.",
+    "Étudier un signe → je factorise puis tableau de signe."] },
 ];
 function methodes() {
-  return `<p class="lead">Les méthodes des épreuves, à relire avant chaque DS.</p>` + METHODES.map((x) =>
+  return `<p class="lead">Les méthodes de ton prof, à relire avant chaque DS.</p>` + METHODES.map((x) =>
     `<details class="card" style="--c:${RUB[x.m].c}"><summary><h3>${esc(x.t)}</h3><div class="more-hint">Ouvrir la méthode ↓</div></summary>
       <div class="body">${x.e.map((s, i) => `<div class="block"><h4>Étape ${i + 1}</h4><p>${esc(s)}</p></div>`).join("")}</div></details>`).join("");
 }
@@ -483,9 +539,9 @@ function classement() {
 
 function reviser() {
   const s = state.sub.reviser;
-  const body = s === "quiz" ? (state.ed ? quiz() : loading("Pas de quiz aujourd'hui.")) : s === "plan" ? plans()
+  const body = s === "quiz" ? (state.ed ? quiz() : loading("Pas de quiz aujourd'hui.")) : s === "entrainement" ? entrainement()
     : s === "methodes" ? methodes() : s === "classement" ? classement() : fiches();
-  return subtabs("reviser", { fiches: "Fiches", quiz: "Quiz", plan: "Sujets argumentés", methodes: "Méthodes", classement: "Classement" }) + body;
+  return subtabs("reviser", { fiches: "Fiches", quiz: "Quiz", entrainement: "Entraînement", methodes: "Méthodes", classement: "Classement" }) + body;
 }
 
 // =====================================================================
@@ -658,7 +714,8 @@ $("#view").addEventListener("click", (e) => {
   if (at("data-flip")) { state.showBack = true; return render(); }
   if ((el = at("data-grade"))) { gradeCard(el.dataset.deck, el.dataset.grade === "1"); return render(); }
   if ((el = at("data-show"))) { state.shown[el.dataset.show] = true; actif(); return keep(); }
-  if ((el = at("data-plan"))) { const p = store.get("plans", {}); p[el.dataset.plan] = true; store.set("plans", p); actif(); return keep(); }
+  if ((el = at("data-vu"))) { const v = store.get("vus", {}); v[el.dataset.vu] = true; store.set("vus", v); actif(); return keep(); }
+  if ((el = at("data-train"))) { state.trainSub = el.dataset.train; return render(); }
 
   if ((el = at("data-trou")) && !el.disabled) {
     const key = `trous:${state.ed.date}:${state.lang}`, r = store.get(key, {});
@@ -699,7 +756,7 @@ $("#view").addEventListener("click", (e) => {
 
   if (t.id === "export") {
     const data = {};
-    for (const k of ["answers", "stats", "history", "read", "leitner", "newDay", "agenda", "actif", "plans", "pieges", "concours", "me"]) data[k] = store.get(k, null);
+    for (const k of ["answers", "stats", "history", "read", "leitner", "newDay", "agenda", "actif", "vus", "pieges", "concours", "me"]) data[k] = store.get(k, null);
     for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k.startsWith("ect:trous:")) data[k.slice(4)] = store.get(k.slice(4)); }
     const txt = JSON.stringify(data);
     navigator.clipboard?.writeText(txt).then(() => alert("Progression copiée. Colle-la dans une note pour la sauvegarder."), () => prompt("Copie ce texte :", txt));

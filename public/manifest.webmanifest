@@ -1,7 +1,7 @@
 {
-  "name": "Journal ECT",
-  "short_name": "Journal ECT",
-  "description": "Mon journal quotidien de prépa ECT",
+  "name": "Prépa ECT",
+  "short_name": "Prépa ECT",
+  "description": "Mon année de prépa ECT",
   "lang": "fr",
   "start_url": "./",
   "scope": "./",

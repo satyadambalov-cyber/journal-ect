@@ -590,20 +590,28 @@ const FLAG = { en: "🇬🇧 English", es: "🇪🇸 Español" };
 const langChips = () => `<div class="chips">${["en", "es"].map((l) => `<button class="chip ${state.lang === l ? "on" : ""}" data-lang="${l}">${FLAG[l]}</button>`).join("")}</div>`;
 
 function trous() {
-  const ed = state.ed, l = state.lang, t = ed?.langues?.trous?.[l];
-  if (!t) return langChips() + loading("Les textes à trous arrivent avec la prochaine édition du matin.");
+  const ed = state.ed, l = state.lang, t0 = ed?.langues?.trous?.[l];
+  // l'IA écrit parfois "texto" (espagnol) au lieu de "texte"
+  const t = t0 && { ...t0, texte: t0.texte || t0.texto || t0.text || "" };
+  if (!t || !t.texte || !Array.isArray(t.blancs)) return langChips() + loading("Les textes à trous arrivent avec la prochaine édition du matin.");
   const key = `trous:${ed.date}:${l}`, rep = store.get(key, {});
   const texte = esc(t.texte).replace(/\{(\d+)\}/g, (_, n) => {
     const i = +n - 1, b = t.blancs[i]; if (!b) return "___";
     const a = rep[i];
     return a === undefined ? `<span class="blank">(${n}) ____</span>` : `<span class="blank ${a === b.bonne ? "ok" : "ko"}">${esc(b.choix[b.bonne])}</span>`;
   });
+  // la phrase qui contient le blanc n, affichée juste au-dessus de ses choix
+  const phrases = t.texte.match(/[^.!?]+[.!?]*["»”]?\s*/g) || [t.texte];
+  const phrase = (n) => esc((phrases.find((p) => p.includes(`{${n}}`)) || "").trim()).replace(/\{(\d+)\}/g, (_, m) => {
+    const b = t.blancs[+m - 1]; if (+m === n) return `<span class="blank">(${n}) ____</span>`;
+    return b && rep[+m - 1] !== undefined ? esc(b.choix[b.bonne]) : `(${m}) ___`;
+  });
   const score = t.blancs.filter((b, i) => rep[i] === b.bonne).length, fini = Object.keys(rep).length === t.blancs.length;
   return langChips() + `<p class="lead">Choisis le bon mot pour chaque blanc. Le texte s'inspire d'un vrai article du jour.</p>
     <div class="q lang-text">${texte}</div>
     ${fini ? `<div class="final"><div class="kicker">Score</div><b>${score}/${t.blancs.length}</b></div>` : ""}
     ${t.blancs.map((b, i) => { const a = rep[i], done = a !== undefined;
-      return `<div class="trou"><span class="n">${i + 1}</span><div class="chips wrap">${b.choix.map((c, j) =>
+      return `<div class="trou"><span class="n">${i + 1}</span>${done ? "" : `<p class="lang-text" style="margin:2px 0 8px">${phrase(i + 1)}</p>`}<div class="chips wrap">${b.choix.map((c, j) =>
         `<button class="chip ${done && j === b.bonne ? "good" : ""} ${done && j === a && a !== b.bonne ? "bad" : ""}" data-trou="${i}" data-c="${j}" ${done ? "disabled" : ""}>${esc(c)}</button>`).join("")}</div>
         ${done ? `<div class="trad">${esc(b.explication)}</div>` : ""}</div>`; }).join("")}`;
 }

@@ -176,7 +176,8 @@ const okQ = (q, n) => Array.isArray(q?.choix) && q.choix.length === n && q.bonne
 if (json.langues) {
   for (const l of ["en", "es"]) {
     const t = json.langues.trous?.[l];
-    if (t && !(Array.isArray(t.blancs) && t.blancs.length && t.blancs.every((b) => okQ(b, 3)))) delete json.langues.trous[l];
+    if (t && !t.texte) { t.texte = t.texto || t.text; delete t.texto; delete t.text; }
+    if (t && !(typeof t.texte === "string" && t.texte.includes("{1}") &&Array.isArray(t.blancs) && t.blancs.length && t.blancs.every((b) => okQ(b, 3)))) delete json.langues.trous[l];
   }
   json.langues.pieges = (json.langues.pieges || []).filter((q) => okQ(q, 4));
   json.langues.traduction = (json.langues.traduction || []).filter((t) => t.phrase && t.corrige);

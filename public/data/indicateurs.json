@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-14T05:23:21.513Z",
+ "maj": "2026-11-15T05:25:35.243Z",
  "indicateurs": [
   {
    "id": "pib",
@@ -21,27 +21,6 @@
    "periode": "2026-Q3",
    "precedent": 0,
    "periode_prec": "2026-Q2"
-  },
-  {
-   "id": "inflation",
-   "nom": "Inflation",
-   "zone": "France",
-   "unite": "% sur 1 an",
-   "decimales": 1,
-   "source": "BCE (IPCH)",
-   "lien": "https://data.ecb.europa.eu/data/datasets/ICP",
-   "definition": "Hausse générale et durable du niveau des prix, mesurée par l'indice des prix à la consommation harmonisé (IPCH) sur 12 mois.",
-   "pourquoi": "Elle réduit le pouvoir d'achat et guide la politique monétaire de la BCE.",
-   "repere": "Objectif de la BCE : 2 % à moyen terme.",
-   "notions": [
-    "Inflation",
-    "Pouvoir d'achat",
-    "Politique monétaire"
-   ],
-   "valeur": 0.7,
-   "periode": "2025-12",
-   "precedent": 0.8,
-   "periode_prec": "2025-11"
   },
   {
    "id": "chomage",

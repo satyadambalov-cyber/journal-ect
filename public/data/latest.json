@@ -1,28 +1,66 @@
 {
- "date": "2026-11-14",
- "genere_le": "2026-11-14T05:24:06.236Z",
+ "date": "2026-11-15",
+ "genere_le": "2026-11-15T05:27:46.098Z",
  "modele": "claude-sonnet-5-5",
  "notion_du_jour": {
-  "titre": "Le salaire minimum (SMIC) et son effet sur l'emploi",
-  "definition": "Le salaire minimum est le niveau de rémunération en dessous duquel un employeur n'a pas le droit de payer un salarié. Il vise à protéger le pouvoir d'achat des plus bas salaires. Pour les économistes classiques et néoclassiques, un salaire fixé au-dessus du niveau d'équilibre peut réduire la demande de travail et créer du chômage. D'autres analyses, d'inspiration keynésienne, soulignent qu'il soutient la consommation et donc la demande.",
-  "exemple": "Une hausse du SMIC augmente le coût du travail pour une entreprise employant beaucoup de salariés peu qualifiés. Celle-ci peut alors réduire ses embauches ou augmenter ses prix. Les ménages concernés consomment pourtant davantage.",
+  "titre": "Le salaire minimum (SMIC)",
+  "definition": "Le salaire minimum est le niveau de rémunération horaire en dessous duquel un employeur n'a pas le droit de rémunérer un salarié. En France, c'est le SMIC, fixé par l'État et revalorisé régulièrement. Pour les économistes néoclassiques, un salaire minimum supérieur au salaire d'équilibre du marché peut créer du chômage, car le travail devient plus coûteux pour l'entreprise. Pour les keynésiens, il soutient le pouvoir d'achat, donc la demande, et peut stimuler l'activité.",
+  "exemple": "Si le SMIC augmente de 2 %, une PME qui emploie beaucoup de salariés rémunérés au minimum voit son coût du travail monter. Elle peut réduire ses embauches ou augmenter ses prix. Dans le même temps, ses salariés disposent de plus de revenu pour consommer.",
   "matiere": "Économie"
  },
  "rubriques": {
   "eco": [
    {
-    "id": "a91",
+    "id": "a1",
+    "theme": "Croissance et conjoncture",
+    "titre": "Le lent déclin économique de la France face à l'Europe",
+    "resume": "La France affiche l'une des plus faibles croissances européennes cette année. Son PIB par habitant passe désormais sous la moyenne européenne. Le pays perd donc des places dans le classement européen. Le Monde parle d'un déclin lent mais continu.",
+    "contexte": "Le PIB par habitant mesure le niveau de richesse moyen produit par habitant et sert de repère pour comparer le niveau de vie entre pays. Un recul relatif pose la question de la compétitivité, de la productivité et de l'investissement. C'est un sujet très classique de QRA.",
+    "notions": [
+     "PIB et PIB par habitant",
+     "Croissance économique",
+     "Productivité",
+     "Compétitivité"
+    ],
+    "copie": "Utilise-le en accroche d'une copie sur les facteurs de la croissance : la croissance dépend de l'accumulation de capital, du travail et du progrès technique. Il peut aussi illustrer la différence entre croissance absolue et croissance relative.",
+    "niveau": 2,
+    "source": "Le Monde",
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/15/le-lent-declin-economique-de-la-france-face-au-reste-de-l-europe_6810984_3234.html",
+    "date": "2026-11-15T05:15:07.000Z",
+    "titre_original": "Le lent déclin économique de la France face au reste de l’Europe"
+   },
+   {
+    "id": "a5",
+    "theme": "Emploi et chômage",
+    "titre": "Marché du travail « low fire, low hire » : un frein à la productivité",
+    "resume": "Aux États-Unis et au Royaume-Uni, les embauches, les démissions et les changements d'emploi sont faibles. Des économistes craignent des dommages durables sur la productivité. Un chômage bas peut donc cacher un marché du travail peu dynamique.",
+    "contexte": "Quand les travailleurs changent d'entreprise, ils peuvent trouver un poste plus adapté à leurs compétences. Les ressources se déplacent alors vers les entreprises les plus efficaces. Un marché trop figé réduit ce mécanisme d'ajustement.",
+    "notions": [
+     "Productivité du travail",
+     "Chômage",
+     "Flexibilité du marché du travail",
+     "Appariement offre/demande de travail"
+    ],
+    "copie": "À mobiliser pour nuancer l'idée qu'un faible taux de chômage suffit à juger la santé du marché du travail. Il permet de distinguer quantité d'emplois et qualité de leur allocation.",
+    "niveau": 3,
+    "source": "Financial Times",
+    "lien": "https://www.ft.com/content/44c1fdc6-bc51-46e5-8a7c-c10096a25496?syn-25a6b1a6=1",
+    "date": "2026-11-15T05:00:13.000Z",
+    "titre_original": "‘Low fire, low hire’ job market hurts US and UK productivity"
+   },
+   {
+    "id": "a114",
     "theme": "Emploi et chômage",
     "titre": "Hausse du SMIC : quels effets sur l'emploi ?",
-    "resume": "Le salaire minimum net mensuel à temps plein est porté à 1 502 euros. Selon l'article, cette hausse détruirait mécaniquement des emplois. Le gouvernement et plusieurs économistes jugent toutefois l'effet limité. Le débat porte sur l'ampleur réelle de cet impact.",
-    "contexte": "Le SMIC illustre l'arbitrage entre protection des salariés et coût du travail pour les entreprises. Il alimente un débat ancien entre économistes sur le marché du travail.",
+    "resume": "La hausse du salaire minimum net à temps plein à 1 502 euros détruirait mécaniquement des emplois. Le gouvernement et plusieurs économistes jugent pourtant l'impact limité. Le débat porte sur l'arbitrage entre pouvoir d'achat et coût du travail.",
+    "contexte": "Le SMIC concerne une part importante des salariés du privé. Son niveau influence les coûts des entreprises, donc leur compétitivité, mais aussi le revenu des ménages modestes. Il oppose les analyses néoclassique et keynésienne.",
     "notions": [
-     "SMIC",
-     "Chômage",
+     "Salaire minimum",
      "Coût du travail",
-     "Marché du travail"
+     "Chômage",
+     "Pouvoir d'achat"
     ],
-    "copie": "Utilisez-le pour opposer l'analyse néoclassique (le salaire minimum crée du chômage) à l'analyse keynésienne (il soutient la demande). C'est un bon exemple pour un sujet sur le marché du travail.",
+    "copie": "Parfait pour une QRA sur le lien entre salaire et emploi. Présente d'abord l'argument néoclassique (salaire trop élevé donc chômage), puis l'argument keynésien (soutien de la demande), puis conclus que l'effet dépend du contexte.",
     "niveau": 2,
     "source": "Le Monde",
     "lien": "https://www.lemonde.fr/politique/article/2026/11/13/les-effets-de-la-hausse-du-smic-sur-le-marche-du-travail-suscitent-des-interrogations_6809363_823448.html",
@@ -30,428 +68,688 @@
     "titre_original": "Les effets de la hausse du smic sur le marché du travail suscitent des interrogations"
    },
    {
-    "id": "a112",
-    "theme": "Inflation et monnaie",
-    "titre": "Pétrole : l'offre devrait dépasser la demande fin 2026",
-    "resume": "L'Agence internationale de l'énergie annonce que l'offre mondiale de pétrole devrait dépasser la demande au dernier trimestre 2026. Ce serait une première depuis le début de la guerre en Iran fin février. Le marché pétrolier montrerait ainsi des signes de rééquilibrage.",
-    "contexte": "Le prix du pétrole influence l'inflation, les coûts de production et la croissance. Un excédent d'offre exerce en général une pression à la baisse sur les prix.",
+    "id": "a6",
+    "theme": "Banques et marchés financiers",
+    "titre": "Les valeurs liées aux data centers perdent 4 200 milliards de dollars",
+    "resume": "Les actions des entreprises qui construisent les infrastructures de l'IA (les « picks and shovels ») sont durement touchées. Le Financial Times évoque un dégonflement du boom de l'IA sur les marchés. La baisse accompagne un mouvement de vente massif des valeurs technologiques.",
+    "contexte": "Quand les cours montent très vite sur des anticipations de profits futurs, le risque de bulle financière augmente. Un retournement peut peser sur le financement des entreprises et sur la richesse des ménages détenteurs d'actions.",
     "notions": [
-     "Offre et demande",
-     "Prix d'équilibre",
-     "Choc d'offre",
-     "Inflation"
+     "Marché boursier",
+     "Bulle spéculative",
+     "Anticipations",
+     "Financement de l'économie"
     ],
-    "copie": "Servez-vous-en pour illustrer la loi de l'offre et de la demande et le rôle des chocs d'offre dans l'inflation. Vous pouvez aussi l'employer en exemple de conjoncture internationale.",
-    "niveau": 1,
-    "source": "Le Monde",
-    "lien": "https://www.lemonde.fr/economie/article/2026/11/13/le-marche-mondial-du-petrole-devrait-redevenir-excedentaire-au-dernier-trimestre-selon-l-agence-internationale-de-l-energie_6809326_3234.html",
-    "date": "2026-11-13T13:12:17.000Z",
-    "titre_original": "Le marché mondial du pétrole devrait redevenir excédentaire au dernier trimestre, selon l’Agence internationale de l’énergie"
-   },
-   {
-    "id": "a103",
-    "theme": "Finances publiques et rôle de l'État",
-    "titre": "Salaires des fonctionnaires : les syndicats jugent les mesures insuffisantes",
-    "resume": "À l'issue d'une réunion à Matignon, les syndicats dénoncent des annonces en décalage avec l'urgence salariale. Ils critiquent notamment le refus de dégeler la valeur du point d'indice. La CFDT rejoint l'appel à la grève du 17 novembre. Le gouvernement ouvre une discussion d'un mois sur les bas salaires.",
-    "contexte": "La rémunération des agents publics pèse sur les dépenses publiques. L'État doit arbitrer entre contrainte budgétaire et pouvoir d'achat.",
-    "notions": [
-     "Dépenses publiques",
-     "Pouvoir d'achat",
-     "Fonction publique",
-     "Dialogue social"
-    ],
-    "copie": "Mobilisez-le dans un sujet sur la contrainte budgétaire et le rôle de l'État employeur. C'est aussi une accroche pour traiter le conflit social.",
-    "niveau": 2,
-    "source": "Le Monde",
-    "lien": "https://www.lemonde.fr/politique/article/2026/11/13/salaires-des-fonctionnaires-les-mesures-d-urgence-du-gouvernement-jugees-insuffisantes-par-les-syndicats_6809348_823448.html",
-    "date": "2026-11-13T16:07:02.000Z",
-    "titre_original": "Salaires des fonctionnaires : les mesures d’urgence du gouvernement jugées « insuffisantes » par les syndicats"
-   },
-   {
-    "id": "a107",
-    "theme": "Innovation et numérique",
-    "titre": "Panne Microsoft : une économie trop dépendante de quelques acteurs",
-    "resume": "Le fait que Microsoft ait été paralysé plus de 18 heures montre, selon l'éditorial, la fragilité d'une économie qui dépend des services de peu de sociétés privées. L'entreprise s'est excusée et a écarté la piste d'une cyberattaque.",
-    "contexte": "La concentration du numérique crée un risque systémique : une défaillance se propage à de nombreux utilisateurs. Elle pose aussi la question de la régulation et de la souveraineté numérique.",
-    "notions": [
-     "Oligopole",
-     "Dépendance",
-     "Externalités",
-     "Régulation"
-    ],
-    "copie": "Utilisez-le comme exemple de pouvoir de marché et de risque lié à la concentration. Il peut introduire un sujet sur la souveraineté numérique.",
-    "niveau": 2,
-    "source": "El País América",
-    "lien": "https://elpais.com/opinion/2026-11-13/demasiado-vulnerables.html",
-    "date": "2026-11-13T15:47:18.000Z",
-    "titre_original": "Demasiado vulnerables"
+    "copie": "À utiliser dans un devoir sur les marchés financiers : l'exemple illustre l'instabilité financière. Il peut aussi nourrir une réflexion sur Schumpeter et les cycles d'innovation, avec les phases d'euphorie et de correction.",
+    "niveau": 3,
+    "source": "Financial Times",
+    "lien": "https://www.ft.com/content/d5adde7e-68cc-455b-ba78-b39cc3676b7a?syn-25a6b1a6=1",
+    "date": "2026-11-15T05:00:04.000Z",
+    "titre_original": "Data centre construction stocks lose $4.2tn as boom in AI trade unravels"
    }
   ],
   "droit": [
    {
-    "id": "a77",
-    "theme": "Sources et institutions du droit",
-    "titre": "L'UE veut encadrer les « dark patterns » et les influenceurs",
-    "resume": "L'Union européenne a proposé de nouvelles règles de protection des consommateurs en ligne. Elles prévoient l'encadrement des influenceurs et l'interdiction des interfaces trompeuses. Elles créent aussi un droit de désactiver les fonctionnalités addictives.",
-    "contexte": "Le droit de l'UE s'impose de plus en plus aux États membres et aux entreprises. Il illustre le rôle du droit dans la régulation du numérique.",
+    "id": "a90",
+    "theme": "Droit des entreprises et des sociétés",
+    "titre": "Nvidia exposé à des poursuites après la chute de Jensen Huang",
+    "resume": "Le Financial Times indique que Nvidia pourrait faire face à des procès après le départ de son dirigeant. Le groupe ne serait pas pleinement couvert par ses assurances pour les dommages liés au comportement de ses dirigeants. Le risque juridique porte donc aussi sur l'entreprise.",
+    "contexte": "Une société est une personne morale : elle peut être tenue responsable des actes de ses représentants dans l'exercice de leurs fonctions. La gouvernance et la gestion des risques deviennent alors des enjeux financiers majeurs.",
     "notions": [
-     "Droit de l'Union européenne",
-     "Protection du consommateur",
-     "Consentement",
-     "Vice du consentement"
+     "Personne morale",
+     "Responsabilité de la société et des dirigeants",
+     "Gouvernance",
+     "Assurance"
     ],
-    "copie": "Montrez que le droit protège la partie faible au contrat. Les interfaces trompeuses peuvent être rapprochées de la notion de dol.",
-    "niveau": 2,
-    "source": "franceinfo",
-    "lien": "https://www.franceinfo.fr/economie/commerce/commerce-en-ligne-l-europe-en-guerre-contre-les-dark-patterns_8281340.html#xtor=RSS-3-%5Beconomie%5D",
-    "date": "2026-11-13T19:00:01.000Z",
-    "titre_original": "Commerce en ligne : l&#x2019;Europe en guerre contre les &#x201C;dark patterns&#x201C;"
+    "copie": "Pour un cas pratique, l'exemple illustre la distinction entre la responsabilité de la société et celle de la personne physique dirigeante. Prudence : l'article ne détaille pas les fondements juridiques précis des poursuites possibles.",
+    "niveau": 3,
+    "source": "Financial Times",
+    "lien": "https://www.ft.com/content/4aba8386-35cc-463b-a79c-a0c85c362c89?syn-25a6b1a6=1",
+    "date": "2026-11-14T11:00:09.000Z",
+    "titre_original": "Nvidia exposed to possible lawsuits after Jensen Huang’s downfall"
    },
    {
-    "id": "a25",
+    "id": "a9",
+    "theme": "Contrat",
+    "titre": "Victimes de fraude bancaire : des clients qui ne récupèrent pas leur argent",
+    "resume": "El País rapporte le cas de clients victimes d'escroqueries bancaires qui perdent des sommes importantes. Certains disent que leur banque leur a répondu que c'était leur faute. Ils se sentent peu protégés par leur établissement.",
+    "contexte": "La relation client-banque repose sur un contrat. La question juridique est de savoir qui supporte le risque de la fraude et à qui revient la charge de prouver la négligence éventuelle du client. Les règles nationales varient selon les pays.",
+    "notions": [
+     "Contrat de compte et obligations de la banque",
+     "Responsabilité contractuelle",
+     "Charge de la preuve",
+     "Protection du consommateur"
+    ],
+    "copie": "En cas pratique, utilise-le comme exemple d'inexécution d'obligations contractuelles par un professionnel face à un client non professionnel. Rappelle que le professionnel est tenu à des obligations d'information et de sécurité.",
+    "niveau": 2,
+    "source": "El País",
+    "lien": "https://elpais.com/economia/2026-11-15/el-drama-de-las-victimas-de-fraude-que-no-pueden-recuperar-su-dinero-el-banco-me-dijo-que-era-culpa-mia.html",
+    "date": "2026-11-15T04:45:01.000Z",
+    "titre_original": "El drama de las víctimas de fraude que no pueden recuperar su dinero: “El banco me dijo que era culpa mía”"
+   },
+   {
+    "id": "a46",
     "theme": "Responsabilité",
-    "titre": "Procès de l'interpellation violente de Michel Zecler",
-    "resume": "Au procès de trois policiers jugés pour l'interpellation violente de Michel Zecler à Paris en 2020, neuf témoins ont été entendus. Cinq jeunes présents dans le studio se sont constitués parties civiles. Ils ont décrit le traumatisme ressenti.",
-    "contexte": "Ce procès illustre la procédure pénale et la possibilité pour les victimes de demander réparation. Il pose aussi la question de la responsabilité des agents publics.",
+    "titre": "La Nouvelle-Orléans poursuit en justice après la collision d'un pétrolier et d'un bateau de croisière",
+    "resume": "Le port de La Nouvelle-Orléans réclame 1 million de dollars de dommages. Il demande aussi que le pétrolier impliqué soit saisi puis vendu pour payer la réparation. La collision a été surnommée « miracle sur le Mississippi ».",
+    "contexte": "L'affaire illustre le mécanisme de réparation d'un dommage : un fait dommageable, un préjudice, puis une action en justice. La saisie du navire sert de garantie pour assurer le paiement de l'indemnité.",
     "notions": [
-     "Partie civile",
-     "Procès pénal",
-     "Responsabilité",
-     "Réparation du préjudice"
+     "Responsabilité civile",
+     "Dommage et réparation",
+     "Voies d'exécution et garanties",
+     "Action en justice"
     ],
-    "copie": "Utilisez-le pour distinguer l'action pénale de l'action civile en réparation. Il peut aussi servir d'exemple sur le rôle de la justice.",
+    "copie": "À citer comme exemple de réparation par dommages et intérêts et de garantie du créancier. Dans un cas pratique, rappelle la logique faute, préjudice et lien de causalité, sans conclure sur la faute réelle en l'absence de détails.",
     "niveau": 2,
-    "source": "Le Monde",
-    "lien": "https://www.lemonde.fr/societe/article/2026/11/14/au-proces-de-l-interpellation-violente-de-michel-zecler-par-des-policiers-les-neuf-temoins-oublies-on-se-dit-que-si-on-n-intervient-pas-michel-va-mourir_6809554_3224.html",
-    "date": "2026-11-14T04:00:06.000Z",
-    "titre_original": "Au procès de l’interpellation violente de Michel Zecler par des policiers, les neuf témoins oubliés : « On se dit que si on n’intervient pas, Michel va mourir »"
-   },
-   {
-    "id": "a70",
-    "theme": "Droit du travail",
-    "titre": "Les agents de probation vont voter une grève en Angleterre et au pays de Galles",
-    "resume": "Les agents de probation d'Angleterre et du pays de Galles ont voté pour une action sociale. Ils protestent contre les salaires et une charge de travail excessive. Le mouvement menace le plan de libération anticipée de milliers de détenus.",
-    "contexte": "La grève est un droit collectif, et le dialogue social est un levier de négociation. Ici, le conflit a aussi des conséquences sur les politiques publiques.",
-    "notions": [
-     "Grève",
-     "Syndicat",
-     "Conflit collectif",
-     "Conditions de travail"
-    ],
-    "copie": "Il illustre le droit de grève et le rôle des syndicats. Vous pouvez le comparer au cas français de la fonction publique.",
-    "niveau": 2,
-    "source": "The Guardian",
-    "lien": "https://www.theguardian.com/society/2026/nov/13/probation-officers-in-england-and-wales-vote-for-strike-action-over-pay-and-workloads",
-    "date": "2026-11-13T20:51:01.000Z",
-    "titre_original": "Probation officers in England and Wales vote to strike over pay and workloads"
+    "source": "BBC",
+    "lien": "https://www.bbc.co.uk/news/articles/cwe89y2r5j20o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-14T22:27:06.000Z",
+    "titre_original": "New Orleans port files $1m lawsuit over 'miracle on the Mississippi' tanker collision"
    }
   ],
   "mgmt": [
    {
-    "id": "a2",
-    "theme": "Gouvernance et parties prenantes",
-    "titre": "Nvidia : l'indépendance de son conseil d'administration en question",
-    "resume": "Le Financial Times critique l'indépendance de façade du conseil d'administration de Nvidia. L'éditorial parle d'un conseil trop proche de son dirigeant. Cette critique intervient alors que le patron a démissionné.",
-    "contexte": "Un conseil d'administration doit contrôler la direction pour protéger les actionnaires. Une indépendance seulement formelle fragilise la gouvernance.",
-    "notions": [
-     "Conseil d'administration",
-     "Gouvernance",
-     "Actionnaires",
-     "Contre-pouvoirs"
-    ],
-    "copie": "Utilisez-le comme exemple du problème d'agence entre dirigeants et actionnaires. Il appuie bien un développement sur la gouvernance.",
-    "niveau": 2,
-    "source": "Financial Times",
-    "lien": "https://www.ft.com/content/e141a5ea-5aa4-491b-88a4-369cfc67693a",
-    "date": "2026-11-14T05:00:37.000Z",
-    "titre_original": "The Nvidia board’s artificial independence"
-   },
-   {
-    "id": "a111",
+    "id": "a15",
     "theme": "Organisation et ressources humaines",
-    "titre": "Mercedes-Benz : tensions sociales face à la concurrence chinoise",
-    "resume": "Mercedes-Benz a gelé ses nouveaux investissements en Allemagne et envisage d'allonger le temps de travail sans hausse de salaire. Le comité d'entreprise et IG Metall dénoncent des menaces de fermetures d'usines. Le syndicat refuse de céder à la pression.",
-    "contexte": "La concurrence internationale pousse les entreprises à réduire leurs coûts. Cela crée des tensions avec les salariés et leurs représentants.",
+    "titre": "Emma Walmsley prend la tête de HP en janvier",
+    "resume": "Emma Walmsley, présentée comme une filologue, dirigera HP à partir de janvier. Elle arrive dans un contexte de pénurie et de prix élevés des puces. Les ventes ralentissent aussi.",
+    "contexte": "Un changement de dirigeant peut modifier la stratégie et la culture d'entreprise. Il intervient ici dans un environnement tendu : contraintes d'approvisionnement, coûts, demande moins dynamique.",
     "notions": [
-     "Compétitivité",
-     "Dialogue social",
-     "Parties prenantes",
-     "Coûts de production"
+     "Leadership",
+     "Diagnostic externe",
+     "Chaîne d'approvisionnement",
+     "Gouvernance"
     ],
-    "copie": "Il illustre le conflit entre compétitivité et intérêts des salariés. Utilisez-le dans un diagnostic stratégique ou une étude de cas sur les parties prenantes.",
+    "copie": "Pour une étude de cas, utilise-le comme exemple de nouvelle direction face à un diagnostic externe difficile (menaces liées aux fournisseurs et à la demande). Il invite à discuter de la place du profil du dirigeant dans la stratégie.",
     "niveau": 2,
-    "source": "Le Monde",
-    "lien": "https://www.lemonde.fr/economie/article/2026/11/13/mercedes-benz-le-comite-d-entreprise-et-le-syndicat-ig-metall-denoncent-des-menaces-de-fermetures-d-usines-en-allemagne_6809327_3234.html",
-    "date": "2026-11-13T13:30:11.000Z",
-    "titre_original": "Mercedes-Benz : le comité d’entreprise et le syndicat IG Metall dénoncent des menaces de fermetures d’usines en Allemagne"
+    "source": "El País",
+    "lien": "https://cincodias.elpais.com/opinion/2026-11-15/emma-walmsley-una-filologa-en-lo-mas-alto-de-hp.html",
+    "date": "2026-11-15T04:40:00.000Z",
+    "titre_original": "Emma Walmsley, una filóloga en lo más alto de HP"
    },
    {
-    "id": "a64",
+    "id": "a40",
     "theme": "Stratégie d'entreprise",
-    "titre": "Armor-Lux : une PME bretonne résiste à la concurrence internationale",
-    "resume": "L'entreprise bretonne Armor-Lux habille de grandes entreprises françaises. Elle vient d'obtenir une commande d'Air France. Elle reste compétitive face à la concurrence étrangère malgré le recul de l'industrie manufacturière française.",
-    "contexte": "Elle montre qu'une stratégie de positionnement et de qualité peut protéger une entreprise face aux importations. Cela renvoie aussi au débat sur la réindustrialisation.",
+    "titre": "David Jones en difficulté : Myer est-il le prochain ?",
+    "resume": "The Guardian rapporte que David Jones glisse vers l'administration judiciaire. Myer voit sa rentabilité fortement réduite et son cours proche de ses plus bas historiques. L'article pose la question d'un risque pour l'ensemble des grands magasins.",
+    "contexte": "Quand une entreprise perd sa rentabilité, son modèle économique et son positionnement sont remis en cause. Cela conduit à un diagnostic stratégique et parfois à des procédures collectives.",
     "notions": [
-     "Avantage concurrentiel",
-     "Stratégie de différenciation",
-     "Compétitivité hors-prix",
-     "Diagnostic externe"
+     "Diagnostic stratégique",
+     "Rentabilité",
+     "Cycle de vie et déclin",
+     "Entreprise en difficulté"
     ],
-    "copie": "Utilisez-le comme exemple de stratégie de différenciation. Il peut illustrer un sujet sur la résistance de l'industrie française.",
+    "copie": "Utilise-le dans une étude de cas sur le diagnostic interne et externe d'une entreprise en déclin. Il peut servir d'exemple d'échec d'adaptation stratégique, sans affirmer de causes précises non précisées par l'article.",
+    "niveau": 2,
+    "source": "The Guardian",
+    "lien": "https://www.theguardian.com/business/2026/nov/15/myer-david-jones-stores-closures-administration",
+    "date": "2026-11-14T23:00:01.000Z",
+    "titre_original": "David Jones’ future looks grim. Is Myer next?"
+   },
+   {
+    "id": "a112",
+    "theme": "Innovation et numérique",
+    "titre": "La panne de Microsoft révèle la dépendance des entreprises au numérique",
+    "resume": "Les services de Microsoft ont été interrompus de jeudi à vendredi midi. Le Monde estime l'impact limité sur les entreprises, tout en soulignant leur dépendance aux outils numériques. Des témoignages indiquent que les entreprises étaient dans le même cas que leurs clients.",
+    "contexte": "Le recours à des prestataires externes réduit certains coûts mais crée une dépendance. La gestion des risques et la continuité d'activité deviennent alors des enjeux de management.",
+    "notions": [
+     "Gestion des risques",
+     "Externalisation",
+     "Dépendance vis-à-vis des fournisseurs",
+     "Système d'information"
+    ],
+    "copie": "Dans une étude de cas, utilise cet exemple pour discuter les risques de l'externalisation et la nécessité d'un plan de continuité. Il fournit un argument d'équilibre entre efficacité et résilience.",
     "niveau": 1,
-    "source": "franceinfo",
-    "lien": "https://www.franceinfo.fr/economie/entreprises/la-poste-air-france-les-secrets-de-la-vitalite-du-breton-armor-lux-qui-habille-les-entreprises-francaises_8281685.html#xtor=RSS-3-%5Beconomie%5D",
-    "date": "2026-11-13T21:59:33.000Z",
-    "titre_original": "La Poste, Air France&#x2026; Les secrets de la vitalit&#xE9; du breton Armor-Lux, qui habille les entreprises fran&#xE7;aises"
+    "source": "Le Monde",
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/13/la-panne-de-microsoft-alerte-entreprises-et-salaries-sur-leur-dependance-aux-outils-numeriques-on-a-tous-un-peu-ete-dans-le-meme-bateau-que-nos-clients_6809369_3234.html",
+    "date": "2026-11-13T17:48:12.000Z",
+    "titre_original": "La panne de Microsoft alerte entreprises et salariés sur leur dépendance aux outils numériques : « On a tous été un peu dans le même bateau que nos clients »"
    }
   ],
   "monde": [
    {
-    "id": "a34",
+    "id": "a66",
     "theme": "Géopolitique et relations internationales",
-    "titre": "Paralysie du trafic aérien aux États-Unis : l'administration invoque un matériel obsolète",
-    "resume": "La FAA a interrompu tous les décollages aux États-Unis à cause d'une panne des centres de contrôle. L'administration Trump attribue l'incident à des équipements de télécommunication obsolètes saturés. Elle écarte pour l'instant un cyberattaque.",
-    "contexte": "Cet épisode met en lumière le sous-investissement dans les infrastructures publiques et son impact économique. Il a aussi touché l'Amérique latine et l'Australie.",
+    "titre": "Un démocrate gagne le poste de gouverneur de l'Alaska",
+    "resume": "Jonathan Kreiss-Tomkins devient gouverneur de l'Alaska, une première pour les démocrates depuis près de trente ans. Cette victoire porte à 30 le nombre de gouverneurs démocrates après les élections de mi-mandat. The Guardian parle de raz-de-marée aux midterms.",
+    "contexte": "Les midterms ont lieu au milieu du mandat présidentiel et servent souvent de test de popularité. Les gouverneurs jouent un rôle important dans la mise en œuvre des politiques au niveau des États fédérés.",
+    "notions": [
+     "Fédéralisme américain",
+     "Élections de mi-mandat",
+     "Séparation des pouvoirs",
+     "Politique économique"
+    ],
+    "copie": "À utiliser dans une culture générale sur le système politique américain : le fédéralisme répartit les compétences entre l'État fédéral et les États. L'exemple montre comment le résultat électoral peut limiter la marge de manœuvre du président.",
+    "niveau": 2,
+    "source": "The Guardian",
+    "lien": "https://www.theguardian.com/us-news/2026/nov/14/alaska-governor-democrat-jonathan-kreiss-tomkins-wins",
+    "date": "2026-11-14T16:58:33.000Z",
+    "titre_original": "Democrat wins Alaska governor’s seat for first time in nearly 30 years"
+   },
+   {
+    "id": "a62",
+    "theme": "Finances publiques et rôle de l'État",
+    "titre": "Chaos aérien aux États-Unis : l'administration invoque une maintenance de routine",
+    "resume": "L'administration Trump affirme que l'arrêt de quatre heures de la FAA vendredi vient d'une maintenance de routine. Des milliers de vols ont été retardés ou annulés. Les autorités mettent en cause un système de contrôle aérien vieillissant.",
+    "contexte": "Les infrastructures publiques (transport, communication) sont des biens collectifs dont l'État finance l'entretien. Le sous-investissement peut avoir un coût économique important lors d'une panne.",
     "notions": [
      "Infrastructures publiques",
-     "Investissement",
-     "Externalités",
-     "Rôle de l'État"
+     "Rôle de l'État",
+     "Investissement public",
+     "Externalités"
     ],
-    "copie": "Utilisez-le comme exemple de bien public et de coût du sous-investissement. Il peut aussi illustrer l'interdépendance des économies.",
+    "copie": "Comme exemple, il montre le coût du sous-investissement public dans une économie développée. Il est utile dans une QRA sur le rôle de l'État dans la croissance, avec prudence sur les causes exactes.",
     "niveau": 2,
-    "source": "El País América",
-    "lien": "https://elpais.com/us/2026-11-13/claves-del-cierre-del-espacio-aereo-en-estados-unidos-que-se-sabe-del-fallo-que-ha-dejado-en-tierra-todos-los-vuelos.html",
-    "date": "2026-11-14T02:03:58.000Z",
-    "titre_original": "Claves del cierre del espacio aéreo en Estados Unidos: qué se sabe del fallo que dejó en tierra todos los vuelos durante horas"
+    "source": "The Guardian",
+    "lien": "https://www.theguardian.com/world/2026/nov/14/faa-ground-stop-flights-resume-airport-chaos",
+    "date": "2026-11-14T17:11:18.000Z",
+    "titre_original": "US officials say flight stoppage stemmed from ‘routine maintenance’ as travel chaos continues"
    },
    {
-    "id": "a38",
+    "id": "a16",
     "theme": "Géopolitique et relations internationales",
-    "titre": "Rencontre inédite Trump, Xi et Poutine à Shenzhen",
-    "resume": "Les États-Unis confirment une réunion trilatérale entre Trump, Xi Jinping et Poutine en marge du sommet de l'APEC à Shenzhen. Elle aura lieu jeudi prochain. Elle est qualifiée d'inédite.",
-    "contexte": "L'APEC est un forum de coopération économique en Asie-Pacifique. Cette rencontre pourrait peser sur la géopolitique et le commerce mondial.",
+    "titre": "Espagne : PSOE et PP s'affrontent avant les élections du 29 novembre",
+    "resume": "Le PSOE et le PP durcissent leur campagne dans la dernière ligne droite avant le 29-N. Sánchez insiste sur sa politique sociale et sur le risque de l'extrême droite. Feijóo met en avant la corruption et son profil de gestionnaire.",
+    "contexte": "L'Espagne est une monarchie parlementaire : le chef du gouvernement est issu d'une majorité au Parlement. Les alliances entre partis sont donc décisives pour gouverner.",
     "notions": [
-     "Mondialisation",
-     "Relations internationales",
-     "Commerce international",
-     "Coopération"
+     "Régime parlementaire",
+     "Élections législatives",
+     "Coalitions",
+     "Politique économique"
     ],
-    "copie": "Elle peut ouvrir un sujet sur les rapports de puissance et le commerce mondial. Elle illustre aussi la fragmentation de la mondialisation.",
-    "niveau": 2,
-    "source": "El País América",
-    "lien": "https://elpais.com/internacional/2026-11-14/ee-uu-confirma-la-reunion-de-trump-xi-y-putin-la-semana-proxima-en-china.html",
-    "date": "2026-11-14T01:02:09.000Z",
-    "titre_original": "EE UU confirma la reunión de Trump, Xi y Putin la semana próxima en China"
-   },
-   {
-    "id": "a80",
-    "theme": "Finances publiques et rôle de l'État",
-    "titre": "Brésil : le gouvernement Lula adopte un plan d'économies d'environ 10 milliards de dollars",
-    "resume": "Le gouvernement de Lula, président réélu, a fait adopter un plan pour économiser environ 10 milliards de dollars de dépense publique. Il est sous pression pour assainir les comptes et réduire la dette.",
-    "contexte": "Il s'agit d'un arbitrage entre rigueur budgétaire et soutien à l'activité. C'est un exemple de politique budgétaire dans un pays émergent.",
-    "notions": [
-     "Déficit public",
-     "Dette publique",
-     "Politique budgétaire",
-     "Austérité"
-    ],
-    "copie": "Utilisez-le pour discuter des limites de l'endettement public. Il peut s'insérer dans un développement sur la politique budgétaire.",
-    "niveau": 2,
-    "source": "El País América",
-    "lien": "https://elpais.com/america/2026-11-13/el-gobierno-de-lula-anuncia-un-plan-para-ahorrar-unos-10000-millones-de-gasto-publico.html",
-    "date": "2026-11-13T18:35:27.000Z",
-    "titre_original": "El Gobierno de Lula saca adelante un plan para ahorrar unos 10.000 millones de dólares de gasto público"
+    "copie": "Utile en culture internationale pour illustrer un régime parlementaire à fort pluralisme. Pour la copie d'économie, il permet de relier programmes politiques (social, vision de la gestion) et choix de politique économique.",
+    "niveau": 1,
+    "source": "El País",
+    "lien": "https://elpais.com/espana/elecciones-generales/2026-11-15/psoe-y-pp-recrudecen-la-pelea-por-el-primer-puesto-en-la-recta-final-hacia-el-29-n.html",
+    "date": "2026-11-15T04:30:01.000Z",
+    "titre_original": "PSOE y PP recrudecen la pelea por el primer puesto en la recta final hacia el 29-N"
    }
   ]
  },
  "langues": {
   "en": {
-   "id": "a26",
-   "titre": "The longest US nationwide flight ground stop since 9/11",
-   "resume": "US officials say the nationwide ground stop that halted flights on Friday was caused by old equipment becoming overloaded. They have ruled out a cyber-attack and a Microsoft outage. The Federal Aviation Administration said the disruption was linked to safety and communication issues, and it later lifted the order. Thousands of flights were affected, and passengers faced long delays and cancellations across the country. The incident is the longest grounding of this kind since the September 11 attacks. It has raised questions about ageing infrastructure and the cost of delaying investment in essential public services.",
-   "phrase": "The disruption was caused by old equipment overloading.",
-   "traduction": "La perturbation a été causée par la surcharge d'un équipement ancien.",
-   "source": "BBC",
-   "lien": "https://www.bbc.co.uk/news/articles/cqx2wyvyr3zzo?at_medium=RSS&at_campaign=rss",
-   "date": "2026-11-14T03:45:21.000Z"
+   "id": "a5",
+   "titre": "'Low fire, low hire' job market hurts US and UK productivity",
+   "resume": "In the United States and the United Kingdom, the labour market has entered a 'low fire, low hire' phase. Employers are neither dismissing many workers nor recruiting many new ones, and employees are reluctant to quit or change jobs. According to economists, this stagnation could hurt productivity in the long run. Indeed, when workers move between firms, they tend to find roles that match their skills better, and efficient companies can expand. If this churn stays weak, resources may remain trapped in less productive firms. Unemployment may look low, but the economy could still lose dynamism.",
+   "phrase": "Sluggish hiring and job-switching may lead to long-term damage, say economists.",
+   "traduction": "Selon les économistes, la faiblesse des embauches et des changements d'emploi pourrait causer des dommages à long terme.",
+   "source": "Financial Times",
+   "lien": "https://www.ft.com/content/44c1fdc6-bc51-46e5-8a7c-c10096a25496?syn-25a6b1a6=1",
+   "date": "2026-11-15T05:00:13.000Z"
   },
   "es": {
-   "id": "a50",
-   "titulo": "Así se vació el cielo de Estados Unidos",
-   "titre": "Así se vació el cielo de Estados Unidos tras la suspensión de los vuelos",
-   "resume": "La Administración Federal de Aviación detuvo todos los despegues en Estados Unidos por una avería en los centros que guían a los aviones en ruta. La orden se levantó a las 20.15 horas. Es la tercera vez que ocurre algo así, después del 11-S y del apagón informático de 2023. El Gobierno de Trump atribuye el fallo a equipos de telecomunicaciones obsoletos que se saturaron. La suspensión provocó retrasos y cancelaciones en miles de vuelos, también en América Latina. Las autoridades advierten de que la vuelta a la normalidad será lenta y de que habrá que revisar las infraestructuras.",
-   "phrase": "La vuelta a la normalidad será lenta.",
-   "traduction": "Le retour à la normale sera lent.",
-   "source": "El País América",
-   "lien": "https://elpais.com/us/2026-11-13/asi-se-vacio-el-cielo-de-estados-unidos-tras-la-suspension-de-los-vuelos.html",
-   "date": "2026-11-13T23:55:00.000Z"
+   "id": "a10",
+   "titulo": "Política y finanzas juegan a favor de Hernández de Cos para la presidencia del BCE",
+   "titre": "Politique et finance favorisent Hernández de Cos pour la présidence de la BCE",
+   "resume": "El español Hernández de Cos gana puntos en la recta final de la carrera por la presidencia del Banco Central Europeo (BCE). Según El País, un contexto financiero inestable y un complejo juego de equilibrios entre las capitales europeas le favorecen. En una elección de este tipo no cuentan solo los méritos técnicos, sino también el reparto de cargos entre países. El BCE fija los tipos de interés de la zona euro y vigila la inflación, por eso su presidencia es un puesto clave para la economía europea y para los mercados financieros.",
+   "phrase": "El contexto financiero inestable favorece su candidatura a la presidencia del BCE.",
+   "traduction": "Le contexte financier instable favorise sa candidature à la présidence de la BCE.",
+   "source": "El País",
+   "lien": "https://elpais.com/economia/2026-11-15/politica-y-finanzas-juegan-a-favor-de-hernandez-de-cos-para-la-presidencia-del-bce.html",
+   "date": "2026-11-15T04:45:01.000Z"
   },
   "vocab": [
    {
-    "mot": "outage",
+    "mot": "workforce",
     "langue": "en",
-    "traduction": "panne",
-    "exemple": "The outage lasted several hours."
+    "traduction": "population active, main-d'œuvre",
+    "exemple": "The workforce is ageing in many developed countries."
    },
    {
-    "mot": "ground stop",
+    "mot": "to lay off",
     "langue": "en",
-    "traduction": "arrêt des vols au sol",
-    "exemple": "The FAA ordered a ground stop."
+    "traduction": "licencier (pour raison économique)",
+    "exemple": "The firm had to lay off 200 workers."
    },
    {
-    "mot": "board",
+    "mot": "sluggish",
     "langue": "en",
-    "traduction": "conseil d'administration",
-    "exemple": "The board approved the merger."
+    "traduction": "atone, léthargique",
+    "exemple": "Sluggish growth worries the government."
    },
    {
-    "mot": "retraso",
-    "langue": "es",
-    "traduction": "retard",
-    "exemple": "Hubo un retraso de dos horas."
+    "mot": "a stake",
+    "langue": "en",
+    "traduction": "une participation, un enjeu",
+    "exemple": "The fund bought a 10% stake in the company."
    },
    {
-    "mot": "despegue",
+    "mot": "el desempleo",
     "langue": "es",
-    "traduction": "décollage",
-    "exemple": "El despegue fue cancelado."
+    "traduction": "le chômage",
+    "exemple": "El desempleo juvenil sigue siendo alto."
    },
    {
-    "mot": "deuda",
+    "mot": "los tipos de interés",
     "langue": "es",
-    "traduction": "dette",
-    "exemple": "La deuda pública sigue aumentando."
+    "traduction": "les taux d'intérêt",
+    "exemple": "El BCE puede subir los tipos de interés para frenar la inflación."
+   },
+   {
+    "mot": "las elecciones generales",
+    "langue": "es",
+    "traduction": "les élections législatives",
+    "exemple": "Las elecciones generales se celebran el 29 de noviembre."
+   },
+   {
+    "mot": "la estafa",
+    "langue": "es",
+    "traduction": "l'escroquerie",
+    "exemple": "Muchas personas son víctimas de una estafa bancaria."
+   }
+  ],
+  "trous": {
+   "en": {
+    "texto": "Hiring and resignations have slowed {1} the past year in both countries. Firms remain cautious {2} the economic outlook, so they have {3} fewer vacancies than before. Workers, meanwhile, prefer to stay put rather than take the risk of moving to a new employer. {4} unemployment remains fairly low, economists warn that productivity could suffer in the long run. If people no longer change jobs, talent may not be {5} to the firms that could use it best, and the economy may become {6} dynamic.",
+    "blancs": [
+     {
+      "choix": [
+       "over",
+       "since",
+       "during"
+      ],
+      "bonne": 0,
+      "explication": "« Over the past year » signifie « au cours de l'année passée » ; « since » demande un point de départ précis."
+     },
+     {
+      "choix": [
+       "about",
+       "for",
+       "at"
+      ],
+      "bonne": 0,
+      "explication": "On dit « cautious about » quelque chose."
+     },
+     {
+      "choix": [
+       "advertised",
+       "advertise",
+       "advertising"
+      ],
+      "bonne": 0,
+      "explication": "Après « have », on utilise le participe passé : « have advertised »."
+     },
+     {
+      "choix": [
+       "Although",
+       "Despite",
+       "Because"
+      ],
+      "bonne": 0,
+      "explication": "« Although » introduit une concession suivie d'un verbe conjugué ; « despite » demande un nom ou une forme en -ing."
+     },
+     {
+      "choix": [
+       "allocated",
+       "allocate",
+       "allocating"
+      ],
+      "bonne": 0,
+      "explication": "Passif : « may not be allocated »."
+     },
+     {
+      "choix": [
+       "less",
+       "fewer",
+       "least"
+      ],
+      "bonne": 0,
+      "explication": "Comparatif de supériorité inverse avec un adjectif : « less dynamic »."
+     }
+    ]
+   },
+   "es": {
+    "texto": "{1} el contexto financiero es inestable, el candidato español gana puntos en la carrera por la presidencia del BCE. Si los mercados se tensan, los gobiernos {2} un perfil con experiencia. La decisión no depende {3} criterios técnicos, {4} también de equilibrios políticos entre las capitales. Es probable que el nombramiento se {5} tras muchas negociaciones, {6} todavía nada esté cerrado. Los analistas siguen de cerca cada movimiento de los países más influyentes de la zona euro.",
+    "blancs": [
+     {
+      "choix": [
+       "Como",
+       "Aunque",
+       "Pero"
+      ],
+      "bonne": 0,
+      "explication": "« Como » introduit ici une cause ; « aunque » exprimerait une opposition."
+     },
+     {
+      "choix": [
+       "preferirán",
+       "preferirían",
+       "prefirieron"
+      ],
+      "bonne": 0,
+      "explication": "Après « si » + présent, on utilise le futur dans la principale."
+     },
+     {
+      "choix": [
+       "de",
+       "a",
+       "en"
+      ],
+      "bonne": 0,
+      "explication": "Le verbe « depender » se construit avec « de »."
+     },
+     {
+      "choix": [
+       "sino",
+       "pero",
+       "si no"
+      ],
+      "bonne": 0,
+      "explication": "« No solo... sino también » est la structure correcte."
+     },
+     {
+      "choix": [
+       "decida",
+       "decide",
+       "decidirá"
+      ],
+      "bonne": 0,
+      "explication": "« Es probable que » est suivi du subjonctif."
+     },
+     {
+      "choix": [
+       "aunque",
+       "porque",
+       "pues"
+      ],
+      "bonne": 0,
+      "explication": "« Aunque » + subjonctif exprime une concession hypothétique."
+     }
+    ]
+   }
+  },
+  "traduction": [
+   {
+    "sens": "fr>en",
+    "phrase": "La hausse du SMIC pourrait détruire des emplois, mais le gouvernement juge l'impact limité.",
+    "corrige": "The rise in the minimum wage could destroy jobs, but the government considers the impact to be limited.",
+    "astuce": "On dit « a rise in » le salaire minimum ; « consider » se construit sans « that » ici avec « to be ». « Wage » est le salaire horaire."
+   },
+   {
+    "sens": "en>fr",
+    "phrase": "Sluggish hiring may lead to long-term damage, say economists.",
+    "corrige": "Selon les économistes, une faible dynamique d'embauche pourrait causer des dommages à long terme.",
+    "astuce": "« Say economists » est une inversion journalistique ; « may » exprime ici une possibilité (« pourrait »), pas une permission."
+   },
+   {
+    "sens": "fr>es",
+    "phrase": "Les victimes de fraude bancaire se sentent peu protégées par leur banque.",
+    "corrige": "Las víctimas de fraude bancario se sienten desprotegidas por su banco.",
+    "astuce": "Sentirse est un verbe à diphtongue (e > ie) : « se sienten ». L'agent du passif se rend par « por »."
+   },
+   {
+    "sens": "es>fr",
+    "phrase": "La economía francesa crece menos que la media europea.",
+    "corrige": "L'économie française croît moins que la moyenne européenne.",
+    "astuce": "Attention : « la media » signifie « la moyenne », à ne pas confondre avec « los medios » (les médias)."
+   }
+  ],
+  "pieges": [
+   {
+    "langue": "en",
+    "question": "Choisis la bonne forme : « The unemployment rate has fallen ___ 2023. »",
+    "choix": [
+     "for",
+     "since",
+     "during",
+     "from"
+    ],
+    "bonne": 1,
+    "explication": "« Since » indique le point de départ avec un present perfect ; « for » indique une durée."
+   },
+   {
+    "langue": "en",
+    "question": "Que signifie « actually » dans « Actually, productivity fell » ?",
+    "choix": [
+     "actuellement",
+     "en fait",
+     "réellement dans le futur",
+     "finalement"
+    ],
+    "bonne": 1,
+    "explication": "« Actually » est un faux-ami : il signifie « en fait ». « Actuellement » se dit « currently »."
+   },
+   {
+    "langue": "en",
+    "question": "Choisis la bonne forme : « There are ___ vacancies than last year. »",
+    "choix": [
+     "less",
+     "fewer",
+     "little",
+     "much"
+    ],
+    "bonne": 1,
+    "explication": "« Vacancies » est dénombrable, donc on utilise « fewer »."
+   },
+   {
+    "langue": "es",
+    "question": "Choisis la bonne forme : « Espero que el BCE ___ los tipos de interés. »",
+    "choix": [
+     "baja",
+     "baje",
+     "bajará",
+     "bajaría"
+    ],
+    "bonne": 1,
+    "explication": "Après un verbe de souhait (« esperar que »), on emploie le subjonctif : « baje »."
+   },
+   {
+    "langue": "es",
+    "question": "Choisis la bonne préposition : « Hernández de Cos es candidato ___ la presidencia del BCE. »",
+    "choix": [
+     "a",
+     "para",
+     "por",
+     "en"
+    ],
+    "bonne": 0,
+    "explication": "On dit « candidato a » un poste."
+   },
+   {
+    "langue": "es",
+    "question": "Que signifie « actualmente » en espagnol ?",
+    "choix": [
+     "en fait",
+     "actuellement",
+     "réellement",
+     "autrefois"
+    ],
+    "bonne": 1,
+    "explication": "« Actualmente » est un faux-ami : il signifie « actuellement ». « En fait » se dit « en realidad »."
    }
   ]
  },
+ "plan": {
+  "matiere": "Économie (QRA)",
+  "sujet": "Une hausse du salaire minimum détruit-elle nécessairement des emplois ?",
+  "analyse": "Le salaire minimum est le niveau plancher de rémunération fixé par la loi, comme le SMIC en France. L'emploi mesure le nombre de personnes occupant un poste. La tension oppose l'analyse selon laquelle un salaire plus élevé réduit la demande de travail des entreprises à celle selon laquelle il soutient la consommation et l'activité.",
+  "problematique": "Dans quelle mesure une hausse du salaire minimum menace-t-elle l'emploi, et à quelles conditions ses effets sont-ils compensés ?",
+  "parties": [
+   {
+    "titre": "Une hausse du salaire minimum peut réduire l'emploi",
+    "sous": [
+     "Le coût du travail augmente, ce qui diminue la demande de travail des entreprises, surtout les plus fragiles",
+     "Les salariés peu qualifiés sont les plus exposés, d'où un risque de chômage ou de substitution du capital au travail"
+    ]
+   },
+   {
+    "titre": "Mais ses effets peuvent être limités ou compensés",
+    "sous": [
+     "La demande soutenue par le pouvoir d'achat peut stimuler l'activité et donc l'emploi",
+     "L'impact dépend du niveau initial du salaire, de la conjoncture et du pouvoir de marché des entreprises"
+    ]
+   }
+  ],
+  "exemples": [
+   "Analyse néoclassique (offre et demande de travail, salaire d'équilibre)",
+   "Keynes : le rôle de la demande effective",
+   "Friedman : taux de chômage naturel et rigidités du marché du travail"
+  ]
+ },
+ "cas_pratique": {
+  "faits": "La société Alpha, spécialisée dans le conseil, commande à la société Beta un logiciel de gestion sur mesure pour 40 000 euros. Le contrat prévoit une livraison le 1er mars et un paiement de moitié à la commande. Alpha a versé 20 000 euros. À la date prévue, Beta n'a pas livré le logiciel et ne répond plus aux messages d'Alpha. Alpha subit un retard dans le lancement d'un service et perd un client. Elle souhaite se faire rembourser et obtenir une indemnisation.",
+  "question": "Quels recours Alpha peut-elle exercer contre Beta ?",
+  "qualification": "Un contrat conclu entre deux sociétés (personnes morales) a pour objet la livraison d'un logiciel moyennant un prix. Le débiteur ne livre pas à la date convenue : il y a inexécution d'une obligation contractuelle. Le créancier a payé un acompte et subit un préjudice financier.",
+  "probleme": "Quelles sanctions le créancier peut-il mettre en œuvre lorsque le débiteur n'exécute pas son obligation à l'échéance, et à quelles conditions peut-il obtenir restitution de l'acompte et réparation du préjudice ?",
+  "majeure": "Le contrat légalement formé tient lieu de loi à ceux qui l'ont fait. En cas d'inexécution, le créancier peut, selon l'article 1217 du Code civil, refuser d'exécuter sa propre obligation, poursuivre l'exécution forcée en nature, solliciter une réduction du prix, provoquer la résolution du contrat ou demander réparation des conséquences de l'inexécution. La résolution peut résulter d'une clause résolutoire, d'une notification du créancier après mise en demeure restée sans effet, ou d'une décision de justice. Les dommages et intérêts sont dus lorsque le débiteur a manqué à son obligation sans cause d'exonération (force majeure), après mise en demeure, et couvrent la perte subie et le gain manqué sous réserve du caractère prévisible du dommage.",
+  "conclusion": "Alpha peut mettre en demeure Beta de livrer dans un délai raisonnable. Si Beta ne s'exécute pas, Alpha pourra résoudre le contrat, obtenir la restitution des 20 000 euros versés, et demander des dommages et intérêts pour la perte du client, à condition de prouver le préjudice et son lien avec le retard. Elle peut saisir le tribunal de commerce si Beta ne réagit pas."
+ },
+ "maths": [
+  {
+   "titre": "Calcul, produit nul et système",
+   "niveau": 1,
+   "enonce": "1) Calculer A = 2 + 3 × (5 - 2)² ÷ 9.\n2) Résoudre (2x - 1)(x + 3) = 0.\n3) Résoudre par substitution le système : 2x + y = 5 et x - 3y = 6.",
+   "etapes": [
+    "Priorités : on calcule d'abord la parenthèse, (5 - 2) = 3, puis la puissance : 3² = 9.",
+    "On effectue ensuite la multiplication et la division de gauche à droite : 3 × 9 = 27, puis 27 ÷ 9 = 3. Enfin A = 2 + 3 = 5.",
+    "Un produit est nul si l'un de ses facteurs est nul : 2x - 1 = 0 donne x = 1/2, ou x + 3 = 0 donne x = -3.",
+    "Substitution : de x - 3y = 6, on tire x = 6 + 3y. On remplace dans 2x + y = 5 : 2(6 + 3y) + y = 5, soit 12 + 7y = 5, donc y = -1.",
+    "On revient à x : x = 6 + 3 × (-1) = 3. Vérification : 2 × 3 + (-1) = 5 et 3 - 3 × (-1) = 6, donc c'est correct."
+   ],
+   "resultat": "A = 5 ; solutions de l'équation : x = 1/2 ou x = -3 ; système : (x ; y) = (3 ; -1).",
+   "piege": "Calculer 2 + 3 avant la multiplication, ou oublier que 3 × (5 - 2)² implique de calculer la puissance avant le produit."
+  },
+  {
+   "titre": "Factorisation et inéquation avec quotient",
+   "niveau": 3,
+   "enonce": "1) Factoriser E = (x - 2)² - 9, puis résoudre E = 0.\n2) Résoudre l'inéquation (2x - 1)/(x + 3) ≥ 1.",
+   "etapes": [
+    "On reconnaît la forme a² - b² avec a = x - 2 et b = 3, donc E = (x - 2 - 3)(x - 2 + 3) = (x - 5)(x + 1).",
+    "E = 0 équivaut à x - 5 = 0 ou x + 1 = 0, donc x = 5 ou x = -1.",
+    "Pour l'inéquation, la valeur interdite est x = -3. On passe tout à gauche : (2x - 1)/(x + 3) - 1 ≥ 0.",
+    "On met au même dénominateur : (2x - 1 - (x + 3))/(x + 3) = (x - 4)/(x + 3) ≥ 0.",
+    "Tableau de signe : x - 4 s'annule en 4, x + 3 en -3. Pour x < -3, les deux sont négatifs donc le quotient est positif. Entre -3 et 4, le quotient est négatif. Pour x > 4, il est positif, et il vaut 0 en x = 4.",
+    "On garde les intervalles où le quotient est positif ou nul, en excluant -3."
+   ],
+   "resultat": "E = (x - 5)(x + 1), donc x = 5 ou x = -1. Solution de l'inéquation : ]-∞ ; -3[ ∪ [4 ; +∞[.",
+   "piege": "Multiplier les deux membres par (x + 3) sans connaître son signe, ce qui peut inverser le sens de l'inégalité ; il faut passer par un tableau de signe."
+  }
+ ],
  "quiz": [
   {
    "matiere": "eco",
-   "question": "Selon l'analyse néoclassique, un salaire minimum supérieur au salaire d'équilibre tend à :",
+   "question": "Selon l'analyse néoclassique, un salaire minimum fixé au-dessus du salaire d'équilibre provoque :",
    "choix": [
-    "Réduire le chômage",
-    "Créer ou accroître le chômage",
-    "Réduire l'inflation à coup sûr",
-    "Augmenter l'offre de biens publics"
+    "Une pénurie de main-d'œuvre",
+    "Une baisse des prix",
+    "Du chômage",
+    "Une hausse de l'offre de travail sans effet"
    ],
-   "bonne": 1,
-   "explication": "Un salaire au-dessus de l'équilibre réduit la demande de travail des entreprises tout en augmentant l'offre. Cela peut produire un chômage dit classique. Les keynésiens nuancent en soulignant l'effet positif sur la demande.",
-   "id": "a91",
+   "bonne": 2,
+   "explication": "Si le salaire est supérieur au salaire d'équilibre, l'offre de travail dépasse la demande : il y a du chômage. Cet argument est central dans le débat sur le SMIC.",
+   "id": "a114",
    "lien": "https://www.lemonde.fr/politique/article/2026/11/13/les-effets-de-la-hausse-du-smic-sur-le-marche-du-travail-suscitent-des-interrogations_6809363_823448.html"
   },
   {
    "matiere": "eco",
-   "question": "Quel événement entraîne généralement une baisse du prix d'un bien, toutes choses égales par ailleurs ?",
+   "question": "Quel économiste associe croissance et « destruction créatrice » ?",
    "choix": [
-    "Un excédent d'offre",
-    "Un excédent de demande",
-    "Une pénurie",
-    "Une hausse des taxes sur la demande"
+    "Adam Smith",
+    "Karl Marx",
+    "Milton Friedman",
+    "Joseph Schumpeter"
    ],
-   "bonne": 0,
-   "explication": "Quand l'offre dépasse la demande, les prix ont tendance à baisser jusqu'à un nouvel équilibre. C'est le mécanisme de base du marché.",
-   "id": "a112",
-   "lien": "https://www.lemonde.fr/economie/article/2026/11/13/le-marche-mondial-du-petrole-devrait-redevenir-excedentaire-au-dernier-trimestre-selon-l-agence-internationale-de-l-energie_6809326_3234.html"
+   "bonne": 3,
+   "explication": "Schumpeter explique que l'innovation remplace des activités anciennes par de nouvelles, ce qui crée de la croissance mais aussi des disparitions d'entreprises. Cela peut éclairer les cycles autour de l'IA.",
+   "id": "a6",
+   "lien": "https://www.ft.com/content/d5adde7e-68cc-455b-ba78-b39cc3676b7a?syn-25a6b1a6=1"
   },
   {
    "matiere": "eco",
-   "question": "Quel économiste est associé à l'idée que « l'offre crée sa propre demande » ?",
+   "question": "Le PIB par habitant se calcule en :",
    "choix": [
-    "Keynes",
-    "Marx",
-    "Jean-Baptiste Say",
-    "Friedman"
+    "Multipliant le PIB par la population",
+    "Divisant le PIB par la population",
+    "Divisant la population par le PIB",
+    "Additionnant le PIB et les salaires"
+   ],
+   "bonne": 1,
+   "explication": "Le PIB par habitant divise la richesse produite par le nombre d'habitants. Il sert de repère pour comparer les niveaux de vie moyens.",
+   "id": "a1",
+   "lien": "https://www.lemonde.fr/economie/article/2026/11/15/le-lent-declin-economique-de-la-france-face-au-reste-de-l-europe_6810984_3234.html"
+  },
+  {
+   "matiere": "droit",
+   "question": "Dans la hiérarchie des normes en France, quelle norme est supérieure à une loi ordinaire ?",
+   "choix": [
+    "Un décret",
+    "Un arrêté",
+    "La Constitution",
+    "Une circulaire"
    ],
    "bonne": 2,
-   "explication": "La loi des débouchés de Say affirme que la production génère les revenus qui permettent son achat. Keynes l'a critiquée en insistant sur l'insuffisance de la demande effective.",
+   "explication": "La Constitution est au sommet de la hiérarchie interne. Les décrets, arrêtés et circulaires sont des normes réglementaires inférieures à la loi.",
    "id": null,
    "lien": null
   },
   {
    "matiere": "droit",
-   "question": "Qu'est-ce que le dol ?",
+   "question": "Quelles sont les conditions de la responsabilité civile délictuelle ?",
    "choix": [
-    "Une erreur involontaire sur l'objet du contrat",
-    "Des manœuvres frauduleuses pour tromper le cocontractant",
-    "La contrainte physique exercée sur une partie",
-    "L'absence de cause du contrat"
+    "Un contrat, une faute, une sanction",
+    "Un fait générateur, un dommage, un lien de causalité",
+    "Un jugement, un appel, un pourvoi",
+    "Une faute, une peine, un tribunal"
    ],
    "bonne": 1,
-   "explication": "Le dol est un vice du consentement fondé sur des manœuvres ou mensonges qui déterminent l'autre partie à contracter. Il peut entraîner la nullité du contrat. Il s'apparente aux interfaces trompeuses.",
-   "id": "a77",
-   "lien": "https://www.franceinfo.fr/economie/commerce/commerce-en-ligne-l-europe-en-guerre-contre-les-dark-patterns_8281340.html#xtor=RSS-3-%5Beconomie%5D"
-  },
-  {
-   "matiere": "droit",
-   "question": "Dans un procès pénal, la partie civile est :",
-   "choix": [
-    "Le juge chargé du dossier",
-    "La victime qui demande réparation de son préjudice",
-    "Le représentant de l'État qui poursuit",
-    "L'avocat de la défense"
-   ],
-   "bonne": 1,
-   "explication": "La partie civile est la victime qui se constitue pour obtenir réparation devant le juge pénal. Le ministère public, lui, représente la société.",
-   "id": "a25",
-   "lien": "https://www.lemonde.fr/societe/article/2026/11/14/au-proces-de-l-interpellation-violente-de-michel-zecler-par-des-policiers-les-neuf-temoins-oublies-on-se-dit-que-si-on-n-intervient-pas-michel-va-mourir_6809554_3224.html"
+   "explication": "Pour engager la responsabilité délictuelle, il faut un fait générateur (faute, fait d'une chose, etc.), un dommage et un lien de causalité entre les deux.",
+   "id": "a46",
+   "lien": "https://www.bbc.co.uk/news/articles/cwe89y2r5j20o?at_medium=RSS&at_campaign=rss"
   },
   {
    "matiere": "mgmt",
-   "question": "Le rôle principal d'un conseil d'administration est de :",
+   "question": "Parmi ces acteurs, lequel est une partie prenante interne de l'entreprise ?",
    "choix": [
-    "Gérer le quotidien de l'entreprise",
-    "Contrôler la direction et défendre les intérêts des actionnaires",
-    "Négocier les salaires",
-    "Fixer les prix des produits"
+    "Les clients",
+    "Les salariés",
+    "Les fournisseurs",
+    "L'État"
    ],
    "bonne": 1,
-   "explication": "Le conseil nomme et surveille les dirigeants et protège les actionnaires. Son indépendance est essentielle à une bonne gouvernance.",
-   "id": "a2",
-   "lien": "https://www.ft.com/content/e141a5ea-5aa4-491b-88a4-369cfc67693a"
+   "explication": "Les parties prenantes internes sont liées directement à l'organisation : salariés, dirigeants, actionnaires. Clients, fournisseurs et État sont des parties prenantes externes.",
+   "id": null,
+   "lien": null
   },
   {
    "matiere": "mgmt",
-   "question": "Une stratégie de différenciation consiste à :",
+   "question": "Quelle opération relève de la croissance externe ?",
    "choix": [
-    "Proposer systématiquement les prix les plus bas",
-    "Offrir un produit perçu comme unique par le client",
-    "Se retirer d'un marché",
-    "Fusionner avec un concurrent"
+    "Ouvrir un nouvel atelier",
+    "Lancer un nouveau produit",
+    "Racheter une autre entreprise",
+    "Embaucher des commerciaux"
    ],
-   "bonne": 1,
-   "explication": "La différenciation, concept de Porter, repose sur des caractéristiques distinctives (qualité, design, service) pour justifier un prix plus élevé. Elle protège de la concurrence par les prix.",
-   "id": "a64",
-   "lien": "https://www.franceinfo.fr/economie/entreprises/la-poste-air-france-les-secrets-de-la-vitalite-du-breton-armor-lux-qui-habille-les-entreprises-francaises_8281685.html#xtor=RSS-3-%5Beconomie%5D"
+   "bonne": 2,
+   "explication": "La croissance externe consiste à se développer en s'appuyant sur d'autres entreprises (acquisition, fusion, alliance). Les autres choix relèvent de la croissance interne.",
+   "id": null,
+   "lien": null
   },
   {
    "matiere": "monde",
-   "question": "Quelle administration a ordonné l'arrêt de tous les décollages aux États-Unis le vendredi 13 novembre ?",
+   "question": "Que sont les « midterms » aux États-Unis ?",
    "choix": [
-    "La FCC",
-    "La FAA",
-    "La SEC",
-    "La FED"
+    "Des élections présidentielles anticipées",
+    "Des élections à la fin d'un mandat présidentiel",
+    "Des élections au milieu du mandat présidentiel",
+    "Des élections uniquement locales"
    ],
-   "bonne": 1,
-   "explication": "La Federal Aviation Administration est l'autorité de l'aviation civile américaine. Elle a ensuite levé l'ordre dans la soirée.",
-   "id": "a50",
-   "lien": "https://elpais.com/us/2026-11-13/asi-se-vacio-el-cielo-de-estados-unidos-tras-la-suspension-de-los-vuelos.html"
+   "bonne": 2,
+   "explication": "Les midterms ont lieu au milieu du mandat du président et renouvellent notamment une partie du Congrès. Elles servent souvent de test pour la majorité en place.",
+   "id": "a66",
+   "lien": "https://www.theguardian.com/us-news/2026/nov/14/alaska-governor-democrat-jonathan-kreiss-tomkins-wins"
   },
   {
    "matiere": "monde",
-   "question": "Où se tient le sommet de l'APEC évoqué dans l'actualité, en marge duquel Trump, Xi et Poutine doivent se rencontrer ?",
+   "question": "En Espagne, qui dirige le gouvernement ?",
    "choix": [
-    "Singapour",
-    "Shenzhen",
-    "Sydney",
-    "Séoul"
+    "Le roi",
+    "Le président du gouvernement",
+    "Le président du Congrès des députés",
+    "Le président du Sénat"
    ],
    "bonne": 1,
-   "explication": "La rencontre trilatérale est prévue à Shenzhen, en Chine, en marge de l'APEC. Ce forum rassemble les économies d'Asie-Pacifique.",
-   "id": "a38",
-   "lien": "https://elpais.com/internacional/2026-11-14/ee-uu-confirma-la-reunion-de-trump-xi-y-putin-la-semana-proxima-en-china.html"
+   "explication": "L'Espagne est une monarchie parlementaire : le roi est chef de l'État, mais le gouvernement est dirigé par le président du gouvernement, issu de la majorité parlementaire.",
+   "id": "a16",
+   "lien": "https://elpais.com/espana/elecciones-generales/2026-11-15/psoe-y-pp-recrudecen-la-pelea-por-el-primer-puesto-en-la-recta-final-hacia-el-29-n.html"
   }
  ]
 }

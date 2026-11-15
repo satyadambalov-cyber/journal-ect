@@ -581,8 +581,156 @@ function classement() {
 function reviser() {
   const s = state.sub.reviser;
   const body = s === "quiz" ? (state.ed ? quiz() : loading("Pas de quiz aujourd'hui.")) : s === "entrainement" ? entrainement()
-    : s === "methodes" ? methodes() : s === "classement" ? classement() : fiches();
-  return subtabs("reviser", { fiches: "Fiches", quiz: "Quiz", entrainement: "Entraînement", methodes: "Méthodes", classement: "Classement" }) + body;
+    : s === "jeux" ? jeux() : s === "methodes" ? methodes() : s === "classement" ? classement() : fiches();
+  return subtabs("reviser", { fiches: "Fiches", quiz: "Quiz", entrainement: "Entraînement", jeux: "Jeux", methodes: "Méthodes", classement: "Classement" }) + body;
+}
+
+// =====================================================================
+//  MINI-JEUX : auteurs, dates, arrêts
+// =====================================================================
+const JEUX = {
+  chrono: { t: "Chrono 60 s", i: "⏱️", d: "Un max de bonnes réponses en 60 secondes. Enchaîne pour gagner des bonus." },
+  survie: { t: "Vrai ou faux", i: "❤️", d: "Associations vraies ou fausses. 3 vies : jusqu'où iras-tu ?" },
+  frise: { t: "Frise", i: "📅", d: "Remets 4 événements dans l'ordre chronologique. 5 manches." },
+  paires: { t: "Paires", i: "🧩", d: "Relie 5 auteurs à leur idée, le plus vite possible." },
+};
+const pick = (a) => a[Math.floor(Math.random() * a.length)];
+const jeuPool = () => { const d = state.jeuData; return [...d.auteur.map((x) => ({ ...x, type: "auteur" })), ...d.date.map((x) => ({ ...x, type: "date" }))]; };
+function jeuQ() {
+  const pool = jeuPool(), it = pick(pool);
+  const autres = [...new Set(pool.filter((x) => x.type === it.type && x.r !== it.r).map((x) => x.r))];
+  return { it, choix: melange([it.r, ...melange(autres).slice(0, 3)]) };
+}
+function jeuVF() {
+  const pool = jeuPool(), it = pick(pool), vrai = Math.random() < .5;
+  const r = vrai ? it.r : pick(pool.filter((x) => x.type === it.type && x.r !== it.r)).r;
+  return { it, r, vrai };
+}
+function jeuFrise() {
+  const L = melange(state.jeuData.date), out = [];
+  for (const x of L) { if (!out.some((y) => y.r === x.r)) out.push(x); if (out.length === 4) break; }
+  return { items: out, tap: [] };
+}
+function jeuPaires() {
+  const out = [];
+  for (const x of melange(state.jeuData.auteur)) { if (!out.some((y) => y.r === x.r)) out.push(x); if (out.length === 5) break; }
+  return { items: out, gauche: melange(out.map((_, i) => i)), droite: melange(out.map((_, i) => i)), ok: [], sel: null, err: 0, debut: Date.now() };
+}
+function jeuStart(mode) {
+  const j = { mode, score: 0, combo: 0, flash: null };
+  if (mode === "chrono") { j.end = Date.now() + 60000; j.q = jeuQ(); }
+  if (mode === "survie") { j.vies = 3; j.q = jeuVF(); }
+  if (mode === "frise") { j.manche = 1; j.f = jeuFrise(); }
+  if (mode === "paires") j.p = jeuPaires();
+  state.jeu = j; jeuTick();
+}
+function jeuFin(score) {
+  const j = state.jeu, rec = store.get("jeuRec", {}), m = j.mode;
+  const mieux = m === "paires" ? rec[m] === undefined || score < rec[m] : score > (rec[m] || 0);
+  if (mieux) { rec[m] = score; store.set("jeuRec", rec); }
+  j.fini = { score, record: mieux }; actif(); clearInterval(state.jeuTimer);
+}
+function jeuTick() {
+  clearInterval(state.jeuTimer);
+  state.jeuTimer = setInterval(() => {
+    const j = state.jeu;
+    if (!j || j.fini || !["chrono", "paires"].includes(j.mode)) return clearInterval(state.jeuTimer);
+    const el = document.getElementById("jeu-t");
+    if (j.mode === "paires") { if (el) el.textContent = `${Math.floor((Date.now() - j.p.debut) / 1000)} s`; return; }
+    const left = Math.max(0, j.end - Date.now());
+    if (el) el.textContent = `${Math.ceil(left / 1000)} s`;
+    const bar = document.getElementById("jeu-bar"); if (bar) bar.style.width = `${left / 600}%`;
+    if (!left) { jeuFin(j.score); if (state.tab === "reviser") render(); }
+  }, 200);
+}
+const fmtRec = (m, v) => v === undefined ? "—" : m === "paires" ? `${v} s` : m === "frise" ? `${v}/5` : `${v} pts`;
+const lblQ = (it) => it.type === "auteur" ? "Qui est derrière cette idée ?" : "En quelle année ?";
+
+function jeux() {
+  if (!state.jeuData) {
+    fetch("data/jeu.json").then((r) => r.json()).then((d) => { state.jeuData = d; render(); }).catch(() => {});
+    return loading("Chargement des jeux…");
+  }
+  const j = state.jeu, rec = store.get("jeuRec", {});
+  if (!j) return `<p class="lead">Des parties de 1 à 2 minutes pour réviser auteurs, dates et arrêts sans t'en rendre compte.</p>
+    <div class="jeux">${Object.entries(JEUX).map(([k, x]) => `<button class="jeu-card" data-jeu-go="${k}"><span class="ico">${x.i}</span>
+      <span class="txt"><b>${x.t}</b><small>${x.d}</small></span><span class="rec">Record<br><b>${fmtRec(k, rec[k])}</b></span></button>`).join("")}</div>`;
+  const info = JEUX[j.mode];
+  const head = (droite) => `<div class="jeu-top"><button class="read-btn" data-jeu-quit>✕ Quitter</button><b>${info.i} ${info.t}</b><span id="jeu-t">${droite}</span></div>`;
+  if (j.fini) return head("") + `<div class="final"><div class="kicker">${j.fini.record ? "🏆 Nouveau record !" : "Partie terminée"}</div>
+      <b>${fmtRec(j.mode, j.fini.score)}</b><div class="trad">Record : ${fmtRec(j.mode, rec[j.mode])}</div></div>
+      ${j.revoir?.length ? title("À retenir") + j.revoir.slice(-6).map((x) => `<div class="block"><p><b>${esc(x.r)}</b> · ${esc(x.q)}</p></div>`).join("") : ""}
+      <div class="flash-btns">${bigBtn("Rejouer", `data-jeu-go="${j.mode}"`)}${bigBtn("Autres jeux", "data-jeu-quit")}</div>`;
+  const flash = j.flash ? `<div class="jeu-flash ${j.flash.ok ? "ok" : "ko"}">${esc(j.flash.t)}</div>` : `<div class="jeu-flash"></div>`;
+
+  if (j.mode === "chrono") {
+    const left = Math.max(0, j.end - Date.now());
+    return head(`${Math.ceil(left / 1000)} s`) + `<div class="progress" style="padding:10px 14px"><div class="row"><span>${j.score} pts</span><span>${j.combo >= 2 ? `🔥 série de ${j.combo}` : ""}</span></div>
+      <div class="track"><div class="fill" id="jeu-bar" style="width:${left / 600}%"></div></div></div>${flash}
+      <div class="q"><div class="meta"><span class="pill" style="--c:${RUB[j.q.it.m]?.c || "var(--accent)"}">${lblQ(j.q.it)}</span></div>
+      <p class="qt">${esc(j.q.it.q)}</p>${j.q.choix.map((c, i) => `<button class="choice" data-jeu-c="${i}">${esc(c)}</button>`).join("")}</div>`;
+  }
+  if (j.mode === "survie") {
+    return head(`${"❤️".repeat(j.vies)}${"🤍".repeat(3 - j.vies)}`) + `<div class="progress" style="padding:10px 14px"><div class="row"><span>${j.score} bonne${j.score > 1 ? "s" : ""} réponse${j.score > 1 ? "s" : ""}</span><span>${j.combo >= 3 ? `🔥 ${j.combo}` : ""}</span></div></div>${flash}
+      <div class="q" style="text-align:center"><div class="meta" style="justify-content:center"><span class="pill">${j.q.it.type === "auteur" ? "Auteur" : "Date"}</span></div>
+      <p class="qt">${esc(j.q.it.q)}</p><div class="vf-r">${esc(j.q.r)}</div>
+      <div class="flash-btns">${bigBtn("✗ Faux", 'data-jeu-vf="0"')}${bigBtn("✓ Vrai", 'data-jeu-vf="1"')}</div></div>`;
+  }
+  if (j.mode === "frise") {
+    const f = j.f, done = f.tap.length === 4, bon = [...f.items].sort((a, b) => a.r - b.r);
+    return head(`Manche ${j.manche}/5`) + `<p class="lead">Touche les événements du <b>plus ancien</b> au <b>plus récent</b>.</p>
+      <div class="q">${(done ? f.tap.map((i) => f.items[i]) : f.items).map((x, k) => {
+        const i = f.items.indexOf(x), pos = f.tap.indexOf(i);
+        const cls = done ? (bon[k] === x ? "ok" : "ko") : "";
+        return `<button class="choice frise ${cls}" data-jeu-f="${i}" ${pos >= 0 ? "disabled" : ""}><span class="num">${pos >= 0 ? pos + 1 : ""}</span>${esc(x.q)}${done ? ` <b>· ${x.r}</b>` : ""}</button>`; }).join("")}
+      ${done ? `<div class="expl"><b>${f.tap.every((i, k) => f.items[i] === bon[k]) ? "✓ Parfait !" : "✗ Bon ordre :"}</b> ${bon.map((x) => x.r).join(" → ")}</div>${bigBtn(j.manche < 5 ? "Manche suivante" : "Voir mon score", "data-jeu-next")}` : ""}</div>`;
+  }
+  const p = j.p;
+  return head(`${Math.floor((Date.now() - p.debut) / 1000)} s`) + `<p class="lead">Touche un auteur, puis son idée. Chaque erreur coûte 5 s.${p.err ? ` Erreurs : <b>${p.err}</b>` : ""}</p>${flash}
+    <div class="paires"><div>${p.gauche.map((i) => `<button class="choice ${p.ok.includes(i) ? "ok" : ""} ${p.sel === i ? "sel" : ""}" data-jeu-pl="${i}" ${p.ok.includes(i) ? "disabled" : ""}>${esc(p.items[i].r)}</button>`).join("")}</div>
+    <div>${p.droite.map((i) => `<button class="choice small ${p.ok.includes(i) ? "ok" : ""}" data-jeu-pr="${i}" ${p.ok.includes(i) ? "disabled" : ""}>${esc(p.items[i].q)}</button>`).join("")}</div></div>`;
+}
+
+function jeuClick(el) {
+  const j = state.jeu, d = el.dataset;
+  if (d.jeuGo !== undefined) { jeuStart(d.jeuGo); scrollTo(0, 0); return render(); }
+  if (d.jeuQuit !== undefined) { state.jeu = null; clearInterval(state.jeuTimer); return render(); }
+  if (!j || j.fini) return;
+  const revoir = (it) => (j.revoir ||= []).push(it);
+  if (d.jeuC !== undefined && j.mode === "chrono") {
+    const c = j.q.choix[+d.jeuC], it = j.q.it;
+    if (c === it.r) { j.combo++; const gain = 1 + Math.floor(j.combo / 3); j.score += gain; j.flash = { ok: true, t: `✓ +${gain}${gain > 1 ? " (bonus série)" : ""}` }; }
+    else { j.combo = 0; j.flash = { ok: false, t: `✗ C'était ${it.r}` }; revoir(it); }
+    j.q = jeuQ(); return keep();
+  }
+  if (d.jeuVf !== undefined && j.mode === "survie") {
+    const juste = (d.jeuVf === "1") === j.q.vrai, it = j.q.it;
+    if (juste) { j.score++; j.combo++; j.flash = { ok: true, t: "✓ Bien vu" }; }
+    else { j.vies--; j.combo = 0; j.flash = { ok: false, t: `✗ ${it.q} → ${it.r}` }; revoir(it); }
+    if (j.vies <= 0) jeuFin(j.score); else j.q = jeuVF();
+    return keep();
+  }
+  if (d.jeuF !== undefined && j.mode === "frise") {
+    const f = j.f; if (f.tap.length < 4 && !f.tap.includes(+d.jeuF)) f.tap.push(+d.jeuF);
+    if (f.tap.length === 4) {
+      const bon = [...f.items].sort((a, b) => a.r - b.r);
+      if (f.tap.every((i, k) => f.items[i] === bon[k])) j.score++; else bon.forEach(revoir);
+    }
+    return keep();
+  }
+  if (d.jeuNext !== undefined && j.mode === "frise") { if (j.manche >= 5) jeuFin(j.score); else { j.manche++; j.f = jeuFrise(); } return keep(); }
+  if (j.mode === "paires") {
+    const p = j.p;
+    if (d.jeuPl !== undefined) { p.sel = +d.jeuPl; j.flash = null; return keep(); }
+    if (d.jeuPr !== undefined) {
+      if (p.sel === null) { j.flash = { ok: false, t: "Choisis d'abord un auteur à gauche" }; return keep(); }
+      if (p.sel === +d.jeuPr) { p.ok.push(p.sel); j.flash = { ok: true, t: `✓ ${p.items[p.sel].r}` }; }
+      else { p.err++; j.flash = { ok: false, t: "✗ Raté, +5 s" }; revoir(p.items[p.sel]); }
+      p.sel = null;
+      if (p.ok.length === p.items.length) jeuFin(Math.round((Date.now() - p.debut) / 1000) + 5 * p.err);
+      return keep();
+    }
+  }
 }
 
 // =====================================================================
@@ -765,6 +913,7 @@ $("#view").addEventListener("click", (e) => {
   if ((el = at("data-grade"))) { gradeCard(el.dataset.deck, el.dataset.grade === "1"); return render(); }
   if ((el = at("data-show"))) { state.shown[el.dataset.show] = true; actif(); return keep(); }
   if ((el = at("data-vu"))) { const v = store.get("vus", {}); v[el.dataset.vu] = true; store.set("vus", v); actif(); return keep(); }
+  if ((el = t.closest("[data-jeu-go],[data-jeu-quit],[data-jeu-c],[data-jeu-vf],[data-jeu-f],[data-jeu-next],[data-jeu-pl],[data-jeu-pr]")) && !el.disabled) return jeuClick(el);
   if ((el = at("data-train"))) { state.trainSub = el.dataset.train; return render(); }
   if ((el = at("data-qcm")) && !el.disabled) {
     const id = el.dataset.qcm, s = store.get(`qcm:${id}`, null); if (!s) return;

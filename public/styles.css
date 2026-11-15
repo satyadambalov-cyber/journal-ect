@@ -233,3 +233,29 @@ main { padding: 16px 16px 24px; max-width: 680px; margin: 0 auto; outline: none;
 .note { width: 74px; padding: 7px 9px; border-radius: 10px; border: 0; background: var(--fill); color: var(--ink); font: 16px var(--sans); }
 .math { font-family: var(--mono); font-size: 14px; white-space: pre-wrap; margin: 6px 0; }
 input[type="date"], input[type="text"], input[type="number"] { -webkit-appearance: none; }
+
+/* ---- Mini-jeux ---- */
+.jeux { display: grid; gap: 10px; }
+.jeu-card { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; border: 0; padding: 16px;
+  background: var(--surface); border-radius: var(--r); box-shadow: var(--shadow); }
+.jeu-card .ico { font-size: 30px; width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; background: var(--fill); flex: none; }
+.jeu-card .txt { flex: 1; }
+.jeu-card .txt b { display: block; font-size: 17px; }
+.jeu-card .txt small { display: block; color: var(--muted); font-size: 13px; line-height: 1.35; margin-top: 2px; }
+.jeu-card .rec { font-size: 11px; color: var(--muted); text-align: right; flex: none; }
+.jeu-card .rec b { font-size: 15px; color: var(--accent); }
+.jeu-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 12px; font-size: 16px; }
+.jeu-top #jeu-t { font-weight: 700; color: var(--accent); min-width: 60px; text-align: right; }
+.jeu-flash { min-height: 26px; text-align: center; font-weight: 600; font-size: 15px; margin: 4px 0 8px; }
+.jeu-flash.ok { color: var(--good); animation: pop .3s ease; }
+.jeu-flash.ko { color: var(--bad); animation: shake .3s ease; }
+@keyframes pop { 0% { transform: scale(.8); opacity: 0; } 60% { transform: scale(1.1); } 100% { transform: none; opacity: 1; } }
+@keyframes shake { 0%, 100% { transform: none; } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+.vf-r { font: 700 24px/1.2 var(--serif); color: var(--accent); margin: 4px 0 16px; letter-spacing: -.02em; }
+.choice.frise { display: flex; align-items: center; gap: 10px; }
+.choice .num { flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 13px; font-weight: 700; display: grid; place-items: center; }
+.choice .num:empty { background: none; border: 2px solid var(--line); }
+.paires { display: grid; grid-template-columns: 2fr 3fr; gap: 10px; }
+.choice.small { font-size: 13.5px; padding: 10px 11px; }
+.choice.sel { border-color: var(--accent); background: var(--accent-soft); }
+.paires .choice.ok { opacity: .35; }

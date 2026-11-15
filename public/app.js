@@ -409,11 +409,12 @@ function mathsCard(m, k) {
 
 function entrainement() {
   const ed = state.ed, s = state.trainSub || "maths";
-  const chips = `<div class="chips">${Object.entries({ maths: "Maths", cas: "Cas pratique", sujet: "QRA / veille" }).map(([k, v]) =>
+  const chips = `<div class="chips">${Object.entries({ qcm: "QCM droit", maths: "Maths", cas: "Cas pratique", sujet: "QRA / veille" }).map(([k, v]) =>
     `<button class="chip ${k === s ? "on" : ""}" data-train="${k}">${v}</button>`).join("")}</div>`;
   const vide = `<p class="lead">Rien aujourd'hui : ça arrive avec la prochaine édition du matin.</p>`;
   let html = "", older = "";
   const eds = bankReady() ? state.eds.filter((e) => e.date !== ed?.date) : [];
+  if (s === "qcm") return chips + qcmCours("droit-c2");
   if (s === "maths") {
     html = `<p class="lead">Deux exercices par jour sur le chapitre en cours, corrigés pas à pas. Fais-les sur papier avant de regarder.</p>` +
       ((ed?.maths || []).map((m, i) => mathsCard(m, `maths:${ed.date}:${i}`)).join("") || vide);
@@ -429,6 +430,44 @@ function entrainement() {
       `<details class="card"><summary><div class="meta"><span class="pill">${esc(e.plan.matiere)}</span><span>${fmtDate(e.date)}</span></div><h3>${esc(e.plan.sujet)}</h3></summary><div class="body">${planCard(e.plan, e.date, true)}</div></details>`).join("");
   }
   return chips + html + (older ? title("Jours précédents") + older : "");
+}
+
+// ---------- QCM de cours (droit T1 C2 : les majeures) ----------
+const QCMS = { "droit-c2": { url: "data/qcm-droit-c2.json", nom: "Droit · T1 C2 – Sources du droit" } };
+const melange = (a) => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+function qcmNouvelle(id, ids) {
+  const s = { ids: melange(ids), perm: {}, ans: {}, saved: false };
+  ids.forEach((q) => (s.perm[q] = melange([0, 1, 2, 3])));
+  store.set(`qcm:${id}`, s); return s;
+}
+function qcmCours(id = "droit-c2") {
+  const d = (state.qcmData ||= {})[id];
+  if (!d) { fetch(QCMS[id].url).then((r) => r.json()).then((x) => { state.qcmData[id] = x; render(); }).catch(() => {}); return loading("Chargement du QCM…"); }
+  const byId = Object.fromEntries(d.questions.map((q) => [q.id, q]));
+  let s = store.get(`qcm:${id}`, null);
+  if (!s || !s.ids.every((k) => byId[k])) s = qcmNouvelle(id, d.questions.map((q) => q.id));
+  const n = s.ids.length, faites = s.ids.filter((k) => s.ans[k] !== undefined);
+  const rates = faites.filter((k) => s.ans[k] !== byId[k].bonne_reponse), fini = faites.length === n;
+  if (fini && !s.saved) {
+    const h = store.get("qcmHist", {}); (h[id] ||= []).unshift({ date: new Date().toISOString(), ok: n - rates.length, n, rates });
+    store.set("qcmHist", h); s.saved = true; store.set(`qcm:${id}`, s);
+  }
+  const note = Math.round(((n - rates.length) / n) * 200) / 10;
+  const bilan = fini ? `<div class="final"><div class="kicker">${n < d.questions.length ? "Tes erreurs refaites" : "Ta note"}</div><b>${String(note).replace(".", ",")}/20</b>
+      <div class="trad">${n - rates.length}/${n} bonnes réponses.</div></div>
+    ${rates.length ? `${title("Majeures à revoir", rates.length)}${rates.map((k) => `<div class="block"><h4>${esc(byId[k].majeure)}</h4><p>${esc(byId[k].majeure_a_ecrire)}</p></div>`).join("")}
+      ${bigBtn(`Refaire mes ${rates.length} erreur${rates.length > 1 ? "s" : ""}`, `data-qcmretry="${id}"`)}` : `<p class="lead">Aucune erreur : toutes les majeures sont acquises.</p>`}
+    ${bigBtn("Recommencer les 18 questions", `data-qcmnew="${id}"`)}` : "";
+  const hist = (store.get("qcmHist", {})[id] || []).slice(0, 8);
+  return `<p class="lead">Pour chaque situation, trouve la bonne règle. Après ta réponse, recopie la majeure toute prête dans ton syllogisme.</p>
+    ${bilan}
+    ${title(QCMS[id].nom, `${faites.length}/${n}`)}
+    ${s.ids.map((k, i) => { const q = byId[k], p = s.perm[k], a = s.ans[k];
+      const vue = { question: q.question, choix: p.map((o) => q.choix[o]), bonne: p.indexOf(q.bonne_reponse), explication: q.explication };
+      return qcm(vue, a === undefined ? undefined : p.indexOf(a), `data-qcm="${id}" data-qk="${k}"`, "var(--droit)",
+        `<div class="meta"><span class="pill">Droit · C2</span><span>Q${i + 1}</span></div>`)
+        + (a !== undefined ? `<div class="block" style="border-left:3px solid var(--droit);padding-left:10px;margin:-6px 0 14px"><h4>Majeure à écrire · ${esc(q.majeure)}</h4><p>${esc(q.majeure_a_ecrire)}</p></div>` : ""); }).join("")}
+    ${hist.length ? title("Tes résultats") + `<table class="hist">${hist.map((x) => `<tr><td>${fmtDate(x.date.slice(0, 10), { day: "numeric", month: "short" })}</td><td>${String(Math.round((x.ok / x.n) * 200) / 10).replace(".", ",")}/20 (${x.ok}/${x.n})</td></tr>`).join("")}</table>` : ""}`;
 }
 
 // Méthodes : reprises de la méthodologie de ton prof (ECT 2026/2027)
@@ -716,6 +755,16 @@ $("#view").addEventListener("click", (e) => {
   if ((el = at("data-show"))) { state.shown[el.dataset.show] = true; actif(); return keep(); }
   if ((el = at("data-vu"))) { const v = store.get("vus", {}); v[el.dataset.vu] = true; store.set("vus", v); actif(); return keep(); }
   if ((el = at("data-train"))) { state.trainSub = el.dataset.train; return render(); }
+  if ((el = at("data-qcm")) && !el.disabled) {
+    const id = el.dataset.qcm, s = store.get(`qcm:${id}`, null); if (!s) return;
+    const k = el.dataset.qk; s.ans[k] = s.perm[k][+el.dataset.c]; store.set(`qcm:${id}`, s); actif(); return keep();
+  }
+  if ((el = at("data-qcmretry"))) {
+    const id = el.dataset.qcmretry, s = store.get(`qcm:${id}`, null), d = state.qcmData[id];
+    const rates = s.ids.filter((k) => s.ans[k] !== d.questions.find((q) => q.id === k).bonne_reponse);
+    qcmNouvelle(id, rates); scrollTo(0, 0); return render();
+  }
+  if ((el = at("data-qcmnew"))) { const id = el.dataset.qcmnew; qcmNouvelle(id, state.qcmData[id].questions.map((q) => q.id)); scrollTo(0, 0); return render(); }
 
   if ((el = at("data-trou")) && !el.disabled) {
     const key = `trous:${state.ed.date}:${state.lang}`, r = store.get(key, {});
@@ -756,7 +805,7 @@ $("#view").addEventListener("click", (e) => {
 
   if (t.id === "export") {
     const data = {};
-    for (const k of ["answers", "stats", "history", "read", "leitner", "newDay", "agenda", "actif", "vus", "pieges", "concours", "me"]) data[k] = store.get(k, null);
+    for (const k of ["answers", "stats", "history", "read", "leitner", "newDay", "agenda", "actif", "vus", "pieges", "concours", "me", "qcmHist", "qcm:droit-c2"]) data[k] = store.get(k, null);
     for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k.startsWith("ect:trous:")) data[k.slice(4)] = store.get(k.slice(4)); }
     const txt = JSON.stringify(data);
     navigator.clipboard?.writeText(txt).then(() => alert("Progression copiée. Colle-la dans une note pour la sauvegarder."), () => prompt("Copie ce texte :", txt));

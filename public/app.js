@@ -589,6 +589,9 @@ function reviser() {
 //  MINI-JEUX : auteurs, dates, arrêts
 // =====================================================================
 const JEUX = {
+  pluie: { t: "Pluie de réponses", i: "🌧️", d: "Les réponses tombent : touche la bonne avant qu'elle s'écrase. Ça accélère !" },
+  millio: { t: "Qui veut gagner", i: "💰", d: "10 questions jusqu'au million. Jokers 50/50 et avis du public." },
+  duel: { t: "Duel à deux", i: "⚔️", d: "Un téléphone, deux joueurs face à face. Le plus rapide gagne. 7 points." },
   chrono: { t: "Chrono 60 s", i: "⏱️", d: "Un max de bonnes réponses en 60 secondes. Enchaîne pour gagner des bonus." },
   survie: { t: "Vrai ou faux", i: "❤️", d: "Associations vraies ou fausses. 3 vies : jusqu'où iras-tu ?" },
   frise: { t: "Frise", i: "📅", d: "Remets 4 événements dans l'ordre chronologique. 5 manches." },
@@ -622,14 +625,47 @@ function jeuStart(mode) {
   if (mode === "survie") { j.vies = 3; j.q = jeuVF(); }
   if (mode === "frise") { j.manche = 1; j.f = jeuFrise(); }
   if (mode === "paires") j.p = jeuPaires();
-  state.jeu = j; jeuTick();
+  if (mode === "pluie") { j.vies = 3; j.v = .11; j.y = 0; j.q = jeuQ(); }
+  if (mode === "millio") { j.niveau = 0; j.q = jeuQ(); j.cache = []; j.pub = null; j.jokers = { ff: true, pub: true }; }
+  if (mode === "duel") { j.sc = [0, 0]; j.q = jeuQ(); j.bloque = [false, false]; }
+  state.jeu = j; jeuTick(); if (mode === "pluie") pluieLoop();
 }
 function jeuFin(score) {
   const j = state.jeu, rec = store.get("jeuRec", {}), m = j.mode;
   const mieux = m === "paires" ? rec[m] === undefined || score < rec[m] : score > (rec[m] || 0);
-  if (mieux) { rec[m] = score; store.set("jeuRec", rec); }
-  j.fini = { score, record: mieux }; actif(); clearInterval(state.jeuTimer);
+  if (mieux) { rec[m] = score; store.set("jeuRec", rec); setTimeout(confettis, 150); }
+  j.fini = { score, record: mieux }; actif(); clearInterval(state.jeuTimer); cancelAnimationFrame(state.pluieRaf);
 }
+const buzz = () => navigator.vibrate?.(90);
+function confettis() {
+  const c = document.createElement("div"); c.className = "confetti";
+  c.innerHTML = Array.from({ length: 60 }, () => `<i style="left:${Math.random() * 100}%;animation-delay:${Math.random() * .5}s;animation-duration:${1.6 + Math.random()}s;background:hsl(${Math.random() * 360} 90% 60%);transform:rotate(${Math.random() * 360}deg)"></i>`).join("");
+  document.body.appendChild(c); setTimeout(() => c.remove(), 3200);
+}
+// Pluie : la rangée de réponses descend à chaque image
+function pluieLoop() {
+  cancelAnimationFrame(state.pluieRaf);
+  let last = performance.now();
+  const step = (t) => {
+    const j = state.jeu; if (!j || j.mode !== "pluie" || j.fini) return;
+    const dt = Math.min(.1, (t - last) / 1000); last = t;
+    const row = document.getElementById("pluie-row"), zone = document.getElementById("pluie");
+    if (row && zone) {
+      j.y += dt * j.v;
+      row.style.transform = `translateY(${Math.min(1, j.y) * (zone.clientHeight - row.offsetHeight)}px)`;
+      if (j.y >= 1) { pluieRate(`💥 Trop lent ! C'était ${j.q.it.r}`); return; }
+    }
+    state.pluieRaf = requestAnimationFrame(step);
+  };
+  state.pluieRaf = requestAnimationFrame(step);
+}
+function pluieRate(msg) {
+  const j = state.jeu; buzz(); j.vies--; j.combo = 0; j.flash = { ok: false, t: msg }; (j.revoir ||= []).push(j.q.it);
+  if (j.vies <= 0) { jeuFin(j.score); return render(); }
+  j.q = jeuQ(); j.y = 0; render(); pluieLoop();
+}
+const PALIERS = [100, 200, 500, 1000, 2000, 5000, 10000, 50000, 150000, 1000000];
+const euros = (n) => `${n.toLocaleString("fr-FR")} €`;
 function jeuTick() {
   clearInterval(state.jeuTimer);
   state.jeuTimer = setInterval(() => {
@@ -643,7 +679,7 @@ function jeuTick() {
     if (!left) { jeuFin(j.score); if (state.tab === "reviser") render(); }
   }, 200);
 }
-const fmtRec = (m, v) => v === undefined ? "—" : m === "paires" ? `${v} s` : m === "frise" ? `${v}/5` : `${v} pts`;
+const fmtRec = (m, v) => v === undefined ? "—" : m === "duel" ? "à 2" : m === "millio" ? euros(v) : m === "paires" ? `${v} s` : m === "frise" ? `${v}/5` : `${v} pts`;
 const lblQ = (it) => it.type === "auteur" ? "Qui est derrière cette idée ?" : "En quelle année ?";
 
 function jeux() {
@@ -656,6 +692,14 @@ function jeux() {
     <div class="jeux">${Object.entries(JEUX).map(([k, x]) => `<button class="jeu-card" data-jeu-go="${k}"><span class="ico">${x.i}</span>
       <span class="txt"><b>${x.t}</b><small>${x.d}</small></span><span class="rec">Record<br><b>${fmtRec(k, rec[k])}</b></span></button>`).join("")}</div>`;
   const info = JEUX[j.mode];
+  if (j.mode === "duel") {
+    const moitie = (p) => `<div class="duel-p ${p === 0 ? "haut" : ""} ${j.bloque[p] ? "bloque" : ""}">
+      <div class="duel-sc"><span>Joueur ${p + 1}</span><b>${j.sc[p]}</b></div>
+      ${j.fini ? `<div class="duel-win">${j.fini.duel === p ? "🏆 Gagné !" : "Perdu…"}</div>` : `<p class="qt">${esc(j.q.it.q)}</p>
+      <div class="duel-ch">${j.q.choix.map((c, i) => `<button class="choice" data-jeu-duel="${p}-${i}" ${j.bloque[p] ? "disabled" : ""}>${esc(c)}</button>`).join("")}</div>
+      <div class="jeu-flash ${j.flash?.ok ? "ok" : "ko"}">${esc(j.flash?.t || "")}</div>`}</div>`;
+    return `<div class="duel">${moitie(0)}<div class="duel-mid"><button class="read-btn" data-jeu-quit>✕ Quitter</button>${j.fini ? `<button class="read-btn" data-jeu-go="duel">↻ Revanche</button>` : `<span>Premier à 7</span>`}</div>${moitie(1)}</div>`;
+  }
   const head = (droite) => `<div class="jeu-top"><button class="read-btn" data-jeu-quit>✕ Quitter</button><b>${info.i} ${info.t}</b><span id="jeu-t">${droite}</span></div>`;
   if (j.fini) return head("") + `<div class="final"><div class="kicker">${j.fini.record ? "🏆 Nouveau record !" : "Partie terminée"}</div>
       <b>${fmtRec(j.mode, j.fini.score)}</b><div class="trad">Record : ${fmtRec(j.mode, rec[j.mode])}</div></div>
@@ -685,6 +729,20 @@ function jeux() {
         return `<button class="choice frise ${cls}" data-jeu-f="${i}" ${pos >= 0 ? "disabled" : ""}><span class="num">${pos >= 0 ? pos + 1 : ""}</span>${esc(x.q)}${done ? ` <b>· ${x.r}</b>` : ""}</button>`; }).join("")}
       ${done ? `<div class="expl"><b>${f.tap.every((i, k) => f.items[i] === bon[k]) ? "✓ Parfait !" : "✗ Bon ordre :"}</b> ${bon.map((x) => x.r).join(" → ")}</div>${bigBtn(j.manche < 5 ? "Manche suivante" : "Voir mon score", "data-jeu-next")}` : ""}</div>`;
   }
+  if (j.mode === "pluie") {
+    return head(`${"❤️".repeat(j.vies)}${"🤍".repeat(3 - j.vies)}`) + `<div class="progress" style="padding:10px 14px"><div class="row"><span>${j.score} pts</span><span>${j.combo >= 2 ? `🔥 ×${j.combo}` : `vitesse ${Math.round(j.v * 100 - 10)}`}</span></div></div>
+      <div class="pluie-q"><span class="pill">${lblQ(j.q.it)}</span><p class="qt">${esc(j.q.it.q)}</p></div>${flash}
+      <div class="pluie" id="pluie"><div class="pluie-row" id="pluie-row">${j.q.choix.map((c, i) => `<button class="goutte" data-jeu-pluie="${i}">${esc(c)}</button>`).join("")}</div><div class="sol"></div></div>`;
+  }
+  if (j.mode === "millio") {
+    const gain = PALIERS[j.niveau - 1] || 0;
+    return head(euros(gain)) + `<div class="ladder">${PALIERS.map((x, i) => `<span class="${i === j.niveau ? "now" : i < j.niveau ? "done" : ""} ${i === 4 ? "safe" : ""}">${x >= 1000 ? x / 1000 + "k" : x}</span>`).join("")}</div>
+      ${flash}<div class="q millio"><div class="meta"><span class="pill">Question ${j.niveau + 1} · pour ${euros(PALIERS[j.niveau])}</span></div>
+      <p class="qt">${esc(j.q.it.q)}</p>
+      ${j.q.choix.map((c, i) => j.cache.includes(i) ? `<button class="choice" disabled style="visibility:hidden">·</button>` : `<button class="choice" data-jeu-m="${i}"><b>${"ABCD"[i]}</b> ${esc(c)}${j.pub ? `<span class="pub" style="width:${j.pub[i]}%"></span><small>${j.pub[i]} %</small>` : ""}</button>`).join("")}
+      <div class="jokers"><button class="read-btn" data-jeu-joker="ff" ${j.jokers.ff ? "" : "disabled"}>50 / 50</button><button class="read-btn" data-jeu-joker="pub" ${j.jokers.pub ? "" : "disabled"}>👥 Public</button><button class="read-btn" data-jeu-partir>Partir avec ${euros(gain)}</button></div>
+      <p class="trad" style="text-align:center;margin-top:10px">Palier assuré à 2 000 € (question 5).</p></div>`;
+  }
   const p = j.p;
   return head(`${Math.floor((Date.now() - p.debut) / 1000)} s`) + `<p class="lead">Touche un auteur, puis son idée. Chaque erreur coûte 5 s.${p.err ? ` Erreurs : <b>${p.err}</b>` : ""}</p>${flash}
     <div class="paires"><div>${p.gauche.map((i) => `<button class="choice ${p.ok.includes(i) ? "ok" : ""} ${p.sel === i ? "sel" : ""}" data-jeu-pl="${i}" ${p.ok.includes(i) ? "disabled" : ""}>${esc(p.items[i].r)}</button>`).join("")}</div>
@@ -694,19 +752,58 @@ function jeux() {
 function jeuClick(el) {
   const j = state.jeu, d = el.dataset;
   if (d.jeuGo !== undefined) { jeuStart(d.jeuGo); scrollTo(0, 0); return render(); }
-  if (d.jeuQuit !== undefined) { state.jeu = null; clearInterval(state.jeuTimer); return render(); }
+  if (d.jeuQuit !== undefined) { state.jeu = null; clearInterval(state.jeuTimer); cancelAnimationFrame(state.pluieRaf); return render(); }
   if (!j || j.fini) return;
   const revoir = (it) => (j.revoir ||= []).push(it);
+  if (d.jeuPluie !== undefined && j.mode === "pluie") {
+    if (j.q.choix[+d.jeuPluie] !== j.q.it.r) return pluieRate(`✗ C'était ${j.q.it.r}`);
+    j.combo++; const gain = 1 + Math.floor(j.combo / 3); j.score += gain; j.v = Math.min(.45, j.v + .012);
+    j.flash = { ok: true, t: `✓ +${gain}` }; j.q = jeuQ(); j.y = 0; render(); return pluieLoop();
+  }
+  if (j.mode === "millio") {
+    if (d.jeuPartir !== undefined) { jeuFin(PALIERS[j.niveau - 1] || 0); return render(); }
+    if (d.jeuJoker === "ff" && j.jokers.ff) {
+      j.jokers.ff = false; j.cache = melange(j.q.choix.map((c, i) => i).filter((i) => j.q.choix[i] !== j.q.it.r)).slice(0, 2); return keep();
+    }
+    if (d.jeuJoker === "pub" && j.jokers.pub) {
+      j.jokers.pub = false; const bon = j.q.choix.indexOf(j.q.it.r), ok = 45 + Math.floor(Math.random() * 30);
+      const autres = j.q.choix.map((_, i) => i).filter((i) => i !== bon && !j.cache.includes(i));
+      let reste = 100 - ok; j.pub = j.q.choix.map(() => 0); j.pub[bon] = ok;
+      autres.forEach((i, k) => { const v = k === autres.length - 1 ? reste : Math.floor(Math.random() * reste); j.pub[i] = v; reste -= v; });
+      return keep();
+    }
+    if (d.jeuM !== undefined) {
+      if (j.q.choix[+d.jeuM] === j.q.it.r) {
+        j.niveau++; if (j.niveau === 10) { jeuFin(1000000); return render(); }
+        j.flash = { ok: true, t: `✓ ${euros(PALIERS[j.niveau - 1])} !` }; j.q = jeuQ(); j.cache = []; j.pub = null; return keep();
+      }
+      buzz(); revoir(j.q.it);
+ jeuFin(j.niveau >= 5 ? 2000 : 0); return render();
+    }
+  }
+  if (d.jeuDuel !== undefined && j.mode === "duel") {
+    const [pl, i] = d.jeuDuel.split("-").map(Number);
+    if (j.bloque[pl]) return;
+    if (j.q.choix[i] === j.q.it.r) {
+      j.sc[pl]++; j.flash = { ok: true, t: `Point joueur ${pl + 1} · ${j.q.it.r}` };
+      if (j.sc[pl] >= 7) { j.fini = { duel: pl }; setTimeout(confettis, 150); return render(); }
+      j.q = jeuQ(); j.bloque = [false, false];
+    } else {
+      buzz(); j.bloque[pl] = true; j.flash = { ok: false, t: `Joueur ${pl + 1} bloqué` };
+      if (j.bloque[0] && j.bloque[1]) { j.flash = { ok: false, t: `Personne ! C'était ${j.q.it.r}` }; j.q = jeuQ(); j.bloque = [false, false]; }
+    }
+    return render();
+  }
   if (d.jeuC !== undefined && j.mode === "chrono") {
     const c = j.q.choix[+d.jeuC], it = j.q.it;
     if (c === it.r) { j.combo++; const gain = 1 + Math.floor(j.combo / 3); j.score += gain; j.flash = { ok: true, t: `✓ +${gain}${gain > 1 ? " (bonus série)" : ""}` }; }
-    else { j.combo = 0; j.flash = { ok: false, t: `✗ C'était ${it.r}` }; revoir(it); }
+    else { j.combo = 0; j.flash = { ok: false, t: `✗ C'était ${it.r}` }; revoir(it); buzz(); }
     j.q = jeuQ(); return keep();
   }
   if (d.jeuVf !== undefined && j.mode === "survie") {
     const juste = (d.jeuVf === "1") === j.q.vrai, it = j.q.it;
     if (juste) { j.score++; j.combo++; j.flash = { ok: true, t: "✓ Bien vu" }; }
-    else { j.vies--; j.combo = 0; j.flash = { ok: false, t: `✗ ${it.q} → ${it.r}` }; revoir(it); }
+    else { j.vies--; j.combo = 0; buzz(); j.flash = { ok: false, t: `✗ ${it.q} → ${it.r}` }; revoir(it); }
     if (j.vies <= 0) jeuFin(j.score); else j.q = jeuVF();
     return keep();
   }
@@ -725,7 +822,7 @@ function jeuClick(el) {
     if (d.jeuPr !== undefined) {
       if (p.sel === null) { j.flash = { ok: false, t: "Choisis d'abord un auteur à gauche" }; return keep(); }
       if (p.sel === +d.jeuPr) { p.ok.push(p.sel); j.flash = { ok: true, t: `✓ ${p.items[p.sel].r}` }; }
-      else { p.err++; j.flash = { ok: false, t: "✗ Raté, +5 s" }; revoir(p.items[p.sel]); }
+      else { p.err++; buzz(); j.flash = { ok: false, t: "✗ Raté, +5 s" }; revoir(p.items[p.sel]); }
       p.sel = null;
       if (p.ok.length === p.items.length) jeuFin(Math.round((Date.now() - p.debut) / 1000) + 5 * p.err);
       return keep();
@@ -913,7 +1010,7 @@ $("#view").addEventListener("click", (e) => {
   if ((el = at("data-grade"))) { gradeCard(el.dataset.deck, el.dataset.grade === "1"); return render(); }
   if ((el = at("data-show"))) { state.shown[el.dataset.show] = true; actif(); return keep(); }
   if ((el = at("data-vu"))) { const v = store.get("vus", {}); v[el.dataset.vu] = true; store.set("vus", v); actif(); return keep(); }
-  if ((el = t.closest("[data-jeu-go],[data-jeu-quit],[data-jeu-c],[data-jeu-vf],[data-jeu-f],[data-jeu-next],[data-jeu-pl],[data-jeu-pr]")) && !el.disabled) return jeuClick(el);
+  if ((el = t.closest("[data-jeu-go],[data-jeu-quit],[data-jeu-c],[data-jeu-vf],[data-jeu-f],[data-jeu-next],[data-jeu-pl],[data-jeu-pr],[data-jeu-pluie],[data-jeu-m],[data-jeu-joker],[data-jeu-partir],[data-jeu-duel]")) && !el.disabled) return jeuClick(el);
   if ((el = at("data-train"))) { state.trainSub = el.dataset.train; return render(); }
   if ((el = at("data-qcm")) && !el.disabled) {
     const id = el.dataset.qcm, s = store.get(`qcm:${id}`, null); if (!s) return;

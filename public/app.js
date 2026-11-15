@@ -159,14 +159,16 @@ function aujourdhui() {
   const done = items.filter((i) => i[2]).length;
   const brief = ed ? Object.keys(RUB).map((k) => (ed.rubriques?.[k] || []).slice(0, 1).map((a) =>
     `<a href="#" data-goto="actu:${k}"><div class="meta"><span class="pill" style="color:${RUB[k].c}">${RUB[k].nom}</span></div><span>${esc(a.titre)}</span></a>`).join("")).join("") : "";
-  return `<div class="stats" style="grid-template-columns:repeat(3,1fr)">
+  const pct = items.length ? Math.round((100 * done) / items.length) : 0;
+  return `<div class="stats" style="grid-template-columns:repeat(2,1fr)">
       <div class="stat"><b>${daysUntil(concours)}</b><span>jours avant les écrits</span></div>
-      <div class="stat"><b>${serieJours()}</b><span>jours d'affilée</span></div>
-      <div class="stat"><b>${done}/${items.length}</b><span>séance du jour</span></div>
+      <div class="stat"><b>${serieJours()}</b><span>jour${serieJours() > 1 ? "s" : ""} d'affilée 🔥</span></div>
     </div>
     ${next ? `<a href="#" class="next-ev" data-goto="moi:agenda"><b>${esc(next.type)} ${esc(MAT[next.matiere] || next.matiere || "")}</b> ${esc(next.titre || "")} <span>${daysUntil(next.date) === 0 ? "aujourd'hui" : daysUntil(next.date) === 1 ? "demain" : "dans " + daysUntil(next.date) + " j"}</span></a>` : ""}
-    ${title("Ta séance du jour", `${done}/${items.length}`)}
-    <div class="todo">${items.map(([t, s, ok, go]) => `<a href="#" data-goto="${go}" class="${ok ? "ok" : ""}"><span class="tick">${ok ? "✓" : "○"}</span><span>${t}</span><small>${s}</small></a>`).join("")}</div>
+    ${title("Ta séance du jour")}
+    <div class="progress"><div class="row"><span>${done === items.length && done ? "Séance terminée, bravo !" : "Progression"}</span><span>${done}/${items.length}</span></div>
+      <div class="track"><div class="fill" style="width:${pct}%"></div></div></div>
+    <div class="todo">${items.map(([t, s, ok, go]) => `<a href="#" data-goto="${go}" class="${ok ? "ok" : ""}"><span class="tick"></span><span>${t}</span><small>${s}</small></a>`).join("")}</div>
     ${n ? `<div class="notion" style="margin-top:22px">
       <div class="kicker">Notion du jour · ${esc(n.matiere)}</div>
       <h3>${esc(n.titre)}</h3><p>${esc(n.definition)}</p><p class="ex">${esc(n.exemple)}</p></div>` : ""}
@@ -731,6 +733,7 @@ function moi() {
 function render() {
   const v = $("#view"), ed = state.ed;
   document.querySelectorAll("#tabs button").forEach((b) => b.classList.toggle("on", b.dataset.tab === state.tab));
+  if (document.body.dataset.tab !== state.tab) { document.body.dataset.tab = state.tab; v.animate?.([{ opacity: 0, transform: "translateY(6px)" }, { opacity: 1, transform: "none" }], { duration: 220, easing: "ease-out" }); }
   $("#dateline").textContent = ed ? fmtDate(ed.date + "T12:00", { weekday: "long", day: "numeric", month: "long" }) : "Édition à venir";
   $("#ticker").innerHTML = ed ? [...Object.keys(RUB).map((k) => `${RUB[k].court} <b>${(ed.rubriques?.[k] || []).length}</b>`),
     `Quiz <b>${(ed.quiz || []).length}</b>`, `MàJ <b>${fmtHour(ed.genere_le)}</b>`].map((s) => `<span>${s}</span>`).join("") : "";

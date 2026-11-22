@@ -245,7 +245,7 @@ function aujourdhui() {
   const ed = state.ed, n = ed?.notion_du_jour;
   const concours = store.get("concours", "2028-04-12");
   if (!state.plan) return loading(state.plan === null ? "Planning indisponible (connexion ?)." : "Chargement…");
-  const t = today(), monday = addDays(-wdIdx(t), t), jour = state.planDay ?? wdIdx(t), iso = addDays(jour, monday);
+  const t = today(), wk = state.planWeek || 0, monday = addDays(7 * wk - wdIdx(t), t), jour = state.planDay ?? wdIdx(t), iso = addDays(jour, monday);
   const perso = store.get("agenda", []).filter((e) => e.date >= t).map((e) => ({ ...e, perso: true }));
   const next = [...prochains(14, (e) => e.type === "kholle" || e.we), ...perso].sort((a, b) => a.date.localeCompare(b.date))[0];
   const items = seance(t), done = items.filter((i) => i.ok).length, pct = items.length ? Math.round((100 * done) / items.length) : 0;
@@ -261,7 +261,10 @@ function aujourdhui() {
       <div class="track"><div class="fill" style="width:${pct}%"></div></div></div>
     <div class="todo">${items.map((x) => `<a href="#" ${x.go ? `data-goto="${x.go}"` : `data-tick="${x.id}"`} class="${x.ok ? "ok" : ""}"><span class="tick" ${x.id ? `data-tick="${x.id}"` : ""}></span><span>${esc(x.t)}</span><small>${esc(x.s)}</small></a>`).join("") || `<a href="#" data-goto="reviser:fiches"><span class="tick"></span><span>Rien d'imposé aujourd'hui</span><small>flashcards</small></a>`}</div>
     ${title("Ton planning")}
-    <div class="days">${["Lu", "Ma", "Me", "Je", "Ve", "Sa", "Di"].map((l, j) => `<button class="${j === wdIdx(t) ? "today" : ""} ${j === jour ? "on" : ""}" data-pday="${j}">${l}</button>`).join("")}</div>
+    <div class="week-nav"><button class="read-btn" data-pweek="-1" aria-label="Semaine précédente">‹</button>
+      <span>${wk === 0 ? "Cette semaine" : wk === 1 ? "Semaine prochaine" : wk === -1 ? "Semaine dernière" : "Semaine"} · du ${fmtDate(monday + "T12:00", { day: "numeric", month: "numeric" })} au ${fmtDate(addDays(6, monday) + "T12:00", { day: "numeric", month: "numeric" })}</span>
+      <button class="read-btn" data-pweek="1" aria-label="Semaine suivante">›</button></div>
+    <div class="days">${["Lu", "Ma", "Me", "Je", "Ve", "Sa", "Di"].map((l, j) => `<button class="${wk === 0 && j === wdIdx(t) ? "today" : ""} ${j === jour ? "on" : ""}" data-pday="${j}">${l}</button>`).join("")}</div>
     <p class="lead" style="margin-top:10px"><b style="color:var(--ink)">${esc(state.plan.semaine[jour].nom)} ${fmtDate(iso + "T12:00", { day: "numeric", month: "numeric" })}</b> · ${esc(state.plan.semaine[jour].sous)}</p>
     <div class="slots">${planningJour(iso)}</div>
     ${n ? `<div class="notion" style="margin-top:22px">
@@ -1099,6 +1102,10 @@ $("#view").addEventListener("click", (e) => {
   if ((el = at("data-goto"))) { e.preventDefault(); const [tab, sub, x] = el.dataset.goto.split(":"); return goTo(tab, sub, x); }
   if ((el = at("data-sub"))) { const [tab, sub] = el.dataset.sub.split(":"); state.sub[tab] = sub; store.set("subs", state.sub); if (sub === "erreurs") state.errMode = ""; state.showBack = false; return render(); }
   if ((el = at("data-pday"))) { state.planDay = +el.dataset.pday; return keep(); }
+  if ((el = at("data-pweek"))) { // le dimanche, « › » ouvre directement le lundi suivant
+    const wk = (state.planWeek || 0) + +el.dataset.pweek; state.planWeek = wk;
+    state.planDay = wk === 0 ? wdIdx(today()) : +el.dataset.pweek > 0 ? 0 : 6; return keep();
+  }
   // fiches de cours
   if ((el = at("data-cmat"))) { state.coursMat = el.dataset.cmat; store.set("coursMat", state.coursMat); state.coursQ = ""; return render(); }
   if (at("data-crev")) { store.set("coursRev", !store.get("coursRev", false)); return keep(); }

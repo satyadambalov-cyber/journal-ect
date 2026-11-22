@@ -91,7 +91,8 @@ Règles absolues :
 - Tu n'utilises QUE les articles fournis, identifiés par leur "id". N'invente aucun fait, chiffre, date ou source. Si un détail n'est pas dans le titre/chapeau, reste général et prudent.
 - Les explications de contexte et de notions peuvent venir de tes connaissances générales (cours), mais doivent être exactes et de niveau ECT1 : définis chaque notion technique simplement, ne suppose aucun acquis de 2e année.
 - Privilégie les sujets exploitables aux concours. Évite faits divers, sport, people.
-- Rubrique "monde" : UNIQUEMENT des actualités concernant le monde anglophone (Royaume-Uni, États-Unis, Irlande, Canada, Australie, Inde…) ou hispanophone (Espagne, Amérique latine). Exclus tout autre pays. Même règle pour les questions de quiz "monde".
+- Pas de géopolitique : une seule actu par matière (économie, droit, management), chacune reliée à une notion du cours que l'étudiant peut utiliser en QRA (éco), en veille juridique ou majeure de cas pratique (droit), ou en application de la méthode TAC (management).
+- Les textes de langues (anglais, espagnol) peuvent s'inspirer des articles anglophones et hispanophones fournis.
 - Pour le droit, si les articles juridiques sont rares, prends l'actualité ayant la plus forte dimension juridique (loi, régulation, procès, décision, directive UE).
 - Le quiz porte en priorité sur les actualités du jour ET sur des notions de cours (définitions, auteurs, mécanismes). Une seule bonne réponse, 4 choix.
 Réponds UNIQUEMENT avec un objet JSON valide, sans texte autour.`;
@@ -101,36 +102,32 @@ const THEMES = ["Croissance et conjoncture", "Inflation et monnaie", "Emploi et 
   "Banques et marchés financiers", "Mondialisation et commerce international", "Concurrence et marchés",
   "Sources et institutions du droit", "Contrat", "Responsabilité", "Droit du travail", "Droit des entreprises et des sociétés",
   "Stratégie d'entreprise", "Gouvernance et parties prenantes", "Organisation et ressources humaines",
-  "Innovation et numérique", "Transition écologique", "Géopolitique et relations internationales"];
+  "Innovation et numérique", "Transition écologique"];
 
 const SCHEMA = `{
  "notion_du_jour": {"titre": str, "definition": str (3-4 phrases niveau ECT1), "exemple": str, "matiere": "Économie"|"Droit"|"Management"},
  "rubriques": {
-   "eco":   [ARTICLE x4],
-   "droit": [ARTICLE x3],
-   "mgmt":  [ARTICLE x3],
-   "monde": [ARTICLE x3]
+   "eco":   [ARTICLE x1],
+   "droit": [ARTICLE x1],
+   "mgmt":  [ARTICLE x1]
  },
  "langues": {
-   "en": {"id": str, "titre": str, "resume": str (80-110 mots en anglais, niveau B2), "phrase": str (phrase clé à retenir, en anglais), "traduction": str},
-   "es": {"id": str, "titre": str, "resume": str (80-110 mots en espagnol, niveau B1-B2), "phrase": str, "traduction": str},
    "vocab": [{"mot": str, "langue": "en"|"es", "traduction": str, "exemple": str} x8 (4 en, 4 es, vocabulaire éco/politique/société utile aux concours)],
    "trous": {"en": TROUS, "es": TROUS},
-   "traduction": [{"sens": "fr>en"|"en>fr"|"fr>es"|"es>fr", "phrase": str (phrase de niveau concours, liée à l'actu), "corrige": str, "astuce": str (point de grammaire ou de vocabulaire piège)} x4 : une de chaque sens],
    "pieges": [{"langue": "en"|"es", "question": str (en français : choisir la bonne forme, faux-ami, temps, préposition…), "choix": [str x4], "bonne": 0-3, "explication": str} x6 : 3 en, 3 es]
  },
  "plan": {"matiere": "Économie (QRA)"|"Droit (veille juridique)" (alterne d'un jour à l'autre), "sujet": str (format concours ECT : soit une question à réponse argumentée d'économie, soit un sujet de veille juridique sur un champ précis du thème « Libertés individuelles et activité économique des entreprises » ; inspiré de l'actu ; JAMAIS de dissertation d'ESH), "analyse": str (définition précise des termes et tension, 2-3 phrases), "problematique": str, "parties": [{"titre": str, "sous": [str x2]} x2 EXACTEMENT (plan en 2 parties et 2 sous-parties)], "exemples": [str x2-3 auteurs/théories (QRA) ou fondements juridiques et exemples réels récents (veille)]},
  "cas_pratique": {"faits": str (situation fictive de 80-120 mots, niveau ECT1 : contrat, responsabilité, sources du droit, organisation judiciaire, entreprise et sociétés), "question": str, "qualification": str (faits traduits en termes juridiques, sans règle de droit), "probleme": str (question juridique abstraite, jamais « M. X peut-il… »), "majeure": str (règles de droit exactes ; ne cite un article ou un arrêt que si tu es certain de son numéro et de son contenu), "conclusion": str (application aux faits et conséquences juridiques)},
  "maths": [{"titre": str, "niveau": 1|2|3, "enonce": str (exercice type DS sur le chapitre indiqué, notations texte simples : x², √, a/b, ≤), "etapes": [str x3-6 correction pas à pas, chaque calcul justifié], "resultat": str, "piege": str (l'erreur classique à éviter)} x2 (un niveau 1 ou 2, un niveau 2 ou 3)],
- "quiz": [QUESTION x9 : 3 "eco", 2 "droit", 2 "mgmt", 2 "monde"]
+ "quiz": [QUESTION x9 : 3 "eco", 3 "droit", 3 "mgmt" ; au moins 6 portent sur des notions de cours (définitions, auteurs, articles, théorisations), les autres sur les actus du jour]
 }
 ARTICLE = {"id": str (id d'un article fourni), "theme": UN SEUL parmi ${JSON.stringify(THEMES)}, "titre": str (titre clair en français), "resume": str (3-4 phrases), "contexte": str (pourquoi c'est important, 2-3 phrases), "notions": [str x2-4 notions du programme], "copie": str (comment l'utiliser dans une copie d'économie, de droit ou une étude de cas de management : idée d'accroche, de partie ou d'exemple, 2-3 phrases), "niveau": 1|2|3 (difficulté)}
 TROUS = {"texte": str (60-90 mots inspirés d'un article du jour, avec exactement 6 blancs notés {1} à {6}), "blancs": [{"choix": [str x3], "bonne": 0-2, "explication": str (courte, en français)} x6] : on teste vocabulaire, prépositions, temps et connecteurs}
-QUESTION = {"matiere": "eco"|"droit"|"mgmt"|"monde", "question": str, "choix": [str x4], "bonne": 0-3, "explication": str (2-3 phrases), "id": str|null (article lié éventuel)}`;
+QUESTION = {"matiere": "eco"|"droit"|"mgmt", "question": str, "choix": [str x4], "bonne": 0-3, "explication": str (2-3 phrases), "id": str|null (article lié éventuel)}`;
 
 const today = new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Paris" });
 // Chapitre de maths en cours (à mettre à jour au fil de l'année, ou via la variable GitHub MATHS_CHAPITRE)
-const MATHS = process.env.MATHS_CHAPITRE || "Chapitre 1 — Calculer et résoudre : priorités, fractions, puissances, racines carrées, développer, identités remarquables, factoriser, fractions littérales, équations (produit nul, quotient nul, x² = a), inéquations, tableaux de signe, systèmes 2×2 par substitution";
+const MATHS = process.env.MATHS_CHAPITRE || "Chapitre 4 — Suites et sommes usuelles : suites arithmétiques (u_n = u_p + (n−p)r), géométriques (u_n = u_p q^(n−p)), arithmético-géométriques (point fixe ℓ = b/(1−a), u_n = ℓ + (u_0−ℓ)a^n), raisonnement par récurrence, sommes avec Σ (somme de constantes (n−p+1)a, somme des entiers n(n+1)/2, somme arithmétique (n−p+1)(u_p+u_n)/2, somme géométrique u_p(1−q^(n−p+1))/(1−q), linéarité). Dans chaque correction, écris d'abord la formule utilisée, puis son application avec les valeurs de l'exercice";
 const userMsg = `Nous sommes le ${today}. Chapitre de maths en cours (exercices "maths") : ${MATHS}. Voici les articles récents (JSON). Le champ "hint" est la rubrique suggérée par le flux, tu peux le réaffecter.
 Produis l'édition du jour selon ce schéma :
 ${SCHEMA}

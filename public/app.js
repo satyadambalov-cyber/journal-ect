@@ -201,6 +201,8 @@ function seance(iso) {
   const man = (id, t, s, go) => items.push({ id, t, s, ok: !!tk[id], go });
   const auto = (t, s, ok, go) => items.push({ t, s, ok, go });
   const flash = (m, label) => { const n = cards ? fichesQueue("cours", m).length : "…"; auto(`Flashcards ${label}`, n === 0 ? "à jour" : `${n} à revoir`, n === 0, `reviser:fiches:${m}`); };
+  const qcmJour = (id, t) => { const h = (store.get("qcmHist", {})[id] || [])[0], fait = !!h && h.date.slice(0, 10) === iso;
+    auto(t, fait ? `${String(Math.round((h.ok / h.n) * 200) / 10).replace(".", ",")}/20` : `${QCMS[id].n} questions`, fait, `reviser:entrainement:qcm=${id}`); };
   const vac = enVacances(iso);
   // matin
   if (!vac && J.matin === "maths") {
@@ -209,11 +211,11 @@ function seance(iso) {
     flash("maths", "maths");
   } else if (!vac && J.matin === "de") {
     man("cours", "Fiches droit et éco du cours de la veille", "articles, notions", "reviser:cours:droit");
-    const h = (store.get("qcmHist", {})["droit-c2"] || [])[0];
-    auto("QCM droit : les majeures", h && h.date.slice(0, 10) === iso ? `${String(Math.round((h.ok / h.n) * 200) / 10).replace(".", ",")}/20` : "18 questions", !!h && h.date.slice(0, 10) === iso, "reviser:entrainement:qcm");
+    qcmJour("droit-c3", "QCM droit : justice et preuve");
     flash("droit", "droit"); flash("eco", "éco");
   } else if (!vac && J.matin === "mgmt") {
     man("cours", "Fiche de management du cours de la veille", "théorisations", "reviser:cours:mgmt");
+    qcmJour("mgmt-c34", "QCM management : les diagnostics");
     flash("mgmt", "management");
   }
   // khôlles et DS du jour
@@ -504,12 +506,12 @@ function mathsCard(m, k) {
 
 function entrainement() {
   const ed = state.ed, s = state.trainSub || "maths";
-  const chips = `<div class="chips">${Object.entries({ qcm: "QCM droit", maths: "Maths", cas: "Cas pratique", sujet: "QRA / veille" }).map(([k, v]) =>
+  const chips = `<div class="chips">${Object.entries({ qcm: "QCM", maths: "Maths", cas: "Cas pratique", sujet: "QRA / veille" }).map(([k, v]) =>
     `<button class="chip ${k === s ? "on" : ""}" data-train="${k}">${v}</button>`).join("")}</div>`;
   const vide = `<p class="lead">Rien aujourd'hui : ça arrive avec la prochaine édition du matin.</p>`;
   let html = "", older = "";
   const eds = bankReady() ? state.eds.filter((e) => e.date !== ed?.date) : [];
-  if (s === "qcm") return chips + qcmCours("droit-c2");
+  if (s === "qcm") return chips + qcmCours(state.qcmId);
   if (s === "maths") {
     html = `<p class="lead">Deux exercices par jour sur le chapitre en cours, corrigés pas à pas. Fais-les sur papier avant de regarder.</p>` +
       ((ed?.maths || []).map((m, i) => mathsCard(m, `maths:${ed.date}:${i}`)).join("") || vide);
@@ -528,14 +530,25 @@ function entrainement() {
 }
 
 // ---------- QCM de cours (droit T1 C2 : les majeures) ----------
-const QCMS = { "droit-c2": { url: "data/qcm-droit-c2.json", nom: "Droit · T1 C2 – Sources du droit" } };
+const QCMS = {
+  "droit-c3": { url: "data/qcm-droit-c3.json", m: "droit", nom: "Droit · T1 C3 – Justice et preuve", court: "Droit C3", n: 20 },
+  "droit-c2": { url: "data/qcm-droit-c2.json", m: "droit", nom: "Droit · T1 C2 – Sources du droit", court: "Droit C2", n: 18 },
+  "mgmt-c34": { url: "data/qcm-mgmt-c34.json", m: "mgmt", nom: "Management · C3-C4 – Les diagnostics", court: "Mgmt C3-C4", n: 12 },
+  "eco-c3": { url: "data/qcm-eco-c3.json", m: "eco", nom: "Économie · T1 C3 – Relations entre agents", court: "Éco C3", n: 10 },
+};
+const QCM_MAT = { droit: { c: "var(--droit)", maj: "Majeure à écrire", rev: "Majeures à revoir", lead: "Pour chaque situation, trouve la bonne règle. Après ta réponse, recopie la majeure toute prête dans ton syllogisme." },
+  mgmt: { c: "var(--mgmt)", maj: "Théorisation à dire", rev: "Théorisations à revoir", lead: "Choisis la bonne notion, puis retiens la théorisation (définition + auteur) à placer en khôlle ou en DS." },
+  eco: { c: "var(--eco)", maj: "À placer en QRA", rev: "Notions à revoir", lead: "Choisis la bonne réponse, puis retiens la phrase à placer dans ta QRA." } };
+const qcmNom = (id) => QCMS[id].nom.replace(/^[^·]+· /, "");
 const melange = (a) => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 function qcmNouvelle(id, ids) {
   const s = { ids: melange(ids), perm: {}, ans: {}, saved: false };
   ids.forEach((q) => (s.perm[q] = melange([0, 1, 2, 3])));
   store.set(`qcm:${id}`, s); return s;
 }
-function qcmCours(id = "droit-c2") {
+function qcmCours(id = "droit-c3") {
+  if (!QCMS[id]) id = "droit-c3";
+  const M = QCM_MAT[QCMS[id].m];
   const d = (state.qcmData ||= {})[id];
   if (!d) { fetch(QCMS[id].url).then((r) => r.json()).then((x) => { state.qcmData[id] = x; render(); }).catch(() => {}); return loading("Chargement du QCM…"); }
   const byId = Object.fromEntries(d.questions.map((q) => [q.id, q]));
@@ -550,18 +563,19 @@ function qcmCours(id = "droit-c2") {
   const note = Math.round(((n - rates.length) / n) * 200) / 10;
   const bilan = fini ? `<div class="final"><div class="kicker">${n < d.questions.length ? "Tes erreurs refaites" : "Ta note"}</div><b>${String(note).replace(".", ",")}/20</b>
       <div class="trad">${n - rates.length}/${n} bonnes réponses.</div></div>
-    ${rates.length ? `${title("Majeures à revoir", rates.length)}${rates.map((k) => `<div class="block"><h4>${esc(byId[k].majeure)}</h4><p>${esc(byId[k].majeure_a_ecrire)}</p></div>`).join("")}
-      ${bigBtn(`Refaire mes ${rates.length} erreur${rates.length > 1 ? "s" : ""}`, `data-qcmretry="${id}"`)}` : `<p class="lead">Aucune erreur : toutes les majeures sont acquises.</p>`}
-    ${bigBtn("Recommencer les 18 questions", `data-qcmnew="${id}"`)}` : "";
+    ${rates.length ? `${title(M.rev, rates.length)}${rates.map((k) => `<div class="block"><h4>${esc(byId[k].majeure)}</h4><p>${esc(byId[k].majeure_a_ecrire)}</p></div>`).join("")}
+      ${bigBtn(`Refaire mes ${rates.length} erreur${rates.length > 1 ? "s" : ""}`, `data-qcmretry="${id}"`)}` : `<p class="lead">Aucune erreur, tout est acquis.</p>`}
+    ${bigBtn(`Recommencer les ${d.questions.length} questions`, `data-qcmnew="${id}"`)}` : "";
   const hist = (store.get("qcmHist", {})[id] || []).slice(0, 8);
-  return `<p class="lead">Pour chaque situation, trouve la bonne règle. Après ta réponse, recopie la majeure toute prête dans ton syllogisme.</p>
+  const choix = `<div class="chips">${Object.entries(QCMS).map(([k, v]) => `<button class="chip ${k === id ? "on" : ""}" data-qcmsel="${k}">${v.court}</button>`).join("")}</div>`;
+  return `${choix}<p class="lead">${M.lead}</p>
     ${bilan}
     ${title(QCMS[id].nom, `${faites.length}/${n}`)}
     ${s.ids.map((k, i) => { const q = byId[k], p = s.perm[k], a = s.ans[k];
       const vue = { question: q.question, choix: p.map((o) => q.choix[o]), bonne: p.indexOf(q.bonne_reponse), explication: q.explication };
-      return qcm(vue, a === undefined ? undefined : p.indexOf(a), `data-qcm="${id}" data-qk="${k}"`, "var(--droit)",
-        `<div class="meta"><span class="pill">Droit · C2</span><span>Q${i + 1}</span></div>`)
-        + (a !== undefined ? `<div class="block" style="border-left:3px solid var(--droit);padding-left:10px;margin:-6px 0 14px"><h4>Majeure à écrire · ${esc(q.majeure)}</h4><p>${esc(q.majeure_a_ecrire)}</p></div>` : ""); }).join("")}
+      return qcm(vue, a === undefined ? undefined : p.indexOf(a), `data-qcm="${id}" data-qk="${k}"`, M.c,
+        `<div class="meta"><span class="pill">${QCMS[id].court}</span><span>Q${i + 1}</span></div>`)
+        + (a !== undefined ? `<div class="block" style="border-left:3px solid ${M.c};padding-left:10px;margin:-6px 0 14px"><h4>${M.maj} · ${esc(q.majeure)}</h4><p>${esc(q.majeure_a_ecrire)}</p></div>` : ""); }).join("")}
     ${hist.length ? title("Tes résultats") + `<table class="hist">${hist.map((x) => `<tr><td>${fmtDate(x.date.slice(0, 10), { day: "numeric", month: "short" })}</td><td>${String(Math.round((x.ok / x.n) * 200) / 10).replace(".", ",")}/20 (${x.ok}/${x.n})</td></tr>`).join("")}</table>` : ""}`;
 }
 
@@ -1076,7 +1090,7 @@ const goTo = (tab, sub, x) => {
   if (x !== undefined) {
     if (sub === "cours") { state.coursMat = x; store.set("coursMat", x); state.coursQ = ""; }
     if (sub === "fiches") state.ficheMat = x;
-    if (sub === "entrainement") state.trainSub = x;
+    if (sub === "entrainement") { const [t, q] = x.split("="); state.trainSub = t; if (q) state.qcmId = q; }
     if (sub === "kholle") { state.khMat = x; if (state.kh?.m !== x) state.kh = null; }
     if (sub === "erreurs") { state.errMode = x; state.relIdx = 0; state.relShow = false; }
     if (tab === "langues") { state.lang = x; store.set("lang", x); }
@@ -1152,9 +1166,10 @@ $("#view").addEventListener("click", (e) => {
     const id = el.dataset.qcm, s = store.get(`qcm:${id}`, null); if (!s) return;
     const k = el.dataset.qk; s.ans[k] = s.perm[k][+el.dataset.c]; store.set(`qcm:${id}`, s); actif();
     const q = state.qcmData[id]?.questions.find((x) => String(x.id) === String(k));
-    if (q && s.ans[k] !== q.bonne_reponse) addErreur({ m: "droit", chap: QCMS[id].nom.replace(/^Droit · /, ""), erreur: `${q.question} → j'ai répondu : ${q.choix[s.ans[k]]}`, correction: `${q.choix[q.bonne_reponse]} ${q.explication} Majeure : ${q.majeure_a_ecrire}`, src: `qcm:${id}:${k}` });
+    if (q && s.ans[k] !== q.bonne_reponse) addErreur({ m: QCMS[id].m, chap: qcmNom(id), erreur: `${q.question} → j'ai répondu : ${q.choix[s.ans[k]]}`, correction: `${q.choix[q.bonne_reponse]} ${q.explication} ${QCM_MAT[QCMS[id].m].maj} : ${q.majeure_a_ecrire}`, src: `qcm:${id}:${k}` });
     return keep();
   }
+  if ((el = at("data-qcmsel"))) { state.qcmId = el.dataset.qcmsel; return render(); }
   if ((el = at("data-qcmretry"))) {
     const id = el.dataset.qcmretry, s = store.get(`qcm:${id}`, null), d = state.qcmData[id];
     const rates = s.ids.filter((k) => s.ans[k] !== d.questions.find((q) => q.id === k).bonne_reponse);
@@ -1195,7 +1210,7 @@ $("#view").addEventListener("click", (e) => {
 
   if (t.id === "export") {
     const data = {};
-    for (const k of ["answers", "stats", "history", "read", "leitner", "newDay", "agenda", "actif", "vus", "pieges", "concours", "qcmHist", "qcm:droit-c2", "erreurs", "todo", "kholleHist", "relu", "jeuRec", "coursMat", "coursRev", "lang"]) data[k] = store.get(k, null);
+    for (const k of ["answers", "stats", "history", "read", "leitner", "newDay", "agenda", "actif", "vus", "pieges", "concours", "qcmHist", ...Object.keys(QCMS).map((k) => `qcm:${k}`), "erreurs", "todo", "kholleHist", "relu", "jeuRec", "coursMat", "coursRev", "lang"]) data[k] = store.get(k, null);
     for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k.startsWith("ect:trous:")) data[k.slice(4)] = store.get(k.slice(4)); }
     const txt = JSON.stringify(data);
     navigator.clipboard?.writeText(txt).then(() => alert("Progression copiée. Colle-la dans une note pour la sauvegarder."), () => prompt("Copie ce texte :", txt));

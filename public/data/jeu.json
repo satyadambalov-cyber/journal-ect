@@ -37,7 +37,17 @@
     {"m": "mgmt", "q": "La bureaucratie et l'autorité rationnelle-légale", "r": "Max Weber"},
     {"m": "mgmt", "q": "Les ressources et compétences comme source d'avantage (VRIN)", "r": "Jay Barney"},
     {"m": "mgmt", "q": "La stratégie Océan bleu", "r": "Kim et Mauborgne"},
-    {"m": "mgmt", "q": "Les parties prenantes (stakeholders, 1984)", "r": "Edward Freeman"}
+    {"m": "mgmt", "q": "Les parties prenantes (stakeholders, 1984)", "r": "Edward Freeman"},
+    {"m": "mgmt", "q": "La croissance de la firme dépend de ses ressources (approche par les ressources, 1959)", "r": "Edith Penrose"},
+    {"m": "mgmt", "q": "Les compétences distinctives (core competences, 1990)", "r": "Hamel et Prahalad"},
+    {"m": "mgmt", "q": "Les capacités dynamiques (1997)", "r": "Teece et Pisano"},
+    {"m": "mgmt", "q": "Le premier modèle de formulation stratégique, ancêtre du SWOT", "r": "Learned, Christensen, Andrews, Guth (LCAG)"},
+    {"m": "mgmt", "q": "L'environnement porteur de risque et d'incertitude", "r": "Frank Knight"},
+    {"m": "mgmt", "q": "L'avantage concurrentiel par les coûts ou la différenciation", "r": "Michael Porter"},
+    {"m": "eco", "q": "Les 3 fonctions de la monnaie", "r": "Aristote"},
+    {"m": "eco", "q": "Les prémisses de la théorie quantitative de la monnaie", "r": "Jean Bodin"},
+    {"m": "eco", "q": "L'équation de Cambridge M = kPY", "r": "Marshall et Pigou"},
+    {"m": "eco", "q": "La préférence pour la liquidité (transaction, précaution, spéculation)", "r": "John Maynard Keynes"}
   ],
   "date": [
     {"m": "droit", "q": "Arrêt Jacques Vabre (Cour de cassation, contrôle de conventionnalité)", "r": "1975"},
@@ -70,6 +80,11 @@
     {"m": "eco", "q": "Mise en circulation des pièces et billets en euros", "r": "2002"},
     {"m": "eco", "q": "Faillite de Lehman Brothers", "r": "2008"},
     {"m": "eco", "q": "Création du SMIC (remplace le SMIG)", "r": "1970"},
-    {"m": "eco", "q": "Accord de Paris sur le climat", "r": "2015"}
+    {"m": "eco", "q": "Accord de Paris sur le climat", "r": "2015"},
+    {"m": "droit", "q": "Cass. soc. : un enregistrement à l'insu du salarié est une preuve illicite (caméra cachée)", "r": "1991"},
+    {"m": "droit", "q": "Ass. plén. : une preuve déloyale peut être admise (droit à la preuve)", "r": "2023"},
+    {"m": "eco", "q": "Loi ESS : les monnaies locales reconnues comme titres de paiement", "r": "2014"},
+    {"m": "eco", "q": "Règlement européen MiCA sur les crypto-actifs", "r": "2023"},
+    {"m": "eco", "q": "« The Theory of the Growth of the Firm » (Penrose, base de la RBV)", "r": "1959"}
   ]
 }

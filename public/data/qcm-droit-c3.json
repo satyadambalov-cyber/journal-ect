@@ -1,0 +1,285 @@
+{
+ "titre": "Droit – T1 C3 – Justice et preuve : les majeures",
+ "questions": [
+  {
+   "id": "droit-c3-01",
+   "majeure": "Principe du contradictoire",
+   "question": "Le principe du contradictoire impose que :",
+   "choix": [
+    "le juge mène lui-même une enquête sur les faits en représentant l'intérêt général ;",
+    "chaque partie puisse discuter les arguments et les preuves de l'autre avant que le juge statue ;",
+    "les audiences soient en principe publiques, sauf exceptions motivées ;",
+    "toute entreprise mise en cause puisse se défendre en se faisant assister d'un avocat."
+   ],
+   "bonne_reponse": 1,
+   "explication": "Les autres réponses décrivent la procédure inquisitoire, la publicité des débats et les droits de la défense.",
+   "majeure_a_ecrire": "Le principe du contradictoire, composante du droit au procès équitable (art. 6 § 1 CESDH, art. 15 et 16 CPC), impose que chaque partie puisse discuter les arguments et les preuves de l'autre avant que le juge ne statue."
+  },
+  {
+   "id": "droit-c3-02",
+   "majeure": "Tribunal des conflits",
+   "question": "Le Tribunal des conflits a pour mission :",
+   "choix": [
+    "de juger en cassation les arrêts rendus par les cours d'appel ;",
+    "de contrôler la conformité des lois à la Constitution ;",
+    "de rejuger en appel les décisions des tribunaux administratifs ;",
+    "de décider si une affaire relève de l'ordre judiciaire ou de l'ordre administratif."
+   ],
+   "bonne_reponse": 3,
+   "explication": "Cassation : Cour de cassation. Constitutionnalité : Conseil constitutionnel. Appel administratif : cour administrative d'appel.",
+   "majeure_a_ecrire": "Le Tribunal des conflits (1872) tranche les conflits de compétence entre l'ordre judiciaire et l'ordre administratif."
+  },
+  {
+   "id": "droit-c3-03",
+   "majeure": "Cour de cassation",
+   "question": "La Cour de cassation :",
+   "choix": [
+    "rejuge l'affaire au fond lorsqu'elle casse la décision attaquée ;",
+    "doit être saisie dans un délai de cinq jours pour une affaire civile ;",
+    "vérifie que le droit a été respecté sans rejuger les faits, le pourvoi devant être formé dans un délai de deux mois pour une affaire civile ;",
+    "se compose de deux chambres, l'une civile et l'autre pénale."
+   ],
+   "bonne_reponse": 2,
+   "explication": "5 jours, c'est le délai en matière pénale. Quand elle casse, elle renvoie devant une autre juridiction.",
+   "majeure_a_ecrire": "La Cour de cassation juge en droit : elle vérifie la bonne application du droit sans rejuger les faits. Le pourvoi est formé dans les 2 mois en matière civile (5 jours en pénal)."
+  },
+  {
+   "id": "droit-c3-04",
+   "majeure": "Recevabilité devant la CEDH",
+   "question": "La requête devant la Cour européenne des droits de l'homme n'est recevable que si :",
+   "choix": [
+    "le requérant a épuisé les voies de recours internes et saisit la Cour dans les quatre mois suivant la dernière décision de justice ;",
+    "la requête est formée dans les deux mois suivant la dernière décision, avant tout pourvoi en cassation ;",
+    "le requérant a d'abord saisi la Cour de justice de l'Union européenne ;",
+    "le requérant est une victime indirecte de la violation alléguée."
+   ],
+   "bonne_reponse": 0,
+   "explication": "La CEDH n'intervient qu'à titre subsidiaire, après l'appel et le pourvoi ; la victime doit être personnelle et directe.",
+   "majeure_a_ecrire": "La CEDH peut être saisie si les voies de recours internes sont épuisées, si la requête est compatible avec la Convention, si le requérant est victime personnelle et directe d'un préjudice important, et dans les 4 mois suivant la dernière décision interne."
+  },
+  {
+   "id": "droit-c3-05",
+   "majeure": "Specialia generalibus derogant",
+   "question": "En vertu de l'adage « specialia generalibus derogant », lorsqu'une règle de droit commercial existe pour une situation donnée :",
+   "choix": [
+    "elle s'applique par priorité sur la règle de droit civil, qui ne joue qu'à titre supplétif ;",
+    "la règle de droit civil l'emporte, car le droit civil est le droit commun ;",
+    "la règle commerciale et la règle civile s'appliquent cumulativement ;",
+    "le juge choisit librement entre les deux règles."
+   ],
+   "bonne_reponse": 0,
+   "explication": "Le droit civil est le droit commun : il ne s'applique que si aucune règle spéciale n'existe.",
+   "majeure_a_ecrire": "Selon l'adage « specialia generalibus derogant », les règles spéciales dérogent aux règles générales : la règle de droit commercial s'applique en priorité, le droit civil ne jouant qu'à titre supplétif."
+  },
+  {
+   "id": "droit-c3-06",
+   "majeure": "Rétroactivité in mitius",
+   "question": "La rétroactivité in mitius :",
+   "choix": [
+    "permet d'appliquer une loi pénale nouvelle plus sévère aux faits antérieurs non encore jugés ;",
+    "s'applique à tous les faits antérieurs, même définitivement jugés ;",
+    "permet d'appliquer une loi pénale nouvelle plus douce aux faits non encore définitivement jugés ;",
+    "est la règle générale en matière civile pour toute loi nouvelle."
+   ],
+   "bonne_reponse": 2,
+   "explication": "In mitius = « vers le plus doux ». Elle ne touche pas les condamnations définitives et c'est une exception pénale.",
+   "majeure_a_ecrire": "Par exception au principe de non-rétroactivité (art. 2 C. civ.), la loi pénale plus douce s'applique aux infractions commises avant son entrée en vigueur et non encore définitivement jugées (art. 112-1 C. pén.)."
+  },
+  {
+   "id": "droit-c3-07",
+   "majeure": "Quasi-délit",
+   "question": "Le quasi-délit est le fait :",
+   "choix": [
+    "de causer intentionnellement un dommage à autrui ;",
+    "de causer un dommage à autrui par imprudence ou négligence ;",
+    "volontaire et licite qui fait naître un droit de créance ;",
+    "de causer un dommage à autrui sans commettre aucune faute."
+   ],
+   "bonne_reponse": 1,
+   "explication": "Intentionnel : délit civil. Fait volontaire et licite : quasi-contrat.",
+   "majeure_a_ecrire": "Le quasi-délit est un fait juridique : un dommage causé à autrui par imprudence ou négligence, sans intention de nuire (le délit civil, lui, est intentionnel)."
+  },
+  {
+   "id": "droit-c3-08",
+   "majeure": "Art. 2274 C. civ.",
+   "question": "Selon l'article 2274 du Code civil, la bonne foi :",
+   "choix": [
+    "doit toujours être prouvée par celui qui s'en prévaut ;",
+    "n'est présumée que devant le juge pénal ;",
+    "est présumée de manière irréfragable ;",
+    "est toujours présumée, et c'est à celui qui allègue la mauvaise foi de la prouver."
+   ],
+   "bonne_reponse": 3,
+   "explication": "C'est une présomption simple : la mauvaise foi peut être prouvée.",
+   "majeure_a_ecrire": "Selon l'article 2274 du Code civil, la bonne foi est toujours présumée, et c'est à celui qui allègue la mauvaise foi à la prouver : la loi fixe ici elle-même la charge de la preuve."
+  },
+  {
+   "id": "droit-c3-09",
+   "majeure": "Acte authentique",
+   "question": "Celui qui conteste l'exactitude de ce qu'exprime un acte authentique doit :",
+   "choix": [
+    "demander une simple vérification d'écriture ;",
+    "engager une procédure d'inscription en faux, complexe et qui expose à des dommages et intérêts en cas d'échec ;",
+    "prouver seulement que l'acte n'a pas été signé de sa main ;",
+    "apporter un commencement de preuve par écrit."
+   ],
+   "bonne_reponse": 1,
+   "explication": "La vérification d'écriture sert à contester un acte sous signature privée.",
+   "majeure_a_ecrire": "L'acte authentique, reçu par un officier public (art. 1369 C. civ.), fait foi jusqu'à inscription de faux : seule cette procédure permet d'en contester le contenu."
+  },
+  {
+   "id": "droit-c3-10",
+   "majeure": "Présomption irréfragable",
+   "question": "Une présomption légale irréfragable :",
+   "choix": [
+    "peut être renversée par tout moyen de preuve ;",
+    "peut être renversée, mais seulement par les moyens que la loi limite ;",
+    "est laissée à l'appréciation du juge, qui peut l'écarter ;",
+    "lie le juge et ne peut pas être renversée par la preuve contraire."
+   ],
+   "bonne_reponse": 3,
+   "explication": "a = simple, b = mixte, c = présomption judiciaire.",
+   "majeure_a_ecrire": "Selon l'article 1354 du Code civil, la présomption légale est simple (renversable par tout moyen), mixte (par des moyens limités) ou irréfragable (aucune preuve contraire possible)."
+  },
+  {
+   "id": "droit-c3-11",
+   "majeure": "Aveu",
+   "question": "L'aveu :",
+   "choix": [
+    "a une force probante absolue lorsqu'il est judiciaire, et c'est au juge de décider de sa force lorsqu'il est extrajudiciaire ;",
+    "a toujours une force probante absolue, qu'il soit fait devant le juge ou en dehors ;",
+    "n'a jamais de force probante, car il émane de la partie qui le fait ;",
+    "est toujours soumis à l'appréciation souveraine du juge, même lorsqu'il est fait devant le tribunal."
+   ],
+   "bonne_reponse": 0,
+   "explication": "Tout dépend du cadre : devant le juge ou non.",
+   "majeure_a_ecrire": "L'aveu est la déclaration par laquelle une personne reconnaît pour vrai un fait qui produit contre elle des conséquences juridiques. Judiciaire, il a une force probante absolue ; extrajudiciaire, le juge en apprécie la force."
+  },
+  {
+   "id": "droit-c3-12",
+   "majeure": "Serment",
+   "question": "La force probante du serment est :",
+   "choix": [
+    "absolue dans tous les cas ;",
+    "peu élevée dans tous les cas ;",
+    "absolue lorsqu'il est décisoire, et peu élevée lorsqu'il est supplétoire ;",
+    "absolue lorsqu'il est supplétoire, et peu élevée lorsqu'il est décisoire."
+   ],
+   "bonne_reponse": 2,
+   "explication": "Décisoire : une partie le défère à l'autre, en dernier recours. Supplétoire : le juge le défère.",
+   "majeure_a_ecrire": "Le serment décisoire, déféré par une partie à l'autre, a une force probante absolue ; le serment supplétoire, déféré par le juge, a une force probante faible."
+  },
+  {
+   "id": "droit-c3-13",
+   "majeure": "Charge de la preuve du paiement",
+   "question": "Une SARL réclame le prix d'un devis. La cliente affirme avoir versé 2 000 € d'acompte en espèces, sans reçu. Qui doit prouver ?",
+   "choix": [
+    "La SARL doit prouver qu'elle n'a rien reçu.",
+    "La cliente doit prouver le paiement de l'acompte.",
+    "Personne : le juge partage la somme en deux.",
+    "La SARL, car elle est commerçante."
+   ],
+   "bonne_reponse": 1,
+   "explication": "La SARL prouve l'obligation (le devis signé) ; la cliente, qui se dit libérée de 2 000 €, prouve le paiement.",
+   "majeure_a_ecrire": "Selon l'article 1353 du Code civil, celui qui réclame l'exécution d'une obligation doit la prouver ; réciproquement, celui qui se prétend libéré doit justifier le paiement ou le fait qui a produit l'extinction de son obligation."
+  },
+  {
+   "id": "droit-c3-14",
+   "majeure": "Preuve entre commerçants",
+   "question": "Une cave (SAS) et un traiteur (SARL) se disputent le montant d'une commande de vins de 2 100 €, sans aucun écrit. Comment la prouver ?",
+   "choix": [
+    "Uniquement par écrit, car le montant dépasse 1 500 €.",
+    "Par tout moyen : la preuve est libre entre commerçants.",
+    "Uniquement par un commencement de preuve par écrit.",
+    "Par le carnet de commandes de la cave, qui suffit à lui seul."
+   ],
+   "bonne_reponse": 1,
+   "explication": "Le carnet et le bon de livraison non signé sont admissibles mais faibles : nul ne peut se constituer une preuve à soi-même (art. 1363).",
+   "majeure_a_ecrire": "Selon l'article L. 110-3 du Code de commerce, à l'égard des commerçants, les actes de commerce peuvent se prouver par tout moyen : l'exigence d'écrit de l'article 1359 du Code civil ne s'applique pas."
+  },
+  {
+   "id": "droit-c3-15",
+   "majeure": "Acte mixte : contre un écrit",
+   "question": "Un traiteur promet oralement une remise de 400 € à une cliente particulière, devant la sœur de celle-ci. Le devis signé n'en parle pas. La cliente peut-elle prouver la remise ?",
+   "choix": [
+    "Non, on ne prouve contre un écrit que par un autre écrit.",
+    "Oui, par tout moyen, y compris le témoignage de sa sœur, car elle agit contre un commerçant.",
+    "Oui, mais seulement si la remise est inférieure à 1 500 €.",
+    "Non, un témoin de la famille est toujours irrecevable."
+   ],
+   "bonne_reponse": 1,
+   "explication": "La règle de l'art. 1359 al. 2 tombe : dans un acte mixte, le particulier prouve librement contre le commerçant. Le juge sera prudent car le témoin est sa sœur.",
+   "majeure_a_ecrire": "Dans un acte mixte, la liberté de la preuve (art. L. 110-3 C. com.) joue contre le commerçant : le particulier peut prouver par tout moyen, même contre ou outre un écrit, par exception à l'article 1359 al. 2 du Code civil."
+  },
+  {
+   "id": "droit-c3-16",
+   "majeure": "Acte mixte : contre le particulier",
+   "question": "Le traiteur réclame 1 900 € pour un buffet commandé par téléphone par une particulière. Il n'a que le témoignage de sa salariée. Est-ce suffisant ?",
+   "choix": [
+    "Oui, la preuve est libre en matière commerciale.",
+    "Oui, car le témoin était présent pendant l'appel.",
+    "Non : contre un particulier, le commerçant doit un écrit au-delà de 1 500 €.",
+    "Non, car un témoignage n'est jamais admis en droit."
+   ],
+   "bonne_reponse": 2,
+   "explication": "La liberté de la preuve ne profite pas au commerçant qui agit contre un particulier. Il lui faut un écrit, ou un commencement de preuve par écrit complété.",
+   "majeure_a_ecrire": "Selon l'article 1359 du Code civil, l'acte juridique de plus de 1 500 € se prouve par écrit ; dans un acte mixte, la liberté de la preuve ne joue qu'à l'encontre du commerçant, qui doit prouver par écrit contre le particulier."
+  },
+  {
+   "id": "droit-c3-17",
+   "majeure": "Commencement de preuve par écrit",
+   "question": "La cliente avait envoyé : « D'accord pour le buffet de desserts, merci de le prévoir » (sans prix). Que vaut ce SMS ?",
+   "choix": [
+    "Un acte sous signature privée qui prouve tout.",
+    "Rien, car un SMS n'est pas un écrit.",
+    "Un commencement de preuve par écrit, à compléter (par exemple par le témoignage pour le prix).",
+    "Un aveu judiciaire."
+   ],
+   "bonne_reponse": 2,
+   "explication": "Il émane de celle qui conteste et rend la commande vraisemblable, mais il n'est pas signé et ne donne pas le prix.",
+   "majeure_a_ecrire": "Selon l'article 1362 du Code civil, constitue un commencement de preuve par écrit tout écrit qui, émanant de celui qui conteste un acte, rend vraisemblable ce qui est allégué ; il doit être complété par d'autres modes de preuve."
+  },
+  {
+   "id": "droit-c3-18",
+   "majeure": "Impossibilité de se procurer un écrit",
+   "question": "Le traiteur dit qu'il était impossible d'obtenir un écrit : la cliente était à la montagne, sans imprimante, et le buffet était urgent. L'argument tient-il ?",
+   "choix": [
+    "Oui, l'urgence est une impossibilité matérielle.",
+    "Non : c'est une difficulté, pas une impossibilité ; un SMS ou une signature électronique restaient possibles.",
+    "Oui, car l'éloignement suffit toujours.",
+    "Non, car l'article 1360 ne vise que la perte de l'écrit."
+   ],
+   "bonne_reponse": 1,
+   "explication": "La cliente a même envoyé un SMS le soir de l'appel. Et la signature peut être électronique (art. 1367).",
+   "majeure_a_ecrire": "Selon l'article 1360 du Code civil, l'écrit n'est pas exigé en cas d'impossibilité matérielle ou morale de se le procurer, d'usage, ou de perte par force majeure ; une simple difficulté ne suffit pas."
+  },
+  {
+   "id": "droit-c3-19",
+   "majeure": "Impossibilité morale",
+   "question": "Une mère a prêté 3 000 € en espèces à son fils, sans papier, devant une amie. Le fils parle de cadeau. Que plaider ?",
+   "choix": [
+    "La preuve est libre, car c'est un fait juridique.",
+    "L'impossibilité morale de se procurer un écrit entre mère et fils, pour rendre le témoignage recevable.",
+    "Rien : sans écrit, elle a perdu.",
+    "La liberté de la preuve entre commerçants."
+   ],
+   "bonne_reponse": 1,
+   "explication": "Le prêt est un acte juridique de plus de 1 500 € : écrit exigé. Si le juge admet l'impossibilité morale, la preuve redevient libre ; sinon, il faut un commencement de preuve par écrit (un message du fils).",
+   "majeure_a_ecrire": "Selon l'article 1360 du Code civil, l'exigence d'un écrit cède en cas d'impossibilité morale de se le procurer, notamment entre proches ; la preuve redevient alors libre (art. 1358) et le juge apprécie le témoignage."
+  },
+  {
+   "id": "droit-c3-20",
+   "majeure": "Loyauté de la preuve",
+   "question": "La cliente a enregistré à son insu un appel où le dirigeant reconnaît avoir reçu l'acompte. Que lui conseiller ?",
+   "choix": [
+    "Ne surtout pas le produire, il sera forcément écarté.",
+    "Le produire : depuis 2023, une preuve déloyale peut être retenue si elle est indispensable au droit à la preuve et proportionnée ; mais chercher aussi des preuves loyales.",
+    "Le produire : il vaut aveu judiciaire à force absolue.",
+    "Le produire : l'enregistrement clandestin est toujours loyal entre particuliers."
+   ],
+   "bonne_reponse": 1,
+   "explication": "Les propos sont un aveu extrajudiciaire : le juge en apprécie la force, à condition que l'enregistrement soit retenu.",
+   "majeure_a_ecrire": "Les preuves doivent être obtenues loyalement (art. 9 CPC ; Cass. soc., 20 novembre 1991) ; mais depuis Cass. Ass. plén., 22 décembre 2023, une preuve déloyale peut être retenue si elle est indispensable à l'exercice du droit à la preuve et que l'atteinte est proportionnée."
+  }
+ ]
+}

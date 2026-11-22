@@ -93,3 +93,9 @@ Ensuite, **tout est automatique** : une nouvelle édition chaque matin, même si
 - Le lien, la date, la source et le titre original affichés proviennent du flux, pas de l'IA.
 - Les résumés et analyses sont rédigés par l'IA à partir du titre et du chapeau : **ouvre la source** pour les détails et chiffres précis avant de les citer en copie.
 - Reuters, Légifrance et la Banque de France ne proposent pas de flux RSS publics fiables ; l'actualité juridique passe par vie-publique.fr, le Conseil constitutionnel et Le Monde Justice.
+
+## Planning, fiches et carnet d'erreurs (novembre 2026)
+- `public/data/planning.json` : semaine type, khôlles datées (groupe G), rotation des DS du week-end, vacances. **Période 3** : ajouter les nouvelles khôlles dans `kholles`.
+- `public/data/fiches.json` : fiches Droit / Éco / Management / Maths (formules en LaTeX, affichées avec KaTeX copié dans `public/vendor/katex`, donc aussi hors connexion).
+- Le carnet d'erreurs, la to-do cochée et les séries du mode khôlle sont stockés sur le téléphone (clés `erreurs`, `todo`, `kholleHist`) et inclus dans l'export.
+- L'édition du matin : 3 actus (éco, droit, management), plus de géopolitique ; quiz 3/3/3 ; maths sur le chapitre 4 (modifiable avec la variable `MATHS_CHAPITRE`).

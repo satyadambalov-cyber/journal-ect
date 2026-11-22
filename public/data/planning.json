@@ -1,0 +1,39 @@
+{
+ "maj": "2026-11-22",
+ "note": "Semaine type ECT1 groupe G. Pour la période 3 (janvier), ajouter les khôlles dans « kholles » (date AAAA-MM-JJ → liste [heure, matière, salle]).",
+ "mise_en_route_jusqu_au": "2026-11-29",
+ "vacances": [["2026-12-19", "2027-01-03"]],
+ "comment": {
+  "maths": ["10 min : réciter le cours sans regarder (définitions, formules). Ce qui manque, tu le relis.", "50 min : 2-3 exos du manuel puis la feuille du chapitre. Bloqué 10 min → correction, puis tu refais seul.", "10 min : carnet d'erreurs, une ligne par piège."],
+  "de": ["25 min : fiche du cours (plan, définitions exactes, un exemple ou un article par notion).", "35 min : un exercice rédigé. Droit : faits, problème, règle, application, conclusion. Éco : définitions, argument, explication, exemple.", "10 min : flashcards des définitions du jour."],
+  "mgmt": ["30 min : fiche (notions, modèles, auteurs, un exemple d'entreprise par notion).", "30 min : appliquer un modèle à un cas (Bonduelle, Ubisoft, khôlles corrigées).", "10 min : flashcards des notions du jour."],
+  "ds": ["Conditions réelles : téléphone dans une autre pièce, minuteur 2h.", "Demande le sujet dans le projet Prépa : sujet et corrigé.", "Garde la copie pour la correction du dimanche."]
+ },
+ "semaine": [
+  {"nom": "Lundi", "sous": "Cours 8h-16h · retour vers 16h35", "matin": "maths", "soir": "en", "creneaux": [["matin", "Maths", "Exos sur le chapitre de vendredi.", "maths"], ["20h45", "Anglais · 25 min", "Vocabulaire d'abord, puis texte à trous.", "lang"]]},
+  {"nom": "Mardi", "sous": "Cours 8h-18h", "matin": "de", "soir": "flash", "creneaux": [["matin", "Droit-éco", "Fiche du cours de lundi, puis un exercice.", "de"], ["20h45", "Flashcards · 25 min", "Définitions droit, éco, management. Tu te récites, tu ne relis pas.", "mgmt"]]},
+  {"nom": "Mercredi", "sous": "Cours 8h-12h · DS officiel 14h-18h", "matin": "maths", "soir": null, "creneaux": [["matin", "Maths", "Exos sur le cours de mardi. Rien de spécial pour le DS.", "maths"], ["14h-18h", "DS officiel", "Au lycée, salle D301.", "ds"], ["soir", "Libre", "", "free"]]},
+  {"nom": "Jeudi", "sous": "Cours 8h-18h", "matin": "mgmt", "soir": "es", "creneaux": [["matin", "Management", "Fiche du cours de mercredi, puis un modèle appliqué à un cas.", "mgmt"], ["20h45", "Espagnol · 20 min", "Vocabulaire et une conjugaison. Court exprès.", "lang"]]},
+  {"nom": "Vendredi", "sous": "Cours 8h-18h", "matin": "de", "soir": null, "creneaux": [["matin", "Droit-éco", "Fiche des cours de mercredi et jeudi, puis méthodo. Joker si une matière est en retard.", "de"], ["soir", "Libre", "Lever samedi au plus tard 8h.", "free"]]},
+  {"nom": "Samedi", "sous": "Trait d'Union Prépa jusqu'à 14h", "matin": null, "soir": null, "creneaux": [["→ 14h", "Trait d'Union Prépa", "Maths avec les tuteurs. Rien d'autre le matin.", "free"], ["15h-17h40", "DS n°1 du week-end", "%DS1%", "ds"], ["soir", "Libre", "", "free"]]},
+  {"nom": "Dimanche", "sous": "Lever au plus tard 8h", "matin": null, "soir": null, "creneaux": [["9h30-12h10", "DS n°2 du week-end", "%DS2%", "ds"], ["16h-17h", "Correction des 2 DS", "Avec le corrigé. Chaque erreur va dans le carnet d'erreurs.", "ds"], ["17h-17h15", "Regarder la semaine", "Quelles khôlles, quels jours.", "free"]]}
+ ],
+ "kholles": {
+  "2026-11-23": [["12h-13h", "Philo", "C313"]],
+  "2026-11-25": [["12h-13h", "Économie", "C302"]],
+  "2026-11-26": [["13h-14h", "Espagnol", "A203"]],
+  "2026-11-27": [["13h-14h", "Management", "C303"]],
+  "2026-11-30": [["13h-14h", "Maths", "A306"], ["17h-18h", "Droit", "C209"]],
+  "2026-12-02": [["12h-13h", "Management", "C209"]],
+  "2026-12-04": [["12h-13h", "Anglais", "A201"]],
+  "2026-12-07": [["12h-13h", "Lettres", "C207"]],
+  "2026-12-09": [["12h-13h", "Économie", "C210"]],
+  "2026-12-10": [["13h-14h", "Management", "C302"]],
+  "2026-12-11": [["13h-14h", "Espagnol", "C208"]],
+  "2026-12-14": [["12h-13h", "Droit", "C305"], ["16h-17h", "Management", "C303"]],
+  "2026-12-15": [["13h-14h", "Maths", "C303"]],
+  "2026-12-18": [["13h-14h", "Anglais", "A201"]]
+ },
+ "ds_rotation_depart": "2026-11-28",
+ "ds_rotation": [["Droit-éco", "Maths"], ["Management", "Droit-éco"], ["Management", "Maths"]]
+}

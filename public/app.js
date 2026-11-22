@@ -8,6 +8,8 @@ const RUB = {
   monde: { nom: "International", court: "Monde", c: "var(--monde)" },
 };
 const MAT = { eco: "Éco", droit: "Droit", mgmt: "Mgmt", maths: "Maths" };
+const ACTU = ["eco", "droit", "mgmt"];            // la géopolitique (« monde ») n'est plus affichée
+const strip = (s = "") => String(s).replace(/<br\s*\/?>|<\/p>/gi, " ").replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ");
 const fmtDate = (iso, opts = { day: "numeric", month: "short" }) =>
   iso ? new Date(iso).toLocaleDateString("fr-FR", opts) : "";
 const fmtHour = (iso) => iso ? new Date(iso).toLocaleString("fr-FR", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "";
@@ -23,13 +25,17 @@ const store = {
 const TABS = ["auj", "actu", "reviser", "langues", "moi"];
 let state = {
   ed: null, tab: TABS.includes(store.get("tab")) ? store.get("tab") : "auj",
-  sub: { actu: "eco", reviser: "fiches", langues: "trous", moi: "agenda", ...store.get("subs", {}) },
+  sub: { actu: "jour", reviser: "cours", langues: "vocab", moi: "agenda", ...store.get("subs", {}) },
   answers: store.get("answers", {}),   // { "2026-11-11": { 0: 2, 1: 0 } }
   read: store.get("read", {}),
   stats: store.get("stats", { streak: 0, best: 0 }),
   lang: store.get("lang", "en"),
   shown: {},                           // corrigés affichés
 };
+// anciennes rubriques retirées -> on retombe sur une rubrique existante
+if (!["jour", "exemples"].includes(state.sub.actu)) state.sub.actu = "jour";
+if (["classement", "methodes"].includes(state.sub.reviser)) state.sub.reviser = "cours";
+if (!["vocab", "trous", "pieges"].includes(state.sub.langues)) state.sub.langues = "vocab";
 const actif = () => { const a = store.get("actif", {}); a[today()] = true; store.set("actif", a); };
 
 // ---------- thème ----------
@@ -138,42 +144,129 @@ function serieJours() {
   return n;
 }
 
+// ---------- planning : semaine type, khôlles, DS ----------
+async function loadPlan() {
+  try { state.plan = await loadJSON("data/planning.json"); } catch { state.plan = null; }
+  render();
+}
+const wdIdx = (iso) => (new Date(iso + "T12:00").getDay() + 6) % 7; // 0 = lundi
+const KH_MAT = { "Économie": "eco", "Management": "mgmt", "Droit": "droit", "Maths": "maths", "Anglais": "en", "Espagnol": "es" };
+const MATIN = { maths: "maths", de: "droit", mgmt: "mgmt" };
+const COUL = { maths: "var(--maths)", de: "var(--droit)", mgmt: "var(--mgmt)", lang: "var(--monde)", ds: "var(--bad)", free: "var(--muted)", kh: "var(--accent)" };
+const JOURS = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"];
+const enVacances = (iso) => (state.plan?.vacances || []).some(([a, b]) => iso >= a && iso <= b);
+function dsWeekend(iso) { // [matière du samedi, matière du dimanche] pour la semaine de iso
+  const P = state.plan, sat = addDays(5 - wdIdx(iso), iso);
+  const k = Math.round((new Date(sat + "T12:00") - new Date(P.ds_rotation_depart + "T12:00")) / (7 * 864e5));
+  const L = P.ds_rotation; return L[((k % L.length) + L.length) % L.length];
+}
+function evenements(iso) { // khôlles et DS de la journée
+  const P = state.plan; if (!P || enVacances(iso)) return [];
+  const out = (P.kholles[iso] || []).map(([h, m, salle]) => ({ type: "kholle", h, m, salle, key: KH_MAT[m] }));
+  const wd = wdIdx(iso);
+  if (wd === 2) out.push({ type: "ds", h: "14h-18h", m: "DS officiel" });
+  if (wd === 5) out.push({ type: "ds", h: "15h-17h40", m: dsWeekend(iso)[0], we: 1 });
+  if (wd === 6) out.push({ type: "ds", h: "9h30-12h10", m: dsWeekend(iso)[1], we: 2 });
+  return out;
+}
+function prochains(n = 14, filtre = () => true) {
+  const out = [];
+  for (let i = 0; i <= n; i++) { const d = addDays(i); evenements(d).filter(filtre).forEach((e) => out.push({ ...e, date: d })); }
+  return out;
+}
+const quand = (iso) => { const n = daysUntil(iso); return n === 0 ? "aujourd'hui" : n === 1 ? "demain" : `${JOURS[wdIdx(iso)]} ${fmtDate(iso + "T12:00", { day: "numeric", month: "numeric" })}`; };
+
+function planningJour(iso) {
+  const P = state.plan, wd = wdIdx(iso), J = P.semaine[wd], tot = iso <= P.mise_en_route_jusqu_au;
+  if (enVacances(iso)) return `<div class="slot" style="--c:var(--good)"><div class="h"><span>${fmtDate(iso + "T12:00", { day: "numeric", month: "short" })}</span><b>Vacances</b></div><p>Pas de semaine type pendant les vacances : on fera un plan à part.</p></div>`;
+  const ds = dsWeekend(iso);
+  const slot = (h, t, d, c, how) => `<div class="slot" style="--c:${COUL[c] || c}"><div class="h"><span>${esc(h)}</span><b>${esc(t)}</b></div>${d ? `<p>${esc(d)}</p>` : ""}
+    ${how && P.comment[how] ? `<details><summary>Comment faire</summary><ol>${P.comment[how].map((x) => `<li>${esc(x)}</li>`).join("")}</ol></details>` : ""}</div>`;
+  const kh = (P.kholles[iso] || []).map(([h, m, salle]) => slot(h, `Khôlle ${m}`, `Salle ${salle}.${KH_MAT[m] ? " Fais une série en mode khôlle le matin ou dans le trajet." : ""}`, "kh")).join("");
+  let html = wd < 5 ? slot(tot ? "6h10" : "5h40", "Lever", "Eau, visage, habillé. Téléphone pas ouvert.", "free") : "";
+  J.creneaux.forEach(([h, t, d, c], j) => {
+    if (wd < 5 && j === 0) h = tot ? "6h20-7h05" : "5h55-7h05";
+    d = d.replace("%DS1%", `Matière : ${ds[0]}. Demande le sujet dans le projet.`).replace("%DS2%", `Matière : ${ds[1]}. Demande le sujet dans le projet.`);
+    html += slot(h, t, d, c, wd < 5 && j === 0 ? J.matin : c === "ds" && wd >= 5 && j === (wd === 5 ? 1 : 0) ? "ds" : null);
+    if (wd < 5 && j === 0) html += slot("7h23", "Départ", "Trajet de 35 min.", "free") + kh;
+  });
+  if (wd === 4 || wd === 6) html += slot("21h55", "Lumière éteinte", wd === 6 ? "Téléphone posé à 21h30." : "", "free");
+  return html;
+}
+
+// séance du jour, remplie selon la semaine type
+function seance(iso) {
+  const P = state.plan, ed = state.ed, wd = wdIdx(iso), J = P.semaine[wd], items = [];
+  const tk = store.get("todo", {})[iso] || {}, cards = Array.isArray(state.cards), vus = store.get("vus", {});
+  const man = (id, t, s, go) => items.push({ id, t, s, ok: !!tk[id], go });
+  const auto = (t, s, ok, go) => items.push({ t, s, ok, go });
+  const flash = (m, label) => { const n = cards ? fichesQueue("cours", m).length : "…"; auto(`Flashcards ${label}`, n === 0 ? "à jour" : `${n} à revoir`, n === 0, `reviser:fiches:${m}`); };
+  const vac = enVacances(iso);
+  // matin
+  if (!vac && J.matin === "maths") {
+    man("cours", "Réciter le cours de maths", "formules", "reviser:cours:maths");
+    if (ed?.maths?.length) auto("Exercices de maths du jour", `${ed.maths.length} exos`, ed.maths.every((m, i) => vus[`maths:${ed.date}:${i}`]), "reviser:entrainement:maths");
+    flash("maths", "maths");
+  } else if (!vac && J.matin === "de") {
+    man("cours", "Fiches droit et éco du cours de la veille", "articles, notions", "reviser:cours:droit");
+    const h = (store.get("qcmHist", {})["droit-c2"] || [])[0];
+    auto("QCM droit : les majeures", h && h.date.slice(0, 10) === iso ? `${String(Math.round((h.ok / h.n) * 200) / 10).replace(".", ",")}/20` : "18 questions", !!h && h.date.slice(0, 10) === iso, "reviser:entrainement:qcm");
+    flash("droit", "droit"); flash("eco", "éco");
+  } else if (!vac && J.matin === "mgmt") {
+    man("cours", "Fiche de management du cours de la veille", "théorisations", "reviser:cours:mgmt");
+    flash("mgmt", "management");
+  }
+  // khôlles et DS du jour
+  evenements(iso).forEach((e) => {
+    if (e.type === "kholle" && e.key) {
+      const fait = (store.get("kholleHist", []) || []).some((x) => x.d === iso && x.m === e.key);
+      auto(`Mode khôlle : ${e.m}`, e.h, fait, `reviser:kholle:${e.key}`);
+    }
+    if (e.type === "ds" && e.we) man(`ds${e.we}`, `DS n°${e.we} : ${e.m} (2h)`, e.h, null);
+  });
+  if (!vac && wd === 6) man("corr", "Corriger les 2 DS", "erreurs → carnet", "reviser:erreurs");
+  // la veille d'un DS : relire le carnet d'erreurs
+  const dsDemain = evenements(addDays(1, iso)).find((e) => e.type === "ds");
+  if (dsDemain) auto("Relire ton carnet d'erreurs", `${dsDemain.we ? "DS " + dsDemain.m : "DS officiel"} demain`, store.get("relu", "") === iso, "reviser:erreurs:relecture");
+  // soir
+  if (!vac && (J.soir === "en" || J.soir === "es")) {
+    const n = cards ? fichesQueue("vocab", J.soir).length : "…";
+    auto(J.soir === "en" ? "Anglais · 25 min" : "Espagnol · 20 min", n === 0 ? "vocabulaire à jour" : `${n} mots puis texte à trous`, n === 0, `langues:vocab:${J.soir}`);
+  }
+  if (!vac && J.soir === "flash") { const n = cards ? fichesQueue("cours", "").length : "…"; auto("Flashcards · 25 min", n === 0 ? "à jour" : `${n} à revoir`, n === 0, "reviser:fiches:"); }
+  if (ed?.quiz?.length && ed.date === iso) {
+    const qDone = Object.keys(state.answers[ed.date] || {}).length;
+    auto("Quiz de l'actu", `${qDone}/${ed.quiz.length}`, qDone === ed.quiz.length, "reviser:quiz");
+  }
+  return items;
+}
+
 function aujourdhui() {
   const ed = state.ed, n = ed?.notion_du_jour;
   const concours = store.get("concours", "2028-04-12");
-  const next = store.get("agenda", []).filter((e) => e.date >= today()).sort((a, b) => a.date.localeCompare(b.date))[0];
-  const cards = Array.isArray(state.cards);
-  const nCours = cards ? fichesQueue("cours").length : "…", nVocab = cards ? fichesQueue("vocab").length : "…";
-  const qDone = ed ? Object.keys(state.answers[ed.date] || {}).length : 0, qTot = ed?.quiz?.length || 0;
-  const tr = ed?.langues?.trous || {};
-  const trDone = ["en", "es"].filter((l) => tr[l] && Object.keys(store.get(`trous:${ed.date}:${l}`, {})).length === tr[l].blancs.length).length;
-  const trTot = ["en", "es"].filter((l) => tr[l]).length;
-  const items = [
-    ["Fiches de cours", nCours === 0 ? "rien à revoir" : `${nCours} à réviser`, nCours === 0, "reviser:fiches"],
-    ["Quiz du jour", `${qDone}/${qTot}`, qTot && qDone === qTot, "reviser:quiz"],
-    ["Vocabulaire EN/ES", nVocab === 0 ? "rien à revoir" : `${nVocab} mots`, nVocab === 0, "langues:vocab"],
-    ...(trTot ? [["Textes à trous", `${trDone}/${trTot}`, trDone === trTot, "langues:trous"]] : []),
-    ...(ed?.maths?.length ? [["Exercices de maths", `${ed.maths.length} exos`, ed.maths.every((m, i) => store.get("vus", {})[`maths:${ed.date}:${i}`]), "reviser:entrainement"]] : []),
-    ...(ed?.cas_pratique ? [["Cas pratique de droit", "syllogisme", store.get("vus", {})[`cas:${ed.date}`], "reviser:entrainement"]] : []),
-  ];
-  const done = items.filter((i) => i[2]).length;
-  const brief = ed ? Object.keys(RUB).map((k) => (ed.rubriques?.[k] || []).slice(0, 1).map((a) =>
-    `<a href="#" data-goto="actu:${k}"><div class="meta"><span class="pill" style="color:${RUB[k].c}">${RUB[k].nom}</span></div><span>${esc(a.titre)}</span></a>`).join("")).join("") : "";
-  const pct = items.length ? Math.round((100 * done) / items.length) : 0;
+  if (!state.plan) return loading(state.plan === null ? "Planning indisponible (connexion ?)." : "Chargement…");
+  const t = today(), monday = addDays(-wdIdx(t), t), jour = state.planDay ?? wdIdx(t), iso = addDays(jour, monday);
+  const perso = store.get("agenda", []).filter((e) => e.date >= t).map((e) => ({ ...e, perso: true }));
+  const next = [...prochains(14, (e) => e.type === "kholle" || e.we), ...perso].sort((a, b) => a.date.localeCompare(b.date))[0];
+  const items = seance(t), done = items.filter((i) => i.ok).length, pct = items.length ? Math.round((100 * done) / items.length) : 0;
+  const nextTxt = next ? next.perso ? `${esc(next.type)} ${esc(MAT[next.matiere] || next.matiere || "")} ${esc(next.titre || "")}`
+    : next.type === "kholle" ? `Khôlle ${esc(next.m)} · ${esc(next.h)}` : `DS ${esc(next.m)} · ${esc(next.h)}` : "";
   return `<div class="stats" style="grid-template-columns:repeat(2,1fr)">
       <div class="stat"><b>${daysUntil(concours)}</b><span>jours avant les écrits</span></div>
       <div class="stat"><b>${serieJours()}</b><span>jour${serieJours() > 1 ? "s" : ""} d'affilée 🔥</span></div>
     </div>
-    ${next ? `<a href="#" class="next-ev" data-goto="moi:agenda"><b>${esc(next.type)} ${esc(MAT[next.matiere] || next.matiere || "")}</b> ${esc(next.titre || "")} <span>${daysUntil(next.date) === 0 ? "aujourd'hui" : daysUntil(next.date) === 1 ? "demain" : "dans " + daysUntil(next.date) + " j"}</span></a>` : ""}
+    ${next ? `<a href="#" class="next-ev" data-goto="${next.type === "kholle" && next.key ? `reviser:kholle:${next.key}` : next.perso ? "moi:agenda" : "reviser:erreurs:relecture"}"><b>${nextTxt}</b> <span>${quand(next.date)}</span></a>` : ""}
     ${title("Ta séance du jour")}
     <div class="progress"><div class="row"><span>${done === items.length && done ? "Séance terminée, bravo !" : "Progression"}</span><span>${done}/${items.length}</span></div>
       <div class="track"><div class="fill" style="width:${pct}%"></div></div></div>
-    <div class="todo">${items.map(([t, s, ok, go]) => `<a href="#" data-goto="${go}" class="${ok ? "ok" : ""}"><span class="tick"></span><span>${t}</span><small>${s}</small></a>`).join("")}</div>
+    <div class="todo">${items.map((x) => `<a href="#" ${x.go ? `data-goto="${x.go}"` : `data-tick="${x.id}"`} class="${x.ok ? "ok" : ""}"><span class="tick" ${x.id ? `data-tick="${x.id}"` : ""}></span><span>${esc(x.t)}</span><small>${esc(x.s)}</small></a>`).join("") || `<a href="#" data-goto="reviser:fiches"><span class="tick"></span><span>Rien d'imposé aujourd'hui</span><small>flashcards</small></a>`}</div>
+    ${title("Ton planning")}
+    <div class="days">${["Lu", "Ma", "Me", "Je", "Ve", "Sa", "Di"].map((l, j) => `<button class="${j === wdIdx(t) ? "today" : ""} ${j === jour ? "on" : ""}" data-pday="${j}">${l}</button>`).join("")}</div>
+    <p class="lead" style="margin-top:10px"><b style="color:var(--ink)">${esc(state.plan.semaine[jour].nom)} ${fmtDate(iso + "T12:00", { day: "numeric", month: "numeric" })}</b> · ${esc(state.plan.semaine[jour].sous)}</p>
+    <div class="slots">${planningJour(iso)}</div>
     ${n ? `<div class="notion" style="margin-top:22px">
       <div class="kicker">Notion du jour · ${esc(n.matiere)}</div>
-      <h3>${esc(n.titre)}</h3><p>${esc(n.definition)}</p><p class="ex">${esc(n.exemple)}</p></div>` : ""}
-    ${brief ? title("L'essentiel de l'actu") + `<div class="brief">${brief}</div>` : ""}
-    ${indicateurs()}`;
+      <h3>${esc(n.titre)}</h3><p>${esc(n.definition)}</p><p class="ex">${esc(n.exemple)}</p></div>` : ""}`;
 }
 
 // =====================================================================
@@ -201,25 +294,22 @@ function articleCard(a, rub) {
   </details>`;
 }
 
-function rubrique(key) {
-  const list = state.ed.rubriques?.[key] || [];
-  const intro = {
-    eco: "Conjoncture, politique monétaire, marchés, entreprises — et les auteurs à mobiliser.",
-    droit: "Lois, réformes, décisions : la règle, sa portée, son intérêt pour l'épreuve.",
-    mgmt: "Stratégies, gouvernance, transformations : des exemples prêts pour l'étude de cas.",
-    monde: "Le monde anglophone et hispanophone : utile en économie et en langues.",
-  }[key];
-  return title(RUB[key].nom, `${list.length} sujets`, RUB[key].c) + `<p class="lead">${intro}</p>` + list.map((a) => articleCard(a, key)).join("");
+function actusDuJour() {
+  const ed = state.ed;
+  const list = ACTU.map((k) => [k, (ed.rubriques?.[k] || [])[0]]).filter(([, a]) => a);
+  return title("Les actus du jour", `${list.length} sujets`) +
+    `<p class="lead">Une actu par matière, chacune reliée à une notion du cours : à placer en QRA, en veille juridique ou en application dans une étude de cas.</p>` +
+    list.map(([k, a]) => `<div class="kicker" style="margin:14px 4px 6px;color:${RUB[k].c}">${RUB[k].nom}</div>` + articleCard(a, k)).join("") + indicateurs();
 }
 
 function exemples() {
   if (!bankReady()) return loading("Chargement de tes exemples…");
   const q = (state.bankQ || "").toLowerCase(), th = state.bankTheme || "";
   const counts = {};
-  state.bank.forEach((a) => (counts[a.theme] = (counts[a.theme] || 0) + 1));
-  const list = state.bank.filter((a) => (!th || a.theme === th) &&
+  state.bank.forEach((a) => ACTU.includes(a.rub) && (counts[a.theme] = (counts[a.theme] || 0) + 1));
+  const list = state.bank.filter((a) => ACTU.includes(a.rub) && (!th || a.theme === th) &&
     (!q || [a.titre, a.resume, a.copie, ...(a.notions || [])].join(" ").toLowerCase().includes(q)));
-  return title("Banque d'exemples", `${state.bank.length} actus`) + `
+  return title("Banque d'exemples", `${list.length} actus`) + `
     <p class="lead">Toutes les actus depuis le début, classées par thème du programme. Avant un DS ou une khôlle, ouvre le thème et pioche tes exemples datés.</p>
     <input id="bankq" class="search" type="search" placeholder="Rechercher : inflation, Keynes, contrat…" value="${esc(state.bankQ || "")}">
     <div class="chips"><button class="chip ${th ? "" : "on"}" data-btheme="">Tous</button>${Object.keys(counts).sort().map((t) =>
@@ -235,8 +325,8 @@ function exemples() {
 
 function actu() {
   const s = state.sub.actu;
-  return subtabs("actu", { eco: "Éco", droit: "Droit", mgmt: "Mgmt", monde: "Monde", exemples: "Banque d'exemples" })
-    + (s === "exemples" ? exemples() : rubrique(RUB[s] ? s : "eco"));
+  return subtabs("actu", { jour: "Les actus du jour", exemples: "Banque d'exemples" })
+    + (s === "exemples" ? exemples() : actusDuJour());
 }
 
 // =====================================================================
@@ -267,18 +357,18 @@ function vocabEditions() {
   return out;
 }
 
-function deckPool(deck) {
+function deckPool(deck, filtre) {
   if (!Array.isArray(state.cards)) return [];
   if (deck === "vocab") {
-    const l = state.vocabLang || "";
+    const l = filtre ?? state.lang ?? "";
     return [...state.cards.filter((c) => c.m === "en" || c.m === "es"), ...vocabEditions()].filter((c) => !l || c.m === l);
   }
-  const m = state.ficheMat || "";
+  const m = filtre ?? state.ficheMat ?? "";
   return state.cards.filter((c) => MAT[c.m] && (!m || c.m === m));
 }
 
-function fichesQueue(deck) {
-  const prog = store.get("leitner", {}), t = today(), pool = deckPool(deck);
+function fichesQueue(deck, filtre) {
+  const prog = store.get("leitner", {}), t = today(), pool = deckPool(deck, filtre);
   const due = pool.filter((c) => prog[c.id] && prog[c.id].due <= t);
   const nd = store.get("newDay", {}), left = Math.max(0, NEW_PER_DAY[deck] - (nd.d === t ? nd[deck] || 0 : 0));
   const groups = {}; pool.filter((c) => !prog[c.id]).forEach((c) => (groups[c.m] ||= []).push(c));
@@ -320,7 +410,7 @@ function gradeCard(deck, ok) {
 
 function fiches() {
   const m = state.ficheMat || "";
-  return flashUI("cours", `<p class="lead">Ton cours, les auteurs, les grands arrêts et les formules de maths. Une carte ratée revient le jour même, une carte sue revient à J+1, J+3, J+7, J+15 puis J+30.</p>
+  return flashUI("cours", `<p class="lead">Les flashcards de ton cours, les auteurs, les grands arrêts et les formules de maths. Une carte ratée revient le jour même, une carte sue revient à J+1, J+3, J+7, J+15 puis J+30.</p>
     <div class="chips">${Object.entries({ "": "Tout", ...MAT }).map(([k, v]) => `<button class="chip ${k === m ? "on" : ""}" data-fmat="${k}">${v}</button>`).join("")}</div>`);
 }
 
@@ -346,7 +436,7 @@ function aggregat() {
 }
 
 function pointsFaibles(agg) {
-  const weak = Object.keys(RUB).filter((m) => agg[m]?.n >= 3).sort((a, b) => agg[a].ok / agg[a].n - agg[b].ok / agg[b].n)[0];
+  const weak = ACTU.filter((m) => agg[m]?.n >= 3).sort((a, b) => agg[a].ok / agg[a].n - agg[b].ok / agg[b].n)[0];
   if (!weak) return title("Tes points faibles") + `<p class="lead">Termine quelques quiz : l'appli repérera ta matière la plus fragile et te fera retravailler tes erreurs.</p>`;
   if (!bankReady()) return "";
   const missed = [];
@@ -535,65 +625,172 @@ function methodes() {
       <div class="body">${x.e.map((s, i) => `<div class="block"><h4>Étape ${i + 1}</h4><p>${esc(s)}</p></div>`).join("")}</div></details>`).join("");
 }
 
-// ---------- classement entre amis (Supabase) ----------
-// Clé « publishable » : faite pour être publique, la sécurité vient des règles de la base.
-const SUPA_URL = "https://jeqkvsmemcheoxkufili.supabase.co", SUPA_KEY = "sb_publishable_IEAwkHUKKvU-_kPstfMB2Q_ZJAlY2w0";
-const supa = (path, opts = {}) => fetch(`${SUPA_URL}/rest/v1/${path}`, {
-  ...opts, headers: { apikey: SUPA_KEY, Authorization: `Bearer ${SUPA_KEY}`, "Content-Type": "application/json", ...(opts.headers || {}) },
-});
-async function sendScore() {
-  const me = store.get("me", null), ed = state.ed;
-  if (!me || !ed) return;
-  const h = store.get("history", {})[ed.date]; if (!h) return;
-  try {
-    await supa("scores?on_conflict=pseudo,groupe,jour", {
-      method: "POST", headers: { Prefer: "resolution=merge-duplicates" },
-      body: JSON.stringify({ pseudo: me.pseudo, groupe: me.groupe, jour: ed.date, score: h.ok, total: h.n }),
-    });
-  } catch {}
-}
-async function loadBoard() {
-  const me = store.get("me", null);
-  if (!me) return;
-  state.board = "loading";
-  try {
-    const r = await supa(`scores?select=pseudo,jour,score,total&groupe=eq.${encodeURIComponent(me.groupe)}&jour=gte.${addDays(-6)}`);
-    const rows = await r.json(), by = {};
-    rows.forEach((x) => { const p = (by[x.pseudo] ||= { pseudo: x.pseudo, pts: 0, n: 0, jours: 0 }); p.pts += x.score; p.n += x.total; p.jours++; });
-    state.board = Object.values(by).sort((a, b) => b.pts - a.pts || b.jours - a.jours);
-  } catch { state.board = "error"; }
+// ---------- fiches de cours (Droit / Éco / Management / Maths) ----------
+const COURS = { droit: "Droit", eco: "Éco", mgmt: "Mgmt", maths: "Maths", methodes: "Méthodes" };
+const norm = (s) => strip(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+async function loadFiches() {
+  if (state.fiches) return;
+  state.fiches = "loading";
+  try { state.fiches = await loadJSON("data/fiches.json"); } catch { state.fiches = null; }
   render();
 }
-function classement() {
-  const me = store.get("me", null);
-  if (!me) return `<p class="lead">Choisis un pseudo et le code de ton groupe d'amis. Seuls ceux qui ont le même code apparaissent dans votre classement.</p>
-    <input id="pseudo" class="search" maxlength="20" placeholder="Ton pseudo">
-    <input id="groupe" class="search" maxlength="30" placeholder="Code du groupe (ex : ect1-condorcet)">
-    ${bigBtn("Rejoindre le classement", 'id="join"')}`;
-  if (state.board === undefined) { loadBoard(); return loading(); }
-  if (state.board === "loading") return loading();
-  if (state.board === "error") return loading("Classement indisponible pour l'instant (connexion ?).");
-  return `<p class="lead">Groupe <b>${esc(me.groupe)}</b> · points des 7 derniers jours (1 bonne réponse au quiz = 1 point).</p>
-    <table class="hist board">${state.board.map((p, i) => `<tr class="${p.pseudo === me.pseudo ? "me" : ""}"><td>${["🥇", "🥈", "🥉"][i] || i + 1} ${esc(p.pseudo)}</td><td>${p.jours} j · ${p.n ? Math.round((100 * p.pts) / p.n) : 0}%</td><td><b>${p.pts}</b></td></tr>`).join("") || "<tr><td>Personne n'a encore joué cette semaine.</td></tr>"}</table>
-    <p class="trad" style="margin-top:14px">Ton score est envoyé automatiquement quand tu termines le quiz du jour. <button class="read-btn" id="leave">Changer de pseudo</button></p>`;
+const fichesReady = () => (state.fiches && state.fiches !== "loading") || (!state.fiches && loadFiches(), false);
+function ficheItem(it, uLabel, m) {
+  const tex = m === "maths";
+  return `<div class="it" data-it><div class="k"><span class="ref">${it.k}</span>${it.s ? `<span class="src2">${it.s}</span>` : ""}${it.a ? `<span class="chip2">${it.a}</span>` : ""}${it.bonus ? `<span class="chip2 bonus">hors poly</span>` : ""}</div>
+    ${tex ? `<div class="t tex">${it.f}</div><p class="u tex"><b>${uLabel} :</b> ${it.c}</p>
+      <div class="exo tex"><b>Mini-exo :</b> ${it.ex}</div>
+      <details class="corr"><summary>Voir la correction</summary><div class="tex"><p><b>Formule :</b> ${it.formule}</p><p><b>Application :</b> ${it.app}</p></div></details>`
+    : `<p class="t">${it.t}</p>${it.u ? `<p class="u"><b>${uLabel} :</b> ${it.u}</p>` : ""}${it.n ? `<p class="u"><b>Chiffre / exemple :</b> ${it.n}</p>` : ""}${it.w ? `<p class="w">⚠ ${it.w}</p>` : ""}`}</div>`;
+}
+const tableHTML = (rows) => `<div class="tbl"><table class="hist">${rows.map((r) => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("")}</table></div>`;
+function cours() {
+  const m = COURS[state.coursMat] ? state.coursMat : store.get("coursMat", "droit");
+  const chips = `<div class="chips">${Object.entries(COURS).map(([k, v]) => `<button class="chip ${k === m ? "on" : ""}" data-cmat="${k}">${v}</button>`).join("")}</div>`;
+  if (m === "methodes") return chips + methodes();
+  if (!fichesReady()) return chips + loading("Chargement des fiches…");
+  const d = state.fiches[m], q = norm(state.coursQ || ""), rev = store.get("coursRev", false), open = store.get("coursOpen", {});
+  let html = "", hits = 0;
+  d.chapters.forEach((ch, ci) => {
+    let inner = "";
+    ch.groups.forEach((g) => {
+      const items = g.items.filter((it) => !q || norm([it.k, it.s, it.a, it.t, it.u, it.n, it.f, it.c, it.ex].join(" ")).includes(q));
+      if (items.length) { hits += items.length; inner += `<h4 class="gh">${g.h}</h4>` + items.map((it) => ficheItem(it, d.uLabel, m)).join(""); }
+    });
+    if (q && !inner) return;
+    if (!q && ch.box) inner += `<div class="box"><div class="bt">${ch.box.title}</div>${ch.box.lines ? `<ol>${ch.box.lines.map((l) => `<li>${l}</li>`).join("")}</ol>` : ""}${ch.box.table ? tableHTML(ch.box.table) : ""}</div>`;
+    if (!q && ch.qra) inner += `<div class="box"><div class="bt">Sujet de QRA type</div><p><b>${ch.qra.sujet}</b></p><ol>${ch.qra.plan.map((p) => `<li>${p}</li>`).join("")}</ol></div>`;
+    const id = `${m}-${ci}`;
+    html += `<details class="card fch" data-fch="${id}" ${q || (open[id] ?? ci === 0) ? "open" : ""} style="--c:${RUB[m]?.c || "var(--maths)"}"><summary><span class="chk">${ch.k}</span><h3>${ch.title}</h3><p class="resume trad">${ch.sub}</p></summary><div class="body">${inner}</div></details>`;
+  });
+  if (!q && d.extra) html += `<details class="card fch" data-fch="${m}-x" ${open[m + "-x"] ? "open" : ""}><summary><span class="chk">Mémo</span><h3>${d.extra.title}</h3></summary><div class="body">${tableHTML(d.extra.table)}</div></details>`;
+  if (q && !hits) html += `<div class="empty"><p>Rien pour « ${esc(state.coursQ)} » ici. Essaie une autre matière.</p></div>`;
+  return chips + `<p class="lead">${d.lead}</p>
+    <input id="coursq" class="search" type="search" placeholder="Chercher (ex. 55, QPC, Porter, PIB, somme)" value="${esc(state.coursQ || "")}">
+    <div class="chips"><button class="chip ${rev ? "on" : ""}" data-crev>${rev ? "✓ " : ""}Mode révision : touche pour révéler</button></div>
+    <div class="fiches ${rev ? "rev" : ""}">${html}</div>`;
+}
+
+// ---------- carnet d'erreurs ----------
+const MAT_ERR = { maths: "Maths", droit: "Droit", eco: "Éco", mgmt: "Management", en: "Anglais", es: "Espagnol" };
+const COUL_M = (m) => RUB[m]?.c || (m === "maths" ? "var(--maths)" : "var(--monde)");
+function addErreur(e) {
+  const L = store.get("erreurs", []), deja = e.src && L.find((x) => x.src === e.src);
+  if (deja) { deja.n = (deja.n || 1) + 1; deja.ok = false; deja.date = today(); }
+  else L.unshift({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5), date: today(), pourquoi: "", n: 1, ...e });
+  store.set("erreurs", L);
+}
+function relecture(L) {
+  const f = state.errMat || "", list = L.filter((e) => !e.ok && (!f || e.m === f)), i = state.relIdx || 0, e = list[i];
+  const head = `<div class="jeu-top"><button class="read-btn" data-er-mode="">✕ Quitter</button><b>📖 Relecture avant DS</b><span>${Math.min(i + 1, list.length)}/${list.length}</span></div>`;
+  if (!e) { if (store.get("relu", "") !== today()) store.set("relu", today()); actif();
+    return head + `<div class="final"><div class="kicker">Carnet relu</div><b>✓</b><div class="trad">${list.length ? "Tu as tout relu. Bon DS !" : "Aucune erreur à revoir ici."}</div></div>${bigBtn("Recommencer", 'data-er-restart')}`; }
+  return head + `<div class="q" style="--c:${COUL_M(e.m)}"><div class="meta"><span class="pill">${esc(MAT_ERR[e.m] || e.m)}${e.chap ? " · " + esc(e.chap) : ""}</span>${e.n > 1 ? `<span>raté ${e.n} fois</span>` : ""}</div>
+    <p class="qt">✗ ${esc(e.erreur)}</p>
+    ${state.relShow ? `<div class="expl"><b>Correction :</b> ${esc(e.correction)}${e.pourquoi ? `<br><b>Pourquoi je me suis trompé :</b> ${esc(e.pourquoi)}` : ""}</div>
+      <div class="flash-btns"><button class="choice ko" data-rel="0">À revoir encore</button><button class="choice ok" data-rel="1">✓ Je maîtrise</button></div>`
+    : bigBtn("Voir la correction", "data-rel-show")}</div>`;
+}
+function erreurs() {
+  const L = store.get("erreurs", []), f = state.errMat || "";
+  if (state.errMode === "relecture") return relecture(L);
+  const ed = state.errEdit ? L.find((x) => x.id === state.errEdit) : null, v = ed || {};
+  const counts = {}; L.filter((e) => !e.ok).forEach((e) => (counts[e.m] = (counts[e.m] || 0) + 1));
+  const aRevoir = L.filter((e) => !e.ok && (!f || e.m === f)).length;
+  const list = L.filter((e) => (!f || e.m === f) && (state.errAll || !e.ok));
+  const groupes = Object.keys(MAT_ERR).filter((m) => list.some((e) => e.m === m));
+  const card = (e) => `<div class="q err ${e.ok ? "done" : ""}" style="--c:${COUL_M(e.m)}">
+      <div class="meta"><span class="pill">${esc(e.chap || "Sans chapitre")}</span><span>${fmtDate(e.date + "T12:00")}${e.n > 1 ? ` · ×${e.n}` : ""}${e.src ? " · auto" : ""}</span></div>
+      <p><b class="x-ko">✗</b> ${esc(e.erreur)}</p><p><b class="x-ok">✓</b> ${esc(e.correction)}</p>
+      <p class="trad">Pourquoi : ${e.pourquoi ? esc(e.pourquoi) : `<i>à compléter (touche Modifier)</i>`}</p>
+      <div class="src"><button class="read-btn" data-er-edit="${e.id}">Modifier</button><button class="read-btn" data-er-ok="${e.id}">${e.ok ? "↺ À revoir" : "✓ Maîtrisée"}</button><button class="read-btn" data-er-del="${e.id}">✕</button></div></div>`;
+  return `<p class="lead">Une ligne par erreur : l'erreur, la correction, et surtout <b>pourquoi</b> tu t'es trompé. Les erreurs des QCM, du quiz et du mode khôlle arrivent ici toutes seules. Relis-le la veille de chaque DS.</p>
+    ${bigBtn(`📖 Relecture avant DS · ${aRevoir} erreur${aRevoir > 1 ? "s" : ""}`, 'data-er-mode="relecture"')}
+    <details class="card" ${ed || !L.length ? "open" : ""} style="margin-top:12px"><summary><h3>${ed ? "Modifier l'erreur" : "＋ Ajouter une erreur"}</h3></summary><div class="body">
+      <div class="form">
+        <select id="er-m" class="search">${Object.entries(MAT_ERR).map(([k, x]) => `<option value="${k}" ${k === (v.m || f || "maths") ? "selected" : ""}>${x}</option>`).join("")}</select>
+        <input id="er-chap" class="search" maxlength="60" placeholder="Chapitre" value="${esc(v.chap || "")}">
+      </div>
+      <textarea id="er-err" class="search" rows="2" placeholder="L'erreur (ce que j'ai écrit ou cru)">${esc(v.erreur || "")}</textarea>
+      <textarea id="er-cor" class="search" rows="2" placeholder="La correction">${esc(v.correction || "")}</textarea>
+      <textarea id="er-pq" class="search" rows="2" placeholder="Pourquoi je me suis trompé">${esc(v.pourquoi || "")}</textarea>
+      <div class="flash-btns">${ed ? bigBtn("Annuler", 'id="er-cancel"') : ""}${bigBtn(ed ? "Enregistrer" : "Ajouter au carnet", 'id="er-save"')}</div>
+    </div></details>
+    <div class="chips"><button class="chip ${f ? "" : "on"}" data-er-mat="">Toutes</button>${Object.entries(MAT_ERR).map(([k, x]) => `<button class="chip ${k === f ? "on" : ""}" data-er-mat="${k}">${x}${counts[k] ? ` <small>${counts[k]}</small>` : ""}</button>`).join("")}</div>
+    ${groupes.map((m) => title(MAT_ERR[m], `${list.filter((e) => e.m === m).length}`, COUL_M(m)) + list.filter((e) => e.m === m).map(card).join("")).join("")
+      || `<div class="empty"><p>${L.length ? "Rien à revoir ici." : "Ton carnet est vide pour l'instant."}</p></div>`}
+    ${L.some((e) => e.ok) ? `<p style="text-align:center"><button class="read-btn" data-er-all>${state.errAll ? "Masquer" : "Afficher"} les erreurs maîtrisées</button></p>` : ""}`;
+}
+
+// ---------- mode khôlle ----------
+const KH_NOM = { maths: "Maths", droit: "Droit", eco: "Économie", mgmt: "Management", en: "Anglais", es: "Espagnol" };
+const chapKey = (s = "") => { const x = /C(?:h)?\.?\s*(\d+)/.exec(s); return x ? "C" + x[1] : /intro/i.test(s) ? "Intro" : /méthode/i.test(s) ? "Méthode" : "Autres"; };
+function khPool(m) {
+  const out = [], F = state.fiches?.[m];
+  if (F?.chapters) F.chapters.forEach((ch) => ch.groups.forEach((g) => g.items.forEach((it) => out.push({
+    id: `f:${m}:${it.k}`, ch: chapKey(ch.k), chNom: `${ch.k} – ${ch.title}`, html: true, tex: m === "maths",
+    q: m === "maths" ? `${it.k} : formule et conditions ?` : m === "droit" ? `Que dit ${it.k}${it.s ? ` (${it.s})` : ""} ? Quand l'utiliser ?` : `${it.k}${it.a ? ` (${it.a})` : ""} : définis et explique.`,
+    r: m === "maths" ? `${it.f}<p>${it.c}</p>` : `${it.t}${it.u ? `<br><b>${F.uLabel} :</b> ${it.u}` : ""}${it.n ? `<br><b>Exemple :</b> ${it.n}` : ""}`,
+  }))));
+  (Array.isArray(state.cards) ? state.cards : []).filter((c) => c.m === m).forEach((c) => out.push({ id: c.id, ch: chapKey(c.ch), chNom: c.ch, q: c.q, r: c.r }));
+  return out;
+}
+function kholle() {
+  if (!fichesReady() || !Array.isArray(state.cards)) { loadCards(); return loading("Chargement…"); }
+  const prochaines = prochains(14, (e) => e.type === "kholle");
+  const nk = prochaines.find((e) => e.key);
+  const m = KH_NOM[state.khMat] ? state.khMat : nk?.key || "eco";
+  const pool = khPool(m), keys = [...new Set(pool.map((x) => x.ch))].sort((a, b) => (b[0] === "C") - (a[0] === "C") || a.localeCompare(b, "fr", { numeric: true }));
+  const nums = keys.filter((k) => /^C\d/.test(k));
+  state.khMat = m;
+  const sel = (state.khCh ||= {})[m] ||= nums.length ? nums.slice(-2) : keys;
+  const chips = `<div class="chips">${Object.entries(KH_NOM).map(([k, v]) => `<button class="chip ${k === m ? "on" : ""}" data-khm="${k}">${v}</button>`).join("")}</div>`;
+  const pause = prochaines.filter((e) => !e.key).map((e) => `${e.m} ${quand(e.date)}`);
+  const info = prochaines.length ? `<div class="next-ev" style="margin-bottom:14px">${prochaines.slice(0, 3).map((e) => `<div><b>${esc(e.m)}</b> · ${quand(e.date)} · ${esc(e.h)} · salle ${esc(e.salle)}</div>`).join("")}</div>` : "";
+  const j = state.kh;
+  if (j && j.m === m) {
+    const it = j.list[j.i];
+    const head = `<div class="jeu-top"><button class="read-btn" data-kh-quit>✕ Arrêter</button><b>🎤 Khôlle ${KH_NOM[m]}</b><span>${Math.min(j.i + 1, j.list.length)}/${j.list.length}</span></div>`;
+    if (!it) return head + `<div class="final"><div class="kicker">Série terminée</div><b>${j.ok}/${j.list.length}</b><div class="trad">${j.rates.length ? `${j.rates.length} question${j.rates.length > 1 ? "s" : ""} ratée${j.rates.length > 1 ? "s" : ""} : elles sont dans ton carnet d'erreurs.` : "Rien de raté, tu es prêt."}</div></div>
+      <div class="flash-btns">${bigBtn("Nouvelle série", "data-kh-start")}${bigBtn("Carnet d'erreurs", 'data-goto="reviser:erreurs"')}</div>`;
+    return head + `<div class="q" style="--c:${COUL_M(m)}"><div class="meta"><span class="pill">${esc(it.chNom)}</span></div>
+      <p class="qt ${it.tex ? "tex" : ""}">${it.html ? it.q : esc(it.q)}</p>
+      <p class="trad">Réponds à voix haute, comme devant le colleur, puis vérifie.</p>
+      ${j.show ? `<div class="expl ${it.tex ? "tex" : ""}">${it.html ? it.r : esc(it.r)}</div>
+        <div class="flash-btns"><button class="choice ko" data-kh-grade="0">✗ Raté</button><button class="choice ok" data-kh-grade="1">✓ Je savais</button></div>`
+      : bigBtn("Voir la réponse", "data-kh-flip")}</div>`;
+  }
+  const dispo = pool.filter((x) => sel.includes(x.ch)).length;
+  return chips + info + `<p class="lead">Une série de questions sur les derniers chapitres vus, à faire le matin d'une khôlle ou dans le trajet. Ce que tu rates part dans le carnet d'erreurs.${pause.length ? ` Philo et lettres sont en pause : pas de questions.` : ""}</p>
+    ${title("Chapitres", `${dispo} questions`)}
+    <div class="chips wrap">${keys.map((k) => `<button class="chip ${sel.includes(k) ? "on" : ""}" data-khc="${k}">${k}</button>`).join("")}</div>
+    <div style="margin-top:14px">${dispo ? bigBtn(`Lancer une série de ${Math.min(10, dispo)} questions`, "data-kh-start") : `<p class="lead">Choisis au moins un chapitre.</p>`}</div>
+    ${(store.get("kholleHist", []) || []).filter((x) => x.m === m).length ? title("Tes séries") + `<table class="hist">${store.get("kholleHist", []).filter((x) => x.m === m).slice(0, 6).map((x) => `<tr><td>${fmtDate(x.d + "T12:00", { day: "numeric", month: "short" })}</td><td>${x.ok}/${x.n}</td></tr>`).join("")}</table>` : ""}`;
+}
+function khStart() {
+  const m = KH_NOM[state.khMat] ? state.khMat : prochains(14, (e) => e.type === "kholle").find((e) => e.key)?.key || "eco";
+  const sel = state.khCh?.[m] || [];
+  state.khMat = m; state.kh = { m, list: melange(khPool(m).filter((x) => sel.includes(x.ch))).slice(0, 10), i: 0, ok: 0, rates: [], show: false };
+}
+function khGrade(ok) {
+  const j = state.kh, it = j.list[j.i]; if (!it) return;
+  if (ok) j.ok++; else { j.rates.push(it); addErreur({ m: j.m, chap: it.chNom, erreur: strip(it.q), correction: strip(it.r), src: `kh:${it.id}` }); }
+  j.i++; j.show = false; actif();
+  if (j.i >= j.list.length) { const h = store.get("kholleHist", []); h.unshift({ d: today(), m: j.m, ok: j.ok, n: j.list.length }); store.set("kholleHist", h.slice(0, 60)); }
 }
 
 function reviser() {
   const s = state.sub.reviser;
   const body = s === "quiz" ? (state.ed ? quiz() : loading("Pas de quiz aujourd'hui.")) : s === "entrainement" ? entrainement()
-    : s === "jeux" ? jeux() : s === "methodes" ? methodes() : s === "classement" ? classement() : fiches();
-  return subtabs("reviser", { fiches: "Fiches", quiz: "Quiz", entrainement: "Entraînement", jeux: "Jeux", methodes: "Méthodes", classement: "Classement" }) + body;
+    : s === "jeux" ? jeux() : s === "kholle" ? kholle() : s === "erreurs" ? erreurs() : s === "fiches" ? fiches() : cours();
+  return subtabs("reviser", { cours: "Fiches", fiches: "Flashcards", kholle: "Khôlle", erreurs: "Erreurs", entrainement: "Exos", quiz: "Quiz", jeux: "Jeux" }) + body;
 }
 
 // =====================================================================
 //  MINI-JEUX : auteurs, dates, arrêts
 // =====================================================================
 const JEUX = {
-  pluie: { t: "Pluie de réponses", i: "🌧️", d: "Les réponses tombent : touche la bonne avant qu'elle s'écrase. Ça accélère !" },
-  millio: { t: "Qui veut gagner", i: "💰", d: "10 questions jusqu'au million. Jokers 50/50 et avis du public." },
-  duel: { t: "Duel à deux", i: "⚔️", d: "Un téléphone, deux joueurs face à face. Le plus rapide gagne. 7 points." },
   chrono: { t: "Chrono 60 s", i: "⏱️", d: "Un max de bonnes réponses en 60 secondes. Enchaîne pour gagner des bonus." },
-  survie: { t: "Vrai ou faux", i: "❤️", d: "Associations vraies ou fausses. 3 vies : jusqu'où iras-tu ?" },
   frise: { t: "Frise", i: "📅", d: "Remets 4 événements dans l'ordre chronologique. 5 manches." },
   paires: { t: "Paires", i: "🧩", d: "Relie 5 auteurs à leur idée, le plus vite possible." },
 };
@@ -603,11 +800,6 @@ function jeuQ() {
   const pool = jeuPool(), it = pick(pool);
   const autres = [...new Set(pool.filter((x) => x.type === it.type && x.r !== it.r).map((x) => x.r))];
   return { it, choix: melange([it.r, ...melange(autres).slice(0, 3)]) };
-}
-function jeuVF() {
-  const pool = jeuPool(), it = pick(pool), vrai = Math.random() < .5;
-  const r = vrai ? it.r : pick(pool.filter((x) => x.type === it.type && x.r !== it.r)).r;
-  return { it, r, vrai };
 }
 function jeuFrise() {
   const L = melange(state.jeuData.date), out = [];
@@ -622,19 +814,15 @@ function jeuPaires() {
 function jeuStart(mode) {
   const j = { mode, score: 0, combo: 0, flash: null };
   if (mode === "chrono") { j.end = Date.now() + 60000; j.q = jeuQ(); }
-  if (mode === "survie") { j.vies = 3; j.q = jeuVF(); }
   if (mode === "frise") { j.manche = 1; j.f = jeuFrise(); }
   if (mode === "paires") j.p = jeuPaires();
-  if (mode === "pluie") { j.vies = 3; j.v = .11; j.y = 0; j.q = jeuQ(); }
-  if (mode === "millio") { j.niveau = 0; j.q = jeuQ(); j.cache = []; j.pub = null; j.jokers = { ff: true, pub: true }; }
-  if (mode === "duel") { j.sc = [0, 0]; j.q = jeuQ(); j.bloque = [false, false]; }
-  state.jeu = j; jeuTick(); if (mode === "pluie") pluieLoop();
+  state.jeu = j; jeuTick();
 }
 function jeuFin(score) {
   const j = state.jeu, rec = store.get("jeuRec", {}), m = j.mode;
   const mieux = m === "paires" ? rec[m] === undefined || score < rec[m] : score > (rec[m] || 0);
   if (mieux) { rec[m] = score; store.set("jeuRec", rec); setTimeout(confettis, 150); }
-  j.fini = { score, record: mieux }; actif(); clearInterval(state.jeuTimer); cancelAnimationFrame(state.pluieRaf);
+  j.fini = { score, record: mieux }; actif(); clearInterval(state.jeuTimer);
 }
 const buzz = () => navigator.vibrate?.(90);
 function confettis() {
@@ -642,30 +830,6 @@ function confettis() {
   c.innerHTML = Array.from({ length: 60 }, () => `<i style="left:${Math.random() * 100}%;animation-delay:${Math.random() * .5}s;animation-duration:${1.6 + Math.random()}s;background:hsl(${Math.random() * 360} 90% 60%);transform:rotate(${Math.random() * 360}deg)"></i>`).join("");
   document.body.appendChild(c); setTimeout(() => c.remove(), 3200);
 }
-// Pluie : la rangée de réponses descend à chaque image
-function pluieLoop() {
-  cancelAnimationFrame(state.pluieRaf);
-  let last = performance.now();
-  const step = (t) => {
-    const j = state.jeu; if (!j || j.mode !== "pluie" || j.fini) return;
-    const dt = Math.min(.1, (t - last) / 1000); last = t;
-    const row = document.getElementById("pluie-row"), zone = document.getElementById("pluie");
-    if (row && zone) {
-      j.y += dt * j.v;
-      row.style.transform = `translateY(${Math.min(1, j.y) * (zone.clientHeight - row.offsetHeight)}px)`;
-      if (j.y >= 1) { pluieRate(`💥 Trop lent ! C'était ${j.q.it.r}`); return; }
-    }
-    state.pluieRaf = requestAnimationFrame(step);
-  };
-  state.pluieRaf = requestAnimationFrame(step);
-}
-function pluieRate(msg) {
-  const j = state.jeu; buzz(); j.vies--; j.combo = 0; j.flash = { ok: false, t: msg }; (j.revoir ||= []).push(j.q.it);
-  if (j.vies <= 0) { jeuFin(j.score); return render(); }
-  j.q = jeuQ(); j.y = 0; render(); pluieLoop();
-}
-const PALIERS = [100, 200, 500, 1000, 2000, 5000, 10000, 50000, 150000, 1000000];
-const euros = (n) => `${n.toLocaleString("fr-FR")} €`;
 function jeuTick() {
   clearInterval(state.jeuTimer);
   state.jeuTimer = setInterval(() => {
@@ -679,7 +843,7 @@ function jeuTick() {
     if (!left) { jeuFin(j.score); if (state.tab === "reviser") render(); }
   }, 200);
 }
-const fmtRec = (m, v) => v === undefined ? "—" : m === "duel" ? "à 2" : m === "millio" ? euros(v) : m === "paires" ? `${v} s` : m === "frise" ? `${v}/5` : `${v} pts`;
+const fmtRec = (m, v) => v === undefined ? "—" : m === "paires" ? `${v} s` : m === "frise" ? `${v}/5` : `${v} pts`;
 const lblQ = (it) => it.type === "auteur" ? "Qui est derrière cette idée ?" : "En quelle année ?";
 
 function jeux() {
@@ -688,18 +852,10 @@ function jeux() {
     return loading("Chargement des jeux…");
   }
   const j = state.jeu, rec = store.get("jeuRec", {});
-  if (!j) return `<p class="lead">Des parties de 1 à 2 minutes pour réviser auteurs, dates et arrêts sans t'en rendre compte.</p>
+  if (!j) return `<p class="lead">Des parties de 1 à 2 minutes sur les auteurs, les dates et les arrêts de ton cours.</p>
     <div class="jeux">${Object.entries(JEUX).map(([k, x]) => `<button class="jeu-card" data-jeu-go="${k}"><span class="ico">${x.i}</span>
       <span class="txt"><b>${x.t}</b><small>${x.d}</small></span><span class="rec">Record<br><b>${fmtRec(k, rec[k])}</b></span></button>`).join("")}</div>`;
   const info = JEUX[j.mode];
-  if (j.mode === "duel") {
-    const moitie = (p) => `<div class="duel-p ${p === 0 ? "haut" : ""} ${j.bloque[p] ? "bloque" : ""}">
-      <div class="duel-sc"><span>Joueur ${p + 1}</span><b>${j.sc[p]}</b></div>
-      ${j.fini ? `<div class="duel-win">${j.fini.duel === p ? "🏆 Gagné !" : "Perdu…"}</div>` : `<p class="qt">${esc(j.q.it.q)}</p>
-      <div class="duel-ch">${j.q.choix.map((c, i) => `<button class="choice" data-jeu-duel="${p}-${i}" ${j.bloque[p] ? "disabled" : ""}>${esc(c)}</button>`).join("")}</div>
-      <div class="jeu-flash ${j.flash?.ok ? "ok" : "ko"}">${esc(j.flash?.t || "")}</div>`}</div>`;
-    return `<div class="duel">${moitie(0)}<div class="duel-mid"><button class="read-btn" data-jeu-quit>✕ Quitter</button>${j.fini ? `<button class="read-btn" data-jeu-go="duel">↻ Revanche</button>` : `<span>Premier à 7</span>`}</div>${moitie(1)}</div>`;
-  }
   const head = (droite) => `<div class="jeu-top"><button class="read-btn" data-jeu-quit>✕ Quitter</button><b>${info.i} ${info.t}</b><span id="jeu-t">${droite}</span></div>`;
   if (j.fini) return head("") + `<div class="final"><div class="kicker">${j.fini.record ? "🏆 Nouveau record !" : "Partie terminée"}</div>
       <b>${fmtRec(j.mode, j.fini.score)}</b><div class="trad">Record : ${fmtRec(j.mode, rec[j.mode])}</div></div>
@@ -714,12 +870,6 @@ function jeux() {
       <div class="q"><div class="meta"><span class="pill" style="--c:${RUB[j.q.it.m]?.c || "var(--accent)"}">${lblQ(j.q.it)}</span></div>
       <p class="qt">${esc(j.q.it.q)}</p>${j.q.choix.map((c, i) => `<button class="choice" data-jeu-c="${i}">${esc(c)}</button>`).join("")}</div>`;
   }
-  if (j.mode === "survie") {
-    return head(`${"❤️".repeat(j.vies)}${"🤍".repeat(3 - j.vies)}`) + `<div class="progress" style="padding:10px 14px"><div class="row"><span>${j.score} bonne${j.score > 1 ? "s" : ""} réponse${j.score > 1 ? "s" : ""}</span><span>${j.combo >= 3 ? `🔥 ${j.combo}` : ""}</span></div></div>${flash}
-      <div class="q" style="text-align:center"><div class="meta" style="justify-content:center"><span class="pill">${j.q.it.type === "auteur" ? "Auteur" : "Date"}</span></div>
-      <p class="qt">${esc(j.q.it.q)}</p><div class="vf-r">${esc(j.q.r)}</div>
-      <div class="flash-btns">${bigBtn("✗ Faux", 'data-jeu-vf="0"')}${bigBtn("✓ Vrai", 'data-jeu-vf="1"')}</div></div>`;
-  }
   if (j.mode === "frise") {
     const f = j.f, done = f.tap.length === 4, bon = [...f.items].sort((a, b) => a.r - b.r);
     return head(`Manche ${j.manche}/5`) + `<p class="lead">Touche les événements du <b>plus ancien</b> au <b>plus récent</b>.</p>
@@ -728,20 +878,6 @@ function jeux() {
         const cls = done ? (bon[k] === x ? "ok" : "ko") : "";
         return `<button class="choice frise ${cls}" data-jeu-f="${i}" ${pos >= 0 ? "disabled" : ""}><span class="num">${pos >= 0 ? pos + 1 : ""}</span>${esc(x.q)}${done ? ` <b>· ${x.r}</b>` : ""}</button>`; }).join("")}
       ${done ? `<div class="expl"><b>${f.tap.every((i, k) => f.items[i] === bon[k]) ? "✓ Parfait !" : "✗ Bon ordre :"}</b> ${bon.map((x) => x.r).join(" → ")}</div>${bigBtn(j.manche < 5 ? "Manche suivante" : "Voir mon score", "data-jeu-next")}` : ""}</div>`;
-  }
-  if (j.mode === "pluie") {
-    return head(`${"❤️".repeat(j.vies)}${"🤍".repeat(3 - j.vies)}`) + `<div class="progress" style="padding:10px 14px"><div class="row"><span>${j.score} pts</span><span>${j.combo >= 2 ? `🔥 ×${j.combo}` : `vitesse ${Math.round(j.v * 100 - 10)}`}</span></div></div>
-      <div class="pluie-q"><span class="pill">${lblQ(j.q.it)}</span><p class="qt">${esc(j.q.it.q)}</p></div>${flash}
-      <div class="pluie" id="pluie"><div class="pluie-row" id="pluie-row">${j.q.choix.map((c, i) => `<button class="goutte" data-jeu-pluie="${i}">${esc(c)}</button>`).join("")}</div><div class="sol"></div></div>`;
-  }
-  if (j.mode === "millio") {
-    const gain = PALIERS[j.niveau - 1] || 0;
-    return head(euros(gain)) + `<div class="ladder">${PALIERS.map((x, i) => `<span class="${i === j.niveau ? "now" : i < j.niveau ? "done" : ""} ${i === 4 ? "safe" : ""}">${x >= 1000 ? x / 1000 + "k" : x}</span>`).join("")}</div>
-      ${flash}<div class="q millio"><div class="meta"><span class="pill">Question ${j.niveau + 1} · pour ${euros(PALIERS[j.niveau])}</span></div>
-      <p class="qt">${esc(j.q.it.q)}</p>
-      ${j.q.choix.map((c, i) => j.cache.includes(i) ? `<button class="choice" disabled style="visibility:hidden">·</button>` : `<button class="choice" data-jeu-m="${i}"><b>${"ABCD"[i]}</b> ${esc(c)}${j.pub ? `<span class="pub" style="width:${j.pub[i]}%"></span><small>${j.pub[i]} %</small>` : ""}</button>`).join("")}
-      <div class="jokers"><button class="read-btn" data-jeu-joker="ff" ${j.jokers.ff ? "" : "disabled"}>50 / 50</button><button class="read-btn" data-jeu-joker="pub" ${j.jokers.pub ? "" : "disabled"}>👥 Public</button><button class="read-btn" data-jeu-partir>Partir avec ${euros(gain)}</button></div>
-      <p class="trad" style="text-align:center;margin-top:10px">Palier assuré à 2 000 € (question 5).</p></div>`;
   }
   const p = j.p;
   return head(`${Math.floor((Date.now() - p.debut) / 1000)} s`) + `<p class="lead">Touche un auteur, puis son idée. Chaque erreur coûte 5 s.${p.err ? ` Erreurs : <b>${p.err}</b>` : ""}</p>${flash}
@@ -752,60 +888,14 @@ function jeux() {
 function jeuClick(el) {
   const j = state.jeu, d = el.dataset;
   if (d.jeuGo !== undefined) { jeuStart(d.jeuGo); scrollTo(0, 0); return render(); }
-  if (d.jeuQuit !== undefined) { state.jeu = null; clearInterval(state.jeuTimer); cancelAnimationFrame(state.pluieRaf); return render(); }
+  if (d.jeuQuit !== undefined) { state.jeu = null; clearInterval(state.jeuTimer); return render(); }
   if (!j || j.fini) return;
   const revoir = (it) => (j.revoir ||= []).push(it);
-  if (d.jeuPluie !== undefined && j.mode === "pluie") {
-    if (j.q.choix[+d.jeuPluie] !== j.q.it.r) return pluieRate(`✗ C'était ${j.q.it.r}`);
-    j.combo++; const gain = 1 + Math.floor(j.combo / 3); j.score += gain; j.v = Math.min(.45, j.v + .012);
-    j.flash = { ok: true, t: `✓ +${gain}` }; j.q = jeuQ(); j.y = 0; render(); return pluieLoop();
-  }
-  if (j.mode === "millio") {
-    if (d.jeuPartir !== undefined) { jeuFin(PALIERS[j.niveau - 1] || 0); return render(); }
-    if (d.jeuJoker === "ff" && j.jokers.ff) {
-      j.jokers.ff = false; j.cache = melange(j.q.choix.map((c, i) => i).filter((i) => j.q.choix[i] !== j.q.it.r)).slice(0, 2); return keep();
-    }
-    if (d.jeuJoker === "pub" && j.jokers.pub) {
-      j.jokers.pub = false; const bon = j.q.choix.indexOf(j.q.it.r), ok = 45 + Math.floor(Math.random() * 30);
-      const autres = j.q.choix.map((_, i) => i).filter((i) => i !== bon && !j.cache.includes(i));
-      let reste = 100 - ok; j.pub = j.q.choix.map(() => 0); j.pub[bon] = ok;
-      autres.forEach((i, k) => { const v = k === autres.length - 1 ? reste : Math.floor(Math.random() * reste); j.pub[i] = v; reste -= v; });
-      return keep();
-    }
-    if (d.jeuM !== undefined) {
-      if (j.q.choix[+d.jeuM] === j.q.it.r) {
-        j.niveau++; if (j.niveau === 10) { jeuFin(1000000); return render(); }
-        j.flash = { ok: true, t: `✓ ${euros(PALIERS[j.niveau - 1])} !` }; j.q = jeuQ(); j.cache = []; j.pub = null; return keep();
-      }
-      buzz(); revoir(j.q.it);
- jeuFin(j.niveau >= 5 ? 2000 : 0); return render();
-    }
-  }
-  if (d.jeuDuel !== undefined && j.mode === "duel") {
-    const [pl, i] = d.jeuDuel.split("-").map(Number);
-    if (j.bloque[pl]) return;
-    if (j.q.choix[i] === j.q.it.r) {
-      j.sc[pl]++; j.flash = { ok: true, t: `Point joueur ${pl + 1} · ${j.q.it.r}` };
-      if (j.sc[pl] >= 7) { j.fini = { duel: pl }; setTimeout(confettis, 150); return render(); }
-      j.q = jeuQ(); j.bloque = [false, false];
-    } else {
-      buzz(); j.bloque[pl] = true; j.flash = { ok: false, t: `Joueur ${pl + 1} bloqué` };
-      if (j.bloque[0] && j.bloque[1]) { j.flash = { ok: false, t: `Personne ! C'était ${j.q.it.r}` }; j.q = jeuQ(); j.bloque = [false, false]; }
-    }
-    return render();
-  }
   if (d.jeuC !== undefined && j.mode === "chrono") {
     const c = j.q.choix[+d.jeuC], it = j.q.it;
     if (c === it.r) { j.combo++; const gain = 1 + Math.floor(j.combo / 3); j.score += gain; j.flash = { ok: true, t: `✓ +${gain}${gain > 1 ? " (bonus série)" : ""}` }; }
     else { j.combo = 0; j.flash = { ok: false, t: `✗ C'était ${it.r}` }; revoir(it); buzz(); }
     j.q = jeuQ(); return keep();
-  }
-  if (d.jeuVf !== undefined && j.mode === "survie") {
-    const juste = (d.jeuVf === "1") === j.q.vrai, it = j.q.it;
-    if (juste) { j.score++; j.combo++; j.flash = { ok: true, t: "✓ Bien vu" }; }
-    else { j.vies--; j.combo = 0; buzz(); j.flash = { ok: false, t: `✗ ${it.q} → ${it.r}` }; revoir(it); }
-    if (j.vies <= 0) jeuFin(j.score); else j.q = jeuVF();
-    return keep();
   }
   if (d.jeuF !== undefined && j.mode === "frise") {
     const f = j.f; if (f.tap.length < 4 && !f.tap.includes(+d.jeuF)) f.tap.push(+d.jeuF);
@@ -863,18 +953,6 @@ function trous() {
         ${done ? `<div class="trad">${esc(b.explication)}</div>` : ""}</div>`; }).join("")}`;
 }
 
-function traduction() {
-  const ed = state.ed, list = ed?.langues?.traduction || [];
-  if (!list.length) return loading("Les phrases de thème et version arrivent avec la prochaine édition.");
-  const lab = { "fr>en": "Thème 🇫🇷→🇬🇧", "en>fr": "Version 🇬🇧→🇫🇷", "fr>es": "Thème 🇫🇷→🇪🇸", "es>fr": "Version 🇪🇸→🇫🇷" };
-  return `<p class="lead">Traduis chaque phrase sur une feuille ou dans ta tête, puis compare avec le corrigé.</p>` + list.map((t, i) => {
-    const k = `tr:${ed.date}:${i}`;
-    return `<div class="q" style="--c:var(--monde)"><div class="meta"><span class="pill">${lab[t.sens] || t.sens}</span></div>
-      <p class="qt">${esc(t.phrase)}</p>
-      ${state.shown[k] ? `<div class="expl"><b>Corrigé :</b> ${esc(t.corrige)}${t.astuce ? `<br><b>Astuce :</b> ${esc(t.astuce)}` : ""}</div>` : bigBtn("Voir le corrigé", `data-show="${k}"`)}</div>`;
-  }).join("");
-}
-
 function pieges() {
   const ed = state.ed, list = (ed?.langues?.pieges || []).map((q, i) => ({ ...q, i })).filter((q) => q.langue === state.lang);
   if (!list.length) return langChips() + loading("Les questions de grammaire arrivent avec la prochaine édition.");
@@ -883,27 +961,17 @@ function pieges() {
     list.map((q) => qcm(q, rep[q.i], `data-piege="${q.i}"`, "var(--monde)")).join("");
 }
 
-function lecture() {
-  const L = state.ed?.langues || {};
-  const one = (x, l) => x ? `<div class="card lang-card" style="--c:var(--monde)">
-      <div class="meta"><span class="pill">${FLAG[l]}</span><span>${esc(x.source)} · ${fmtDate(x.date)}</span></div>
-      <h3>${esc(x.titre)}</h3><p class="resume">${esc(x.resume)}</p>
-      <p class="quote">« ${esc(x.phrase)} »</p><div class="trad">${esc(x.traduction)}</div>
-      <div class="src"><a href="${esc(x.lien)}" target="_blank" rel="noopener">Article original ↗</a></div></div>` : "";
-  return `<p class="lead">Un résumé d'article par langue chaque jour. Lis-le à voix haute, puis ouvre l'article original.</p>${one(L.en, "en")}${one(L.es, "es")}` || loading();
-}
-
 function vocab() {
-  const l = state.vocabLang || "";
-  return flashUI("vocab", `<p class="lead">Le vocabulaire thématique des concours, plus les mots de l'actu de chaque jour, en révision espacée.</p>
-    <div class="chips">${Object.entries({ "": "Tout", en: "🇬🇧 Anglais", es: "🇪🇸 Espagnol" }).map(([k, v]) => `<button class="chip ${k === l ? "on" : ""}" data-vlang="${k}">${v}</button>`).join("")}</div>`);
+  return flashUI("vocab", langChips() + `<p class="lead">Le vocabulaire des concours et les mots de l'actu, en révision espacée. 8 mots nouveaux par jour maximum.</p>`);
 }
 
 function langues() {
-  const s = state.sub.langues;
+  const s = state.sub.langues, wd = wdIdx(today());
   if (s === "vocab" && !Array.isArray(state.bank)) loadBank();
-  const body = s === "vocab" ? vocab() : !state.ed ? loading("Pas d'édition disponible.") : s === "traduction" ? traduction() : s === "pieges" ? pieges() : s === "lecture" ? lecture() : trous();
-  return subtabs("langues", { trous: "Textes à trous", vocab: "Vocabulaire", traduction: "Thème / version", pieges: "Grammaire", lecture: "Lecture" }) + body;
+  const body = s === "vocab" ? vocab() : !state.ed ? loading("Pas d'édition disponible.") : s === "pieges" ? pieges() : trous();
+  const seanceTxt = wd === 0 ? "Lundi soir : anglais, 25 min." : wd === 3 ? "Jeudi soir : espagnol, 20 min." : "Séances : anglais le lundi soir (25 min), espagnol le jeudi soir (20 min).";
+  return subtabs("langues", { vocab: "1. Vocabulaire", trous: "2. Texte à trous", pieges: "3. Grammaire" }) +
+    `<p class="lead"><b style="color:var(--ink)">${seanceTxt}</b> Dans l'ordre : vocabulaire d'abord, puis le texte à trous, puis la grammaire s'il te reste du temps.</p>` + body;
 }
 
 // =====================================================================
@@ -945,12 +1013,13 @@ function stats() {
       <div class="stat"><b>${serieJours()}</b><span>jours d'affilée</span></div>
       <div class="stat"><b>${state.stats.best}</b><span>meilleure série quiz</span></div>
       <div class="stat"><b>${tot[1] ? Math.round((100 * tot[0]) / tot[1]) : 0}%</b><span>réussite quiz</span></div>
-      <div class="stat"><b>${Object.values(prog).filter((p) => p.box >= 3).length}</b><span>fiches sues</span></div>
+      <div class="stat"><b>${Object.values(prog).filter((p) => p.box >= 3).length}</b><span>flashcards sues</span></div>
     </div>
     ${Object.keys(notes).length ? title("Moyennes (notes de l'agenda)") + `<table class="hist">${Object.entries(notes).map(([m, l]) =>
       `<tr><td>${MATS_AG[m] || m} · ${l.length} note${l.length > 1 ? "s" : ""}</td><td><b>${(l.reduce((a, b) => a + b, 0) / l.length).toFixed(2).replace(".", ",")}</b>/20</td></tr>`).join("")}</table>` : ""}
-    ${title("Maîtrise des fiches")}<div class="bars">${deckStat}</div>
-    ${title("Quiz : réussite par matière")}<div class="bars">${Object.keys(RUB).map((m) => {
+    ${(() => { const E = store.get("erreurs", []); return E.length ? title("Carnet d'erreurs") + `<table class="hist">${Object.entries(MAT_ERR).filter(([k]) => E.some((e) => e.m === k)).map(([k, v]) => `<tr><td>${v}</td><td>${E.filter((e) => e.m === k && !e.ok).length} à revoir · ${E.filter((e) => e.m === k && e.ok).length} maîtrisées</td></tr>`).join("")}</table>` : ""; })()}
+    ${title("Maîtrise des flashcards")}<div class="bars">${deckStat}</div>
+    ${title("Quiz : réussite par matière")}<div class="bars">${ACTU.map((m) => {
       const s = agg[m] || { ok: 0, n: 0 }, p = s.n ? Math.round((100 * s.ok) / s.n) : 0;
       return `<div class="bar" style="--c:${RUB[m].c}">${RUB[m].nom} — ${s.ok}/${s.n} (${p}%)<div class="track"><div class="fill" style="width:${p}%"></div></div></div>`;
     }).join("")}</div>
@@ -980,13 +1049,35 @@ function render() {
   document.querySelectorAll("#tabs button").forEach((b) => b.classList.toggle("on", b.dataset.tab === state.tab));
   if (document.body.dataset.tab !== state.tab) { document.body.dataset.tab = state.tab; v.animate?.([{ opacity: 0, transform: "translateY(6px)" }, { opacity: 1, transform: "none" }], { duration: 220, easing: "ease-out" }); }
   $("#dateline").textContent = ed ? fmtDate(ed.date + "T12:00", { weekday: "long", day: "numeric", month: "long" }) : "Édition à venir";
-  $("#ticker").innerHTML = ed ? [...Object.keys(RUB).map((k) => `${RUB[k].court} <b>${(ed.rubriques?.[k] || []).length}</b>`),
+  $("#ticker").innerHTML = ed ? [...ACTU.map((k) => `${RUB[k].court} <b>${Math.min(1, (ed.rubriques?.[k] || []).length)}</b>`),
     `Quiz <b>${(ed.quiz || []).length}</b>`, `MàJ <b>${fmtHour(ed.genere_le)}</b>`].map((s) => `<span>${s}</span>`).join("") : "";
   const needsEd = state.tab === "actu";
   if (needsEd && !ed) { v.innerHTML = `<div class="empty"><h2>Pas encore d'édition</h2><p>La prochaine édition sera publiée vers 6 h.</p></div>`; return; }
   v.innerHTML = { auj: aujourdhui, actu, reviser, langues, moi }[state.tab]();
+  renderTex();
 }
-const goTo = (tab, sub) => {
+// Formules de maths « comme sur un poly » (KaTeX, chargé seulement quand il y a des formules)
+let katexP = null;
+const TEX_OPTS = { delimiters: [{ left: "$$", right: "$$", display: true }, { left: "$", right: "$", display: false }], throwOnError: false };
+const loadScript = (src) => new Promise((ok, ko) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = ko; document.head.appendChild(s); });
+function renderTex() {
+  const els = document.querySelectorAll("#view .tex");
+  if (!els.length) return;
+  if (window.renderMathInElement) return els.forEach((el) => window.renderMathInElement(el, TEX_OPTS));
+  if (katexP) return;
+  const K = "vendor/katex/"; // KaTeX 0.16.11 (licence MIT), copié dans le dépôt pour marcher hors connexion
+  const l = document.createElement("link"); l.rel = "stylesheet"; l.href = K + "katex.min.css"; document.head.appendChild(l);
+  katexP = loadScript(K + "katex.min.js").then(() => loadScript(K + "auto-render.min.js")).then(renderTex).catch(() => { katexP = null; });
+}
+const goTo = (tab, sub, x) => {
+  if (x !== undefined) {
+    if (sub === "cours") { state.coursMat = x; store.set("coursMat", x); state.coursQ = ""; }
+    if (sub === "fiches") state.ficheMat = x;
+    if (sub === "entrainement") state.trainSub = x;
+    if (sub === "kholle") { state.khMat = x; if (state.kh?.m !== x) state.kh = null; }
+    if (sub === "erreurs") { state.errMode = x; state.relIdx = 0; state.relShow = false; }
+    if (tab === "langues") { state.lang = x; store.set("lang", x); }
+  }
   state.tab = tab; store.set("tab", tab);
   if (sub) { state.sub[tab] = sub; store.set("subs", state.sub); }
   state.showBack = false; render(); scrollTo(0, 0);
@@ -1001,8 +1092,46 @@ $("#tabs").onclick = (e) => { const b = e.target.closest("button"); if (b) goTo(
 $("#view").addEventListener("click", (e) => {
   const t = e.target, at = (a) => t.closest(`[${a}]`);
   let el;
-  if ((el = at("data-goto"))) { e.preventDefault(); const [tab, sub] = el.dataset.goto.split(":"); return goTo(tab, sub); }
-  if ((el = at("data-sub"))) { const [tab, sub] = el.dataset.sub.split(":"); state.sub[tab] = sub; store.set("subs", state.sub); if (sub === "classement") state.board = undefined; state.showBack = false; return render(); }
+  if ((el = at("data-tick"))) {
+    e.preventDefault(); const all = store.get("todo", {}), d = (all[today()] ||= {}), k = el.dataset.tick;
+    d[k] = !d[k]; Object.keys(all).sort().slice(0, -30).forEach((x) => delete all[x]); store.set("todo", all); actif(); return keep();
+  }
+  if ((el = at("data-goto"))) { e.preventDefault(); const [tab, sub, x] = el.dataset.goto.split(":"); return goTo(tab, sub, x); }
+  if ((el = at("data-sub"))) { const [tab, sub] = el.dataset.sub.split(":"); state.sub[tab] = sub; store.set("subs", state.sub); if (sub === "erreurs") state.errMode = ""; state.showBack = false; return render(); }
+  if ((el = at("data-pday"))) { state.planDay = +el.dataset.pday; return keep(); }
+  // fiches de cours
+  if ((el = at("data-cmat"))) { state.coursMat = el.dataset.cmat; store.set("coursMat", state.coursMat); state.coursQ = ""; return render(); }
+  if (at("data-crev")) { store.set("coursRev", !store.get("coursRev", false)); return keep(); }
+  if ((el = at("data-it")) && el.closest(".fiches.rev") && !t.closest("summary")) { el.classList.toggle("shown"); return; }
+  // carnet d'erreurs
+  if ((el = at("data-er-mode"))) { state.errMode = el.dataset.erMode; state.relIdx = 0; state.relShow = false; scrollTo(0, 0); return render(); }
+  if (at("data-er-restart")) { state.relIdx = 0; state.relShow = false; return render(); }
+  if (at("data-rel-show")) { state.relShow = true; return keep(); }
+  if ((el = at("data-rel"))) {
+    if (el.dataset.rel === "1") { const L = store.get("erreurs", []), f = state.errMat || "", e2 = L.filter((x) => !x.ok && (!f || x.m === f))[state.relIdx || 0]; if (e2) { e2.ok = true; store.set("erreurs", L); } }
+    else state.relIdx = (state.relIdx || 0) + 1;
+    state.relShow = false; actif(); return render();
+  }
+  if ((el = at("data-er-mat"))) { state.errMat = el.dataset.erMat; return keep(); }
+  if (at("data-er-all")) { state.errAll = !state.errAll; return keep(); }
+  if ((el = at("data-er-edit"))) { state.errEdit = el.dataset.erEdit; scrollTo(0, 0); return render(); }
+  if ((el = at("data-er-ok"))) { const L = store.get("erreurs", []), x = L.find((y) => y.id === el.dataset.erOk); if (x) { x.ok = !x.ok; store.set("erreurs", L); } return keep(); }
+  if ((el = at("data-er-del"))) { if (!confirm("Supprimer cette erreur du carnet ?")) return; store.set("erreurs", store.get("erreurs", []).filter((y) => y.id !== el.dataset.erDel)); return keep(); }
+  if (t.id === "er-cancel") { state.errEdit = null; return render(); }
+  if (t.id === "er-save") {
+    const v = { m: $("#er-m").value, chap: $("#er-chap").value.trim(), erreur: $("#er-err").value.trim(), correction: $("#er-cor").value.trim(), pourquoi: $("#er-pq").value.trim() };
+    if (!v.erreur || !v.correction) return alert("Écris au moins l'erreur et la correction.");
+    const L = store.get("erreurs", []), x = state.errEdit && L.find((y) => y.id === state.errEdit);
+    if (x) Object.assign(x, v); else L.unshift({ id: Date.now().toString(36), date: today(), n: 1, ...v });
+    store.set("erreurs", L); state.errEdit = null; actif(); return render();
+  }
+  // mode khôlle
+  if ((el = at("data-khm"))) { state.khMat = el.dataset.khm; state.kh = null; return render(); }
+  if ((el = at("data-khc"))) { const m = state.khMat || state.kh?.m, L = state.khCh?.[m]; if (L) { const k = el.dataset.khc, i = L.indexOf(k); i >= 0 ? L.splice(i, 1) : L.push(k); } return keep(); }
+  if (at("data-kh-start")) { khStart(); scrollTo(0, 0); return render(); }
+  if (at("data-kh-quit")) { state.kh = null; return render(); }
+  if (at("data-kh-flip")) { state.kh.show = true; return keep(); }
+  if ((el = at("data-kh-grade"))) { khGrade(el.dataset.khGrade === "1"); return render(); }
   if ((el = at("data-fmat"))) { state.ficheMat = el.dataset.fmat; state.showBack = false; return render(); }
   if ((el = at("data-vlang"))) { state.vocabLang = el.dataset.vlang; state.showBack = false; return render(); }
   if ((el = at("data-lang"))) { state.lang = el.dataset.lang; store.set("lang", state.lang); return render(); }
@@ -1010,11 +1139,14 @@ $("#view").addEventListener("click", (e) => {
   if ((el = at("data-grade"))) { gradeCard(el.dataset.deck, el.dataset.grade === "1"); return render(); }
   if ((el = at("data-show"))) { state.shown[el.dataset.show] = true; actif(); return keep(); }
   if ((el = at("data-vu"))) { const v = store.get("vus", {}); v[el.dataset.vu] = true; store.set("vus", v); actif(); return keep(); }
-  if ((el = t.closest("[data-jeu-go],[data-jeu-quit],[data-jeu-c],[data-jeu-vf],[data-jeu-f],[data-jeu-next],[data-jeu-pl],[data-jeu-pr],[data-jeu-pluie],[data-jeu-m],[data-jeu-joker],[data-jeu-partir],[data-jeu-duel]")) && !el.disabled) return jeuClick(el);
+  if ((el = t.closest("[data-jeu-go],[data-jeu-quit],[data-jeu-c],[data-jeu-f],[data-jeu-next],[data-jeu-pl],[data-jeu-pr]")) && !el.disabled) return jeuClick(el);
   if ((el = at("data-train"))) { state.trainSub = el.dataset.train; return render(); }
   if ((el = at("data-qcm")) && !el.disabled) {
     const id = el.dataset.qcm, s = store.get(`qcm:${id}`, null); if (!s) return;
-    const k = el.dataset.qk; s.ans[k] = s.perm[k][+el.dataset.c]; store.set(`qcm:${id}`, s); actif(); return keep();
+    const k = el.dataset.qk; s.ans[k] = s.perm[k][+el.dataset.c]; store.set(`qcm:${id}`, s); actif();
+    const q = state.qcmData[id]?.questions.find((x) => String(x.id) === String(k));
+    if (q && s.ans[k] !== q.bonne_reponse) addErreur({ m: "droit", chap: QCMS[id].nom.replace(/^Droit · /, ""), erreur: `${q.question} → j'ai répondu : ${q.choix[s.ans[k]]}`, correction: `${q.choix[q.bonne_reponse]} ${q.explication} Majeure : ${q.majeure_a_ecrire}`, src: `qcm:${id}:${k}` });
+    return keep();
   }
   if ((el = at("data-qcmretry"))) {
     const id = el.dataset.qcmretry, s = store.get(`qcm:${id}`, null), d = state.qcmData[id];
@@ -1038,19 +1170,13 @@ $("#view").addEventListener("click", (e) => {
   if ((el = at("data-q")) && !el.disabled) {
     const ed = state.ed, i = +el.dataset.q, j = +el.dataset.c;
     (state.answers[ed.date] ||= {})[i] = j; store.set("answers", state.answers);
-    if (j === ed.quiz[i].bonne) { state.stats.streak++; state.stats.best = Math.max(state.stats.best, state.stats.streak); }
-    else state.stats.streak = 0;
+    const q = ed.quiz[i];
+    if (j === q.bonne) { state.stats.streak++; state.stats.best = Math.max(state.stats.best, state.stats.streak); }
+    else { state.stats.streak = 0; if (ACTU.includes(q.matiere)) addErreur({ m: q.matiere, chap: "Quiz de l'actu", erreur: `${q.question} → j'ai répondu : ${q.choix[j]}`, correction: `${q.choix[q.bonne]}. ${q.explication}`, src: `quiz:${ed.date}:${i}` }); }
     store.set("stats", state.stats); actif();
-    if (Object.keys(state.answers[ed.date]).length === ed.quiz.length) { recordResult(); sendScore(); }
+    if (Object.keys(state.answers[ed.date]).length === ed.quiz.length) recordResult();
     return keep();
   }
-
-  if (t.id === "join") {
-    const pseudo = $("#pseudo").value.trim(), groupe = $("#groupe").value.trim().toLowerCase();
-    if (!pseudo || !groupe) return alert("Remplis ton pseudo et le code du groupe.");
-    store.set("me", { pseudo, groupe }); state.board = undefined; sendScore().then(() => { state.board = undefined; render(); }); return;
-  }
-  if (t.id === "leave") { store.set("me", null); state.board = undefined; return render(); }
 
   if (t.id === "ev-add") {
     const date = $("#ev-date").value; if (!date) return alert("Choisis une date.");
@@ -1062,7 +1188,7 @@ $("#view").addEventListener("click", (e) => {
 
   if (t.id === "export") {
     const data = {};
-    for (const k of ["answers", "stats", "history", "read", "leitner", "newDay", "agenda", "actif", "vus", "pieges", "concours", "me", "qcmHist", "qcm:droit-c2"]) data[k] = store.get(k, null);
+    for (const k of ["answers", "stats", "history", "read", "leitner", "newDay", "agenda", "actif", "vus", "pieges", "concours", "qcmHist", "qcm:droit-c2", "erreurs", "todo", "kholleHist", "relu", "jeuRec", "coursMat", "coursRev", "lang"]) data[k] = store.get(k, null);
     for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k.startsWith("ect:trous:")) data[k.slice(4)] = store.get(k.slice(4)); }
     const txt = JSON.stringify(data);
     navigator.clipboard?.writeText(txt).then(() => alert("Progression copiée. Colle-la dans une note pour la sauvegarder."), () => prompt("Copie ce texte :", txt));
@@ -1084,15 +1210,22 @@ $("#view").addEventListener("change", (e) => {
 });
 
 $("#view").addEventListener("input", (e) => {
-  if (e.target.id !== "bankq") return;
-  state.bankQ = e.target.value; render();
-  const i = $("#bankq"); i.focus(); i.setSelectionRange(i.value.length, i.value.length);
+  const id = e.target.id;
+  if (id !== "bankq" && id !== "coursq") return;
+  state[id === "bankq" ? "bankQ" : "coursQ"] = e.target.value; render();
+  const i = $("#" + id); i.focus(); i.setSelectionRange(i.value.length, i.value.length);
 });
+// fiches de cours : on retient les chapitres ouverts
+$("#view").addEventListener("toggle", (e) => {
+  const d = e.target; if (!d.dataset?.fch || state.coursQ) return;
+  const o = store.get("coursOpen", {}); o[d.dataset.fch] = d.open; store.set("coursOpen", o);
+}, true);
 
 // ---------- démarrage ----------
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
 loadArchive();
 loadIndicators();
 loadCards();
+loadPlan();
 loadEdition();
 document.addEventListener("visibilitychange", () => { if (!document.hidden && !$("#archive").value) loadEdition(); });

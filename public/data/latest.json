@@ -1,415 +1,405 @@
 {
- "date": "2026-11-21",
- "genere_le": "2026-11-21T05:30:13.920Z",
+ "date": "2026-11-22",
+ "genere_le": "2026-11-22T05:30:10.180Z",
  "modele": "claude-sonnet-5-5",
  "notion_du_jour": {
-  "titre": "Marché baissier (bear market) et bulle spéculative",
-  "definition": "Un marché baissier (« bear market ») est une période où les cours d'une Bourse ou d'un secteur reculent fortement et durablement par rapport à leur plus haut. On retient souvent une baisse d'au moins 20 %. Une bulle spéculative se forme quand le prix d'un actif monte bien au-delà de sa valeur économique, parce que les investisseurs achètent en comptant sur la hausse. Quand la confiance disparaît, la bulle éclate : les ventes massives font chuter les cours, ce qui peut freiner l'investissement et la consommation (effet de richesse négatif).",
-  "exemple": "Quand les actions technologiques liées à l'intelligence artificielle s'effondrent après une forte hausse, les épargnants et les fonds qui en détiennent voient leur patrimoine baisser. Les entreprises du secteur ont alors plus de mal à lever des capitaux en Bourse pour financer leurs investissements.",
-  "matiere": "Économie"
+  "titre": "La gouvernance d'entreprise",
+  "definition": "La gouvernance désigne l'ensemble des règles, organes et processus par lesquels une entreprise est dirigée et contrôlée. Elle organise la répartition du pouvoir entre actionnaires, conseil d'administration et dirigeants. Elle vise à limiter les conflits d'intérêts, notamment la relation d'agence, où le dirigeant (mandataire) peut ne pas agir dans l'intérêt des propriétaires (mandants). Elle prend en compte les parties prenantes : salariés, clients, créanciers, société.",
+  "exemple": "Dans une entreprise familiale, un conflit entre héritiers et direction opérationnelle peut paralyser les décisions : c'est un problème de gouvernance, aggravé quand le capital passe par des holdings (sociétés qui détiennent des participations dans d'autres sociétés).",
+  "matiere": "Management"
  },
  "rubriques": {
   "eco": [
    {
-    "id": "a60",
+    "id": "a91",
     "theme": "Banques et marchés financiers",
-    "titre": "Wall Street : les valeurs technologiques entrent en marché baissier",
-    "resume": "Les actions technologiques américaines ont plongé et connaissent leur pire semaine depuis la crise du Covid-19. Les titres d'Anthropic et de Nvidia ont fortement reculé. Les investisseurs s'inquiètent du niveau des dépenses engagées dans l'intelligence artificielle. Le secteur entre ainsi dans ce que les marchés appellent un marché baissier.",
-    "contexte": "Les marchés financiers valorisent les entreprises selon leurs profits futurs anticipés. Si les investisseurs doutent de la rentabilité de l'IA, les cours chutent, ce qui peut aussi peser sur l'investissement et la consommation. L'épisode illustre le risque de bulle spéculative.",
+    "titre": "Wall Street chute, plombée par les valeurs de l'IA",
+    "resume": "Le Nasdaq, indice qui regroupe l'essentiel des valeurs technologiques, a reculé de 5,28 % et effacé tous ses gains de l'année. Des centaines de milliards de dollars de capitalisation sont partis en fumée. Le secteur de l'intelligence artificielle est au cœur de ce recul.",
+    "contexte": "Les marchés financiers anticipent les profits futurs : quand les doutes sur la rentabilité grandissent, les cours corrigent. Cela interroge le risque de bulle spéculative et ses effets sur l'économie réelle (richesse, investissement).",
     "notions": [
-     "Marché baissier",
+     "Bourse et marché financier",
      "Bulle spéculative",
-     "Valorisation boursière",
-     "Effet de richesse"
+     "Effet de richesse",
+     "Anticipations"
     ],
-    "copie": "Utilisable comme accroche pour une question sur les marchés financiers et le financement de l'économie. On peut aussi l'employer comme exemple d'instabilité financière (Keynes et les « esprits animaux »). Un autre exemple possible : la destruction créatrice de Schumpeter, avec des innovations qui provoquent des phases d'euphorie puis de correction.",
+    "copie": "Utilisable en accroche sur les liens entre sphère financière et sphère réelle. Illustre l'instabilité financière (Keynes et l'esprit animal des marchés). À mobiliser dans une QRA sur les risques de la financiarisation.",
     "niveau": 2,
-    "source": "Financial Times",
-    "lien": "https://www.ft.com/content/9f3c6ed6-c08f-4710-9683-ee2f5eb25841?syn-25a6b1a6=1",
-    "date": "2026-11-20T21:52:25.000Z",
-    "titre_original": "US tech stocks plunge into bear market in worst week since Covid-19 crisis"
-   },
-   {
-    "id": "a9",
-    "theme": "Géopolitique et relations internationales",
-    "titre": "Détroit d'Ormuz : le pétrole transporté recule face aux frappes iraniennes",
-    "resume": "Le volume de pétrole acheminé par le détroit d'Ormuz baisse alors que les frappes iraniennes s'intensifient. Selon un analyste, la reprise des exportations de brut du Moyen-Orient paraît « de plus en plus fragile ». Le détroit est une voie maritime stratégique pour le commerce mondial d'énergie.",
-    "contexte": "Quand l'offre de pétrole se réduit ou devient incertaine, les prix peuvent monter : c'est un choc d'offre. Il se transmet aux coûts de production et aux prix à la consommation, donc à l'inflation. Il rappelle la dépendance des économies aux importations d'énergie.",
-    "notions": [
-     "Choc d'offre",
-     "Inflation importée",
-     "Matières premières",
-     "Dépendance énergétique"
-    ],
-    "copie": "Exemple pour illustrer l'inflation par les coûts, ou la vulnérabilité de la mondialisation aux tensions géopolitiques. En étude de cas de management, il peut servir à discuter les risques de la chaîne d'approvisionnement.",
-    "niveau": 2,
-    "source": "Financial Times",
-    "lien": "https://www.ft.com/content/5fbc2b9d-0360-4a1f-9e4a-3e86168cbbc5?syn-25a6b1a6=1",
-    "date": "2026-11-21T05:00:35.000Z",
-    "titre_original": "Oil shipped through Hormuz falls as Iranian strikes increase"
-   },
-   {
-    "id": "a105",
-    "theme": "Concurrence et marchés",
-    "titre": "Encadrement des loyers : est-ce que cela fonctionne ?",
-    "resume": "L'Assemblée nationale vient de prolonger l'encadrement des loyers pour deux ans. Ce dispositif est expérimenté depuis 2018 dans environ 70 villes. Il est critiqué par la Cour des comptes et par certains professionnels de l'immobilier.",
-    "contexte": "L'encadrement des loyers est une intervention de l'État sur les prix, proche d'un prix plafond. Il oppose protection du pouvoir d'achat des locataires et risque de réduction de l'offre de logements. C'est un sujet classique d'économie du marché.",
-    "notions": [
-     "Prix plafond",
-     "Régulation d'un marché",
-     "Offre et demande",
-     "Pouvoir d'achat"
-    ],
-    "copie": "Le sujet convient à une question sur les limites du marché et l'intervention publique. On peut opposer Smith (le prix, signal d'un marché) à l'idée d'une correction des défaillances de marché par l'État.",
-    "niveau": 1,
     "source": "franceinfo",
-    "lien": "https://www.franceinfo.fr/economie/encadrement-des-loyers-est-ce-que-ca-fonctionne_8292497.html#xtor=RSS-3-%5Beconomie%5D",
-    "date": "2026-11-20T15:15:13.000Z",
-    "titre_original": "Encadrement des loyers: est-ce que &#xE7;a fonctionne ?"
+    "lien": "https://www.franceinfo.fr/internet/intelligence-artificielle/la-bourse-de-wall-street-enregistre-des-centaines-de-milliards-de-dollars-de-pertes-penalisee-par-le-secteur-de-l-ia_8293667.html#xtor=RSS-3-%5Beconomie%5D",
+    "date": "2026-11-21T11:44:42.000Z",
+    "titre_original": "La Bourse de Wall&#xA0;Street enregistre des centaines de milliards de dollars de pertes, p&#xE9;nalis&#xE9;e par le secteur de l'IA"
    },
    {
-    "id": "a63",
+    "id": "a94",
+    "theme": "Innovation et numérique",
+    "titre": "Anthropic : le pari vertigineux de l'IA",
+    "resume": "L'introduction en Bourse d'Anthropic, société qui développe l'assistant Claude, a été suivie dès le lendemain d'une correction du titre. Cela illustre à la fois les promesses de l'IA et les doutes sur son modèle économique. Le déploiement dépendra aussi de l'acceptation des centres de données par les populations.",
+    "contexte": "L'IA est vue comme un moteur potentiel de gains de productivité et de croissance. Mais ses besoins massifs en investissements et en énergie posent la question de sa rentabilité et de son acceptabilité sociale.",
+    "notions": [
+     "Introduction en Bourse",
+     "Innovation",
+     "Productivité",
+     "Destruction créatrice"
+    ],
+    "copie": "Se mobilise avec Schumpeter : l'innovation crée de nouveaux marchés et en détruit d'autres. Bon exemple pour discuter de la croissance tirée par le progrès technique, avec ses incertitudes.",
+    "niveau": 2,
+    "source": "Le Monde",
+    "lien": "https://www.lemonde.fr/idees/article/2026/11/21/anthropic-ou-le-pari-de-plus-en-plus-vertigineux-de-l-ia_6813980_3232.html",
+    "date": "2026-11-21T10:30:10.000Z",
+    "titre_original": "Anthropic ou le pari de plus en plus vertigineux de l’IA"
+   },
+   {
+    "id": "a96",
     "theme": "Finances publiques et rôle de l'État",
-    "titre": "Budget de fin de gestion 2026 : accord entre députés et sénateurs",
-    "resume": "Députés et sénateurs sont parvenus à un accord en commission mixte paritaire sur le projet de budget de « fin de gestion » pour 2026. Ce texte procède aux derniers ajustements budgétaires de l'année en cours. Une adoption définitive est possible mardi.",
-    "contexte": "Une commission mixte paritaire réunit des députés et des sénateurs pour trouver un texte commun. Ce passage illustre le fonctionnement du Parlement dans le vote des finances publiques. La loi de finances traduit les choix de politique budgétaire de l'État.",
+    "titre": "Piketty et la future convention fiscale de l'ONU",
+    "resume": "Les négociations aux Nations unies sur une convention-cadre sur la coopération fiscale reprennent à Nairobi le 30 novembre. Thomas Piketty estime qu'elle pourrait changer la face du monde. Il invite les Occidentaux à s'y intéresser pour ne pas passer à côté de l'histoire.",
+    "contexte": "La mondialisation facilite l'optimisation fiscale : les États se concurrencent par l'impôt. Une coopération internationale viserait à mieux taxer les grandes entreprises et les hauts patrimoines et à financer les politiques publiques.",
     "notions": [
-     "Loi de finances",
-     "Politique budgétaire",
-     "Commission mixte paritaire",
-     "Rôle de l'État"
+     "Impôt",
+     "Concurrence fiscale",
+     "Coopération internationale",
+     "Redistribution"
     ],
-    "copie": "Peut servir d'exemple pour la politique budgétaire (Keynes : l'État régule la conjoncture) ou le lien entre économie et droit. Reste prudent sur le contenu chiffré, absent de l'article.",
+    "copie": "Utile pour une QRA sur le rôle de l'État face à la mondialisation. L'exemple montre la difficulté d'une régulation hors des frontières nationales.",
     "niveau": 2,
-    "source": "franceinfo",
-    "lien": "https://www.franceinfo.fr/economie/budget/deputes-et-senateurs-parviennent-a-un-accord-sur-le-projet-de-budget-de-fin-de-gestion-pour-2026-avant-une-possible-adoption-definitive-mardi_8292914.html#xtor=RSS-3-%5Beconomie%5D",
-    "date": "2026-11-20T21:35:30.000Z",
-    "titre_original": "D&#xE9;put&#xE9;s et s&#xE9;nateurs parviennent &#xE0; un accord sur le projet de budget de \"fin de gestion\" pour 2026, avant une possible adoption d&#xE9;finitive mardi"
+    "source": "Le Monde",
+    "lien": "https://www.lemonde.fr/la-chronique-de-thomas-piketty/article/2026/11/21/thomas-piketty-le-projet-de-convention-fiscale-de-l-onu-a-le-potentiel-de-changer-la-face-du-monde_6813978_6649149.html",
+    "date": "2026-11-21T10:00:13.000Z",
+    "titre_original": "Thomas Piketty : « Le projet de convention fiscale de l’ONU a le potentiel de changer la face du monde »"
+   },
+   {
+    "id": "a92",
+    "theme": "Finances publiques et rôle de l'État",
+    "titre": "Budget de l'UE : Costa propose 204 milliards d'économies et une taxe numérique",
+    "resume": "Le président du Conseil européen, Antonio Costa, propose 204 milliards d'euros d'économies et une taxe numérique pour le budget de l'Union. La France a rejeté cette nouvelle proposition. Un sommet à Bruxelles doit examiner le compromis jeudi et vendredi.",
+    "contexte": "Le budget de l'UE finance des politiques communes et exige l'unanimité ou de larges accords entre États. Cela montre les tensions entre intérêts nationaux et projet européen.",
+    "notions": [
+     "Budget",
+     "Ressources propres",
+     "Taxation du numérique",
+     "Intégration européenne"
+    ],
+    "copie": "À mobiliser pour illustrer les difficultés du financement d'une action publique supranationale. Bonne accroche sur la fiscalité des géants du numérique.",
+    "niveau": 2,
+    "source": "Le Monde",
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/21/budget-de-l-ue-antonio-costa-le-president-du-conseil-europeen-propose-204-milliards-d-euros-d-economies-et-une-taxe-numerique_6813983_3234.html",
+    "date": "2026-11-21T11:01:50.000Z",
+    "titre_original": "Budget de l’UE : Antonio Costa, le président du Conseil européen, propose 204 milliards d’euros d’économies et une taxe numérique"
    }
   ],
   "droit": [
    {
-    "id": "a31",
+    "id": "a18",
+    "theme": "Droit des entreprises et des sociétés",
+    "titre": "Castel : une crise de gouvernance dans une architecture de holdings, fonds et trusts",
+    "resume": "La fille du fondateur, Romy Castel, cherche à évincer le directeur général opérationnel du groupe. Celui-ci est protégé par une structure juridique et capitalistique complexe. Elle a remporté en octobre une importante victoire judiciaire.",
+    "contexte": "Le droit des sociétés répartit les pouvoirs entre associés et dirigeants et encadre leur révocation. Les montages en holdings ou trusts compliquent l'identification de qui contrôle réellement la société.",
+    "notions": [
+     "Société et personnalité morale",
+     "Dirigeant et révocation",
+     "Holding",
+     "Contrôle judiciaire"
+    ],
+    "copie": "Permet d'illustrer que la société a une personnalité juridique distincte de ses associés, et que le pouvoir de direction est encadré par le droit. Exemple de litige entre associés porté devant le juge.",
+    "niveau": 3,
+    "source": "Le Monde",
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/22/au-sein-du-geant-des-boissons-castel-une-crise-de-gouvernance-amplifiee-par-une-architecture-complexe-de-holdings-de-fonds-et-de-trusts_6814144_3234.html",
+    "date": "2026-11-22T04:30:07.000Z",
+    "titre_original": "Au sein du géant des boissons Castel, une crise de gouvernance amplifiée par une architecture complexe de holdings, de fonds et de trusts"
+   },
+   {
+    "id": "a1",
     "theme": "Responsabilité",
-    "titre": "États-Unis : un juge approuve un accord de 7,25 milliards de dollars sur le Roundup",
-    "resume": "Un juge américain approuve un accord de 7,25 milliards de dollars payé par Bayer. Il bénéficie aux utilisateurs du désherbant Roundup déjà atteints d'un lymphome non hodgkinien, ainsi qu'à ceux qui tomberont malades à l'avenir.",
-    "contexte": "Cette affaire illustre la responsabilité d'un fabricant du fait de ses produits et la réparation de préjudices corporels de masse. Elle montre aussi qu'un litige peut se terminer par un accord (transaction) plutôt que par un jugement.",
+    "titre": "Accidents de la route : les avocats courtisent les victimes, les assureurs dénoncent une judiciarisation",
+    "resume": "En France, l'indemnisation des accidentés de la route coûte trois fois plus cher qu'il y a vingt ans. Les victimes y gagnent, mais les assureurs dénoncent une judiciarisation malsaine. Le phénomène rappelle le modèle américain.",
+    "contexte": "La responsabilité civile vise la réparation intégrale du dommage subi. Dans les accidents de circulation, un régime spécial favorable aux victimes existe, ce qui interroge l'équilibre entre indemnisation et coût de l'assurance.",
     "notions": [
      "Responsabilité civile",
-     "Préjudice",
-     "Transaction",
-     "Responsabilité du fait des produits"
+     "Réparation du préjudice",
+     "Assurance",
+     "Judiciarisation"
     ],
-    "copie": "En droit, utilise-le pour illustrer le triptyque faute/dommage/lien de causalité et la réparation du préjudice. Précise que le système américain est différent du droit français.",
-    "niveau": 2,
-    "source": "BBC",
-    "lien": "https://www.bbc.co.uk/news/articles/cwvg21gyl650o?at_medium=RSS&at_campaign=rss",
-    "date": "2026-11-21T03:49:09.000Z",
-    "titre_original": "Judge approves $7.25bn settlement for Roundup weedkiller cancer claims"
-   },
-   {
-    "id": "a66",
-    "theme": "Contrat",
-    "titre": "Découverts bancaires : un examen de solvabilité obligatoire depuis le 20 novembre",
-    "resume": "Depuis le vendredi 20 novembre, les banques doivent examiner la solvabilité de leurs clients avant d'accorder une autorisation de découvert, quels que soient le montant et le délai de remboursement. Les découverts sont ainsi rapprochés des crédits à la consommation.",
-    "contexte": "Le droit de la consommation protège la partie considérée comme faible dans le contrat afin de limiter le surendettement. Cette réforme renforce les obligations du prêteur avant la formation du contrat.",
-    "notions": [
-     "Contrat de crédit",
-     "Obligation d'information et de vigilance",
-     "Surendettement",
-     "Protection du consommateur"
-    ],
-    "copie": "Bon exemple pour un cas pratique : un contrat inégalitaire où la loi impose des obligations au professionnel. Peut aussi illustrer une règle d'origine législative qui encadre la liberté contractuelle.",
-    "niveau": 2,
-    "source": "franceinfo",
-    "lien": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/avec-les-nouvelles-regles-en-vigueur-pourrez-vous-etre-encore-a-decouvert_8292962.html#xtor=RSS-3-%5Beconomie%5D",
-    "date": "2026-11-20T21:05:07.000Z",
-    "titre_original": "Avec les nouvelles r&#xE8;gles en vigueur, pourrez-vous &#xEA;tre encore &#xE0; d&#xE9;couvert ?"
-   },
-   {
-    "id": "a50",
-    "theme": "Sources et institutions du droit",
-    "titre": "Affaire Zecler : trois policiers condamnés, le caractère raciste des violences retenu",
-    "resume": "Au procès de l'interpellation de Michel Zecler, le caractère raciste des violences est retenu. Trois policiers sont condamnés à des peines de prison ferme. Ils avaient prétendu dans un procès-verbal que le producteur les avait agressés, version contredite par des images de vidéosurveillance.",
-    "contexte": "Cette décision illustre le rôle des juridictions pénales et l'importance de la preuve dans un procès. Elle rappelle aussi que les agents publics répondent de leurs actes devant la justice.",
-    "notions": [
-     "Responsabilité pénale",
-     "Organisation judiciaire",
-     "Preuve",
-     "Circonstance aggravante"
-    ],
-    "copie": "Peut servir à distinguer responsabilité pénale et responsabilité civile, ou à illustrer le rôle de la jurisprudence. Il montre aussi la hiérarchie des juridictions.",
+    "copie": "À citer pour montrer le rôle de la responsabilité civile : indemniser la victime. Permet de discuter de ses effets économiques (primes d'assurance, comportement des acteurs).",
     "niveau": 2,
     "source": "Le Monde",
-    "lien": "https://www.lemonde.fr/societe/article/2026/11/21/au-proces-de-l-interpellation-de-michel-zecler-le-caractere-raciste-des-violences-retenu-trois-policiers-condamnes-a-des-peines-de-prison-ferme-et-l-espoir-d-une-jurisprudence_6813718_3224.html",
-    "date": "2026-11-20T23:46:36.000Z",
-    "titre_original": "Au procès de l’interpellation de Michel Zecler, le caractère raciste des violences retenu, trois policiers condamnés à des peines de prison ferme et l’espoir d’une « jurisprudence »"
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/22/comme-aux-etats-unis-les-victimes-francaises-d-accidents-de-la-route-sont-de-plus-en-plus-courtisees-par-les-avocats_6814181_3234.html",
+    "date": "2026-11-22T05:20:07.000Z",
+    "titre_original": "Comme aux Etats-Unis, les victimes françaises d’accidents de la route sont de plus en plus courtisées par les avocats"
+   },
+   {
+    "id": "a55",
+    "theme": "Sources et institutions du droit",
+    "titre": "Fuites vers le RN : le préfet Moutouh demande à être relevé de ses fonctions",
+    "resume": "Hugues Moutouh, ancien haut fonctionnaire de l'Intérieur, est soupçonné d'avoir joué un rôle dans la transmission au Rassemblement national d'informations confidentielles sur des enquêtes visant le parti. Des perquisitions ont eu lieu au siège du parti et au ministère de l'Intérieur. Il a demandé à être relevé de ses fonctions.",
+    "contexte": "L'affaire touche au secret de l'enquête et aux devoirs des agents publics. Elle illustre l'autorité judiciaire face au pouvoir politique et à l'administration. Les personnes soupçonnées restent présumées innocentes.",
+    "notions": [
+     "Présomption d'innocence",
+     "Perquisition",
+     "Séparation des pouvoirs",
+     "Devoir de discrétion"
+    ],
+    "copie": "À utiliser prudemment : exemple de contrôle de l'administration par la justice. Rappelez la présomption d'innocence en rédigeant.",
+    "niveau": 2,
+    "source": "Le Monde",
+    "lien": "https://www.lemonde.fr/societe/article/2026/11/21/hugues-moutouh-le-prefet-soupconne-de-fuites-d-informations-confidentielles-vers-le-rn-a-demande-a-etre-releve-de-ses-fonctions_6814056_3224.html",
+    "date": "2026-11-21T18:01:12.000Z",
+    "titre_original": "Hugues Moutouh, le préfet soupçonné de fuites d’informations confidentielles vers le RN, a demandé à être relevé de ses fonctions"
    }
   ],
   "mgmt": [
    {
-    "id": "a85",
+    "id": "a4",
     "theme": "Gouvernance et parties prenantes",
-    "titre": "Réguler l'IA commence dans les conseils d'administration",
-    "resume": "Dans une tribune au Monde, la sociologue Isabelle Ferreras et l'entrepreneur Gabriel Levie estiment que la sécurité de l'intelligence artificielle commence dans les conseils d'administration des géants de la tech. Selon eux, on ne régulera pas l'IA tant que les entreprises qui la conçoivent resteront des « autocraties ».",
-    "contexte": "La gouvernance désigne la manière dont une entreprise est dirigée et contrôlée, et à qui elle rend des comptes. Le débat porte sur la place des salariés et d'autres parties prenantes dans les décisions stratégiques.",
+    "titre": "Castel, empire discret secoué par une guerre de pouvoir",
+    "resume": "Un conflit de gouvernance tourmente le groupe de boissons, où l'on se dispute l'héritage, spirituel comme financier, du fondateur Pierre Castel. La 11e fortune française vient d'avoir 100 ans. La question de la succession est au cœur de la crise.",
+    "contexte": "Dans les groupes familiaux, la transmission du pouvoir est un moment critique : elle met en jeu la stratégie, la culture et la stabilité. Une gouvernance mal préparée fragilise l'entreprise.",
     "notions": [
      "Gouvernance",
-     "Conseil d'administration",
-     "Parties prenantes",
-     "Responsabilité sociétale"
+     "Entreprise familiale",
+     "Succession",
+     "Parties prenantes"
     ],
-    "copie": "Pour une étude de cas, mobilise l'opposition entre primauté des actionnaires et prise en compte des parties prenantes. Cela donne un angle de diagnostic de gouvernance.",
+    "copie": "Bon support d'étude de cas : diagnostic des risques d'une entreprise dépendante d'un fondateur. Peut servir à discuter du lien entre structure de propriété et direction.",
+    "niveau": 2,
+    "source": "Le Monde",
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/22/le-groupe-castel-empire-discret-de-la-biere-et-du-vin-secoue-par-une-guerre-de-pouvoir_6814179_3234.html",
+    "date": "2026-11-22T05:00:31.000Z",
+    "titre_original": "Le Groupe Castel, empire discret de la bière et du vin, secoué par une guerre de pouvoir"
+   },
+   {
+    "id": "a105",
+    "theme": "Stratégie d'entreprise",
+    "titre": "Satellite mobile : les opérateurs européens visent une constellation souveraine",
+    "resume": "Face à Starlink, Orange, Deutsche Telekom, Telefonica et Vodafone veulent créer un service mobile par satellite européen. Les délais, le coût et le manque de solutions disponibles compliquent le projet.",
+    "contexte": "Il s'agit d'une alliance stratégique entre concurrents pour réduire la dépendance à un acteur dominant. La question de la souveraineté numérique devient un enjeu industriel.",
+    "notions": [
+     "Alliance stratégique",
+     "Avantage concurrentiel",
+     "Barrières à l'entrée",
+     "Croissance externe"
+    ],
+    "copie": "À mobiliser pour illustrer la coopération entre concurrents (coopétition) et les coûts d'entrée sur un marché dominé. Utile dans un diagnostic externe.",
     "niveau": 3,
     "source": "Le Monde",
-    "lien": "https://www.lemonde.fr/idees/article/2026/11/20/nous-ne-parviendrons-pas-a-reguler-l-ia-si-les-entreprises-qui-la-concoivent-demeurent-des-autocraties_6813688_3232.html",
-    "date": "2026-11-20T18:00:24.000Z",
-    "titre_original": "« Nous ne parviendrons pas à réguler l’IA si les entreprises qui la conçoivent demeurent des autocraties »"
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/21/telephonie-mobile-par-satellite-le-chemin-tortueux-des-operateurs-europeens-vers-une-constellation-souveraine_6813948_3234.html",
+    "date": "2026-11-21T06:00:05.000Z",
+    "titre_original": "Téléphonie mobile par satellite : le chemin tortueux des opérateurs européens vers une constellation souveraine"
    },
    {
-    "id": "a91",
+    "id": "a67",
     "theme": "Organisation et ressources humaines",
-    "titre": "Nvidia : le côté sombre du leadership de Jensen Huang",
-    "resume": "Selon une enquête du New York Times relayée par la presse, l'ancien directeur général de Nvidia aurait proféré menaces, insultes et humiliations envers des employés. Un exemple cité est une menace d'arracher les bras d'un salarié.",
-    "contexte": "Le style de leadership influence la motivation, le climat social et la performance. Un management fondé sur la peur peut nuire à l'organisation, à l'image et à la valeur de l'entreprise.",
+    "titre": "Enjoué : des jouets recyclés et 50 anciens chômeurs salariés",
+    "resume": "À Villeurbanne, l'entreprise Enjoué remet sur le marché 15 000 jouets et jeux par an après tri et réparation. Elle les revend moitié prix. Elle emploie au passage 50 anciens chômeurs.",
+    "contexte": "L'économie circulaire combine intérêt économique, écologique et social. Ce modèle illustre la responsabilité sociétale de l'entreprise (RSE), qui prend en compte l'ensemble des parties prenantes.",
     "notions": [
-     "Leadership",
-     "Styles de direction",
-     "Climat social",
-     "Risques psychosociaux"
+     "RSE",
+     "Économie circulaire",
+     "Insertion",
+     "Parties prenantes"
     ],
-    "copie": "Illustre l'opposition entre leadership autoritaire et participatif. Dans une étude de cas, il peut servir de point de diagnostic sur les ressources humaines et la gouvernance. Reste prudent : il s'agit d'accusations rapportées par la presse.",
-    "niveau": 2,
-    "source": "El País América",
-    "lien": "https://elpais.com/us/2026-11-20/amenazas-de-muerte-insultos-y-humillaciones-el-lado-oscuro-del-liderazgo-de-jensen-huang-en-nvidia.html",
-    "date": "2026-11-20T17:21:03.000Z",
-    "titre_original": "Amenazas de muerte, insultos y humillaciones: el lado oscuro del liderazgo de Jensen Huang en Nvidia"
-   },
-   {
-    "id": "a80",
-    "theme": "Stratégie d'entreprise",
-    "titre": "Anthropic : une introduction en Bourse dictée par la peur ?",
-    "resume": "Dans une tribune au Monde, Guy Halfteck estime que l'entrée en Bourse d'Anthropic ne répond pas à un besoin de financement ou de liquidité. Pour lui, elle traduit la volonté des dirigeants de transférer les risques du secteur de l'IA vers les épargnants et la société.",
-    "contexte": "Une introduction en Bourse est un mode de financement externe : l'entreprise vend des actions au public. Elle modifie l'actionnariat, la gouvernance et la communication de l'entreprise.",
-    "notions": [
-     "Introduction en Bourse",
-     "Financement externe",
-     "Actionnariat",
-     "Risque"
-    ],
-    "copie": "Peut alimenter une réflexion sur la croissance externe et le financement d'une stratégie. À utiliser avec nuance : c'est l'avis d'un auteur de tribune, pas un fait établi.",
-    "niveau": 2,
-    "source": "Le Monde",
-    "lien": "https://www.lemonde.fr/idees/article/2026/11/20/l-entree-en-bourse-d-anthropic-est-probablement-davantage-dictee-par-la-peur-que-par-la-foi-en-l-avenir-de-l-ia_6813694_3232.html",
-    "date": "2026-11-20T19:00:11.000Z",
-    "titre_original": "« L’entrée en Bourse d’Anthropic est probablement davantage dictée par la peur que par la foi en l’avenir de l’IA »"
+    "copie": "Exemple concret de RSE à intégrer dans une étude de cas, notamment pour montrer qu'un modèle d'affaires peut associer performance économique et utilité sociale.",
+    "niveau": 1,
+    "source": "franceinfo",
+    "lien": "https://www.franceinfo.fr/economie/entreprises/reportage-on-fait-meme-des-shampoings-aux-barbie-a-l-approche-de-noel-des-jouets-sont-recycles-puis-revendus-moitie-prix-a-villeurbanne_8292893.html#xtor=RSS-3-%5Beconomie%5D",
+    "date": "2026-11-21T16:48:28.000Z",
+    "titre_original": "REPORTAGE. \"On fait m&#xEA;me des shampoings aux Barbie\"&#xA0;: &#xE0; l'approche de No&#xEB;l, des jouets sont recycl&#xE9;s puis revendus moiti&#xE9; prix &#xE0; Villeurbanne"
    }
   ],
   "monde": [
    {
-    "id": "a100",
+    "id": "a9",
+    "theme": "Banques et marchés financiers",
+    "titre": "L'Espagne lance la course à la présidence de la BCE",
+    "resume": "L'Espagne présente Hernández de Cos comme le meilleur candidat à la présidence de la Banque centrale européenne. Son profil et les circonstances qui conditionnent la France et l'Allemagne le placent en bonne position. Il pourrait diriger l'institution monétaire de la zone euro.",
+    "contexte": "La BCE conduit la politique monétaire de la zone euro, avec pour objectif principal la stabilité des prix. Le choix de son président est un enjeu politique entre États membres.",
+    "notions": [
+     "Banque centrale",
+     "Politique monétaire",
+     "Stabilité des prix",
+     "Zone euro"
+    ],
+    "copie": "Accroche pour une QRA sur l'indépendance des banques centrales et la gouvernance de la zone euro.",
+    "niveau": 2,
+    "source": "El País",
+    "lien": "https://elpais.com/economia/2026-11-22/tenemos-el-mejor-candidato-asi-lanzo-espana-la-carrera-por-la-presidencia-del-bce.html",
+    "date": "2026-11-22T04:45:01.000Z",
+    "titre_original": "“Tenemos el mejor candidato”: así lanzó España la carrera por la presidencia del BCE"
+   },
+   {
+    "id": "a10",
+    "theme": "Banques et marchés financiers",
+    "titre": "Néobanques et lutte antiblanchiment : Revolut et d'autres sous pression",
+    "resume": "Les sanctions infligées à Revolut, N26, Monzo et Starling ces dernières années relancent le débat. Il porte sur la capacité des banques numériques à prévenir et détecter les délits économiques. Les défaillances de leurs systèmes antiblanchiment sont en cause.",
+    "contexte": "Les banques doivent connaître leurs clients et signaler les opérations suspectes pour lutter contre le blanchiment. La croissance rapide des néobanques met cette régulation à l'épreuve.",
+    "notions": [
+     "Régulation bancaire",
+     "Blanchiment",
+     "Innovation financière",
+     "Risque"
+    ],
+    "copie": "Illustre le besoin de régulation face à l'innovation financière. À utiliser dans une QRA sur le rôle de l'État dans le secteur bancaire.",
+    "niveau": 2,
+    "source": "El País",
+    "lien": "https://elpais.com/economia/2026-11-22/los-fallos-en-los-sistemas-antiblanqueo-ponen-a-revolut-y-otros-neobancos-en-el-punto-de-mira.html",
+    "date": "2026-11-22T04:45:01.000Z",
+    "titre_original": "Los fallos en los sistemas antiblanqueo ponen a Revolut y otros neobancos en el punto de mira"
+   },
+   {
+    "id": "a47",
     "theme": "Géopolitique et relations internationales",
-    "titre": "Royaume-Uni : Andy Burnham commence à défaire le Brexit avec un accord avec l'UE",
-    "resume": "Selon le Financial Times, le Premier ministre britannique Andy Burnham conclut un accord important avec l'Union européenne. Cet accord est toutefois éclipsé par un différend sur les frais universitaires et par des questions sur l'avenir de la relation.",
-    "contexte": "Le Brexit a mis fin à l'appartenance du Royaume-Uni à l'UE. Les nouveaux accords cherchent à réduire les frictions commerciales tout en préservant la souveraineté britannique. Le sujet touche le commerce, le droit et la politique.",
+    "titre": "Blair : le Royaume-Uni ne devrait rejoindre l'UE que si elle innove",
+    "resume": "L'ancien Premier ministre britannique estime que l'Union européenne va probablement dans la mauvaise direction sur l'innovation technologique. Il conditionne un éventuel retour du Royaume-Uni à cette évolution.",
+    "contexte": "Depuis le Brexit, les relations commerciales entre Londres et Bruxelles restent un enjeu majeur. Le débat oppose accès au marché unique et souveraineté.",
     "notions": [
      "Brexit",
-     "Accord commercial",
-     "Intégration économique",
-     "Souveraineté"
+     "Marché unique",
+     "Innovation",
+     "Intégration régionale"
     ],
-    "copie": "À utiliser dans une copie sur la mondialisation et l'intégration régionale. Il permet aussi de parler des barrières non tarifaires et du coût de la sortie d'un espace économique.",
+    "copie": "Utile pour discuter des avantages et coûts de l'intégration économique, et du protectionnisme face à l'ouverture.",
     "niveau": 2,
-    "source": "Financial Times",
-    "lien": "https://www.ft.com/content/334b5f12-4344-4680-be04-a7554120ec60?syn-25a6b1a6=1",
-    "date": "2026-11-20T15:57:09.000Z",
-    "titre_original": "Andy Burnham begins to undo Brexit with landmark EU deal"
-   },
-   {
-    "id": "a70",
-    "theme": "Mondialisation et commerce international",
-    "titre": "Trump menace de taxer les centres de données construits hors des États-Unis",
-    "resume": "Donald Trump menace d'une taxe « énorme » sur les entreprises technologiques américaines qui construisent des centres de données à l'étranger. Il présente cette mesure comme un moyen d'empêcher Pékin de prendre la tête dans l'IA. Aucun détail n'est donné dans l'article.",
-    "contexte": "Une taxe sur des investissements à l'étranger relève du protectionnisme et de la politique industrielle. Elle pose la question de la localisation des activités et de la rivalité technologique entre grandes puissances.",
-    "notions": [
-     "Protectionnisme",
-     "Politique industrielle",
-     "Délocalisation",
-     "Rivalité technologique"
-    ],
-    "copie": "Exemple d'accroche pour discuter du retour du protectionnisme. Compare avec les arguments classiques de Smith et Ricardo en faveur de l'échange et des avantages comparatifs.",
-    "niveau": 2,
-    "source": "Financial Times",
-    "lien": "https://www.ft.com/content/ae564e09-eb0d-42c6-b61f-50a4e61d0240?syn-25a6b1a6=1",
-    "date": "2026-11-20T20:17:29.000Z",
-    "titre_original": "Donald Trump threatens ‘tremendous’ tax on data centres built outside US"
-   },
-   {
-    "id": "a127",
-    "theme": "Finances publiques et rôle de l'État",
-    "titre": "Argentine : les personnes handicapées face aux politiques de Milei",
-    "resume": "Selon BBC Mundo, des familles de personnes handicapées dénoncent l'effondrement du réseau de soins : thérapeutes, foyers et transporteurs. Elles ont désormais une nouvelle chance grâce à une loi approuvée par le Congrès.",
-    "contexte": "Le sujet illustre les arbitrages entre réduction des dépenses publiques et protection sociale. Il montre aussi le rôle du Parlement face à la politique d'un gouvernement.",
-    "notions": [
-     "Dépenses publiques",
-     "Protection sociale",
-     "Rôle de l'État",
-     "Séparation des pouvoirs"
-    ],
-    "copie": "Peut illustrer le débat sur la rigueur budgétaire et ses effets sociaux. Il permet de discuter les fonctions de l'État : allocation, redistribution, stabilisation.",
-    "niveau": 2,
-    "source": "BBC Mundo",
-    "lien": "https://www.bbc.com/mundo/articles/c617k978p47ro?at_medium=RSS&at_campaign=rss",
-    "date": "2026-11-19T22:49:43.000Z",
-    "titre_original": "\"Se están quedando encerradas en sus casas sin un futuro\": el drama de las personas con discapacidad afectadas por las políticas de Milei en Argentina"
+    "source": "BBC",
+    "lien": "https://www.bbc.co.uk/news/articles/c893r4923wngo?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-21T19:33:49.000Z",
+    "titre_original": "UK should only rejoin EU if it innovates on technology, Blair warns"
    }
   ]
  },
  "langues": {
   "en": {
-   "id": "a60",
-   "titre": "US tech stocks plunge into a bear market",
-   "resume": "US technology stocks have plunged into a bear market, meaning they have fallen sharply from their recent peak, in their worst week since the Covid-19 crisis. Shares in Anthropic, the artificial intelligence start-up that went public only this week, and in Nvidia, the chipmaker, tumbled as investors began to fear that the huge spending boom on AI might not pay off. The sell-off shows how quickly market sentiment can change when expectations of future profits are questioned. For many savers and pension funds exposed to technology shares, the turmoil is a reminder that high valuations can be fragile.",
-   "phrase": "Fears over the AI spending boom have gripped Wall Street.",
-   "traduction": "Les craintes concernant le boom des dépenses dans l'IA ont gagné Wall Street.",
-   "vocab_placeholder": null,
-   "source": "Financial Times",
-   "lien": "https://www.ft.com/content/9f3c6ed6-c08f-4710-9683-ee2f5eb25841?syn-25a6b1a6=1",
-   "date": "2026-11-20T21:52:25.000Z"
+   "id": "a52",
+   "titre": "Suffolk village votes to 'leave the UK' over asylum housing plans",
+   "resume": "Residents of Barnham, a Suffolk village, have voted to \"leave the UK\" in a symbolic referendum. The vote was held in response to government plans to house 930 asylum seekers at a nearby former military base. Around 500 people were eligible to take part. The local MP says that legitimate criticisms of the plans are being exploited by opposition parties accused of stirring up racial discord. The episode shows how migration policy can fuel local resentment and political tension, and how citizens use symbolic gestures to make their voices heard when they feel that decisions are imposed on them from above.",
+   "phrase": "Legitimate concerns can be co-opted for political purposes.",
+   "traduction": "Des inquiétudes légitimes peuvent être récupérées à des fins politiques.",
+   "source": "The Guardian",
+   "lien": "https://www.theguardian.com/uk-news/2026/nov/21/suffolk-village-votes-to-leave-the-uk-over-plans-to-house-asylum-seekers-nearby",
+   "date": "2026-11-21T18:20:37.000Z"
   },
   "es": {
-   "id": "a83",
-   "titulo_placeholder": null,
-   "titre": "El acuerdo de reinicio entre Reino Unido y la UE",
-   "resume": "Reino Unido y la Unión Europea alcanzaron este viernes un nuevo acuerdo que busca «reiniciar» sus relaciones años después del Brexit. El pacto cubre las exportaciones de alimentos, la movilidad de los jóvenes y las emisiones de carbono. Para las empresas británicas, que venden productos agrícolas y alimentarios al continente, podría significar menos trámites aduaneros y menos costes. Para los jóvenes, abre la puerta a estudiar o trabajar más fácilmente en el otro lado del Canal. Sin embargo, queda por ver hasta dónde llegará esta nueva relación y el acuerdo sigue generando debate político.",
-   "phrase": "El nuevo acuerdo cubre las exportaciones de alimentos y la movilidad de los jóvenes.",
-   "traduction": "Le nouvel accord couvre les exportations alimentaires et la mobilité des jeunes.",
-   "source": "BBC Mundo",
-   "lien": "https://www.bbc.com/mundo/articles/cvp86lp2rd24o?at_medium=RSS&at_campaign=rss",
-   "date": "2026-11-20T18:48:26.000Z"
+   "id": "a19",
+   "titulo": "La campaña eleva el drama en la recta final",
+   "titre": "La campagne électorale espagnole entre dans sa dernière ligne droite",
+   "resume": "La campaña electoral en España llega a su recta final y el tono se vuelve más dramático. Pedro Sánchez promete impuestos a la banca, mientras que Alberto Núñez Feijóo propone leyes contra la ocupación de viviendas. Ambos intentan acumular el voto útil, es decir, el voto de quienes eligen una opción para evitar que gane otra. Las encuestas muestran una batalla muy ajustada por el primer puesto. Los ciudadanos votarán el 29 de noviembre y los partidos hacen un último esfuerzo para movilizar a sus electores.",
+   "phrase": "Los partidos intentan movilizar el voto útil.",
+   "traduction": "Les partis tentent de mobiliser le vote utile.",
+   "source": "El País",
+   "lien": "https://elpais.com/espana/2026-11-22/la-campana-eleva-el-drama-en-la-recta-final-a-por-ellos-no-pasaran.html",
+   "date": "2026-11-22T04:30:01.000Z"
   },
   "vocab": [
    {
-    "mot": "bear market",
+    "mot": "asylum seeker",
     "langue": "en",
-    "traduction": "marché baissier",
-    "exemple": "Tech shares have entered a bear market after weeks of heavy selling."
+    "traduction": "demandeur d'asile",
+    "exemple": "The government plans to house asylum seekers on a former military base."
    },
    {
-    "mot": "sell-off",
+    "mot": "to stir up",
     "langue": "en",
-    "traduction": "vente massive, chute des cours",
-    "exemple": "The sell-off wiped billions off the value of technology firms."
+    "traduction": "attiser, susciter",
+    "exemple": "Some parties are accused of stirring up discord."
    },
    {
-    "mot": "settlement",
+    "mot": "deadlock",
     "langue": "en",
-    "traduction": "accord amiable, transaction",
-    "exemple": "The company agreed to a settlement to end the lawsuits."
+    "traduction": "impasse",
+    "exemple": "The climate talks ended in deadlock."
    },
    {
-    "mot": "surcharge",
+    "mot": "commission cap",
     "langue": "en",
-    "traduction": "surtaxe, majoration",
-    "exemple": "The government increased the surcharge on bank profits."
+    "traduction": "plafonnement des commissions",
+    "exemple": "Insurers criticise the proposed commission cap."
    },
    {
-    "mot": "desplome",
+    "mot": "campaña electoral",
     "langue": "es",
-    "traduction": "effondrement, chute brutale",
-    "exemple": "El desplome de las acciones tecnológicas preocupa a los inversores."
+    "traduction": "campagne électorale",
+    "exemple": "La campaña electoral termina pronto."
    },
    {
-    "mot": "alquiler",
+    "mot": "voto útil",
     "langue": "es",
-    "traduction": "loyer, location",
-    "exemple": "El precio del alquiler sube más rápido que los salarios."
+    "traduction": "vote utile",
+    "exemple": "Los partidos piden el voto útil."
    },
    {
-    "mot": "acuerdo",
+    "mot": "encuesta",
     "langue": "es",
-    "traduction": "accord",
-    "exemple": "Ambas partes alcanzaron un acuerdo tras meses de negociación."
+    "traduction": "sondage",
+    "exemple": "Según la encuesta, la diferencia es mínima."
    },
    {
-    "mot": "recorte",
+    "mot": "blanqueo de capitales",
     "langue": "es",
-    "traduction": "coupe, réduction",
-    "exemple": "Los recortes de financiación afectan a los más vulnerables."
+    "traduction": "blanchiment d'argent",
+    "exemple": "Los bancos deben prevenir el blanqueo de capitales."
    }
   ],
   "trous": {
    "en": {
-    "texte": "US technology shares {1} sharply on Friday, {2} investors feared that the boom in AI spending would not generate enough profit. The sell-off came just {3} the stock market debut of Anthropic, whose shares also fell. Analysts pointed {4} that valuations had become too high, {5} some savers worry about their pensions. The Nasdaq has now {6} all its gains of the year.",
+    "texte": "Residents of a Suffolk village have voted {1} \"leave the UK\" in a symbolic referendum. The vote was held {2} response to government plans to house asylum seekers. The local MP said that critics were {3} racial discord, {4} the plans remain controversial. Around 500 people {5} eligible to take part, and the result {6} widely reported.",
     "blancs": [
      {
       "choix": [
-       "fell",
-       "have fallen",
-       "falls"
-      ],
-      "bonne": 0,
-      "explication": "Avec « on Friday » (moment passé précis), on emploie le prétérit : fell."
-     },
-     {
-      "choix": [
-       "as",
-       "although",
-       "unless"
-      ],
-      "bonne": 0,
-      "explication": "« As » exprime la cause ici (parce que) ; les autres connecteurs n'ont pas le bon sens."
-     },
-     {
-      "choix": [
-       "after",
-       "since",
-       "for"
-      ],
-      "bonne": 0,
-      "explication": "« Just after » : juste après l'introduction en Bourse."
-     },
-     {
-      "choix": [
-       "out",
-       "up",
+       "to",
+       "for",
        "at"
       ],
       "bonne": 0,
-      "explication": "Le phrasal verb « point out » signifie faire remarquer."
+      "explication": "To vote to + verbe : voter pour faire quelque chose."
      },
      {
       "choix": [
-       "so",
+       "on",
+       "in",
+       "at"
+      ],
+      "bonne": 1,
+      "explication": "In response to : en réponse à."
+     },
+     {
+      "choix": [
+       "stirring up",
+       "stirred up",
+       "to stir"
+      ],
+      "bonne": 0,
+      "explication": "Forme en -ing après « were » : temps continu."
+     },
+     {
+      "choix": [
        "although",
-       "unless"
+       "because",
+       "so"
       ],
       "bonne": 0,
-      "explication": "« So » exprime la conséquence : certains épargnants s'inquiètent donc."
+      "explication": "Although exprime la concession."
      },
      {
       "choix": [
-       "erased",
-       "erase",
-       "erasing"
+       "was",
+       "were",
+       "are"
       ],
-      "bonne": 0,
-      "explication": "« Has … erased » : present perfect, donc participe passé."
+      "bonne": 1,
+      "explication": "Sujet pluriel au passé : were."
+     },
+     {
+      "choix": [
+       "is",
+       "was",
+       "has"
+      ],
+      "bonne": 1,
+      "explication": "Passé : was (voix passive : was reported)."
      }
     ]
    },
    "es": {
-    "texte": "Reino Unido y la Unión Europea {1} un acuerdo este viernes. El pacto afecta {2} las exportaciones de alimentos y a la movilidad de los jóvenes. Aunque el Gobierno británico lo defiende, {3} críticos temen que Londres ceda demasiado. Es importante que las empresas {4} las nuevas normas antes de exportar. El texto se negoció {5} varios meses y el primer ministro {6} que beneficiará a los jóvenes.",
+    "texte": "La campaña llega {1} su recta final. Sánchez promete impuestos a la banca, {2} Feijóo propone leyes antiocupación. Los dos candidatos quieren que los votantes {3} por ellos. Las encuestas {4} una batalla muy ajustada, {5} los ciudadanos votarán el 29 de noviembre {6} elegir al nuevo Gobierno.",
     "blancs": [
-     {
-      "choix": [
-       "alcanzaron",
-       "alcanzarían",
-       "alcanzando"
-      ],
-      "bonne": 0,
-      "explication": "Action passée terminée avec « este viernes » : pretérito indefinido."
-     },
      {
       "choix": [
        "a",
@@ -417,43 +407,52 @@
        "de"
       ],
       "bonne": 0,
-      "explication": "Le verbe « afectar » se construit avec la préposition a."
+      "explication": "Llegar a : arriver à."
      },
      {
       "choix": [
-       "algunos",
-       "alguna",
-       "algún"
+       "mientras que",
+       "porque",
+       "aunque"
       ],
       "bonne": 0,
-      "explication": "Il faut l'accord avec « críticos » (masculin pluriel) : algunos."
+      "explication": "Mientras que exprime l'opposition."
      },
      {
       "choix": [
-       "conozcan",
-       "conocen",
-       "conocerán"
+       "voten",
+       "votan",
+       "votarán"
       ],
       "bonne": 0,
-      "explication": "« Es importante que » + subjonctif présent."
+      "explication": "Subjonctif après « querer que »."
      },
      {
       "choix": [
-       "durante",
-       "desde",
-       "hasta"
+       "muestran",
+       "muestra",
+       "mostrar"
       ],
       "bonne": 0,
-      "explication": "« Durante » indique la durée de la négociation."
+      "explication": "Sujet pluriel : muestran."
      },
      {
       "choix": [
-       "asegura",
-       "asegurar",
-       "asegure"
+       "y",
+       "pero",
+       "sino"
       ],
       "bonne": 0,
-      "explication": "Verbe principal de la phrase, à l'indicatif présent : asegura."
+      "explication": "Y coordonne simplement deux idées."
+     },
+     {
+      "choix": [
+       "para",
+       "por",
+       "a"
+      ],
+      "bonne": 0,
+      "explication": "Para + infinitif : but."
      }
     ]
    }
@@ -461,296 +460,295 @@
   "traduction": [
    {
     "sens": "fr>en",
-    "phrase": "Les actions technologiques américaines ont connu leur pire semaine depuis la crise du Covid-19.",
-    "corrige": "US technology shares have had their worst week since the Covid-19 crisis.",
-    "astuce": "« Depuis » + point de départ = since, avec present perfect. Attention : « worst » est le superlatif de bad, précédé de « their »."
+    "phrase": "Le village a voté pour quitter le Royaume-Uni afin de protester contre l'accueil de demandeurs d'asile.",
+    "corrige": "The village voted to leave the UK in order to protest against the housing of asylum seekers.",
+    "astuce": "On dit « protest against » ; « in order to » exprime le but."
    },
    {
     "sens": "en>fr",
-    "phrase": "Jamie Dimon says he will find ways to offset the increase in the UK bank tax.",
-    "corrige": "Jamie Dimon affirme qu'il trouvera des moyens de compenser la hausse de la taxe britannique sur les banques.",
-    "astuce": "« To offset » signifie compenser, non « décaler ». Le futur « will find » se traduit par un futur."
+    "phrase": "Insurers say the proposed cap would hamper the growth of the market.",
+    "corrige": "Les assureurs affirment que le plafonnement proposé freinerait la croissance du marché.",
+    "astuce": "« To hamper » = entraver, freiner ; ne pas confondre avec « hamper » (panier)."
    },
    {
     "sens": "fr>es",
-    "phrase": "L'Assemblée nationale a prolongé l'encadrement des loyers pour deux ans.",
-    "corrige": "La Asamblea Nacional ha prolongado la regulación de los alquileres durante dos años.",
-    "astuce": "« Pour deux ans » se traduit ici par « durante dos años ». Alquiler = loyer, location."
+    "phrase": "Le candidat promet des impôts sur les banques pour financer les services publics.",
+    "corrige": "El candidato promete impuestos a la banca para financiar los servicios públicos.",
+    "astuce": "« La banca » désigne le secteur bancaire ; « el banco » est un établissement."
    },
    {
     "sens": "es>fr",
-    "phrase": "Los recortes de financiación internacional podrían causar 5,4 millones de muertes adicionales entre los menores de cinco años, según Unicef.",
-    "corrige": "Les coupes dans le financement international pourraient causer 5,4 millions de décès supplémentaires parmi les enfants de moins de cinq ans, selon l'Unicef.",
-    "astuce": "« Recortes » = coupes ; « podrían » est un conditionnel (« pourraient »). « Menores de cinco años » = moins de cinq ans."
+    "phrase": "Las encuestas indican que la diferencia entre los dos partidos se ha reducido.",
+    "corrige": "Les sondages indiquent que l'écart entre les deux partis s'est réduit.",
+    "astuce": "« Encuesta » = sondage ; « se ha reducido » est une forme pronominale de sens passif/réfléchi."
    }
   ],
   "pieges": [
    {
     "langue": "en",
-    "question": "Choisissez la forme correcte : « Since Monday, tech shares ___ falling. »",
+    "question": "Quelle forme est correcte ? « The government ___ asylum seekers since last year. »",
     "choix": [
-     "are",
-     "have been",
-     "were",
-     "had"
+     "house",
+     "has been housing",
+     "is housed",
+     "housed"
     ],
     "bonne": 1,
-    "explication": "« Since » + durée ou point de départ → present perfect (continu) : have been falling."
+    "explication": "Since + durée en cours : present perfect (continu)."
    },
    {
     "langue": "en",
-    "question": "Faux-ami : dans un procès, que signifie « a settlement » ?",
+    "question": "Faux-ami : « eventually » signifie…",
     "choix": [
-     "un accord mettant fin au litige",
-     "une installation de colons",
-     "un verdict de culpabilité",
-     "une sanction pénale"
+     "éventuellement",
+     "finalement",
+     "actuellement",
+     "rapidement"
     ],
-    "bonne": 0,
-    "explication": "Un « settlement » est un accord amiable. Le sens de « colonie » existe mais ne correspond pas ici."
+    "bonne": 1,
+    "explication": "Eventually = finalement ; éventuellement = possibly."
    },
    {
     "langue": "en",
-    "question": "Quelle préposition ? « Investors are worried ___ the future of AI spending. »",
+    "question": "Choisir la préposition : « They protested ___ the plan. »",
     "choix": [
-     "of",
-     "about",
+     "against",
+     "to",
      "for",
-     "on"
-    ],
-    "bonne": 1,
-    "explication": "On dit « to be worried about something »."
-   },
-   {
-    "langue": "es",
-    "question": "Choisissez la forme correcte : « Es importante que el Gobierno ___ medidas. »",
-    "choix": [
-     "toma",
-     "tome",
-     "tomará",
-     "tomaría"
-    ],
-    "bonne": 1,
-    "explication": "Après « es importante que », on emploie le subjonctif : tome."
-   },
-   {
-    "langue": "es",
-    "question": "Que signifie « la situación actual » ?",
-    "choix": [
-     "la situation réelle",
-     "la situation actuelle",
-     "la situation future",
-     "la situation passée"
-    ],
-    "bonne": 1,
-    "explication": "« Actual » est un faux-ami : il signifie « présent » ; « réel » se dit « real »."
-   },
-   {
-    "langue": "es",
-    "question": "Choisissez la bonne expression : « Vivo en Madrid ___ tres años. »",
-    "choix": [
-     "desde hace",
-     "hace desde",
-     "durante hace",
-     "desde"
+     "of"
     ],
     "bonne": 0,
-    "explication": "On emploie « desde hace » + durée pour dire « depuis »."
+    "explication": "To protest against."
+   },
+   {
+    "langue": "es",
+    "question": "Quelle forme est correcte ? « Espero que el candidato ___ ». ",
+    "choix": [
+     "gana",
+     "gane",
+     "ganará",
+     "ganó"
+    ],
+    "bonne": 1,
+    "explication": "Subjonctif après espero que (souhait)."
+   },
+   {
+    "langue": "es",
+    "question": "Faux-ami : « actualmente » signifie…",
+    "choix": [
+     "en réalité",
+     "actuellement",
+     "autrefois",
+     "récemment"
+    ],
+    "bonne": 1,
+    "explication": "Actualmente = actuellement."
+   },
+   {
+    "langue": "es",
+    "question": "Choisir la forme : « Ayer ___ la campaña. »",
+    "choix": [
+     "termina",
+     "terminó",
+     "terminaba",
+     "terminará"
+    ],
+    "bonne": 1,
+    "explication": "Hier : action ponctuelle passée, prétérit."
    }
   ]
  },
  "plan": {
   "matiere": "Économie (QRA)",
-  "sujet": "L'encadrement des loyers permet-il de protéger le pouvoir d'achat des locataires sans dégrader le fonctionnement du marché du logement ?",
-  "analyse": "L'encadrement des loyers est une intervention de l'État qui limite le niveau ou la hausse des loyers, comme un prix plafond. Le pouvoir d'achat désigne la quantité de biens et services qu'un revenu permet d'acheter. La tension vient de l'opposition entre protection immédiate des locataires et risque de réduire l'offre ou la qualité des logements, car le prix joue le rôle de signal sur un marché.",
-  "problematique": "Dans quelle mesure une limitation administrative des loyers peut-elle améliorer le pouvoir d'achat des ménages sans fausser l'ajustement entre offre et demande de logements ?",
+  "sujet": "Les krachs boursiers liés aux valeurs technologiques menacent-ils la croissance économique ?",
+  "analyse": "Un krach est une chute brutale et marquée des cours des actifs ; la croissance est l'augmentation durable de la production. La tension tient à l'écart entre sphère financière, où les anticipations dominent, et sphère réelle, où se joue l'investissement.",
+  "problematique": "Dans quelle mesure une correction boursière dans la technologie se transmet-elle à l'économie réelle ?",
   "parties": [
    {
-    "titre": "Un outil de protection du pouvoir d'achat des locataires",
+    "titre": "Des canaux de transmission réels",
     "sous": [
-     "Un prix plafond sous le prix d'équilibre réduit le poids du logement dans le budget des ménages",
-     "Dans les zones tendues, l'encadrement limite les hausses brutales et stabilise l'accès au logement"
+     "L'effet de richesse et la baisse de la consommation",
+     "Le coût du financement et le recul de l'investissement"
     ]
    },
    {
-    "titre": "Des effets pervers qui limitent son efficacité",
+    "titre": "Des effets limités et conditionnels",
     "sous": [
-     "Moindre offre, baisse de la qualité et marché parallèle peuvent apparaître si le prix est trop bas",
-     "L'encadrement doit être complété par des politiques d'offre (construction, aides) pour traiter la cause de la pénurie"
+     "La solidité des bilans et le rôle des banques centrales",
+     "Le progrès technique de long terme (Schumpeter)"
     ]
    }
   ],
   "exemples": [
-   "Adam Smith : le prix comme signal qui coordonne l'offre et la demande",
-   "Milton Friedman : critique des contrôles de prix, qui créent des pénuries",
-   "Le débat sur l'encadrement des loyers en France, expérimenté depuis 2018 dans environ 70 villes et critiqué par la Cour des comptes"
+   "Keynes : esprit animal et instabilité des anticipations",
+   "Schumpeter : destruction créatrice",
+   "Krach de 1929 / bulle internet de 2000"
   ]
  },
  "cas_pratique": {
-  "faits": "En mars, Léa remet 6 000 euros en espèces à son ami Marc pour l'aider à acheter un véhicule d'occasion. Ils ne rédigent aucun document et se contentent d'un échange de messages vagues, sans montant ni date de remboursement. Six mois plus tard, Léa demande à être remboursée. Marc répond qu'il s'agissait d'un don et refuse de payer. Léa possède seulement le témoignage d'une amie qui l'a vue donner l'argent, et un message de Marc disant « je te rembourserai dès que possible ».",
-  "question": "Léa peut-elle obtenir le remboursement des 6 000 euros ?",
-  "qualification": "Une personne a remis une somme d'argent à une autre, avec une promesse de restitution contestée. Il s'agit d'un prêt de somme d'argent entre particuliers, dont l'existence est niée par l'emprunteur qui invoque une donation. La question porte sur la preuve d'un acte juridique d'un montant élevé, en l'absence d'écrit signé.",
-  "probleme": "Comment prouver l'existence d'un contrat de prêt d'argent d'un montant supérieur au seuil réglementaire, en l'absence d'acte écrit, et un simple écrit incomplet peut-il suffire ?",
-  "majeure": "Le prêt de consommation est un contrat par lequel une partie remet à l'autre une chose, ici de l'argent, que l'emprunteur s'engage à restituer. L'article 1359 du Code civil exige un écrit pour prouver un acte juridique portant sur une somme supérieure à un seuil fixé par décret, aujourd'hui 1 500 euros. La preuve par témoin seule est donc insuffisante au-delà de ce seuil. Cette règle est assouplie par la production d'un commencement de preuve par écrit, qui rend vraisemblable le fait allégué et peut être complété par d'autres éléments, notamment des témoignages (art. 1362). Il existe aussi des exceptions en cas d'impossibilité de se procurer un écrit, et l'aveu de la partie adverse peut établir la preuve.",
-  "conclusion": "La somme de 6 000 euros dépasse le seuil, donc le seul témoignage de l'amie ne suffit pas à prouver le prêt. Toutefois, le message de Marc (« je te rembourserai ») émane de lui et rend vraisemblable l'obligation de restituer : il peut constituer un commencement de preuve par écrit. Léa pourra le compléter par le témoignage et par d'autres indices pour convaincre le juge. Si la preuve est admise, le prêt est reconnu et Marc devra restituer la somme, avec possibilité de saisir le juge compétent en cas de refus."
+  "faits": "La société Domus, SARL de rénovation, signe un contrat avec Mme Lopez pour refaire sa cuisine en trois semaines, moyennant 12 000 euros. Après quatre semaines, les travaux ne sont pas terminés car Domus a employé du personnel insuffisant. Mme Lopez, ayant dû louer un logement temporaire, réclame une indemnisation de 800 euros. Domus répond que son gérant, M. Petit, s'était engagé seulement oralement sur le délai et qu'il ne peut être tenu responsable personnellement.",
+  "question": "Mme Lopez peut-elle obtenir réparation, et auprès de qui ?",
+  "qualification": "Un contrat d'entreprise conclu entre une société à responsabilité limitée et une consommatrice. Un retard d'exécution a causé un préjudice financier. Le gérant a pris un engagement verbal au nom de la société.",
+  "probleme": "Le débiteur d'une obligation contractuelle en retard doit-il réparer le préjudice du créancier, et la société ou son dirigeant en répond-il ?",
+  "majeure": "Le contrat légalement formé tient lieu de loi à ceux qui l'ont fait. L'inexécution ou le retard engage la responsabilité contractuelle du débiteur, qui doit des dommages et intérêts s'il y a faute, préjudice et lien de causalité. La société a une personnalité morale distincte de celle de ses associés : c'est elle qui est liée par les actes de son gérant agissant dans le cadre de ses pouvoirs. En droit commun, le contrat est en principe consensuel, l'accord oral est valable, la preuve restant à la charge de celui qui l'invoque.",
+  "conclusion": "Domus, partie au contrat, est responsable du retard si le délai est établi (par écrit ou par tout moyen). Mme Lopez peut demander une indemnisation de son préjudice (location) auprès de la société, et non personnellement du gérant sauf faute séparable de ses fonctions."
  },
  "maths": [
   {
-   "titre": "Développer, factoriser et résoudre",
-   "niveau": 2,
-   "enonce": "1) Développer (3x − 2)². 2) Factoriser 4x² − 25. 3) Résoudre dans ℝ : (2x − 3)(x + 5) = 0. 4) Résoudre dans ℝ : x² = 12.",
+   "titre": "Résoudre une équation produit nul",
+   "niveau": 1,
+   "enonce": "Résoudre dans R : (2x - 6)(x + 5) = 0, puis x² = 49.",
    "etapes": [
-    "1) Identité remarquable (a − b)² = a² − 2ab + b² avec a = 3x et b = 2 : (3x − 2)² = 9x² − 12x + 4.",
-    "2) 4x² − 25 = (2x)² − 5², donc a² − b² = (a − b)(a + b) : 4x² − 25 = (2x − 5)(2x + 5).",
-    "3) Un produit est nul si et seulement si l'un de ses facteurs est nul : 2x − 3 = 0 donne x = 3/2, et x + 5 = 0 donne x = −5.",
-    "4) x² = a avec a > 0 admet deux solutions, √a et −√a : x = √12 ou x = −√12.",
-    "Simplification : √12 = √(4 × 3) = 2√3, donc S = {−2√3 ; 2√3}."
+    "Un produit est nul si et seulement si l'un de ses facteurs est nul.",
+    "2x - 6 = 0 donne 2x = 6 donc x = 3.",
+    "x + 5 = 0 donne x = -5.",
+    "Pour x² = 49 : 49 > 0 donc deux solutions, x = 7 ou x = -7."
    ],
-   "resultat": "1) 9x² − 12x + 4 ; 2) (2x − 5)(2x + 5) ; 3) S = {−5 ; 3/2} ; 4) S = {−2√3 ; 2√3}.",
-   "piege": "Écrire (3x − 2)² = 9x² − 4 en oubliant le double produit −12x, ou ne donner que la solution positive de x² = 12."
+   "resultat": "S1 = {-5 ; 3} et S2 = {-7 ; 7}",
+   "piege": "Oublier la solution négative dans x² = a."
   },
   {
-   "titre": "Inéquation avec quotient et système 2×2",
-   "niveau": 3,
-   "enonce": "1) Résoudre dans ℝ : (x − 2)/(x + 1) ≥ 1. 2) Résoudre par substitution le système : x + y = 10 et 3x + 2y = 24.",
+   "titre": "Inéquation avec tableau de signe",
+   "niveau": 2,
+   "enonce": "Résoudre (x - 2)/(x + 1) ≥ 0 puis résoudre le système : y = 2x - 1 et 3x + y = 9.",
    "etapes": [
-    "1) Valeur interdite : x + 1 ≠ 0, donc x ≠ −1. On ne multiplie pas par x + 1 car son signe varie.",
-    "On ramène à 0 : (x − 2)/(x + 1) − 1 ≥ 0. Mise au même dénominateur : (x − 2 − (x + 1))/(x + 1) ≥ 0.",
-    "Le numérateur vaut x − 2 − x − 1 = −3, donc l'inéquation devient −3/(x + 1) ≥ 0.",
-    "Comme −3 < 0, le quotient est positif ou nul si et seulement si x + 1 < 0, c'est-à-dire x < −1 (il ne peut pas être nul).",
-    "2) Substitution : de x + y = 10, on tire y = 10 − x.",
-    "On remplace dans la 2e équation : 3x + 2(10 − x) = 24, donc 3x + 20 − 2x = 24, soit x = 4. Alors y = 10 − 4 = 6. Vérification : 3 × 4 + 2 × 6 = 24."
+    "Valeur interdite : x + 1 ≠ 0 donc x ≠ -1.",
+    "x - 2 s'annule en 2 ; x + 1 s'annule en -1. Tableau de signe : le quotient est positif pour x < -1 et x > 2.",
+    "À x = 2 le quotient vaut 0, donc 2 est inclus ; -1 est exclu (crochet ouvert).",
+    "Solution : ]-∞ ; -1[ ∪ [2 ; +∞[.",
+    "Système par substitution : 3x + (2x - 1) = 9 donc 5x = 10 donc x = 2.",
+    "Alors y = 2×2 - 1 = 3."
    ],
-   "resultat": "1) S = ]−∞ ; −1[ ; 2) (x ; y) = (4 ; 6).",
-   "piege": "Multiplier les deux membres par x + 1 sans étudier son signe (le sens de l'inégalité change si x + 1 < 0), ou oublier la valeur interdite x = −1."
+   "resultat": "S = ]-∞ ; -1[ ∪ [2 ; +∞[ ; système : (x ; y) = (2 ; 3)",
+   "piege": "Inclure la valeur interdite -1 dans l'ensemble des solutions."
   }
  ],
  "quiz": [
   {
    "matiere": "eco",
-   "question": "Que désigne un marché baissier (« bear market ») ?",
+   "question": "Quel auteur a popularisé l'idée de « destruction créatrice » ?",
    "choix": [
-    "Une hausse rapide et durable des cours",
-    "Une baisse forte et durable des cours depuis un sommet",
-    "Une interdiction de vendre des actions",
-    "Une période où les prix des biens de consommation sont stables"
+    "Smith",
+    "Schumpeter",
+    "Ricardo",
+    "Say"
    ],
    "bonne": 1,
-   "explication": "Un marché baissier est une phase de baisse importante des cours, souvent définie par un recul d'au moins 20 % depuis le plus haut. Il traduit une perte de confiance des investisseurs.",
-   "id": "a60",
-   "lien": "https://www.ft.com/content/9f3c6ed6-c08f-4710-9683-ee2f5eb25841?syn-25a6b1a6=1"
+   "explication": "Schumpeter explique que l'innovation fait disparaître d'anciennes activités et en crée de nouvelles. C'est le moteur de la croissance dans sa théorie.",
+   "id": "a94",
+   "lien": "https://www.lemonde.fr/idees/article/2026/11/21/anthropic-ou-le-pari-de-plus-en-plus-vertigineux-de-l-ia_6813980_3232.html"
   },
   {
    "matiere": "eco",
-   "question": "Quel économiste est associé à la notion de destruction créatrice ?",
+   "question": "Une bulle spéculative correspond à…",
    "choix": [
-    "Jean-Baptiste Say",
-    "David Ricardo",
-    "Joseph Schumpeter",
-    "Karl Marx"
+    "Une baisse durable des prix",
+    "Une hausse des cours déconnectée de la valeur fondamentale",
+    "Une hausse du chômage",
+    "Une dévaluation"
    ],
-   "bonne": 2,
-   "explication": "Schumpeter explique que l'innovation fait disparaître des activités anciennes et en crée de nouvelles. C'est un moteur de la croissance, mais aussi de crises sectorielles.",
-   "id": null,
-   "lien": null
+   "bonne": 1,
+   "explication": "Une bulle naît quand les cours montent surtout parce que les agents anticipent leur hausse. Elle finit par éclater lors d'une correction brutale.",
+   "id": "a91",
+   "lien": "https://www.franceinfo.fr/internet/intelligence-artificielle/la-bourse-de-wall-street-enregistre-des-centaines-de-milliards-de-dollars-de-pertes-penalisee-par-le-secteur-de-l-ia_8293667.html#xtor=RSS-3-%5Beconomie%5D"
   },
   {
    "matiere": "eco",
-   "question": "Si un prix plafond est fixé en dessous du prix d'équilibre (comme un loyer encadré trop bas), quel effet est attendu en théorie ?",
+   "question": "L'objectif principal de la BCE est…",
    "choix": [
-    "Un excédent d'offre",
-    "Un équilibre inchangé",
-    "Une baisse de la demande",
-    "Un excès de demande (pénurie)"
+    "Le plein-emploi",
+    "La stabilité des prix",
+    "L'équilibre budgétaire",
+    "La croissance maximale"
    ],
-   "bonne": 3,
-   "explication": "À un prix inférieur à l'équilibre, la demande dépasse l'offre. D'où le risque de pénurie ou de marché parallèle.",
-   "id": "a105",
-   "lien": "https://www.franceinfo.fr/economie/encadrement-des-loyers-est-ce-que-ca-fonctionne_8292497.html#xtor=RSS-3-%5Beconomie%5D"
+   "bonne": 1,
+   "explication": "Le traité assigne à la BCE la stabilité des prix comme objectif principal. Elle l'interprète comme une inflation proche de 2 % à moyen terme.",
+   "id": "a9",
+   "lien": "https://elpais.com/economia/2026-11-22/tenemos-el-mejor-candidato-asi-lanzo-espana-la-carrera-por-la-presidencia-del-bce.html"
   },
   {
    "matiere": "droit",
-   "question": "Au-delà du seuil réglementaire de 1 500 euros, comment prouve-t-on en principe un acte juridique ?",
+   "question": "Selon le principe de personnalité morale, une société…",
    "choix": [
-    "Par témoignage seul",
-    "Par un écrit",
-    "Par une simple déclaration orale",
-    "Par une photographie"
+    "N'a pas de patrimoine",
+    "A une personnalité juridique distincte de celle des associés",
+    "Se confond avec son gérant",
+    "Ne peut pas agir en justice"
    ],
    "bonne": 1,
-   "explication": "Le Code civil exige un écrit au-dessus du seuil fixé par décret. Il existe des exceptions, comme le commencement de preuve par écrit.",
-   "id": null,
-   "lien": null
+   "explication": "La société immatriculée est une personne morale, titulaire d'un patrimoine propre. Elle peut contracter et agir en justice.",
+   "id": "a18",
+   "lien": "https://www.lemonde.fr/economie/article/2026/11/22/au-sein-du-geant-des-boissons-castel-une-crise-de-gouvernance-amplifiee-par-une-architecture-complexe-de-holdings-de-fonds-et-de-trusts_6814144_3234.html"
   },
   {
    "matiere": "droit",
-   "question": "Quelles sont les conditions de la responsabilité civile délictuelle classique ?",
+   "question": "Quelles sont les conditions de la responsabilité civile contractuelle ?",
    "choix": [
-    "Un contrat, une faute, une sanction",
-    "Un dommage seul",
-    "Une faute, un préjudice et un lien de causalité",
-    "Un jugement et une amende"
-   ],
-   "bonne": 2,
-   "explication": "Il faut un fait générateur (faute), un préjudice et un lien de causalité entre les deux. Cela permet d'obtenir réparation.",
-   "id": "a31",
-   "lien": "https://www.bbc.co.uk/news/articles/cwvg21gyl650o?at_medium=RSS&at_campaign=rss"
-  },
-  {
-   "matiere": "mgmt",
-   "question": "À quel auteur associe-t-on la théorie des parties prenantes (stakeholders) ?",
-   "choix": [
-    "Taylor",
-    "Fayol",
-    "Mayo",
-    "Freeman"
-   ],
-   "bonne": 3,
-   "explication": "Edward Freeman a popularisé l'idée que l'entreprise doit tenir compte de tous ceux qui sont affectés par son activité. Cela inclut salariés, clients, fournisseurs et société.",
-   "id": "a85",
-   "lien": "https://www.lemonde.fr/idees/article/2026/11/20/nous-ne-parviendrons-pas-a-reguler-l-ia-si-les-entreprises-qui-la-concoivent-demeurent-des-autocraties_6813688_3232.html"
-  },
-  {
-   "matiere": "mgmt",
-   "question": "Qu'est-ce qu'une introduction en Bourse pour une entreprise ?",
-   "choix": [
-    "La mise en vente d'une partie de son capital sur un marché financier",
-    "Un emprunt auprès d'une banque",
-    "Une fusion avec un concurrent",
-    "Un licenciement collectif"
-   ],
-   "bonne": 0,
-   "explication": "L'entreprise offre des actions au public et se finance ainsi par apport de capitaux. Cela modifie l'actionnariat et expose l'entreprise à la pression des marchés.",
-   "id": "a80",
-   "lien": "https://www.lemonde.fr/idees/article/2026/11/20/l-entree-en-bourse-d-anthropic-est-probablement-davantage-dictee-par-la-peur-que-par-la-foi-en-l-avenir-de-l-ia_6813694_3232.html"
-  },
-  {
-   "matiere": "monde",
-   "question": "D'après l'actualité du jour, quel dirigeant britannique est à l'origine du nouvel accord avec l'Union européenne ?",
-   "choix": [
-    "Boris Johnson",
-    "Rishi Sunak",
-    "Andy Burnham",
-    "Liz Truss"
-   ],
-   "bonne": 2,
-   "explication": "Le Financial Times présente Andy Burnham, Premier ministre britannique, comme celui qui commence à défaire le Brexit avec un accord. Le texte soulève aussi des questions sur la suite de la relation.",
-   "id": "a100",
-   "lien": "https://www.ft.com/content/334b5f12-4344-4680-be04-a7554120ec60?syn-25a6b1a6=1"
-  },
-  {
-   "matiere": "monde",
-   "question": "Quel objectif Donald Trump avance-t-il pour menacer d'une taxe les centres de données construits hors des États-Unis ?",
-   "choix": [
-    "Financer le système de retraites",
-    "Empêcher la Chine de prendre la tête dans l'IA",
-    "Réduire l'inflation",
-    "Soutenir le dollar"
+    "Une faute seule",
+    "Un fait générateur, un préjudice, un lien de causalité",
+    "Un préjudice seul",
+    "Une décision de justice préalable"
    ],
    "bonne": 1,
-   "explication": "Selon la presse, il présente la mesure comme un moyen d'empêcher Pékin de prendre l'avantage dans le développement de l'IA. C'est une logique protectionniste et industrielle.",
-   "id": "a70",
-   "lien": "https://www.ft.com/content/ae564e09-eb0d-42c6-b61f-50a4e61d0240?syn-25a6b1a6=1"
+   "explication": "Il faut un manquement au contrat, un dommage et un lien causal entre les deux. Le juge fixe alors la réparation.",
+   "id": "a1",
+   "lien": "https://www.lemonde.fr/economie/article/2026/11/22/comme-aux-etats-unis-les-victimes-francaises-d-accidents-de-la-route-sont-de-plus-en-plus-courtisees-par-les-avocats_6814181_3234.html"
+  },
+  {
+   "matiere": "mgmt",
+   "question": "La relation d'agence oppose principalement…",
+   "choix": [
+    "Salariés et clients",
+    "Actionnaires (mandants) et dirigeants (mandataires)",
+    "Banque et État",
+    "Concurrents entre eux"
+   ],
+   "bonne": 1,
+   "explication": "Les dirigeants peuvent poursuivre des intérêts propres différents de ceux des actionnaires. La gouvernance vise à limiter ces conflits.",
+   "id": "a4",
+   "lien": "https://www.lemonde.fr/economie/article/2026/11/22/le-groupe-castel-empire-discret-de-la-biere-et-du-vin-secoue-par-une-guerre-de-pouvoir_6814179_3234.html"
+  },
+  {
+   "matiere": "mgmt",
+   "question": "La RSE consiste pour une entreprise à…",
+   "choix": [
+    "Maximiser uniquement son profit",
+    "Intégrer préoccupations sociales et environnementales à ses activités",
+    "Faire de la croissance externe",
+    "Réduire sa masse salariale"
+   ],
+   "bonne": 1,
+   "explication": "La responsabilité sociétale prend en compte les parties prenantes au-delà des seuls actionnaires. Elle peut devenir un avantage concurrentiel.",
+   "id": "a67",
+   "lien": "https://www.franceinfo.fr/economie/entreprises/reportage-on-fait-meme-des-shampoings-aux-barbie-a-l-approche-de-noel-des-jouets-sont-recycles-puis-revendus-moitie-prix-a-villeurbanne_8292893.html#xtor=RSS-3-%5Beconomie%5D"
+  },
+  {
+   "matiere": "monde",
+   "question": "Hernández de Cos, candidat espagnol à la BCE, est soutenu pour diriger une institution qui…",
+   "choix": [
+    "Fixe les impôts de l'UE",
+    "Conduit la politique monétaire de la zone euro",
+    "Vote les lois européennes",
+    "Gère le budget espagnol"
+   ],
+   "bonne": 1,
+   "explication": "La BCE fixe notamment les taux directeurs de la zone euro. Elle est indépendante des gouvernements.",
+   "id": "a9",
+   "lien": "https://elpais.com/economia/2026-11-22/tenemos-el-mejor-candidato-asi-lanzo-espana-la-carrera-por-la-presidencia-del-bce.html"
+  },
+  {
+   "matiere": "monde",
+   "question": "Que contrôle la lutte contre le blanchiment imposée aux banques, y compris les néobanques ?",
+   "choix": [
+    "La publicité des produits",
+    "L'origine des fonds et les opérations suspectes",
+    "Le niveau des taux d'intérêt",
+    "La concurrence fiscale"
+   ],
+   "bonne": 1,
+   "explication": "Les banques doivent connaître leurs clients et signaler les opérations suspectes. Des manquements entraînent des sanctions des régulateurs.",
+   "id": "a10",
+   "lien": "https://elpais.com/economia/2026-11-22/los-fallos-en-los-sistemas-antiblanqueo-ponen-a-revolut-y-otros-neobancos-en-el-punto-de-mira.html"
   }
  ]
 }

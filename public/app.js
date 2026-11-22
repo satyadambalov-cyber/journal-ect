@@ -57,8 +57,58 @@ async function loadJSON(path) {
 async function loadEdition(date) {
   try { state.ed = await loadJSON(date ? `data/archive/${date}.json` : "data/latest.json"); }
   catch { state.ed = null; }
+  if (state.ed) { const p = await quizPool(); quizJour(state.ed, p); }
   render();
 }
+
+// ---------- quiz du jour : uniquement tes cours (flashcards + QCM tirés de tes polys) ----------
+// 3 questions par matière : la question d'actu du jour si elle existe, le reste tiré de tes chapitres
+// (au moins une sur les deux derniers chapitres). Tirage fixe pour une date donnée.
+let POOL = null;
+async function quizPool() {
+  if (POOL) return POOL;
+  return (POOL = (async () => {
+    let cartes = [], qcms = [];
+    try { cartes = (await loadJSON("data/cartes.json")).cartes; } catch {}
+    await Promise.all(Object.entries(QCMS).map(async ([id, v]) => {
+      try { const d = await loadJSON(v.url); (state.qcmData ||= {})[id] = d; d.questions.forEach((q) => qcms.push({ ...q, m: v.m, tag: v.court })); } catch {}
+    }));
+    const pool = [];
+    qcms.forEach((q) => pool.push({ matiere: q.m, tag: q.tag, ch: chapKey(q.tag), question: q.question, choix: q.choix, bonne: q.bonne_reponse,
+      explication: `${q.explication} ${QCM_MAT[q.m].maj} : ${q.majeure_a_ecrire}` }));
+    const cours = cartes.filter((c) => ACTU.includes(c.m) && !/méthode/i.test(c.ch));
+    cours.forEach((c) => {
+      const voisins = cours.filter((x) => x.m === c.m && x.ch === c.ch && x.r !== c.r);
+      const autres = voisins.length >= 3 ? voisins : cours.filter((x) => x.m === c.m && x.r !== c.r);
+      pool.push({ matiere: c.m, tag: c.ch.replace(/ – .*/, ""), ch: chapKey(c.ch), question: c.q, bonne: c.r, faux: autres.map((x) => x.r), explication: c.r });
+    });
+    return pool;
+  })());
+}
+const graine = (str) => { let h = 1779033703; for (const ch of str) h = Math.imul(h ^ ch.charCodeAt(0), 3432918353); return () => { h = Math.imul(h ^ (h >>> 16), 2246822507); h = Math.imul(h ^ (h >>> 13), 3266489909); return ((h ^= h >>> 16) >>> 0) / 4294967296; }; };
+function quizJour(ed, pool) {
+  if (ed.quizCours) return ed.quiz;
+  const rnd = graine(ed.date || "x"), pick = (a) => a.splice(Math.floor(rnd() * a.length), 1)[0];
+  const actu = {}; (ed.quiz_version >= 2 ? ed.quiz || [] : []).forEach((q) => { if (ACTU.includes(q.matiere) && q.id && !actu[q.matiere]) actu[q.matiere] = { ...q, tag: "Actu" }; });
+  const out = [];
+  ACTU.forEach((m) => {
+    const tous = pool.filter((q) => q.matiere === m), chs = [...new Set(tous.map((q) => q.ch))].filter((k) => /^C\d/.test(k)).sort((a, b) => a.localeCompare(b, "fr", { numeric: true })).slice(-2);
+    const recents = tous.filter((q) => chs.includes(q.ch)), pris = [];
+    if (actu[m]) out.push(actu[m]);
+    const n = 3 - (actu[m] ? 1 : 0);
+    if (recents.length) pris.push(pick(recents));
+    while (pris.length < n && tous.length) { const q = pick(tous); if (!pris.includes(q) && !pris.some((x) => x.question === q.question)) pris.push(q); }
+    pris.forEach((q) => {
+      if (typeof q.bonne === "number") return out.push(q);
+      const faux = [...new Set(q.faux)], fx = []; while (fx.length < 3 && faux.length) fx.push(pick(faux));
+      const choix = [...fx], b = Math.floor(rnd() * (fx.length + 1)); choix.splice(b, 0, q.bonne);
+      out.push({ ...q, choix, bonne: b, explication: "" });
+    });
+  });
+  ed.quiz = out; ed.quizCours = true;
+  return out;
+}
+const qKey = (ed) => `${ed.date}#cours`;
 async function loadIndicators() {
   try { state.ind = await loadJSON("data/indicateurs.json"); } catch { state.ind = null; }
   if (state.tab === "auj") render();
@@ -80,6 +130,7 @@ async function loadBank() {
   try { idx = await loadJSON("data/index.json"); } catch {}
   const eds = await Promise.all(idx.map((d) => loadJSON(`data/archive/${d}.json`).catch(() => null)));
   state.eds = eds.filter(Boolean);
+  const pool = await quizPool(); state.eds.forEach((ed) => quizJour(ed, pool));
   const seen = new Set(), items = [];
   state.eds.forEach((ed) => Object.entries(ed.rubriques || {}).forEach(([rub, list]) => list.forEach((a) => {
     if (seen.has(a.lien)) return; seen.add(a.lien);
@@ -237,8 +288,8 @@ function seance(iso) {
   }
   if (!vac && J.soir === "flash") { const n = cards ? fichesQueue("cours", "").length : "…"; auto("Flashcards · 25 min", n === 0 ? "à jour" : `${n} à revoir`, n === 0, "reviser:fiches:"); }
   if (ed?.quiz?.length && ed.date === iso) {
-    const qDone = Object.keys(state.answers[ed.date] || {}).length;
-    auto("Quiz de l'actu", `${qDone}/${ed.quiz.length}`, qDone === ed.quiz.length, "reviser:quiz");
+    const qDone = Object.keys(state.answers[qKey(ed)] || {}).length;
+    auto("Quiz du jour", `${qDone}/${ed.quiz.length}`, qDone === ed.quiz.length, "reviser:quiz");
   }
   return items;
 }
@@ -423,7 +474,7 @@ function fiches() {
 //  RÉVISER : quiz, plans, méthodes, classement
 // =====================================================================
 function recordResult() {
-  const ed = state.ed, ans = state.answers[ed.date] || {};
+  const ed = state.ed, ans = state.answers[qKey(ed)] || {};
   const hist = store.get("history", {}), bySub = {};
   ed.quiz.forEach((q, i) => {
     if (ans[i] === undefined) return;
@@ -446,7 +497,7 @@ function pointsFaibles(agg) {
   if (!bankReady()) return "";
   const missed = [];
   state.eds.forEach((ed) => (ed.quiz || []).forEach((q, i) => {
-    const a = state.answers[ed.date]?.[i];
+    const a = state.answers[qKey(ed)]?.[i];
     if (q.matiere === weak && a !== undefined && a !== q.bonne) missed.push({ ...q, key: `${ed.date}:${i}` });
   }));
   const retry = (state.retry ||= {});
@@ -457,13 +508,14 @@ function pointsFaibles(agg) {
 }
 
 function quiz() {
-  const ed = state.ed, ans = state.answers[ed.date] || {};
+  const ed = state.ed, ans = state.answers[qKey(ed)] || {};
   const finished = ed.quiz.length && Object.keys(ans).length === ed.quiz.length;
   const score = ed.quiz.filter((q, i) => ans[i] === q.bonne).length;
   return `${finished ? `<div class="final"><div class="kicker">Score du jour</div><b>${score}/${ed.quiz.length}</b><div class="trad">${score >= 7 ? "Excellent, tu tiens la cadence concours." : score >= 5 ? "Solide. Relis les explications ratées." : "Relis les corrections : c'est comme ça qu'on progresse."}</div></div>` : ""}
     ${title(`Quiz du ${fmtDate(ed.date, { day: "numeric", month: "long" })}`, `${Object.keys(ans).length}/${ed.quiz.length}`)}
+    <p class="lead">Uniquement tes cours : 3 questions par matière tirées de tes polys (dont une sur tes derniers chapitres), plus la question d'actu du jour quand il y en a une.</p>
     ${ed.quiz.map((q, i) => { const rub = RUB[q.matiere] || RUB.eco;
-      return qcm(q, ans[i], `data-q="${i}"`, rub.c, `<div class="meta"><span class="pill">${rub.nom}</span><span>Q${i + 1}</span></div>`); }).join("")}
+      return qcm(q, ans[i], `data-q="${i}"`, rub.c, `<div class="meta"><span class="pill">${rub.nom}${q.tag ? ` · ${esc(q.tag)}` : ""}</span><span>Q${i + 1}</span></div>`); }).join("")}
     ${pointsFaibles(aggregat())}`;
 }
 
@@ -1191,12 +1243,12 @@ $("#view").addEventListener("click", (e) => {
 
   if ((el = at("data-q")) && !el.disabled) {
     const ed = state.ed, i = +el.dataset.q, j = +el.dataset.c;
-    (state.answers[ed.date] ||= {})[i] = j; store.set("answers", state.answers);
+    (state.answers[qKey(ed)] ||= {})[i] = j; store.set("answers", state.answers);
     const q = ed.quiz[i];
     if (j === q.bonne) { state.stats.streak++; state.stats.best = Math.max(state.stats.best, state.stats.streak); }
-    else { state.stats.streak = 0; if (ACTU.includes(q.matiere)) addErreur({ m: q.matiere, chap: "Quiz de l'actu", erreur: `${q.question} → j'ai répondu : ${q.choix[j]}`, correction: `${q.choix[q.bonne]}. ${q.explication}`, src: `quiz:${ed.date}:${i}` }); }
+    else { state.stats.streak = 0; if (ACTU.includes(q.matiere)) addErreur({ m: q.matiere, chap: q.tag === "Actu" ? "Quiz du jour · actu" : `Quiz du jour · ${q.tag}`, erreur: `${q.question} → j'ai répondu : ${q.choix[j]}`, correction: `${q.choix[q.bonne]}${q.explication && q.explication !== q.choix[q.bonne] ? `. ${q.explication}` : ""}`, src: `quiz:${qKey(ed)}:${i}` }); }
     store.set("stats", state.stats); actif();
-    if (Object.keys(state.answers[ed.date]).length === ed.quiz.length) recordResult();
+    if (Object.keys(state.answers[qKey(ed)]).length === ed.quiz.length) recordResult();
     return keep();
   }
 

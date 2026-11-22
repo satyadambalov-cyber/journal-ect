@@ -84,8 +84,16 @@ if (candidates.length < 10) {
 }
 
 // ---------- 2. Claude ----------
+// Les chapitres réellement vus en cours (fiches de l'appli, tirées des polys) : tout ce qui touche au cours doit en venir.
+let COURS = "";
+try {
+  const F = JSON.parse(await readFile(new URL("fiches.json", DATA_DIR), "utf8"));
+  COURS = ["eco", "droit", "mgmt"].map((m) => `${{ eco: "Économie", droit: "Droit", mgmt: "Management" }[m]} :\n` + F[m].chapters.map((c) =>
+    `- ${c.k} ${c.title} : ${c.groups.flatMap((g) => g.items.map((it) => it.k + (it.a ? ` (${it.a})` : ""))).join(" ; ")}`).join("\n")).join("\n");
+} catch {}
 const SYSTEM = `Tu es le rédacteur en chef d'un journal quotidien destiné à un étudiant de PREMIÈRE année de CPGE ECT (ECT1), qui prépare BCE et ECRICOME.
-Programme ECT1 à mobiliser : Économie (croissance, marché, monnaie, financement, chômage, inflation, rôle de l'État, mondialisation, auteurs classiques : Smith, Ricardo, Keynes, Schumpeter, Say, Marx, Friedman…), Droit (sources du droit, organisation judiciaire, contrat — formation, effets, inexécution —, responsabilité civile, personne, entreprise et sociétés, droit du travail : bases), Management (entreprise et organisations, stratégie de base, diagnostic, parties prenantes, gouvernance, leadership, croissance interne/externe), Langues (anglais, espagnol) et culture internationale.
+L'étudiant n'a vu QUE les chapitres ci-dessous (tirés de ses polys). Toute notion, tout auteur, article ou arrêt que tu mobilises (notion du jour, notions des articles, plan, cas pratique, quiz) doit venir de cette liste, au niveau de ses khôlles et DS de début de première année. N'utilise jamais une notion d'un chapitre pas encore vu (par exemple contrat ou responsabilité civile si ce n'est pas listé).
+${COURS || "(liste indisponible : reste sur les bases de première année)"}
 Règles absolues :
 - Ne mentionne jamais les identifiants ("a12") dans les textes rédigés : uniquement dans les champs "id".
 - Tu n'utilises QUE les articles fournis, identifiés par leur "id". N'invente aucun fait, chiffre, date ou source. Si un détail n'est pas dans le titre/chapeau, reste général et prudent.
@@ -94,7 +102,7 @@ Règles absolues :
 - Pas de géopolitique : une seule actu par matière (économie, droit, management), chacune reliée à une notion du cours que l'étudiant peut utiliser en QRA (éco), en veille juridique ou majeure de cas pratique (droit), ou en application de la méthode TAC (management).
 - Les textes de langues (anglais, espagnol) peuvent s'inspirer des articles anglophones et hispanophones fournis.
 - Pour le droit, si les articles juridiques sont rares, prends l'actualité ayant la plus forte dimension juridique (loi, régulation, procès, décision, directive UE).
-- Le quiz porte en priorité sur les actualités du jour ET sur des notions de cours (définitions, auteurs, mécanismes). Une seule bonne réponse, 4 choix.
+- Le quiz ne contient que 3 questions, une par article retenu (éco, droit, management) : chacune relie l'actualité à une notion de la liste des chapitres vus. Une seule bonne réponse, 4 choix. Les questions de cours pures sont posées par l'appli à partir des polys : tu n'en écris pas.
 Réponds UNIQUEMENT avec un objet JSON valide, sans texte autour.`;
 
 // Thèmes fixes du programme : servent à la « banque d'exemples » de l'appli
@@ -117,9 +125,9 @@ const SCHEMA = `{
    "pieges": [{"langue": "en"|"es", "question": str (en français : choisir la bonne forme, faux-ami, temps, préposition…), "choix": [str x4], "bonne": 0-3, "explication": str} x6 : 3 en, 3 es]
  },
  "plan": {"matiere": "Économie (QRA)"|"Droit (veille juridique)" (alterne d'un jour à l'autre), "sujet": str (format concours ECT : soit une question à réponse argumentée d'économie, soit un sujet de veille juridique sur un champ précis du thème « Libertés individuelles et activité économique des entreprises » ; inspiré de l'actu ; JAMAIS de dissertation d'ESH), "analyse": str (définition précise des termes et tension, 2-3 phrases), "problematique": str, "parties": [{"titre": str, "sous": [str x2]} x2 EXACTEMENT (plan en 2 parties et 2 sous-parties)], "exemples": [str x2-3 auteurs/théories (QRA) ou fondements juridiques et exemples réels récents (veille)]},
- "cas_pratique": {"faits": str (situation fictive de 80-120 mots, niveau ECT1 : contrat, responsabilité, sources du droit, organisation judiciaire, entreprise et sociétés), "question": str, "qualification": str (faits traduits en termes juridiques, sans règle de droit), "probleme": str (question juridique abstraite, jamais « M. X peut-il… »), "majeure": str (règles de droit exactes ; ne cite un article ou un arrêt que si tu es certain de son numéro et de son contenu), "conclusion": str (application aux faits et conséquences juridiques)},
+ "cas_pratique": {"faits": str (situation fictive de 80-120 mots, uniquement sur les chapitres de droit vus, au niveau de la fiche d'activités corrigée), "question": str, "qualification": str (faits traduits en termes juridiques, sans règle de droit), "probleme": str (question juridique abstraite, jamais « M. X peut-il… »), "majeure": str (règles de droit exactes ; ne cite un article ou un arrêt que si tu es certain de son numéro et de son contenu), "conclusion": str (application aux faits et conséquences juridiques)},
  "maths": [{"titre": str, "niveau": 1|2|3, "enonce": str (exercice type DS sur le chapitre indiqué, notations texte simples : x², √, a/b, ≤), "etapes": [str x3-6 correction pas à pas, chaque calcul justifié], "resultat": str, "piege": str (l'erreur classique à éviter)} x2 (un niveau 1 ou 2, un niveau 2 ou 3)],
- "quiz": [QUESTION x9 : 3 "eco", 3 "droit", 3 "mgmt" ; au moins 6 portent sur des notions de cours (définitions, auteurs, articles, théorisations), les autres sur les actus du jour]
+ "quiz": [QUESTION x3 : 1 "eco", 1 "droit", 1 "mgmt", chacune sur l'article retenu dans cette rubrique (champ "id" obligatoire) et reliée à une notion des chapitres vus]
 }
 ARTICLE = {"id": str (id d'un article fourni), "theme": UN SEUL parmi ${JSON.stringify(THEMES)}, "titre": str (titre clair en français), "resume": str (3-4 phrases), "contexte": str (pourquoi c'est important, 2-3 phrases), "notions": [str x2-4 notions du programme], "copie": str (comment l'utiliser dans une copie d'économie, de droit ou une étude de cas de management : idée d'accroche, de partie ou d'exemple, 2-3 phrases), "niveau": 1|2|3 (difficulté)}
 TROUS = {"texte": str (60-90 mots inspirés d'un article du jour, avec exactement 6 blancs notés {1} à {6}), "blancs": [{"choix": [str x3], "bonne": 0-2, "explication": str (courte, en français)} x6] : on teste vocabulaire, prépositions, temps et connecteurs}
@@ -182,10 +190,11 @@ if (json.langues) {
 if (!json.plan?.sujet || !Array.isArray(json.plan.parties)) delete json.plan;
 if (!json.cas_pratique?.faits || !json.cas_pratique?.conclusion) delete json.cas_pratique;
 json.maths = (json.maths || []).filter((m) => m.enonce && Array.isArray(m.etapes) && m.etapes.length);
-json.quiz = (json.quiz || []).filter((q) => Array.isArray(q.choix) && q.choix.length === 4 && q.bonne >= 0 && q.bonne < 4)
+json.quiz = (json.quiz || []).filter((q) => Array.isArray(q.choix) && q.choix.length === 4 && q.bonne >= 0 && q.bonne < 4 && byId[q.id])
   .map((q) => ({ ...q, lien: byId[q.id]?.link || null }));
 
 const edition = {
+  quiz_version: 2, // quiz = 3 questions d'actu reliées aux chapitres vus ; les questions de cours viennent de l'appli
   date: new Date().toISOString().slice(0, 10),
   genere_le: new Date().toISOString(),
   modele: MODEL,

@@ -1,0 +1,145 @@
+{
+ "titre": "Économie – T1 C3 – Relations entre agents",
+ "questions": [
+  {
+   "id": "eco-c3-01",
+   "majeure": "Fonctions de la monnaie",
+   "question": "Quelle fonction de la monnaie permet de comparer le prix de tous les biens ?",
+   "choix": [
+    "Intermédiaire des échanges",
+    "Réserve de valeur",
+    "Unité de compte",
+    "Pouvoir libératoire"
+   ],
+   "bonne_reponse": 2,
+   "explication": "L'unité de compte est l'étalon des valeurs (numéraire).",
+   "majeure_a_ecrire": "Aristote distingue trois fonctions de la monnaie : unité de compte, intermédiaire des échanges et réserve de valeur."
+  },
+  {
+   "id": "eco-c3-02",
+   "majeure": "Préférence pour la liquidité",
+   "question": "Un ménage garde de l'argent sur son compte « au cas où » sa voiture tomberait en panne. Quel motif keynésien ?",
+   "choix": [
+    "Transaction",
+    "Précaution",
+    "Spéculation",
+    "Thésaurisation"
+   ],
+   "bonne_reponse": 1,
+   "explication": "Transaction : décalage revenu / dépense. Spéculation : anticiper le cours des titres.",
+   "majeure_a_ecrire": "Pour J. M. Keynes, l'incertitude justifie une préférence pour la liquidité selon trois motifs : transaction, précaution, spéculation."
+  },
+  {
+   "id": "eco-c3-03",
+   "majeure": "Création monétaire",
+   "question": "Quand une banque accorde un crédit :",
+   "choix": [
+    "elle prête l'épargne de ses clients",
+    "elle crée de la monnaie ex nihilo, détruite au remboursement",
+    "elle doit d'abord emprunter à la BCE la même somme",
+    "elle ne crée aucune monnaie"
+   ],
+   "bonne_reponse": 1,
+   "explication": "« Les crédits font les dépôts. »",
+   "majeure_a_ecrire": "La création monétaire résulte de la monétisation de créances : en accordant un crédit, la banque crée de la monnaie ex nihilo ; le remboursement la détruit."
+  },
+  {
+   "id": "eco-c3-04",
+   "majeure": "Contrôle de la création monétaire",
+   "question": "La BCE relève son taux de refinancement. Effet attendu ?",
+   "choix": [
+    "Plus de création monétaire",
+    "Moins de création monétaire",
+    "Aucun effet sur les banques",
+    "La suppression des réserves obligatoires"
+   ],
+   "bonne_reponse": 1,
+   "explication": "Se refinancer coûte plus cher aux banques, qui prêtent moins.",
+   "majeure_a_ecrire": "La BCE contrôle la création monétaire par les taux directeurs (taux refi) et les réserves obligatoires."
+  },
+  {
+   "id": "eco-c3-05",
+   "majeure": "Théorie quantitative",
+   "question": "Dans MV = PT avec V et T constants, une hausse de M entraîne :",
+   "choix": [
+    "une hausse de la production",
+    "une hausse du niveau des prix",
+    "une baisse du chômage",
+    "une baisse de la vitesse de circulation"
+   ],
+   "bonne_reponse": 1,
+   "explication": "C'est la dichotomie forte : la monnaie est neutre.",
+   "majeure_a_ecrire": "Selon la théorie quantitative (Bodin, Friedman), « l'inflation est partout et toujours un phénomène monétaire » : MV = PT, la hausse de M ne fait qu'augmenter P."
+  },
+  {
+   "id": "eco-c3-06",
+   "majeure": "Cryptomonnaies",
+   "question": "Pourquoi une cryptomonnaie n'est-elle pas juridiquement une monnaie ?",
+   "choix": [
+    "Elle n'existe pas sous forme de billets",
+    "Elle ne dépend d'aucune institution et n'a pas cours légal",
+    "Elle utilise la blockchain",
+    "Elle n'est pas une unité de compte"
+   ],
+   "bonne_reponse": 1,
+   "explication": "La monnaie électronique non plus n'a pas de billets, et c'est pourtant de la monnaie.",
+   "majeure_a_ecrire": "Les cryptomonnaies, forme de crypto-actifs (règlement MiCA, 2023), ne dépendent d'aucune institution, n'ont pas cours légal et sont une réserve de valeur instable."
+  },
+  {
+   "id": "eco-c3-07",
+   "majeure": "Revenu disponible",
+   "question": "Revenu disponible = ?",
+   "choix": [
+    "Revenus primaires + prélèvements obligatoires − revenus de transfert",
+    "Revenus primaires + revenus de transfert − prélèvements obligatoires",
+    "Salaires + dividendes",
+    "Consommation + épargne − impôts"
+   ],
+   "bonne_reponse": 1,
+   "explication": "Les transferts s'ajoutent, les prélèvements se retirent.",
+   "majeure_a_ecrire": "Le revenu disponible est égal aux revenus primaires (travail, capital, mixtes), plus les revenus de transfert, moins les prélèvements obligatoires."
+  },
+  {
+   "id": "eco-c3-08",
+   "majeure": "Secteurs institutionnels",
+   "question": "La ressource principale des administrations publiques est :",
+   "choix": [
+    "la vente de biens marchands",
+    "les prélèvements obligatoires",
+    "les dons et cotisations volontaires",
+    "les dépôts des clients"
+   ],
+   "bonne_reponse": 1,
+   "explication": "Dons : ISBLSM. Dépôts : sociétés financières. Ventes : SNF.",
+   "majeure_a_ecrire": "Les APU fournissent des services non marchands et redistribuent le revenu ; leur ressource principale est constituée des prélèvements obligatoires."
+  },
+  {
+   "id": "eco-c3-09",
+   "majeure": "Équilibre emplois-ressources",
+   "question": "Quelle égalité est toujours vérifiée ?",
+   "choix": [
+    "P + M = CI + CF + FBCF + X ± VS",
+    "P = CF + X",
+    "Y = C + I + M",
+    "S = X − M"
+   ],
+   "bonne_reponse": 0,
+   "explication": "Les ressources (production + importations) égalent les emplois.",
+   "majeure_a_ecrire": "L'équilibre emplois-ressources s'écrit P + M = CI + CF + FBCF + X ± VS, toujours vérifié en comptabilité nationale."
+  },
+  {
+   "id": "eco-c3-10",
+   "majeure": "I = S en économie ouverte",
+   "question": "Un pays a des exportations supérieures à ses importations. Il :",
+   "choix": [
+    "a un besoin de financement",
+    "dégage une capacité de financement et finance le reste du monde",
+    "a une épargne inférieure à son investissement",
+    "ne peut plus investir"
+   ],
+   "bonne_reponse": 1,
+   "explication": "S − I = X − M > 0 : l'épargne nationale dépasse l'investissement.",
+   "majeure_a_ecrire": "En économie ouverte, S − I = X − M : si X > M, l'économie dégage une capacité de financement ; si X < M, elle a un besoin de financement couvert par l'épargne étrangère."
+  }
+ ]
+}

@@ -1,0 +1,173 @@
+{
+ "titre": "Management – C3 et C4 – Les diagnostics",
+ "questions": [
+  {
+   "id": "mgmt-c34-01",
+   "majeure": "Diagnostic externe",
+   "question": "Une hausse des revenus des ménages de 8 % profite à l'entreprise. Dans quel diagnostic et sous quelle forme la classer ?",
+   "choix": [
+    "Diagnostic interne, force",
+    "Diagnostic externe, opportunité",
+    "Diagnostic externe, force",
+    "Diagnostic interne, opportunité"
+   ],
+   "bonne_reponse": 1,
+   "explication": "Ce qui vient de l'environnement est une opportunité ou une menace ; forces et faiblesses sont internes.",
+   "majeure_a_ecrire": "Le diagnostic externe (modèle LCAG, 1965) identifie dans l'environnement les opportunités et les menaces, que l'entreprise ne maîtrise pas."
+  },
+  {
+   "id": "mgmt-c34-02",
+   "majeure": "PESTEL",
+   "question": "Le vieillissement de la population relève de quelle dimension du PESTEL ?",
+   "choix": [
+    "Politique",
+    "Économique",
+    "Socioculturelle",
+    "Légale"
+   ],
+   "bonne_reponse": 2,
+   "explication": "Démographie, modes de vie, éducation : socioculturel.",
+   "majeure_a_ecrire": "Le PESTEL analyse le macro-environnement en six dimensions : politique, économique, socioculturelle, technologique, écologique et légale."
+  },
+  {
+   "id": "mgmt-c34-03",
+   "majeure": "5 (+1) forces",
+   "question": "Laquelle n'est PAS une force concurrentielle de Porter ?",
+   "choix": [
+    "Le pouvoir de négociation des fournisseurs",
+    "La menace des produits de substitution",
+    "Les forces et faiblesses de l'entreprise",
+    "La menace des nouveaux entrants"
+   ],
+   "bonne_reponse": 2,
+   "explication": "Forces/faiblesses : c'est le diagnostic interne.",
+   "majeure_a_ecrire": "Selon M. Porter (1979), l'intensité concurrentielle d'un secteur dépend de 5 forces (rivalité, clients, fournisseurs, entrants, substituts), plus l'État ; plus elle est forte, moins le secteur est rentable."
+  },
+  {
+   "id": "mgmt-c34-04",
+   "majeure": "Pouvoir de négociation",
+   "question": "Qu'est-ce qui réduit le pouvoir de négociation des clients ?",
+   "choix": [
+    "Un grand nombre de concurrents",
+    "Des coûts de transfert élevés",
+    "Une offre peu différenciée",
+    "Des clients très concentrés"
+   ],
+   "bonne_reponse": 1,
+   "explication": "Si changer de fournisseur coûte cher, le client hésite et négocie moins.",
+   "majeure_a_ecrire": "Le pouvoir de négociation d'un client est sa capacité à imposer prix, délais, qualité ; il diminue quand les coûts de transfert (coûts du changement de partenaire) sont élevés."
+  },
+  {
+   "id": "mgmt-c34-05",
+   "majeure": "Barrières à l'entrée",
+   "question": "Un laboratoire dépose de nombreux brevets. Quelle force cherche-t-il à contenir ?",
+   "choix": [
+    "Le pouvoir des clients",
+    "La menace des nouveaux entrants",
+    "Le pouvoir des fournisseurs",
+    "L'État"
+   ],
+   "bonne_reponse": 1,
+   "explication": "Les brevets sont une barrière technologique ou légale.",
+   "majeure_a_ecrire": "Les barrières à l'entrée (économiques, financières, commerciales, technologiques, légales) protègent le secteur de la menace des nouveaux entrants."
+  },
+  {
+   "id": "mgmt-c34-06",
+   "majeure": "PDM relative",
+   "question": "PDM de l'entreprise : 15 %. PDM du leader : 30 %. PDM relative et position ?",
+   "choix": [
+    "2 : leader",
+    "0,5 : challenger ou suiveur",
+    "15 % : leader",
+    "0,5 : leader"
+   ],
+   "bonne_reponse": 1,
+   "explication": "15 ÷ 30 = 0,5 < 1 : l'entreprise n'est pas leader.",
+   "majeure_a_ecrire": "La part de marché relative (matrice BCG) = PDM de l'entreprise ÷ PDM du principal concurrent ; supérieure à 1, l'entreprise est leader ; inférieure à 1, challenger ou suiveur."
+  },
+  {
+   "id": "mgmt-c34-07",
+   "majeure": "Matrice BCG",
+   "question": "Un DAS en faible croissance où l'entreprise a une forte PDM relative est :",
+   "choix": [
+    "une vedette",
+    "un dilemme",
+    "une vache à lait",
+    "un poids mort"
+   ],
+   "bonne_reponse": 2,
+   "explication": "Elle dégage des liquidités qui financent vedettes et dilemmes.",
+   "majeure_a_ecrire": "La matrice BCG (années 1960) croise croissance du marché et PDM relative : vedettes, dilemmes, vaches à lait (à rentabiliser) et poids morts."
+  },
+  {
+   "id": "mgmt-c34-08",
+   "majeure": "Limites des matrices",
+   "question": "Quelle limite est commune à toutes les matrices de portefeuille ?",
+   "choix": [
+    "Elles sont trop subjectives",
+    "Elles ignorent les synergies entre DAS",
+    "Elles ont trop de critères",
+    "Elles ne s'appliquent qu'aux PME"
+   ],
+   "bonne_reponse": 1,
+   "explication": "BCG : trop simple. McKinsey : subjective. Toutes : pas de synergies.",
+   "majeure_a_ecrire": "Les matrices de portefeuille (BCG, McKinsey) donnent une vision synthétique, mais la BCG est simpliste, la McKinsey subjective, et aucune ne met en évidence les synergies entre DAS."
+  },
+  {
+   "id": "mgmt-c34-09",
+   "majeure": "Ressource ou compétence",
+   "question": "Un brevet est :",
+   "choix": [
+    "une compétence distinctive",
+    "une ressource intangible",
+    "une capacité dynamique",
+    "un FCS"
+   ],
+   "bonne_reponse": 1,
+   "explication": "C'est un actif possédé. La compétence, c'est savoir l'exploiter.",
+   "majeure_a_ecrire": "Selon l'approche par les ressources (E. Penrose, 1959), les ressources sont les actifs tangibles et intangibles (brevets, marque) ; les compétences sont la capacité à les utiliser."
+  },
+  {
+   "id": "mgmt-c34-10",
+   "majeure": "Capacités dynamiques",
+   "question": "Une entreprise forme ses salariés et investit pour s'adapter à un marché nouveau. Quelle théorisation ?",
+   "choix": [
+    "Compétences distinctives, Hamel et Prahalad (1990)",
+    "Capacités dynamiques, Teece et Pisano (1997)",
+    "VRIO, Barney (1991)",
+    "Rivalité élargie, Porter (1979)"
+   ],
+   "bonne_reponse": 1,
+   "explication": "Les 3 capacités : identifier, mobiliser, renouveler.",
+   "majeure_a_ecrire": "Les capacités dynamiques sont « la capacité de l'entreprise à intégrer, développer et reconfigurer ses compétences internes et externes pour faire face à un environnement en évolution rapide » (D. Teece et G. Pisano, 1997)."
+  },
+  {
+   "id": "mgmt-c34-11",
+   "majeure": "VRIO",
+   "question": "Une ressource valorisable et rare, mais facile à copier, donne :",
+   "choix": [
+    "un avantage concurrentiel durable",
+    "un avantage concurrentiel temporaire",
+    "aucun avantage",
+    "un FCS"
+   ],
+   "bonne_reponse": 1,
+   "explication": "Sans inimitabilité, les concurrents finissent par la copier.",
+   "majeure_a_ecrire": "Selon J. Barney (1991), une ressource crée un avantage concurrentiel durable si elle est valorisable, rare, inimitable et non substituable, et si l'entreprise est organisée pour l'exploiter (VRIO)."
+  },
+  {
+   "id": "mgmt-c34-12",
+   "majeure": "SWOT",
+   "question": "D'où vient la matrice SWOT ?",
+   "choix": [
+    "Du modèle LCAG de Harvard (1965)",
+    "De la matrice BCG",
+    "Des 5 forces de Porter",
+    "De la RBV de Penrose"
+   ],
+   "bonne_reponse": 0,
+   "explication": "Learned, Christensen, Andrews, Guth : premier modèle de formulation stratégique.",
+   "majeure_a_ecrire": "La matrice SWOT (forces, faiblesses, opportunités, menaces), issue du modèle LCAG (1965), synthétise le diagnostic interne et externe pour choisir une stratégie."
+  }
+ ]
+}

@@ -1,7 +1,7 @@
 {
  "maj": "2026-11-22",
  "note": "Semaine type ECT1 groupe G. Pour la période 3 (janvier), ajouter les khôlles dans « kholles » (date AAAA-MM-JJ → liste [heure, matière, salle]).",
- "mise_en_route_jusqu_au": "2026-11-29",
+ "mise_en_route_jusqu_au": "2026-11-22",
  "vacances": [["2026-12-19", "2027-01-03"]],
  "comment": {
   "maths": ["10 min : réciter le cours sans regarder (définitions, formules). Ce qui manque, tu le relis.", "50 min : 2-3 exos du manuel puis la feuille du chapitre. Bloqué 10 min → correction, puis tu refais seul.", "10 min : carnet d'erreurs, une ligne par piège."],

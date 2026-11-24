@@ -1,226 +1,227 @@
 {
  "quiz_version": 2,
- "date": "2026-11-23",
- "genere_le": "2026-11-23T05:42:57.564Z",
+ "date": "2026-11-24",
+ "genere_le": "2026-11-24T05:33:47.863Z",
  "modele": "claude-sonnet-5-5",
  "notion_du_jour": {
-  "titre": "Les lois d'Engel",
-  "definition": "Ernst Engel a observé en 1857 que, lorsque le revenu d'un ménage augmente, la part de son budget consacrée à l'alimentation diminue, même si la dépense en valeur augmente. On parle de bien de première nécessité quand l'élasticité-revenu de la demande est positive mais inférieure à 1. L'élasticité-revenu mesure la variation en % de la quantité demandée quand le revenu varie de 1 %. Les ménages modestes ont donc davantage de dépenses contraintes dans leur budget que les ménages aisés.",
-  "exemple": "Un ménage dont le revenu double achète un peu plus de nourriture, mais sa dépense alimentaire pèse moins dans son budget total. Le raisonnement est le même pour d'autres dépenses de première nécessité.",
+  "titre": "Épargne et circuit économique",
+  "definition": "L'épargne est la part du revenu disponible qui n'est pas consommée. Elle peut être placée sous forme financière (livrets, titres) et finance l'investissement. Quand les ménages puisent dans leur épargne, c'est qu'ils dépensent plus que leur revenu ne le permet, par exemple à cause d'une hausse des prix. Dans une économie fermée, on a I = S : l'investissement est financé par l'épargne.",
+  "exemple": "Si le pouvoir d'achat baisse à cause de l'énergie, les ménages réduisent leur épargne (retraits du Livret A) pour maintenir leur consommation.",
   "matiere": "Économie"
  },
  "rubriques": {
   "eco": [
    {
-    "id": "a50",
-    "theme": "Croissance et conjoncture",
-    "titre": "La voiture, une dépense qui pèse surtout sur les petits budgets",
-    "resume": "Selon une étude de l'Institut Terram publiée lundi, sept millions de personnes en France sont prises en étau entre la nécessité d'avoir une voiture et son coût. Les dépenses de carburant restent élevées. La voiture représente 13 % du budget des ménages disposant de 1 000 à 2 000 euros par mois, contre 3,5 % pour ceux dont les revenus dépassent 5 000 euros.",
-    "contexte": "L'article montre que le poids d'une même dépense dépend du niveau de revenu. Il éclaire la notion de pouvoir d'achat, qui diminue quand les prix augmentent plus vite que le revenu. Il illustre aussi l'inégalité face aux dépenses contraintes.",
+    "id": "a4",
+    "theme": "Banques et marchés financiers",
+    "titre": "Livret A : près de 10 milliards d'euros retirés depuis janvier",
+    "resume": "Les épargnants ont retiré près de 10 milliards d'euros de leurs Livrets A depuis janvier, un record depuis dix ans. Les discussions sur la hausse du plafond voulue par le gouvernement se poursuivent. Le taux d'intérêt pourrait passer de 1,7 % à 2,8 % en février.",
+    "contexte": "Le Livret A est le placement favori des ménages français. Ses retraits traduisent la pression sur le pouvoir d'achat, notamment liée au coût de l'énergie. Ils posent aussi la question du financement de l'investissement par l'épargne.",
     "notions": [
-     "Lois d'Engel",
-     "Élasticités",
-     "Niveau de vie, pouvoir d'achat"
+     "Épargne",
+     "Revenu disponible",
+     "Pouvoir d'achat",
+     "I = S en économie fermée"
     ],
-    "copie": "Utilisable en QRA sur la structure de la consommation. L'écart 13 % / 3,5 % montre que la part d'une dépense nécessaire baisse quand le revenu monte, dans l'esprit des lois d'Engel. À employer aussi comme accroche sur le pouvoir d'achat et les inégalités.",
+    "copie": "À utiliser en QRA sur les comportements d'épargne : une baisse du pouvoir d'achat réduit l'épargne des ménages. Mobilise l'égalité I = S pour montrer l'effet possible sur le financement de l'investissement.",
     "niveau": 1,
     "source": "Le Monde",
-    "lien": "https://www.lemonde.fr/economie/article/2026/11/23/voiture-sept-millions-de-personnes-en-france-prises-en-etau-entre-necessite-et-cout-pointe-une-etude_6814273_3234.html",
-    "date": "2026-11-23T03:10:36.000Z",
-    "titre_original": "Voiture : sept millions de personnes en France prises en étau entre nécessité et coût, pointe une étude"
+    "lien": "https://www.lemonde.fr/argent/article/2026/11/24/les-epargnants-ont-retire-pres-de-10-milliards-d-euros-de-leurs-livret-a-depuis-janvier-un-record-depuis-dix-ans_6814708_1657007.html",
+    "date": "2026-11-24T05:00:40.000Z",
+    "titre_original": "Les épargnants ont retiré près de 10 milliards d’euros de leurs Livret A depuis janvier, un record depuis dix ans"
    }
   ],
   "droit": [
    {
-    "id": "a3",
+    "id": "a53",
     "theme": "Sources et institutions du droit",
-    "titre": "Digital Fairness Act : un projet de règlement européen qui inquiète le jeu vidéo",
-    "resume": "La Commission européenne prépare un texte à visée générale pour encadrer des pratiques jugées piégeuses pour les joueurs. Elle vise notamment les monnaies virtuelles, les loot boxes et les mécanismes de pay-to-win ou pay-to-progress. L'industrie du jeu vidéo s'en inquiète.",
-    "contexte": "Le choix d'un règlement est important : cette source du droit européen s'applique directement dans les États membres, sans loi de transposition. Le texte illustre la place du droit européen dans la hiérarchie des normes et la tension entre protection des consommateurs et liberté d'entreprendre.",
+    "titre": "Règle d'or budgétaire : peut-elle entrer dans la Constitution ?",
+    "resume": "Emmanuel Macron envisage d'inscrire dans la Constitution une règle d'or pour réduire les déficits, en relançant une idée vieille de 15 ans. Le texte prévoirait une loi-cadre pluriannuelle de retour vers l'équilibre des comptes publics. Se pose la question de son adoption, et de son calendrier à quelques mois de la présidentielle.",
+    "contexte": "Réviser la Constitution suppose une procédure particulière, avec le Parlement et le Congrès. Cela touche à la hiérarchie des normes : une règle constitutionnelle s'impose à la loi. La réforme de 2011 n'a jamais abouti.",
     "notions": [
-     "Règlement européen",
-     "Directive européenne",
-     "Art. 55"
+     "Constitution",
+     "Valeur constitutionnelle",
+     "Loi constitutionnelle du 23 juillet 2008",
+     "Art. 34"
     ],
-    "copie": "À mobiliser en veille juridique ou en majeure de cas pratique sur la hiérarchie des normes. Un règlement européen est directement applicable, alors qu'une directive doit être transposée. L'article 55 de la Constitution donne aux traités une autorité supérieure à celle des lois.",
+    "copie": "À mobiliser en veille juridique sur les sources du droit : la Constitution est au sommet de la hiérarchie, et la révision exige une procédure renforcée. Utile pour illustrer ce qu'implique la valeur constitutionnelle d'une règle.",
     "niveau": 2,
-    "source": "Le Monde",
-    "lien": "https://www.lemonde.fr/pixels/article/2026/11/23/le-digital-fairness-act-un-projet-de-reglement-europeen-qui-affole-l-industrie-du-jeu-video_6814350_4408996.html",
-    "date": "2026-11-23T05:30:09.000Z",
-    "titre_original": "Le Digital Fairness Act, un projet de règlement européen qui affole l’industrie du jeu vidéo"
+    "source": "franceinfo",
+    "lien": "https://www.franceinfo.fr/economie/budget/budget-a-quoi-sert-la-regle-d-or-et-peut-elle-etre-adoptee_8296722.html#xtor=RSS-3-%5Beconomie%5D",
+    "date": "2026-11-23T22:30:59.000Z",
+    "titre_original": "Budget : &#xE0; quoi sert la r&#xE8;gle d'or et peut-elle &#xEA;tre adopt&#xE9;e ?"
    }
   ],
   "mgmt": [
    {
-    "id": "a64",
-    "theme": "Innovation et numérique",
-    "titre": "San Francisco vit un boom de l'IA, mais la crainte d'un krach grandit",
-    "resume": "Selon la BBC, les salariés de l'IA à San Francisco, épicentre du secteur, craignent que celui-ci soit en surchauffe. Le boom s'accompagne donc d'inquiétudes sur un possible retournement. Les détails chiffrés ne sont pas donnés dans le résumé du flux.",
-    "contexte": "L'IA offre de grandes opportunités mais l'avenir du secteur reste très difficile à prévoir. C'est un bon exemple de décision stratégique prise dans un environnement incertain, où les biais cognitifs peuvent aussi jouer, comme l'excès d'optimisme.",
+    "id": "a14",
+    "theme": "Gouvernance et parties prenantes",
+    "titre": "Nvidia : retour de Jensen Huang sous pression de Trump et des marchés",
+    "resume": "Le conseil d'administration de Nvidia a réintégré Jensen Huang comme PDG. Le président Trump aurait fait pression pour ce retour, qui a fait gagner environ 1 000 milliards de dollars de valeur boursière à l'entreprise. L'épisode suscite des critiques et des demandes d'explications de parlementaires.",
+    "contexte": "Le cas illustre le rôle du conseil d'administration, des actionnaires et de l'État dans la gouvernance. Il montre aussi le poids du dirigeant dans la valeur d'une entreprise.",
     "notions": [
-     "Risque / incertitude (F. Knight)",
-     "Biais cognitifs (Kahneman et Tversky)",
-     "Rationalité limitée (H. Simon)",
-     "PESTEL"
+     "Gouvernance",
+     "Partie prenante (Freeman)",
+     "Théorie de l'agence (Jensen et Meckling)"
     ],
-    "copie": "En étude de cas (méthode TAC), l'article sert à illustrer un environnement incertain. Il permet de distinguer le risque, dont les probabilités sont calculables, de l'incertitude, selon Knight. Il invite aussi à discuter de la rationalité limitée des décideurs.",
+    "copie": "À utiliser dans une étude de cas pour montrer que les parties prenantes (actionnaires, État, salariés) influencent les décisions de gouvernance. La théorie de l'agence permet de discuter du contrôle du dirigeant par le conseil.",
     "niveau": 2,
     "source": "BBC",
-    "lien": "https://www.bbc.co.uk/news/articles/cqe9k09j9jv4o?at_medium=RSS&at_campaign=rss",
-    "date": "2026-11-23T00:08:00.000Z",
-    "titre_original": "San Francisco is enjoying an AI boom, but worries about a crash are growing"
+    "lien": "https://www.bbc.co.uk/news/articles/cq5y1k8ez407o?at_medium=RSS&at_campaign=rss",
+    "date": "2026-11-24T04:36:31.000Z",
+    "titre_original": "Trump faces backlash after saying he 'convinced' Nvidia to reinstate CEO Jensen Huang"
    }
   ]
  },
  "langues": {
   "vocab": [
    {
-    "mot": "unemployment rate",
+    "mot": "stock price",
     "langue": "en",
-    "traduction": "taux de chômage",
-    "exemple": "The unemployment rate is expected to rise above 5%."
+    "traduction": "cours de l'action",
+    "exemple": "The stock price jumped after the announcement."
    },
    {
-    "mot": "to forecast",
+    "mot": "board of directors",
     "langue": "en",
-    "traduction": "prévoir",
-    "exemple": "The government forecasts weak growth in 2027."
+    "traduction": "conseil d'administration",
+    "exemple": "The board of directors reinstated the CEO."
    },
    {
-    "mot": "downturn",
+    "mot": "to reinstate",
     "langue": "en",
-    "traduction": "ralentissement, récession",
-    "exemple": "Economists fear an economic downturn."
+    "traduction": "réintégrer",
+    "exemple": "The company decided to reinstate its chief executive."
    },
    {
-    "mot": "deal",
+    "mot": "lawmaker",
     "langue": "en",
-    "traduction": "accord",
-    "exemple": "The climate talks ended with no deal."
+    "traduction": "parlementaire",
+    "exemple": "Lawmakers demand explanations."
    },
    {
-    "mot": "el paro",
+    "mot": "el alquiler",
     "langue": "es",
-    "traduction": "le chômage",
-    "exemple": "El paro ha bajado en el último trimestre."
+    "traduction": "le loyer",
+    "exemple": "El alquiler sube cada año en las grandes ciudades."
    },
    {
-    "mot": "la subida de precios",
+    "mot": "la vivienda",
     "langue": "es",
-    "traduction": "la hausse des prix",
-    "exemple": "Las aerolíneas anticipan una subida de precios."
+    "traduction": "le logement",
+    "exemple": "La vivienda es el gran tema de la campaña."
    },
    {
-    "mot": "las elecciones",
+    "mot": "el voto",
     "langue": "es",
-    "traduction": "les élections",
-    "exemple": "Las elecciones se celebran el 29 de noviembre."
+    "traduction": "le vote",
+    "exemple": "El voto de las mujeres será decisivo."
    },
    {
-    "mot": "el coste",
+    "mot": "las encuestas",
     "langue": "es",
-    "traduction": "le coût",
-    "exemple": "El coste del queroseno se ha duplicado."
+    "traduction": "les sondages",
+    "exemple": "Las encuestas dan ventaja al PSOE."
    }
   ],
   "trous": {
    "en": {
-    "texte": "Australia's treasurer has warned that unemployment will rise {1} 5% next year. Economists say the risk of recession is {2}, while the government expects the economy to grow {3} than 2% in 2027. He admitted that things {4} get a bit harder, {5} he insisted the budget remains {6} control.",
+    "texte": "Nvidia's board {1} Jensen Huang as chief executive on Monday, {2} days after he resigned. The company's shares rose {3} 30%, adding about $1tn {4} its value. Lawmakers now want him {5} testify in public, {6} critics say the decision was influenced by politics.",
     "blancs": [
      {
       "choix": [
-       "above",
-       "between",
-       "during"
+       "reinstated",
+       "reinstating",
+       "reinstate"
       ],
       "bonne": 0,
-      "explication": "« Rise above 5% » signifie dépasser 5 %."
+      "explication": "Prétérit pour une action passée datée."
      },
      {
       "choix": [
-       "growing",
-       "grown",
-       "grow"
+       "ten",
+       "tenth",
+       "tens"
       ],
       "bonne": 0,
-      "explication": "Le présent continu « is growing » exprime une évolution en cours."
+      "explication": "Nombre cardinal devant days."
      },
      {
       "choix": [
-       "less",
-       "fewer",
-       "lesser"
-      ],
-      "bonne": 0,
-      "explication": "« Less than » s'emploie devant un pourcentage."
-     },
-     {
-      "choix": [
-       "will",
-       "would have",
-       "are"
-      ],
-      "bonne": 0,
-      "explication": "On emploie « will » pour une prévision."
-     },
-     {
-      "choix": [
-       "but",
-       "so",
-       "because"
-      ],
-      "bonne": 0,
-      "explication": "« But » exprime l'opposition."
-     },
-     {
-      "choix": [
-       "under",
+       "by",
        "on",
        "at"
       ],
       "bonne": 0,
-      "explication": "L'expression est « under control »."
+      "explication": "Rose by 30% : de combien."
+     },
+     {
+      "choix": [
+       "to",
+       "at",
+       "on"
+      ],
+      "bonne": 0,
+      "explication": "Add to : ajouter à."
+     },
+     {
+      "choix": [
+       "to",
+       "for",
+       "that"
+      ],
+      "bonne": 0,
+      "explication": "Want somebody to + verbe."
+     },
+     {
+      "choix": [
+       "while",
+       "because",
+       "so"
+      ],
+      "bonne": 0,
+      "explication": "While marque l'opposition ici."
      }
     ]
    },
    "es": {
-    "texte": "Las aerolíneas {1} una subida de precios para el próximo verano. Ryanair prevé un aumento de tarifas de {2} el 20 % porque el coste del queroseno se {3} duplicado. {4} los ataques a Irán, las compañías recortarán plazas {5} no perder rentabilidad. Los viajeros pagarán más, {6} que puede cambiar la demanda.",
+    "texte": "España {1} elecciones el 29 de noviembre. La vivienda es el tema {2} importante de la campaña, porque los alquileres {3} subiendo. Muchas familias {4} obligadas a dejar su casa. Los partidos prometen medidas {5} bajar los precios, {6} las encuestas dan ventaja al PSOE.",
     "blancs": [
      {
       "choix": [
-       "anticipan",
-       "anticipen",
-       "anticipaban"
+       "celebra",
+       "celebrará",
+       "celebrando"
       ],
-      "bonne": 0,
-      "explication": "Présent de l'indicatif pour un fait actuel."
+      "bonne": 1,
+      "explication": "Futur proche dans le temps : celebrará."
      },
      {
       "choix": [
-       "hasta",
-       "desde",
-       "hacia"
+       "más",
+       "muy",
+       "tan"
       ],
       "bonne": 0,
-      "explication": "« Hasta el 20 % » signifie jusqu'à 20 %."
+      "explication": "Superlatif : el tema más importante."
      },
      {
       "choix": [
-       "ha",
-       "está",
-       "es"
+       "siguen",
+       "siguiendo",
+       "seguir"
       ],
       "bonne": 0,
-      "explication": "Le passé composé se forme avec « haber » : se ha duplicado."
+      "explication": "Seguir + gérondio : siguen subiendo."
      },
      {
       "choix": [
-       "Desde",
-       "Hasta",
-       "Por"
+       "están",
+       "son",
+       "hay"
       ],
       "bonne": 0,
-      "explication": "« Desde » marque le point de départ dans le temps."
+      "explication": "Estar obligadas : état résultant."
      },
      {
       "choix": [
@@ -229,16 +230,16 @@
        "a"
       ],
       "bonne": 0,
-      "explication": "« Para + infinitif » exprime le but."
+      "explication": "Para + infinitif : but."
      },
      {
       "choix": [
-       "lo",
-       "el",
-       "que"
+       "y",
+       "aunque",
+       "pues"
       ],
       "bonne": 0,
-      "explication": "« Lo que » reprend toute la phrase précédente."
+      "explication": "Y relie simplement les deux idées."
      }
     ]
    }
@@ -246,188 +247,185 @@
   "pieges": [
    {
     "langue": "en",
-    "question": "Comment traduire « Il a finalement trouvé un emploi » ?",
+    "question": "Quelle forme est correcte ?",
     "choix": [
-     "He eventually found a job",
-     "He finally actually found a job",
-     "He found eventually a job",
-     "He has eventual found a job"
+     "The shares rose by 30%",
+     "The shares raised by 30%",
+     "The shares arose 30%",
+     "The shares rised 30%"
     ],
     "bonne": 0,
-    "explication": "« Eventually » veut dire finalement. « Actually » est un faux-ami qui signifie en fait."
+    "explication": "Rise est intransitif : rose. Raise demande un complément."
    },
    {
     "langue": "en",
-    "question": "Choisir la bonne phrase : « Le taux est passé de 4 % à 5 % ».",
+    "question": "Faux-ami : « actually » signifie…",
     "choix": [
-     "The rate rose from 4% to 5%",
-     "The rate rose of 4% at 5%",
-     "The rate rose since 4% until 5%",
-     "The rate rose from 4% at 5%"
-    ],
-    "bonne": 0,
-    "explication": "On emploie « from… to… » pour une évolution entre deux valeurs."
-   },
-   {
-    "langue": "en",
-    "question": "Choisir la bonne forme : « Le chômage augmente depuis 2024 ».",
-    "choix": [
-     "Unemployment has been rising since 2024",
-     "Unemployment is rising since 2024",
-     "Unemployment rises since 2024",
-     "Unemployment rose since 2024"
-    ],
-    "bonne": 0,
-    "explication": "Avec « since » et une action qui continue, on emploie le present perfect, souvent en forme be + V-ing."
-   },
-   {
-    "langue": "es",
-    "question": "Choisir : « L'inflation est élevée cette année » (état actuel).",
-    "choix": [
-     "La inflación está alta este año",
-     "La inflación es alta este año por ahora",
-     "La inflación hay alta este año",
-     "La inflación tiene alta este año"
-    ],
-    "bonne": 0,
-    "explication": "« Estar » exprime un état transitoire, ici par rapport à cette année."
-   },
-   {
-    "langue": "es",
-    "question": "« Actualmente » signifie :",
-    "choix": [
-     "en ce moment",
-     "en réalité",
+     "actuellement",
+     "en fait",
      "autrefois",
-     "finalement"
+     "bientôt"
     ],
-    "bonne": 0,
-    "explication": "« Actualmente » est un faux-ami. En réalité se dit « en realidad »."
+    "bonne": 1,
+    "explication": "Actually = en fait. Actuellement = currently."
+   },
+   {
+    "langue": "en",
+    "question": "Choisir la bonne phrase.",
+    "choix": [
+     "He is working here since 2020",
+     "He has been working here since 2020",
+     "He works here since 2020",
+     "He worked here since 2020"
+    ],
+    "bonne": 1,
+    "explication": "Since + present perfect."
    },
    {
     "langue": "es",
-    "question": "Compléter : « Es probable que los precios ___ ».",
+    "question": "Choisir la bonne forme.",
     "choix": [
-     "suban",
-     "suben",
-     "subirán",
-     "subían"
+     "Es importante que vayas",
+     "Es importante que vas",
+     "Es importante que irás",
+     "Es importante que fuiste"
     ],
     "bonne": 0,
-    "explication": "« Es probable que » est suivi du subjonctif."
+    "explication": "Subjonctif après es importante que."
+   },
+   {
+    "langue": "es",
+    "question": "Faux-ami : « embarazada » signifie…",
+    "choix": [
+     "embarrassée",
+     "enceinte",
+     "fatiguée",
+     "malade"
+    ],
+    "bonne": 1,
+    "explication": "Embarazada = enceinte."
+   },
+   {
+    "langue": "es",
+    "question": "Ser ou estar ? « Los precios ___ altos hoy »",
+    "choix": [
+     "son",
+     "están",
+     "hay",
+     "tienen"
+    ],
+    "bonne": 1,
+    "explication": "État passager : estar."
    }
   ],
   "traduction": []
  },
  "plan": {
-  "matiere": "Droit (veille juridique)",
-  "sujet": "Veille juridique, thème « Libertés individuelles et activité économique des entreprises » : la surveillance des salariés par l'employeur peut-elle porter atteinte aux libertés individuelles ?",
-  "analyse": "La surveillance désigne les outils de contrôle et de mesure du travail utilisés par l'employeur, ce qui renvoie à son pouvoir de direction, lié à la liberté d'entreprendre. Les libertés individuelles regroupent notamment le droit au respect de la vie privée (art. 9 du Code civil). La tension oppose l'intérêt de l'entreprise à contrôler l'activité et la protection de la personne du salarié.",
-  "problematique": "Dans quelle mesure l'employeur peut-il surveiller ses salariés sans porter une atteinte excessive à leurs libertés individuelles ?",
+  "matiere": "Économie (QRA)",
+  "sujet": "Une baisse du pouvoir d'achat peut-elle réduire l'épargne des ménages et freiner l'investissement ?",
+  "analyse": "Le pouvoir d'achat désigne la quantité de biens et services que le revenu permet d'acheter. L'épargne est la part du revenu disponible non consommée. La tension : les ménages maintiennent leur consommation en puisant dans l'épargne, ce qui peut affaiblir le financement de l'investissement.",
+  "problematique": "Dans quelle mesure la baisse du pouvoir d'achat réduit-elle l'épargne et le financement de l'économie ?",
   "parties": [
    {
-    "titre": "Des libertés du salarié protégées dans l'entreprise",
+    "titre": "Une baisse de l'épargne face à la pression sur le revenu",
     "sous": [
-     "Le fondement : respect de la vie privée (art. 9 du Code civil) et art. 8 de la CEDH",
-     "La portée : le salarié conserve ses libertés au travail"
+     "Le revenu disponible et la hausse des prix de l'énergie réduisent la capacité d'épargne",
+     "Les ménages arbitrent entre consommation et épargne"
     ]
    },
    {
-    "titre": "Des restrictions admises sous conditions",
+    "titre": "Des effets sur le financement de l'économie",
     "sous": [
-     "Le contrôle de justification et de proportionnalité (art. L. 1121-1 du Code du travail)",
-     "La sanction : la loyauté de la preuve issue d'une surveillance à l'insu du salarié"
+     "I = S : moins d'épargne peut limiter l'investissement (classiques, néoclassiques)",
+     "Pour Keynes, la demande et le revenu déterminent l'épargne, à nuancer"
     ]
    }
   ],
   "exemples": [
-   "Art. L. 1121-1 du Code du travail : les restrictions aux libertés doivent être justifiées par la tâche et proportionnées au but",
-   "Art. 9 du Code civil et art. 8 de la CEDH : vie privée",
-   "Cass. soc., 20 novembre 1991 : preuve obtenue par une surveillance à l'insu du salarié jugée illicite"
+   "Classiques et néoclassiques : I = S",
+   "J. M. Keynes : l'épargne dépend du revenu",
+   "Retraits records du Livret A en 2026"
   ]
  },
  "cas_pratique": {
-  "faits": "M. Lemaire, traiteur exerçant en entreprise individuelle, affirme avoir conclu oralement en mars avec la société Boréal, société commerciale, une prestation de restauration pour un montant de 4 000 euros. Aucun écrit n'a été signé. Boréal refuse de payer en niant tout accord. M. Lemaire dispose de SMS échangés avec le dirigeant de Boréal évoquant la prestation. Il a aussi enregistré à son insu un appel téléphonique avec ce dirigeant. Il souhaite agir en justice pour obtenir le paiement.",
-  "question": "M. Lemaire peut-il prouver l'existence de l'accord et quels éléments peut-il produire ?",
-  "qualification": "M. Lemaire est un commerçant, personne physique, et la société Boréal est une société commerciale. Ils ont conclu verbalement un acte juridique de 4 000 euros, qui est un acte de commerce. L'existence de l'accord est contestée. Le demandeur produit des SMS et un enregistrement fait à l'insu de l'autre partie.",
-  "probleme": "Comment prouve-t-on un acte juridique de commerce de montant supérieur au seuil légal entre commerçants et sociétés commerciales, et quels éléments de preuve sont recevables, notamment s'ils sont obtenus de manière déloyale ?",
-  "majeure": "Celui qui réclame l'exécution d'une obligation doit la prouver (art. 1353 du Code civil). En principe, un acte juridique d'un montant supérieur à un seuil fixé par décret (1 500 euros) doit être prouvé par écrit. En matière commerciale, la preuve est libre à l'égard des commerçants (art. L. 110-3 du Code de commerce), donc par tous moyens, y compris les SMS et les témoignages, que le juge apprécie. Les preuves doivent en principe être loyales. Toutefois, l'Assemblée plénière, le 22 décembre 2023, admet qu'une preuve déloyale puisse être jugée recevable si elle est indispensable à l'exercice du droit à la preuve et proportionnée aux intérêts en conflit.",
-  "conclusion": "M. Lemaire est commerçant et Boréal est une société commerciale : la preuve est libre à son égard. L'absence d'écrit ne l'empêche donc pas de prouver l'accord. Il peut produire les SMS et tout autre moyen, dont le juge appréciera la force probante. L'enregistrement fait à l'insu de l'interlocuteur est déloyal. Le juge ne l'écartera pas automatiquement : il vérifiera s'il est indispensable à la preuve et proportionné, alors que les SMS peuvent déjà suffire. M. Lemaire a de bonnes chances d'établir l'accord et d'obtenir le paiement."
+  "faits": "Une société, créée par Léa et Karim par un contrat de société, vend des vêtements. Léa publie sur un réseau social des photos de la vie privée de Karim, sans son accord. Karim demande à un juge de faire retirer ces images. Léa répond que la société souffrirait de cette suppression, car elle servait de publicité. Par ailleurs, Léa soutient que Karim ne peut prouver que les photos viennent bien d'elle, alors qu'il détient seulement une capture d'écran.",
+  "question": "Karim peut-il obtenir le retrait des photos et prouver leur origine ?",
+  "qualification": "Atteinte à la vie privée d'un associé par la publication d'images sans consentement, avec conflit entre vie privée et intérêt de l'entreprise, et question de preuve d'un fait juridique.",
+  "probleme": "La vie privée peut-elle être limitée au profit d'un intérêt économique, et comment prouve-t-on un fait juridique ?",
+  "majeure": "L'article 9 du Code civil protège le droit au respect de la vie privée. Toute restriction à une liberté doit être justifiée et proportionnée (principe de proportionnalité). La preuve d'un fait juridique est libre : elle peut se faire par tous moyens, mais doit être loyale.",
+  "conclusion": "Les photos relèvent de la vie privée de Karim. Leur diffusion sans accord porte atteinte à l'article 9, et l'intérêt publicitaire de la société ne justifie pas cette atteinte de manière proportionnée. La publication étant un fait juridique, Karim peut la prouver par tous moyens loyaux, dont la capture d'écran, laissée à l'appréciation du juge. Il peut obtenir le retrait des photos."
  },
  "maths": [
   {
-   "titre": "Suite arithmétique et somme de termes",
-   "niveau": 1,
-   "enonce": "Soit (u_n) une suite arithmétique telle que u_3 = 5 et u_10 = 26. 1) Déterminer la raison r. 2) Exprimer u_n en fonction de n et calculer u_0. 3) Calculer S = u_0 + u_1 + … + u_20.",
+   "titre": "Livret : suite arithmético-géométrique",
+   "niveau": 2,
+   "enonce": "Un épargnant a 1000 € sur un compte. Chaque année, le solde est multiplié par 1,02 puis on retire 100 €. On note u_n le solde après n ans, u_0 = 1000, donc u_{n+1} = 1,02 u_n − 100. 1) Trouver le point fixe ℓ. 2) Exprimer u_n en fonction de n. 3) Calculer u_2.",
    "etapes": [
-    "Formule : u_n = u_p + (n−p)r. Application avec n = 10 et p = 3 : u_10 = u_3 + 7r, donc 26 = 5 + 7r, soit r = 21/7 = 3.",
-    "Formule : u_n = u_p + (n−p)r. Application avec p = 3 : u_n = 5 + (n−3)×3 = 3n − 4.",
-    "u_0 = 3×0 − 4 = −4.",
-    "u_20 = 3×20 − 4 = 56.",
-    "Formule de la somme arithmétique : Σ_{k=p}^{n} u_k = (n−p+1)(u_p+u_n)/2. Application avec p = 0 et n = 20 : S = (20−0+1)(u_0+u_20)/2 = 21×(−4+56)/2.",
-    "S = 21×52/2 = 21×26 = 546."
+    "Formule : ℓ = b/(1−a). Ici a = 1,02 et b = −100, donc ℓ = −100/(1−1,02) = −100/(−0,02) = 5000.",
+    "Formule : u_n = ℓ + (u_0−ℓ)a^n. Ici u_0−ℓ = 1000−5000 = −4000, donc u_n = 5000 − 4000×1,02^n.",
+    "Vérification : u_1 = 1,02×1000 − 100 = 920 ; formule : 5000 − 4000×1,02 = 5000 − 4080 = 920. Cohérent.",
+    "u_2 = 5000 − 4000×1,02² = 5000 − 4000×1,0404 = 5000 − 4161,6 = 838,4."
    ],
-   "resultat": "r = 3, u_n = 3n − 4, u_0 = −4 et S = 546.",
-   "piege": "Compter 20 termes au lieu de 21 : de u_0 à u_20, il y a n−p+1 = 21 termes."
+   "resultat": "ℓ = 5000 ; u_n = 5000 − 4000×1,02^n ; u_2 = 838,4 €.",
+   "piege": "Oublier que a ≠ 1 pour le point fixe et se tromper de signe en calculant 1−a (ici négatif)."
   },
   {
-   "titre": "Suite arithmético-géométrique et somme",
+   "titre": "Sommes usuelles et récurrence",
    "niveau": 3,
-   "enonce": "On définit u_0 = 10 et, pour tout n, u_{n+1} = (1/2)u_n + 3. 1) Déterminer le point fixe ℓ. 2) Exprimer u_n en fonction de n. 3) Calculer S_n = u_0 + u_1 + … + u_n en fonction de n. 4) Vérifier pour n = 3.",
+   "enonce": "1) Calculer S = Σ_{k=1}^{20} (3k+2). 2) (v_n) est géométrique avec v_0 = 2 et q = 3 ; calculer T = Σ_{k=0}^{5} v_k. 3) Démontrer par récurrence que pour tout n ≥ 1, Σ_{k=1}^{n} k = n(n+1)/2.",
    "etapes": [
-    "Formule du point fixe : ℓ = b/(1−a). Application avec a = 1/2 et b = 3 : ℓ = 3/(1−1/2) = 3/(1/2) = 6.",
-    "Formule : u_n = ℓ + (u_0−ℓ)a^n. Application : u_n = 6 + (10−6)(1/2)^n = 6 + 4(1/2)^n.",
-    "La somme se décompose par linéarité : S_n = Σ_{k=0}^{n} 6 + 4 Σ_{k=0}^{n} (1/2)^k.",
-    "Somme de constantes : Σ_{k=0}^{n} 6 = (n−0+1)×6 = 6(n+1).",
-    "Somme géométrique : Σ_{k=p}^{n} q^k = (1−q^{n−p+1})/(1−q). Application avec q = 1/2 et p = 0 : Σ_{k=0}^{n} (1/2)^k = (1−(1/2)^{n+1})/(1/2) = 2(1−(1/2)^{n+1}).",
-    "Donc S_n = 6(n+1) + 8(1−(1/2)^{n+1}). Pour n = 3 : 6×4 + 8×(1−1/16) = 24 + 7,5 = 31,5. Directement : u_0 = 10, u_1 = 8, u_2 = 7, u_3 = 6,5 et la somme vaut 31,5."
+    "Linéarité : S = 3 Σk + Σ2. Formule : Σ_{k=1}^{n} k = n(n+1)/2 et Σ constantes = (n−p+1)a. Ici Σk = 20×21/2 = 210 et Σ2 = 20×2 = 40.",
+    "S = 3×210 + 40 = 630 + 40 = 670.",
+    "Formule : Σ géométrique = u_p(1−q^{n−p+1})/(1−q). Ici p=0, n=5, donc T = 2(1−3^6)/(1−3) = 2×(1−729)/(−2) = 728.",
+    "Initialisation : n=1, Σ = 1 et 1×2/2 = 1. Vrai.",
+    "Hérédité : on suppose Σ_{k=1}^{n} k = n(n+1)/2. Alors Σ_{k=1}^{n+1} k = n(n+1)/2 + (n+1) = (n+1)(n+2)/2, ce qui est la formule au rang n+1. Conclusion par récurrence."
    ],
-   "resultat": "ℓ = 6, u_n = 6 + 4(1/2)^n et S_n = 6(n+1) + 8(1−(1/2)^{n+1}).",
-   "piege": "Oublier le facteur 4 devant la somme géométrique, ou prendre n au lieu de n+1 comme exposant : il y a n+1 termes de k = 0 à n."
+   "resultat": "S = 670 ; T = 728 ; la formule est démontrée pour tout n ≥ 1.",
+   "piege": "Compter le mauvais nombre de termes (n−p+1) dans les sommes, par exemple 5 au lieu de 6 pour k de 0 à 5."
   }
  ],
  "quiz": [
   {
    "matiere": "eco",
-   "question": "Selon l'étude citée, la voiture pèse 13 % du budget des ménages à 1 000-2 000 euros par mois contre 3,5 % au-delà de 5 000 euros. Quelle idée du cours cet écart illustre-t-il le mieux ?",
+   "question": "Les retraits record du Livret A par les ménages face à la baisse du pouvoir d'achat illustrent surtout :",
    "choix": [
-    "Une dépense contrainte voit sa part dans le budget diminuer quand le revenu augmente, comme dans les lois d'Engel",
-    "La part d'un bien dans le budget augmente toujours avec le revenu",
-    "Le pouvoir d'achat est identique pour tous les ménages",
-    "Un bien de luxe a une élasticité-revenu inférieure à 1"
+    "Une hausse de l'épargne",
+    "Une baisse de l'épargne pour maintenir la consommation",
+    "Une hausse de l'investissement",
+    "Une création monétaire"
    ],
-   "bonne": 0,
-   "explication": "Les lois d'Engel montrent que la part des dépenses nécessaires diminue quand le revenu s'élève. Ici, la voiture pèse davantage chez les ménages modestes.",
-   "id": "a50",
-   "lien": "https://www.lemonde.fr/economie/article/2026/11/23/voiture-sept-millions-de-personnes-en-france-prises-en-etau-entre-necessite-et-cout-pointe-une-etude_6814273_3234.html"
+   "bonne": 1,
+   "explication": "L'épargne est la part du revenu disponible non consommée. Les ménages puisent dans leurs livrets pour maintenir leur consommation, donc ils épargnent moins.",
+   "id": "a4",
+   "lien": "https://www.lemonde.fr/argent/article/2026/11/24/les-epargnants-ont-retire-pres-de-10-milliards-d-euros-de-leurs-livret-a-depuis-janvier-un-record-depuis-dix-ans_6814708_1657007.html"
   },
   {
    "matiere": "droit",
-   "question": "Le Digital Fairness Act est présenté comme un projet de règlement européen. Quelle caractéristique distingue un règlement d'une directive ?",
+   "question": "Inscrire une règle d'or budgétaire dans la Constitution lui donnerait :",
    "choix": [
-    "Il est directement applicable dans les États membres sans loi de transposition",
-    "Il doit toujours être transposé par une loi nationale",
-    "Il n'a de valeur que s'il est ratifié par référendum",
-    "Il ne s'applique qu'aux entreprises"
+    "Une valeur constitutionnelle",
+    "Une valeur inférieure à la loi",
+    "La valeur d'un règlement",
+    "Aucune portée juridique"
    ],
    "bonne": 0,
-   "explication": "Le règlement européen s'applique directement dans les États membres. La directive, elle, fixe des objectifs que chaque État doit transposer.",
-   "id": "a3",
-   "lien": "https://www.lemonde.fr/pixels/article/2026/11/23/le-digital-fairness-act-un-projet-de-reglement-europeen-qui-affole-l-industrie-du-jeu-video_6814350_4408996.html"
+   "explication": "Une règle inscrite dans la Constitution a valeur constitutionnelle et se situe au sommet de la hiérarchie des normes. Elle s'impose donc à la loi.",
+   "id": "a53",
+   "lien": "https://www.franceinfo.fr/economie/budget/budget-a-quoi-sert-la-regle-d-or-et-peut-elle-etre-adoptee_8296722.html#xtor=RSS-3-%5Beconomie%5D"
   },
   {
    "matiere": "mgmt",
-   "question": "Les salariés de l'IA craignent une surchauffe du secteur sans pouvoir en évaluer précisément les probabilités. Quelle notion de F. Knight s'applique le mieux ?",
+   "question": "Le conseil d'administration de Nvidia, l'État et les marchés influençant le retour du PDG illustrent :",
    "choix": [
-    "L'incertitude, où les probabilités ne sont pas calculables",
-    "Le risque, où les probabilités sont connues",
-    "La stratégie délibérée",
-    "Le diagnostic interne"
+    "Le rôle des parties prenantes dans la gouvernance",
+    "La matrice BCG",
+    "Une barrière à l'entrée",
+    "Une stratégie émergente"
    ],
    "bonne": 0,
-   "explication": "Pour Knight, le risque est probabilisable alors que l'incertitude ne l'est pas. L'avenir de l'IA relève plutôt de l'incertitude.",
-   "id": "a64",
-   "lien": "https://www.bbc.co.uk/news/articles/cqe9k09j9jv4o?at_medium=RSS&at_campaign=rss"
+   "explication": "Selon Freeman, une partie prenante peut influencer les décisions de l'entreprise. Ici, actionnaires, administrateurs et pouvoirs publics pèsent sur la gouvernance.",
+   "id": "a14",
+   "lien": "https://www.bbc.co.uk/news/articles/cq5y1k8ez407o?at_medium=RSS&at_campaign=rss"
   }
  ]
 }

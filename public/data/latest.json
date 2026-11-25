@@ -1,245 +1,246 @@
 {
  "quiz_version": 2,
- "date": "2026-11-24",
- "genere_le": "2026-11-24T05:33:47.863Z",
+ "date": "2026-11-25",
+ "genere_le": "2026-11-25T05:35:13.641Z",
  "modele": "claude-sonnet-5-5",
  "notion_du_jour": {
-  "titre": "Épargne et circuit économique",
-  "definition": "L'épargne est la part du revenu disponible qui n'est pas consommée. Elle peut être placée sous forme financière (livrets, titres) et finance l'investissement. Quand les ménages puisent dans leur épargne, c'est qu'ils dépensent plus que leur revenu ne le permet, par exemple à cause d'une hausse des prix. Dans une économie fermée, on a I = S : l'investissement est financé par l'épargne.",
-  "exemple": "Si le pouvoir d'achat baisse à cause de l'énergie, les ménages réduisent leur épargne (retraits du Livret A) pour maintenir leur consommation.",
+  "titre": "Pouvoir d'achat et niveau de vie",
+  "definition": "Le pouvoir d'achat mesure la quantité de biens et de services qu'un revenu permet d'acheter. Il évolue avec le revenu nominal (en euros courants) et avec les prix : si les prix montent plus vite que le revenu, il baisse. Le niveau de vie est une notion voisine : c'est le revenu disponible rapporté à la taille du ménage (en unités de consommation). Ces deux notions mesurent le bien-être matériel, mais elles n'en donnent qu'une image partielle.",
+  "exemple": "Un salaire passe de 2 000 € à 2 040 € (+2 %) alors que les prix augmentent de 4 % : le pouvoir d'achat recule d'environ 2 %, même si le salaire nominal progresse. Un ménage peut alors puiser dans son épargne, par exemple son livret A, pour maintenir sa consommation.",
   "matiere": "Économie"
  },
  "rubriques": {
   "eco": [
    {
-    "id": "a4",
-    "theme": "Banques et marchés financiers",
-    "titre": "Livret A : près de 10 milliards d'euros retirés depuis janvier",
-    "resume": "Les épargnants ont retiré près de 10 milliards d'euros de leurs Livrets A depuis janvier, un record depuis dix ans. Les discussions sur la hausse du plafond voulue par le gouvernement se poursuivent. Le taux d'intérêt pourrait passer de 1,7 % à 2,8 % en février.",
-    "contexte": "Le Livret A est le placement favori des ménages français. Ses retraits traduisent la pression sur le pouvoir d'achat, notamment liée au coût de l'énergie. Ils posent aussi la question du financement de l'investissement par l'épargne.",
+    "id": "a91",
+    "theme": "Inflation et monnaie",
+    "titre": "Livret A : une année 2026 de retraits massifs, signe d'un pouvoir d'achat sous tension",
+    "resume": "Les Français se sont détournés du livret A en 2026, sa pire année depuis 2008. Depuis janvier, les retraits dépassent nettement les dépôts, pour un écart proche de 10 milliards d'euros. Un économiste y voit un « signal réel » de la baisse du pouvoir d'achat des ménages.",
+    "contexte": "Quand les ménages puisent dans leur épargne, c'est souvent que leur revenu disponible ne suffit plus à couvrir leur consommation. L'épargne est la part du revenu non consommée : elle sert de variable d'ajustement face à la hausse des prix.",
     "notions": [
-     "Épargne",
-     "Revenu disponible",
      "Pouvoir d'achat",
-     "I = S en économie fermée"
+     "Niveau de vie",
+     "Épargne",
+     "Revenu disponible"
     ],
-    "copie": "À utiliser en QRA sur les comportements d'épargne : une baisse du pouvoir d'achat réduit l'épargne des ménages. Mobilise l'égalité I = S pour montrer l'effet possible sur le financement de l'investissement.",
+    "copie": "Utilisez ce fait en accroche d'une QRA sur le pouvoir d'achat ou sur l'épargne des ménages. Il illustre qu'un ménage ajuste son épargne quand son revenu disponible réel baisse. Prudence : un seul indicateur ne prouve pas à lui seul la baisse du pouvoir d'achat, il faut le croiser avec d'autres données.",
     "niveau": 1,
-    "source": "Le Monde",
-    "lien": "https://www.lemonde.fr/argent/article/2026/11/24/les-epargnants-ont-retire-pres-de-10-milliards-d-euros-de-leurs-livret-a-depuis-janvier-un-record-depuis-dix-ans_6814708_1657007.html",
-    "date": "2026-11-24T05:00:40.000Z",
-    "titre_original": "Les épargnants ont retiré près de 10 milliards d’euros de leurs Livret A depuis janvier, un record depuis dix ans"
+    "source": "franceinfo",
+    "lien": "https://www.franceinfo.fr/economie/votre-argent/livret-a/la-baisse-de-l-encours-du-livret-a-en-2026-est-un-signal-reel-de-la-baisse-du-pouvoir-d-achat-des-francais-explique-un-economiste_8297811.html#xtor=RSS-3-%5Beconomie%5D",
+    "date": "2026-11-24T15:13:37.000Z",
+    "titre_original": "La baisse de l'encours du livret A en 2026 est \"un signal r&#xE9;el\" de la baisse du pouvoir d'achat des Fran&#xE7;ais, explique un &#xE9;conomiste"
    }
   ],
   "droit": [
    {
-    "id": "a53",
+    "id": "a13",
     "theme": "Sources et institutions du droit",
-    "titre": "Règle d'or budgétaire : peut-elle entrer dans la Constitution ?",
-    "resume": "Emmanuel Macron envisage d'inscrire dans la Constitution une règle d'or pour réduire les déficits, en relançant une idée vieille de 15 ans. Le texte prévoirait une loi-cadre pluriannuelle de retour vers l'équilibre des comptes publics. Se pose la question de son adoption, et de son calendrier à quelques mois de la présidentielle.",
-    "contexte": "Réviser la Constitution suppose une procédure particulière, avec le Parlement et le Congrès. Cela touche à la hiérarchie des normes : une règle constitutionnelle s'impose à la loi. La réforme de 2011 n'a jamais abouti.",
+    "titre": "Présidentielle 2027 : l'Arcom veut imposer des règles de pluralisme aux créateurs de contenus, qui les contestent",
+    "resume": "L'Arcom, régulateur de l'audiovisuel, souhaite que les principaux créateurs de contenus en ligne respectent des règles de temps de parole et de déontologie pendant la campagne présidentielle. Les créateurs cités, comme HugoDécrypte ou Guillaume Pley, contestent ces règles. Le débat oppose l'exigence de pluralisme du débat électoral à la liberté d'expression et à la liberté d'exercer une activité de création.",
+    "contexte": "Le sujet pose la question de l'équilibre entre une liberté fondamentale et sa limitation par une autorité de régulation. Toute restriction doit pouvoir se justifier et rester proportionnée au but poursuivi. Il montre aussi comment les règles d'un régulateur s'insèrent dans la hiérarchie des normes.",
     "notions": [
-     "Constitution",
      "Valeur constitutionnelle",
-     "Loi constitutionnelle du 23 juillet 2008",
-     "Art. 34"
+     "Principe de proportionnalité",
+     "Art. 34",
+     "Constitution"
     ],
-    "copie": "À mobiliser en veille juridique sur les sources du droit : la Constitution est au sommet de la hiérarchie, et la révision exige une procédure renforcée. Utile pour illustrer ce qu'implique la valeur constitutionnelle d'une règle.",
+    "copie": "Ce thème convient en veille juridique sur les libertés et l'activité économique d'une entreprise (ici, des créateurs de contenus qui vivent de leur audience). Posez d'abord le principe de la liberté, puis ses limites encadrées par la loi et contrôlées au regard de la proportionnalité. Restez prudent sur le contenu exact des règles, qui n'est pas détaillé dans l'article.",
     "niveau": 2,
     "source": "franceinfo",
-    "lien": "https://www.franceinfo.fr/economie/budget/budget-a-quoi-sert-la-regle-d-or-et-peut-elle-etre-adoptee_8296722.html#xtor=RSS-3-%5Beconomie%5D",
-    "date": "2026-11-23T22:30:59.000Z",
-    "titre_original": "Budget : &#xE0; quoi sert la r&#xE8;gle d'or et peut-elle &#xEA;tre adopt&#xE9;e ?"
+    "lien": "https://www.franceinfo.fr/elections/on-vous-explique-pourquoi-les-createurs-de-contenus-contestent-les-regles-de-pluralisme-que-l-arcom-veut-leur-imposer-pour-la-presidentielle-de-2027_8297736.html#xtor=RSS-3-%5Beconomie%5D",
+    "date": "2026-11-25T04:56:15.000Z",
+    "titre_original": "On vous explique pourquoi les cr&#xE9;ateurs de contenus contestent les r&#xE8;gles de pluralisme que l'Arcom veut leur imposer pour la pr&#xE9;sidentielle de 2027"
    }
   ],
   "mgmt": [
    {
-    "id": "a14",
-    "theme": "Gouvernance et parties prenantes",
-    "titre": "Nvidia : retour de Jensen Huang sous pression de Trump et des marchés",
-    "resume": "Le conseil d'administration de Nvidia a réintégré Jensen Huang comme PDG. Le président Trump aurait fait pression pour ce retour, qui a fait gagner environ 1 000 milliards de dollars de valeur boursière à l'entreprise. L'épisode suscite des critiques et des demandes d'explications de parlementaires.",
-    "contexte": "Le cas illustre le rôle du conseil d'administration, des actionnaires et de l'État dans la gouvernance. Il montre aussi le poids du dirigeant dans la valeur d'une entreprise.",
+    "id": "a59",
+    "theme": "Stratégie d'entreprise",
+    "titre": "BYD veut racheter une usine à Hambach, en Moselle, pour produire en Europe",
+    "resume": "Le constructeur chinois BYD a annoncé, le 24 novembre, son projet de rachat d'une usine à Hambach, en Moselle. Le groupe cherche depuis un an à produire ses véhicules en Europe pour contourner les droits de douane. L'implantation locale est donc une réponse à une contrainte réglementaire de son environnement.",
+    "contexte": "Les droits de douane sont un facteur de l'environnement politique qui renchérit l'entrée d'un concurrent étranger. Produire sur place est un moyen de les contourner. Ce cas illustre comment un diagnostic externe oriente une décision stratégique.",
     "notions": [
-     "Gouvernance",
-     "Partie prenante (Freeman)",
-     "Théorie de l'agence (Jensen et Meckling)"
+     "PESTEL",
+     "Barrières à l'entrée",
+     "5 (+1) forces (M. Porter)",
+     "Diagnostic externe"
     ],
-    "copie": "À utiliser dans une étude de cas pour montrer que les parties prenantes (actionnaires, État, salariés) influencent les décisions de gouvernance. La théorie de l'agence permet de discuter du contrôle du dirigeant par le conseil.",
+    "copie": "Dans une étude de cas, utilisez-le pour illustrer la dimension politique du PESTEL et le rôle des barrières à l'entrée dans les 5 forces de Porter. Montrez ensuite que l'entreprise adapte sa stratégie (implantation locale) pour réduire l'effet de cette barrière. Ne chiffrez rien : l'article ne donne ni montant ni calendrier.",
     "niveau": 2,
-    "source": "BBC",
-    "lien": "https://www.bbc.co.uk/news/articles/cq5y1k8ez407o?at_medium=RSS&at_campaign=rss",
-    "date": "2026-11-24T04:36:31.000Z",
-    "titre_original": "Trump faces backlash after saying he 'convinced' Nvidia to reinstate CEO Jensen Huang"
+    "source": "Le Monde",
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/24/le-constructeur-automobile-chinois-byd-va-s-implanter-en-france_6814850_3234.html",
+    "date": "2026-11-24T20:35:09.000Z",
+    "titre_original": "Le constructeur automobile chinois BYD va s’implanter en France"
    }
   ]
  },
  "langues": {
   "vocab": [
    {
-    "mot": "stock price",
+    "mot": "household",
     "langue": "en",
-    "traduction": "cours de l'action",
-    "exemple": "The stock price jumped after the announcement."
+    "traduction": "ménage",
+    "exemple": "Rising prices are squeezing household budgets."
    },
    {
-    "mot": "board of directors",
+    "mot": "tariff",
     "langue": "en",
-    "traduction": "conseil d'administration",
-    "exemple": "The board of directors reinstated the CEO."
+    "traduction": "droit de douane",
+    "exemple": "The government plans new tariffs on imported cars."
    },
    {
-    "mot": "to reinstate",
+    "mot": "wage",
     "langue": "en",
-    "traduction": "réintégrer",
-    "exemple": "The company decided to reinstate its chief executive."
+    "traduction": "salaire (horaire ou ouvrier)",
+    "exemple": "Workers demanded a higher minimum wage."
    },
    {
-    "mot": "lawmaker",
+    "mot": "shortage",
     "langue": "en",
-    "traduction": "parlementaire",
-    "exemple": "Lawmakers demand explanations."
+    "traduction": "pénurie",
+    "exemple": "A shortage of housing pushes prices up."
    },
    {
-    "mot": "el alquiler",
+    "mot": "la recesión",
     "langue": "es",
-    "traduction": "le loyer",
-    "exemple": "El alquiler sube cada año en las grandes ciudades."
+    "traduction": "la récession",
+    "exemple": "La economía entró en recesión tras dos trimestres de caída del PIB."
+   },
+   {
+    "mot": "el paro",
+    "langue": "es",
+    "traduction": "le chômage",
+    "exemple": "El paro juvenil sigue siendo muy alto."
    },
    {
     "mot": "la vivienda",
     "langue": "es",
     "traduction": "le logement",
-    "exemple": "La vivienda es el gran tema de la campaña."
+    "exemple": "La escasez de vivienda es un gran tema de la campaña."
    },
    {
-    "mot": "el voto",
+    "mot": "el sueldo",
     "langue": "es",
-    "traduction": "le vote",
-    "exemple": "El voto de las mujeres será decisivo."
-   },
-   {
-    "mot": "las encuestas",
-    "langue": "es",
-    "traduction": "les sondages",
-    "exemple": "Las encuestas dan ventaja al PSOE."
+    "traduction": "le salaire",
+    "exemple": "El sueldo medio no ha seguido el ritmo de los precios."
    }
   ],
   "trous": {
    "en": {
-    "texte": "Nvidia's board {1} Jensen Huang as chief executive on Monday, {2} days after he resigned. The company's shares rose {3} 30%, adding about $1tn {4} its value. Lawmakers now want him {5} testify in public, {6} critics say the decision was influenced by politics.",
+    "texte": "Food prices {1} risen sharply in India {2} January, squeezing household budgets. Economists say that inflation is now broader, {3} more and more products are affected. {4} wages have barely increased, families are forced to cut back {5} their spending. Analysts warn that prices could {6} high for months. Many households say they now struggle to make ends meet.",
     "blancs": [
      {
       "choix": [
-       "reinstated",
-       "reinstating",
-       "reinstate"
+       "have",
+       "has",
+       "had"
       ],
       "bonne": 0,
-      "explication": "Prétérit pour une action passée datée."
+      "explication": "Sujet pluriel « prices » + present perfect : « have risen »."
      },
      {
       "choix": [
-       "ten",
-       "tenth",
-       "tens"
+       "for",
+       "since",
+       "during"
       ],
-      "bonne": 0,
-      "explication": "Nombre cardinal devant days."
+      "bonne": 1,
+      "explication": "« Since » est suivi d'un point de départ (January) ; « for » d'une durée."
      },
      {
       "choix": [
-       "by",
-       "on",
-       "at"
+       "despite",
+       "unless",
+       "meaning that"
       ],
-      "bonne": 0,
-      "explication": "Rose by 30% : de combien."
+      "bonne": 2,
+      "explication": "« Meaning that » introduit une conséquence."
      },
      {
       "choix": [
-       "to",
+       "Although",
+       "Unless",
+       "Because"
+      ],
+      "bonne": 2,
+      "explication": "La stagnation des salaires explique la baisse des dépenses : cause, donc « Because »."
+     },
+     {
+      "choix": [
+       "of",
        "at",
        "on"
       ],
-      "bonne": 0,
-      "explication": "Add to : ajouter à."
+      "bonne": 2,
+      "explication": "« Cut back on » : réduire (ses dépenses)."
      },
      {
       "choix": [
-       "to",
-       "for",
-       "that"
+       "stay",
+       "to stay",
+       "staying"
       ],
       "bonne": 0,
-      "explication": "Want somebody to + verbe."
-     },
-     {
-      "choix": [
-       "while",
-       "because",
-       "so"
-      ],
-      "bonne": 0,
-      "explication": "While marque l'opposition ici."
+      "explication": "Après le modal « could », on emploie la base verbale."
      }
     ]
    },
    "es": {
-    "texte": "España {1} elecciones el 29 de noviembre. La vivienda es el tema {2} importante de la campaña, porque los alquileres {3} subiendo. Muchas familias {4} obligadas a dejar su casa. Los partidos prometen medidas {5} bajar los precios, {6} las encuestas dan ventaja al PSOE.",
+    "texte": "La economía argentina {1} en recesión después de dos trimestres seguidos {2} caída del PIB. Las estadísticas oficiales {3} que la actividad se ha contraído, lo que pone a prueba la promesa de crecimiento del Gobierno. Muchos hogares {4} ya una pérdida de poder adquisitivo, y los analistas esperan que la situación {5} poco a poco, {6} las reformas den resultados.",
     "blancs": [
      {
       "choix": [
-       "celebra",
-       "celebrará",
-       "celebrando"
+       "es",
+       "hay",
+       "está"
+      ],
+      "bonne": 2,
+      "explication": "Avec « en recesión » (état), on emploie « estar »."
+     },
+     {
+      "choix": [
+       "con",
+       "de",
+       "por"
       ],
       "bonne": 1,
-      "explication": "Futur proche dans le temps : celebrará."
+      "explication": "« Trimestres de caída » : complément du nom introduit par « de »."
      },
      {
       "choix": [
-       "más",
-       "muy",
-       "tan"
+       "confirmen",
+       "confirman",
+       "confirmar"
       ],
-      "bonne": 0,
-      "explication": "Superlatif : el tema más importante."
+      "bonne": 1,
+      "explication": "Verbe conjugué à l'indicatif présent, sujet pluriel."
      },
      {
       "choix": [
-       "siguen",
-       "siguiendo",
-       "seguir"
+       "notar",
+       "notado",
+       "notan"
       ],
-      "bonne": 0,
-      "explication": "Seguir + gérondio : siguen subiendo."
+      "bonne": 2,
+      "explication": "Verbe conjugué au présent, sujet « muchos hogares »."
      },
      {
       "choix": [
-       "están",
-       "son",
-       "hay"
+       "mejora",
+       "mejore",
+       "mejorará"
       ],
-      "bonne": 0,
-      "explication": "Estar obligadas : état résultant."
+      "bonne": 1,
+      "explication": "« Esperar que » + subjonctif."
      },
      {
       "choix": [
-       "para",
-       "por",
-       "a"
+       "a pesar de",
+       "en lugar de",
+       "a medida que"
       ],
-      "bonne": 0,
-      "explication": "Para + infinitif : but."
-     },
-     {
-      "choix": [
-       "y",
-       "aunque",
-       "pues"
-      ],
-      "bonne": 0,
-      "explication": "Y relie simplement les deux idées."
+      "bonne": 2,
+      "explication": "« A medida que » : au fur et à mesure que, avec subjonctif pour le futur."
      }
     ]
    }
@@ -247,185 +248,188 @@
   "pieges": [
    {
     "langue": "en",
-    "question": "Quelle forme est correcte ?",
+    "question": "Choisissez la bonne préposition : « Prices rose ___ 3 % last year » (hausse de 3 points de pourcentage de la variation).",
     "choix": [
-     "The shares rose by 30%",
-     "The shares raised by 30%",
-     "The shares arose 30%",
-     "The shares rised 30%"
+     "of",
+     "by",
+     "at",
+     "for"
     ],
-    "bonne": 0,
-    "explication": "Rise est intransitif : rose. Raise demande un complément."
+    "bonne": 1,
+    "explication": "Pour exprimer l'ampleur d'une variation, on emploie « by » : « rose by 3 % »."
    },
    {
     "langue": "en",
-    "question": "Faux-ami : « actually » signifie…",
+    "question": "Faux-ami : que signifie « actually » dans « Actually, wages have not changed » ?",
     "choix": [
-     "actuellement",
-     "en fait",
-     "autrefois",
-     "bientôt"
+     "Actuellement",
+     "En fait",
+     "Autrefois",
+     "Finalement"
     ],
     "bonne": 1,
-    "explication": "Actually = en fait. Actuellement = currently."
+    "explication": "« Actually » = en fait. « Actuellement » se traduit par « currently » ou « at present »."
    },
    {
     "langue": "en",
-    "question": "Choisir la bonne phrase.",
+    "question": "Quel temps choisir : « Inflation ___ since 2021 » (la hausse continue aujourd'hui) ?",
     "choix": [
-     "He is working here since 2020",
-     "He has been working here since 2020",
-     "He works here since 2020",
-     "He worked here since 2020"
+     "is rising",
+     "rises",
+     "was rising",
+     "has been rising"
     ],
-    "bonne": 1,
-    "explication": "Since + present perfect."
+    "bonne": 3,
+    "explication": "Action commencée dans le passé et qui continue, avec « since » : present perfect continu."
    },
    {
     "langue": "es",
-    "question": "Choisir la bonne forme.",
+    "question": "Choisissez le bon verbe : « La economía ___ en recesión ».",
     "choix": [
-     "Es importante que vayas",
-     "Es importante que vas",
-     "Es importante que irás",
-     "Es importante que fuiste"
-    ],
-    "bonne": 0,
-    "explication": "Subjonctif après es importante que."
-   },
-   {
-    "langue": "es",
-    "question": "Faux-ami : « embarazada » signifie…",
-    "choix": [
-     "embarrassée",
-     "enceinte",
-     "fatiguée",
-     "malade"
-    ],
-    "bonne": 1,
-    "explication": "Embarazada = enceinte."
-   },
-   {
-    "langue": "es",
-    "question": "Ser ou estar ? « Los precios ___ altos hoy »",
-    "choix": [
-     "son",
-     "están",
+     "es",
+     "está",
      "hay",
-     "tienen"
+     "tiene"
     ],
     "bonne": 1,
-    "explication": "État passager : estar."
+    "explication": "« Estar » exprime un état transitoire, comme ici une situation conjoncturelle."
+   },
+   {
+    "langue": "es",
+    "question": "Faux-ami : que signifie « constipado » en espagnol ?",
+    "choix": [
+     "Constipé",
+     "Enrhumé",
+     "Fatigué",
+     "Malade chronique"
+    ],
+    "bonne": 1,
+    "explication": "« Estar constipado » = être enrhumé. Pour constipé, on dit « estreñido »."
+   },
+   {
+    "langue": "es",
+    "question": "Choisissez la bonne forme : « Vivo en Madrid ___ tres años ».",
+    "choix": [
+     "desde",
+     "desde hace",
+     "durante hace",
+     "hace desde"
+    ],
+    "bonne": 1,
+    "explication": "« Desde hace » + durée : depuis trois ans. « Desde » seul s'emploie avec une date."
    }
   ],
   "traduction": []
  },
  "plan": {
-  "matiere": "Économie (QRA)",
-  "sujet": "Une baisse du pouvoir d'achat peut-elle réduire l'épargne des ménages et freiner l'investissement ?",
-  "analyse": "Le pouvoir d'achat désigne la quantité de biens et services que le revenu permet d'acheter. L'épargne est la part du revenu disponible non consommée. La tension : les ménages maintiennent leur consommation en puisant dans l'épargne, ce qui peut affaiblir le financement de l'investissement.",
-  "problematique": "Dans quelle mesure la baisse du pouvoir d'achat réduit-elle l'épargne et le financement de l'économie ?",
+  "matiere": "Droit (veille juridique)",
+  "sujet": "La liberté d'expression des créateurs de contenus en ligne face à l'encadrement du pluralisme en période électorale",
+  "analyse": "La liberté d'expression est le droit de diffuser ses idées et informations ; ici, elle sert aussi une activité économique (création de contenus, revenus d'audience). Le pluralisme est l'exigence d'une expression équilibrée des courants d'opinion pendant la campagne, que le régulateur (l'Arcom) veut garantir. La tension oppose la liberté du créateur et la protection du débat démocratique.",
+  "problematique": "Dans quelle mesure l'encadrement du pluralisme en période électorale peut-il limiter la liberté d'expression et d'activité des créateurs de contenus sans porter une atteinte disproportionnée à leurs libertés ?",
   "parties": [
    {
-    "titre": "Une baisse de l'épargne face à la pression sur le revenu",
+    "titre": "Une liberté protégée à valeur constitutionnelle",
     "sous": [
-     "Le revenu disponible et la hausse des prix de l'énergie réduisent la capacité d'épargne",
-     "Les ménages arbitrent entre consommation et épargne"
+     "La liberté d'expression et la liberté d'exercer une activité de création comme libertés fondamentales",
+     "Le rôle de la loi (art. 34) pour fixer les garanties des libertés publiques"
     ]
    },
    {
-    "titre": "Des effets sur le financement de l'économie",
+    "titre": "Une liberté limitée sous le contrôle de la proportionnalité",
     "sous": [
-     "I = S : moins d'épargne peut limiter l'investissement (classiques, néoclassiques)",
-     "Pour Keynes, la demande et le revenu déterminent l'épargne, à nuancer"
+     "Des restrictions justifiées par le pluralisme et la sincérité du débat électoral",
+     "Un contrôle de la nécessité et de l'adéquation des règles imposées par le régulateur"
     ]
    }
   ],
   "exemples": [
-   "Classiques et néoclassiques : I = S",
-   "J. M. Keynes : l'épargne dépend du revenu",
-   "Retraits records du Livret A en 2026"
+   "Constitution : art. 34 (la loi fixe les règles sur les garanties des libertés publiques) et valeur constitutionnelle de la liberté d'expression (art. 11 de la Déclaration de 1789)",
+   "Loi du 30 septembre 1986 sur la liberté de communication, qui fonde la compétence du régulateur de l'audiovisuel",
+   "Actualité : débat sur les règles de temps de parole et de déontologie que l'Arcom veut appliquer aux créateurs de contenus pour la présidentielle de 2027"
   ]
  },
  "cas_pratique": {
-  "faits": "Une société, créée par Léa et Karim par un contrat de société, vend des vêtements. Léa publie sur un réseau social des photos de la vie privée de Karim, sans son accord. Karim demande à un juge de faire retirer ces images. Léa répond que la société souffrirait de cette suppression, car elle servait de publicité. Par ailleurs, Léa soutient que Karim ne peut prouver que les photos viennent bien d'elle, alors qu'il détient seulement une capture d'écran.",
-  "question": "Karim peut-il obtenir le retrait des photos et prouver leur origine ?",
-  "qualification": "Atteinte à la vie privée d'un associé par la publication d'images sans consentement, avec conflit entre vie privée et intérêt de l'entreprise, et question de preuve d'un fait juridique.",
-  "probleme": "La vie privée peut-elle être limitée au profit d'un intérêt économique, et comment prouve-t-on un fait juridique ?",
-  "majeure": "L'article 9 du Code civil protège le droit au respect de la vie privée. Toute restriction à une liberté doit être justifiée et proportionnée (principe de proportionnalité). La preuve d'un fait juridique est libre : elle peut se faire par tous moyens, mais doit être loyale.",
-  "conclusion": "Les photos relèvent de la vie privée de Karim. Leur diffusion sans accord porte atteinte à l'article 9, et l'intérêt publicitaire de la société ne justifie pas cette atteinte de manière proportionnée. La publication étant un fait juridique, Karim peut la prouver par tous moyens loyaux, dont la capture d'écran, laissée à l'appréciation du juge. Il peut obtenir le retrait des photos."
+  "faits": "En mars, Mme Leroy a remis 4 000 € en espèces à son ami Paul, sans rien faire signer, pour l'aider à financer son projet. Quelques mois plus tard, Paul affirme que cette somme était un don. Mme Leroy conteste : il s'agissait d'un prêt. Elle retrouve un SMS envoyé par Paul en avril : « Je te rembourserai en septembre, merci encore pour ton aide ». Elle a aussi une amie, Julie, qui a assisté à la remise des fonds. Mme Leroy assigne Paul devant le tribunal pour obtenir le remboursement.",
+  "question": "Mme Leroy peut-elle prouver l'existence du prêt, et par quels moyens ?",
+  "qualification": "Mme Leroy demande l'exécution d'une obligation de remboursement et doit en prouver la source. Il s'agit de prouver un acte juridique (une convention de prêt) dont le montant est élevé. Les parties sont deux particuliers, non commerçants. Il n'existe pas d'écrit signé, mais un SMS émanant de Paul et un témoin.",
+  "probleme": "Comment prouver un acte juridique portant sur une somme élevée en l'absence d'écrit signé : un écrit émanant de l'adversaire et un témoignage permettent-ils de suppléer l'absence d'écrit ?",
+  "majeure": "Selon l'art. 1353 du Code civil, celui qui réclame l'exécution d'une obligation doit la prouver. Pour un acte juridique dépassant le seuil fixé par décret (1 500 €), la preuve doit en principe être rapportée par écrit signé : le témoignage seul ne suffit pas à prouver contre ou outre un écrit ou au-delà du seuil. Il existe cependant des exceptions : en cas de commencement de preuve par écrit (art. 1362), c'est-à-dire un écrit émanant de celui à qui on l'oppose et qui rend vraisemblable le fait allégué, on peut le compléter par un témoignage ou des présomptions. L'écrit peut être électronique.",
+  "conclusion": "La remise de 4 000 € dépasse le seuil de 1 500 € : Mme Leroy aurait dû disposer d'un écrit signé, et le seul témoignage de Julie ne suffit pas. Le SMS de Paul émane de celui à qui on l'oppose et rend vraisemblable l'existence d'un prêt remboursable. Il constitue un commencement de preuve par écrit, qu'elle peut compléter par le témoignage de Julie pour établir l'existence du prêt. Le juge appréciera sa force probante, mais la demande de remboursement a de bonnes chances d'aboutir."
  },
  "maths": [
   {
-   "titre": "Livret : suite arithmético-géométrique",
+   "titre": "Suite arithmétique et somme de termes consécutifs",
    "niveau": 2,
-   "enonce": "Un épargnant a 1000 € sur un compte. Chaque année, le solde est multiplié par 1,02 puis on retire 100 €. On note u_n le solde après n ans, u_0 = 1000, donc u_{n+1} = 1,02 u_n − 100. 1) Trouver le point fixe ℓ. 2) Exprimer u_n en fonction de n. 3) Calculer u_2.",
+   "enonce": "Soit (u_n) une suite arithmétique telle que u_3 = 5 et u_8 = 20. 1) Déterminer la raison r et u_0. 2) Calculer S = u_3 + u_4 + … + u_10.",
    "etapes": [
-    "Formule : ℓ = b/(1−a). Ici a = 1,02 et b = −100, donc ℓ = −100/(1−1,02) = −100/(−0,02) = 5000.",
-    "Formule : u_n = ℓ + (u_0−ℓ)a^n. Ici u_0−ℓ = 1000−5000 = −4000, donc u_n = 5000 − 4000×1,02^n.",
-    "Vérification : u_1 = 1,02×1000 − 100 = 920 ; formule : 5000 − 4000×1,02 = 5000 − 4080 = 920. Cohérent.",
-    "u_2 = 5000 − 4000×1,02² = 5000 − 4000×1,0404 = 5000 − 4161,6 = 838,4."
+    "Formule : u_n = u_p + (n−p)r. Avec n = 8 et p = 3 : u_8 = u_3 + 5r, soit 20 = 5 + 5r.",
+    "On en déduit 5r = 15, donc r = 3.",
+    "Formule : u_0 = u_3 − 3r. Application : u_0 = 5 − 3×3 = −4.",
+    "Formule : u_10 = u_3 + (10−3)r. Application : u_10 = 5 + 7×3 = 26.",
+    "Formule de la somme arithmétique : S = (n−p+1)(u_p+u_n)/2. Ici n = 10, p = 3 : nombre de termes = 10−3+1 = 8, donc S = 8×(5+26)/2.",
+    "Calcul : S = 8×31/2 = 4×31 = 124."
    ],
-   "resultat": "ℓ = 5000 ; u_n = 5000 − 4000×1,02^n ; u_2 = 838,4 €.",
-   "piege": "Oublier que a ≠ 1 pour le point fixe et se tromper de signe en calculant 1−a (ici négatif)."
+   "resultat": "r = 3, u_0 = −4, S = 124.",
+   "piege": "Se tromper dans le nombre de termes : de 3 à 10 il y en a 10−3+1 = 8, et non 7."
   },
   {
-   "titre": "Sommes usuelles et récurrence",
+   "titre": "Suite arithmético-géométrique et somme",
    "niveau": 3,
-   "enonce": "1) Calculer S = Σ_{k=1}^{20} (3k+2). 2) (v_n) est géométrique avec v_0 = 2 et q = 3 ; calculer T = Σ_{k=0}^{5} v_k. 3) Démontrer par récurrence que pour tout n ≥ 1, Σ_{k=1}^{n} k = n(n+1)/2.",
+   "enonce": "Soit (u_n) définie par u_0 = 1 et u_{n+1} = 2u_n + 3. 1) Trouver le point fixe ℓ et exprimer u_n en fonction de n. 2) Vérifier la formule par récurrence. 3) Calculer S_n = u_0 + u_1 + … + u_n.",
    "etapes": [
-    "Linéarité : S = 3 Σk + Σ2. Formule : Σ_{k=1}^{n} k = n(n+1)/2 et Σ constantes = (n−p+1)a. Ici Σk = 20×21/2 = 210 et Σ2 = 20×2 = 40.",
-    "S = 3×210 + 40 = 630 + 40 = 670.",
-    "Formule : Σ géométrique = u_p(1−q^{n−p+1})/(1−q). Ici p=0, n=5, donc T = 2(1−3^6)/(1−3) = 2×(1−729)/(−2) = 728.",
-    "Initialisation : n=1, Σ = 1 et 1×2/2 = 1. Vrai.",
-    "Hérédité : on suppose Σ_{k=1}^{n} k = n(n+1)/2. Alors Σ_{k=1}^{n+1} k = n(n+1)/2 + (n+1) = (n+1)(n+2)/2, ce qui est la formule au rang n+1. Conclusion par récurrence."
+    "Formule : pour u_{n+1} = a u_n + b (a ≠ 1), le point fixe est ℓ = b/(1−a). Application : a = 2, b = 3, donc ℓ = 3/(1−2) = −3.",
+    "Formule : u_n = ℓ + (u_0−ℓ)a^n. Application : u_n = −3 + (1−(−3))×2^n = 4×2^n − 3.",
+    "Récurrence : initialisation, u_0 = 4×1 − 3 = 1 ✓. Hérédité : si u_n = 4×2^n − 3, alors u_{n+1} = 2(4×2^n − 3) + 3 = 4×2^{n+1} − 3 ✓.",
+    "On sépare par linéarité : S_n = Σ_{k=0}^{n} 4×2^k − Σ_{k=0}^{n} 3.",
+    "Formule de la somme géométrique : u_p(1−q^(n−p+1))/(1−q). Avec premier terme 4, q = 2, p = 0 : Σ 4×2^k = 4(1−2^{n+1})/(1−2) = 4(2^{n+1}−1).",
+    "Formule de la somme de constantes : (n−p+1)a. Ici (n+1)×3. Donc S_n = 4×2^{n+1} − 4 − 3n − 3 = 2^{n+3} − 3n − 7. Test : n = 1 donne 16 − 3 − 7 = 6 = u_0 + u_1 = 1 + 5 ✓."
    ],
-   "resultat": "S = 670 ; T = 728 ; la formule est démontrée pour tout n ≥ 1.",
-   "piege": "Compter le mauvais nombre de termes (n−p+1) dans les sommes, par exemple 5 au lieu de 6 pour k de 0 à 5."
+   "resultat": "u_n = 4×2^n − 3 et S_n = 2^{n+3} − 3n − 7.",
+   "piege": "Oublier que la somme de la constante 3 comporte n+1 termes (de 0 à n), donc vaut 3(n+1) et non 3n."
   }
  ],
  "quiz": [
   {
    "matiere": "eco",
-   "question": "Les retraits record du Livret A par les ménages face à la baisse du pouvoir d'achat illustrent surtout :",
+   "question": "Le salaire nominal d'un ménage augmente de 2 % alors que les prix augmentent de 4 %. Que peut-on dire de son pouvoir d'achat ?",
    "choix": [
-    "Une hausse de l'épargne",
-    "Une baisse de l'épargne pour maintenir la consommation",
-    "Une hausse de l'investissement",
-    "Une création monétaire"
+    "Il augmente d'environ 2 %",
+    "Il est stable",
+    "Il diminue d'environ 2 %",
+    "Il augmente d'environ 6 %"
    ],
-   "bonne": 1,
-   "explication": "L'épargne est la part du revenu disponible non consommée. Les ménages puisent dans leurs livrets pour maintenir leur consommation, donc ils épargnent moins.",
-   "id": "a4",
-   "lien": "https://www.lemonde.fr/argent/article/2026/11/24/les-epargnants-ont-retire-pres-de-10-milliards-d-euros-de-leurs-livret-a-depuis-janvier-un-record-depuis-dix-ans_6814708_1657007.html"
+   "bonne": 2,
+   "explication": "Le pouvoir d'achat évolue à peu près comme la différence entre l'évolution du revenu nominal et celle des prix (2 % − 4 % = −2 %). Cette baisse peut pousser les ménages à puiser dans leur épargne, comme le suggère la baisse de l'encours du livret A.",
+   "id": "a91",
+   "lien": "https://www.franceinfo.fr/economie/votre-argent/livret-a/la-baisse-de-l-encours-du-livret-a-en-2026-est-un-signal-reel-de-la-baisse-du-pouvoir-d-achat-des-francais-explique-un-economiste_8297811.html#xtor=RSS-3-%5Beconomie%5D"
   },
   {
    "matiere": "droit",
-   "question": "Inscrire une règle d'or budgétaire dans la Constitution lui donnerait :",
+   "question": "Une règle de l'Arcom limite la liberté d'expression des créateurs de contenus pendant la campagne. Quel principe permet de vérifier que cette limite n'est pas excessive ?",
    "choix": [
-    "Une valeur constitutionnelle",
-    "Une valeur inférieure à la loi",
-    "La valeur d'un règlement",
-    "Aucune portée juridique"
+    "Le principe pacta sunt servanda",
+    "Le principe de proportionnalité",
+    "Le principe specialia generalibus derogant",
+    "L'effet relatif des jugements"
    ],
-   "bonne": 0,
-   "explication": "Une règle inscrite dans la Constitution a valeur constitutionnelle et se situe au sommet de la hiérarchie des normes. Elle s'impose donc à la loi.",
-   "id": "a53",
-   "lien": "https://www.franceinfo.fr/economie/budget/budget-a-quoi-sert-la-regle-d-or-et-peut-elle-etre-adoptee_8296722.html#xtor=RSS-3-%5Beconomie%5D"
+   "bonne": 1,
+   "explication": "Une restriction à une liberté doit être adaptée et nécessaire au but poursuivi, sans excès : c'est le principe de proportionnalité. Les autres principes concernent le respect des traités, la règle spéciale ou les effets du jugement.",
+   "id": "a13",
+   "lien": "https://www.franceinfo.fr/elections/on-vous-explique-pourquoi-les-createurs-de-contenus-contestent-les-regles-de-pluralisme-que-l-arcom-veut-leur-imposer-pour-la-presidentielle-de-2027_8297736.html#xtor=RSS-3-%5Beconomie%5D"
   },
   {
    "matiere": "mgmt",
-   "question": "Le conseil d'administration de Nvidia, l'État et les marchés influençant le retour du PDG illustrent :",
+   "question": "BYD veut produire en France pour contourner les droits de douane. Dans le modèle de Porter, les droits de douane constituent surtout :",
    "choix": [
-    "Le rôle des parties prenantes dans la gouvernance",
-    "La matrice BCG",
-    "Une barrière à l'entrée",
-    "Une stratégie émergente"
+    "Une barrière à l'entrée réduisant la menace de nouveaux entrants étrangers",
+    "Un produit de substitution",
+    "Une hausse du pouvoir de négociation des clients",
+    "Une forme de rivalité élargie entre fournisseurs"
    ],
    "bonne": 0,
-   "explication": "Selon Freeman, une partie prenante peut influencer les décisions de l'entreprise. Ici, actionnaires, administrateurs et pouvoirs publics pèsent sur la gouvernance.",
-   "id": "a14",
-   "lien": "https://www.bbc.co.uk/news/articles/cq5y1k8ez407o?at_medium=RSS&at_campaign=rss"
+   "explication": "Les droits de douane renchérissent l'accès au marché pour un entrant étranger : ils agissent comme une barrière à l'entrée de nature réglementaire. Produire localement est un moyen de la contourner. Ils relèvent aussi de la dimension politique du PESTEL.",
+   "id": "a59",
+   "lien": "https://www.lemonde.fr/economie/article/2026/11/24/le-constructeur-automobile-chinois-byd-va-s-implanter-en-france_6814850_3234.html"
   }
  ]
 }

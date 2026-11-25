@@ -336,6 +336,9 @@ input[type="date"], input[type="text"], input[type="number"] { -webkit-appearanc
 .chip2 { font-size: 12px; padding: 1px 8px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted); }
 .chip2.bonus { border-style: dashed; }
 .fiches .t { margin: 4px 0 0; font-size: 15px; }
+.fiches .pd { margin: 4px 0 0; font-size: 15px; font-style: italic; }
+.fiches .pd b { font-style: normal; }
+.fiches .maj ul { margin: 4px 0 0; padding-left: 18px; display: grid; gap: 4px; }
 .fiches .u { margin: 4px 0 0; font-size: 14px; color: var(--muted); }
 .fiches .u b, .fiches .exo b { color: var(--ink); font-weight: 600; }
 .fiches .w { margin: 4px 0 0; font-size: 13px; background: var(--warn-bg); color: var(--warn-fg); padding: 5px 9px; border-radius: 8px; }
@@ -348,7 +351,7 @@ input[type="date"], input[type="text"], input[type="number"] { -webkit-appearanc
 .fiches .box p { margin: 0 0 6px; }
 .tbl { overflow-x: auto; }
 .tex .katex-display { margin: 6px 0; overflow-x: auto; overflow-y: hidden; padding: 2px 0; }
-.fiches.rev .it:not(.shown) > :not(.k) { display: none; }
+.fiches.rev .it:not(.shown) > :not(.k):not(.pd) { display: none; }
 .fiches.rev .it { cursor: pointer; }
 .fiches.rev .it:not(.shown)::after { content: "Touche pour voir"; display: block; font-size: 13px; color: var(--muted); margin-top: 2px; }
 

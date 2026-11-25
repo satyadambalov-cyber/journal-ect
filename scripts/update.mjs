@@ -89,7 +89,7 @@ let COURS = "";
 try {
   const F = JSON.parse(await readFile(new URL("fiches.json", DATA_DIR), "utf8"));
   COURS = ["eco", "droit", "mgmt"].map((m) => `${{ eco: "Économie", droit: "Droit", mgmt: "Management" }[m]} :\n` + F[m].chapters.map((c) =>
-    `- ${c.k} ${c.title} : ${c.groups.flatMap((g) => g.items.map((it) => it.k + (it.a ? ` (${it.a})` : ""))).join(" ; ")}`).join("\n")).join("\n");
+    `- ${c.k} ${c.title} : ${c.groups.flatMap((g) => g.items.map((it) => it.k + (it.a ? ` (${it.a})` : it.s ? ` (${it.s})` : ""))).join(" ; ")}`).join("\n")).join("\n");
 } catch {}
 const SYSTEM = `Tu es le rédacteur en chef d'un journal quotidien destiné à un étudiant de PREMIÈRE année de CPGE ECT (ECT1), qui prépare BCE et ECRICOME.
 L'étudiant n'a vu QUE les chapitres ci-dessous (tirés de ses polys). Toute notion, tout auteur, article ou arrêt que tu mobilises (notion du jour, notions des articles, plan, cas pratique, quiz) doit venir de cette liste, au niveau de ses khôlles et DS de début de première année. N'utilise jamais une notion d'un chapitre pas encore vu (par exemple contrat ou responsabilité civile si ce n'est pas listé).

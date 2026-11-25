@@ -710,6 +710,7 @@ function ficheItem(it, uLabel, m) {
     ${tex ? `<div class="t tex">${it.f}</div><p class="u tex"><b>${uLabel} :</b> ${it.c}</p>
       <div class="exo tex"><b>Mini-exo :</b> ${it.ex}</div>
       <details class="corr"><summary>Voir la correction</summary><div class="tex"><p><b>Formule :</b> ${it.formule}</p><p><b>Application :</b> ${it.app}</p></div></details>`
+    : it.pd ? `<p class="pd"><b>Problème de droit :</b> ${it.pd}</p><div class="t maj"><b>Majeure :</b>${it.t}</div><p class="u"><b>${uLabel} :</b> ${it.c}</p>`
     : `<p class="t">${it.t}</p>${it.u ? `<p class="u"><b>${uLabel} :</b> ${it.u}</p>` : ""}${it.n ? `<p class="u"><b>Chiffre / exemple :</b> ${it.n}</p>` : ""}${it.w ? `<p class="w">⚠ ${it.w}</p>` : ""}`}</div>`;
 }
 const tableHTML = (rows) => `<div class="tbl"><table class="hist">${rows.map((r) => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("")}</table></div>`;
@@ -723,7 +724,7 @@ function cours() {
   d.chapters.forEach((ch, ci) => {
     let inner = "";
     ch.groups.forEach((g) => {
-      const items = g.items.filter((it) => !q || norm([it.k, it.s, it.a, it.t, it.u, it.n, it.f, it.c, it.ex].join(" ")).includes(q));
+      const items = g.items.filter((it) => !q || norm([it.k, it.s, it.a, it.pd, it.t, it.u, it.n, it.f, it.c, it.ex].join(" ")).includes(q));
       if (items.length) { hits += items.length; inner += `<h4 class="gh">${g.h}</h4>` + items.map((it) => ficheItem(it, d.uLabel, m)).join(""); }
     });
     if (q && !inner) return;
@@ -798,8 +799,8 @@ function khPool(m) {
   const out = [], F = state.fiches?.[m];
   if (F?.chapters) F.chapters.forEach((ch) => ch.groups.forEach((g) => g.items.forEach((it) => out.push({
     id: `f:${m}:${it.k}`, ch: chapKey(ch.k), chNom: `${ch.k} – ${ch.title}`, html: true, tex: m === "maths",
-    q: m === "maths" ? `${it.k} : formule et conditions ?` : m === "droit" ? `Que dit ${it.k}${it.s ? ` (${it.s})` : ""} ? Quand l'utiliser ?` : `${it.k}${it.a ? ` (${it.a})` : ""} : définis et explique.`,
-    r: m === "maths" ? `${it.f}<p>${it.c}</p>` : `${it.t}${it.u ? `<br><b>${F.uLabel} :</b> ${it.u}` : ""}${it.n ? `<br><b>Exemple :</b> ${it.n}` : ""}`,
+    q: it.pd ? `${it.pd}<br><i>Écris la majeure.</i>` : m === "maths" ? `${it.k} : formule et conditions ?` : m === "droit" ? `Définis : ${it.k}` : `${it.k}${it.a ? ` (${it.a})` : ""} : définis et explique.`,
+    r: it.pd ? `${it.t}<p><b>Conclusion :</b> ${it.c}</p>` : m === "maths" ? `${it.f}<p>${it.c}</p>` : `${it.t}${it.u ? `<br><b>${F.uLabel} :</b> ${it.u}` : ""}${it.n ? `<br><b>Exemple :</b> ${it.n}` : ""}`,
   }))));
   (Array.isArray(state.cards) ? state.cards : []).filter((c) => c.m === m).forEach((c) => out.push({ id: c.id, ch: chapKey(c.ch), chNom: c.ch, q: c.q, r: c.r }));
   return out;

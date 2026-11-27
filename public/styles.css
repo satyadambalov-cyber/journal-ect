@@ -336,6 +336,8 @@ input[type="date"], input[type="text"], input[type="number"] { -webkit-appearanc
 .chip2 { font-size: 12px; padding: 1px 8px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted); }
 .chip2.bonus { border-style: dashed; }
 .fiches .t { margin: 4px 0 0; font-size: 15px; }
+.fiches .th { margin: 6px 0 2px; font-size: 15.5px; line-height: 1.45; font-family: var(--serif, Georgia, serif); background: var(--fill); border-left: 3px solid var(--c, var(--accent)); padding: 8px 11px; border-radius: 0 10px 10px 0; }
+.fiches .th + .t { margin-top: 8px; font-size: 14px; color: var(--muted); }
 .fiches .pd { margin: 4px 0 0; font-size: 15px; font-style: italic; }
 .fiches .pd b { font-style: normal; }
 .fiches .maj ul { margin: 4px 0 0; padding-left: 18px; display: grid; gap: 4px; }

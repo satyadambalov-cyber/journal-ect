@@ -704,14 +704,15 @@ async function loadFiches() {
   render();
 }
 const fichesReady = () => (state.fiches && state.fiches !== "loading") || (!state.fiches && loadFiches(), false);
-function ficheItem(it, uLabel, m) {
+function ficheItem(it, uLabel, m, thOnly) {
   const tex = m === "maths";
   return `<div class="it" data-it><div class="k"><span class="ref">${it.k}</span>${it.s ? `<span class="src2">${it.s}</span>` : ""}${it.a ? `<span class="chip2">${it.a}</span>` : ""}${it.bonus ? `<span class="chip2 bonus">hors poly</span>` : ""}</div>
     ${tex ? `<div class="t tex">${it.f}</div><p class="u tex"><b>${uLabel} :</b> ${it.c}</p>
       <div class="exo tex"><b>Mini-exo :</b> ${it.ex}</div>
       <details class="corr"><summary>Voir la correction</summary><div class="tex"><p><b>Formule :</b> ${it.formule}</p><p><b>Application :</b> ${it.app}</p></div></details>`
     : it.pd ? `<p class="pd"><b>Problème de droit :</b> ${it.pd}</p><div class="t maj"><b>Majeure :</b>${it.t}</div><p class="u"><b>${uLabel} :</b> ${it.c}</p>`
-    : `<p class="t">${it.t}</p>${it.u ? `<p class="u"><b>${uLabel} :</b> ${it.u}</p>` : ""}${it.n ? `<p class="u"><b>Chiffre / exemple :</b> ${it.n}</p>` : ""}${it.w ? `<p class="w">⚠ ${it.w}</p>` : ""}`}</div>`;
+    : thOnly ? `<p class="th">${it.th}</p>`
+    : `${it.th ? `<p class="th">${it.th}</p>` : ""}<p class="t">${it.t}</p>${it.u ? `<p class="u"><b>${uLabel} :</b> ${it.u}</p>` : ""}${it.n ? `<p class="u"><b>Chiffre / exemple :</b> ${it.n}</p>` : ""}${it.w ? `<p class="w">⚠ ${it.w}</p>` : ""}`}</div>`;
 }
 const tableHTML = (rows) => `<div class="tbl"><table class="hist">${rows.map((r) => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("")}</table></div>`;
 function cours() {
@@ -719,25 +720,25 @@ function cours() {
   const chips = `<div class="chips">${Object.entries(COURS).map(([k, v]) => `<button class="chip ${k === m ? "on" : ""}" data-cmat="${k}">${v}</button>`).join("")}</div>`;
   if (m === "methodes") return chips + methodes();
   if (!fichesReady()) return chips + loading("Chargement des fiches…");
-  const d = state.fiches[m], q = norm(state.coursQ || ""), rev = store.get("coursRev", false), open = store.get("coursOpen", {});
+  const d = state.fiches[m], q = norm(state.coursQ || ""), rev = store.get("coursRev", false), open = store.get("coursOpen", {}), th = m !== "maths" && store.get("coursTh", false);
   let html = "", hits = 0;
   d.chapters.forEach((ch, ci) => {
     let inner = "";
     ch.groups.forEach((g) => {
-      const items = g.items.filter((it) => !q || norm([it.k, it.s, it.a, it.pd, it.t, it.u, it.n, it.f, it.c, it.ex].join(" ")).includes(q));
-      if (items.length) { hits += items.length; inner += `<h4 class="gh">${g.h}</h4>` + items.map((it) => ficheItem(it, d.uLabel, m)).join(""); }
+      const items = g.items.filter((it) => (!th || it.th) && (!q || norm([it.k, it.s, it.a, it.th, it.pd, it.t, it.u, it.n, it.f, it.c, it.ex].join(" ")).includes(q)));
+      if (items.length) { hits += items.length; inner += `<h4 class="gh">${g.h}</h4>` + items.map((it) => ficheItem(it, d.uLabel, m, th)).join(""); }
     });
     if (q && !inner) return;
-    if (!q && ch.box) inner += `<div class="box"><div class="bt">${ch.box.title}</div>${ch.box.lines ? `<ol>${ch.box.lines.map((l) => `<li>${l}</li>`).join("")}</ol>` : ""}${ch.box.table ? tableHTML(ch.box.table) : ""}</div>`;
-    if (!q && ch.qra) inner += `<div class="box"><div class="bt">Sujet de QRA type</div><p><b>${ch.qra.sujet}</b></p><ol>${ch.qra.plan.map((p) => `<li>${p}</li>`).join("")}</ol></div>`;
+    if (!q && !th && ch.box) inner += `<div class="box"><div class="bt">${ch.box.title}</div>${ch.box.lines ? `<ol>${ch.box.lines.map((l) => `<li>${l}</li>`).join("")}</ol>` : ""}${ch.box.table ? tableHTML(ch.box.table) : ""}</div>`;
+    if (!q && !th && ch.qra) inner += `<div class="box"><div class="bt">Sujet de QRA type</div><p><b>${ch.qra.sujet}</b></p><ol>${ch.qra.plan.map((p) => `<li>${p}</li>`).join("")}</ol></div>`;
     const id = `${m}-${ci}`;
     html += `<details class="card fch" data-fch="${id}" ${q || (open[id] ?? ci === 0) ? "open" : ""} style="--c:${RUB[m]?.c || "var(--maths)"}"><summary><span class="chk">${ch.k}</span><h3>${ch.title}</h3><p class="resume trad">${ch.sub}</p></summary><div class="body">${inner}</div></details>`;
   });
-  if (!q && d.extra) html += `<details class="card fch" data-fch="${m}-x" ${open[m + "-x"] ? "open" : ""}><summary><span class="chk">Mémo</span><h3>${d.extra.title}</h3></summary><div class="body">${tableHTML(d.extra.table)}</div></details>`;
+  if (!q && !th && d.extra) html += `<details class="card fch" data-fch="${m}-x" ${open[m + "-x"] ? "open" : ""}><summary><span class="chk">Mémo</span><h3>${d.extra.title}</h3></summary><div class="body">${tableHTML(d.extra.table)}</div></details>`;
   if (q && !hits) html += `<div class="empty"><p>Rien pour « ${esc(state.coursQ)} » ici. Essaie une autre matière.</p></div>`;
   return chips + `<p class="lead">${d.lead}</p>
     <input id="coursq" class="search" type="search" placeholder="Chercher (ex. 55, QPC, Porter, PIB, somme)" value="${esc(state.coursQ || "")}">
-    <div class="chips"><button class="chip ${rev ? "on" : ""}" data-crev>${rev ? "✓ " : ""}Mode révision : touche pour révéler</button></div>
+    <div class="chips">${m !== "maths" ? `<button class="chip ${th ? "on" : ""}" data-cth>${th ? "✓ " : ""}Théorisations seules</button>` : ""}<button class="chip ${rev ? "on" : ""}" data-crev>${rev ? "✓ " : ""}Mode révision : touche pour révéler</button></div>
     <div class="fiches ${rev ? "rev" : ""}">${html}</div>`;
 }
 
@@ -797,10 +798,10 @@ const KH_NOM = { maths: "Maths", droit: "Droit", eco: "Économie", mgmt: "Manage
 const chapKey = (s = "") => { const x = /C(?:h)?\.?\s*(\d+)/.exec(s); return x ? "C" + x[1] : /intro/i.test(s) ? "Intro" : /méthode/i.test(s) ? "Méthode" : "Autres"; };
 function khPool(m) {
   const out = [], F = state.fiches?.[m];
-  if (F?.chapters) F.chapters.forEach((ch) => ch.groups.forEach((g) => g.items.forEach((it) => out.push({
+  if (F?.chapters) F.chapters.filter((ch) => !ch.nopoly).forEach((ch) => ch.groups.forEach((g) => g.items.forEach((it) => out.push({
     id: `f:${m}:${it.k}`, ch: chapKey(ch.k), chNom: `${ch.k} – ${ch.title}`, html: true, tex: m === "maths",
     q: it.pd ? `${it.pd}<br><i>Écris la majeure.</i>` : m === "maths" ? `${it.k} : formule et conditions ?` : m === "droit" ? `Définis : ${it.k}` : `${it.k}${it.a ? ` (${it.a})` : ""} : définis et explique.`,
-    r: it.pd ? `${it.t}<p><b>Conclusion :</b> ${it.c}</p>` : m === "maths" ? `${it.f}<p>${it.c}</p>` : `${it.t}${it.u ? `<br><b>${F.uLabel} :</b> ${it.u}` : ""}${it.n ? `<br><b>Exemple :</b> ${it.n}` : ""}`,
+    r: it.pd ? `${it.t}<p><b>Conclusion :</b> ${it.c}</p>` : m === "maths" ? `${it.f}<p>${it.c}</p>` : it.th ? `<p><b>Théorisation :</b> ${it.th}</p>${it.n ? `<p><b>Exemple :</b> ${it.n}</p>` : ""}` : `${it.t}${it.u ? `<br><b>${F.uLabel} :</b> ${it.u}` : ""}${it.n ? `<br><b>Exemple :</b> ${it.n}` : ""}`,
   }))));
   (Array.isArray(state.cards) ? state.cards : []).filter((c) => c.m === m).forEach((c) => out.push({ id: c.id, ch: chapKey(c.ch), chNom: c.ch, q: c.q, r: c.r }));
   return out;
@@ -1175,6 +1176,7 @@ $("#view").addEventListener("click", (e) => {
   }
   // fiches de cours
   if ((el = at("data-cmat"))) { state.coursMat = el.dataset.cmat; store.set("coursMat", state.coursMat); state.coursQ = ""; return render(); }
+  if (at("data-cth")) { store.set("coursTh", !store.get("coursTh", false)); return keep(); }
   if (at("data-crev")) { store.set("coursRev", !store.get("coursRev", false)); return keep(); }
   if ((el = at("data-it")) && el.closest(".fiches.rev") && !t.closest("summary")) { el.classList.toggle("shown"); return; }
   // carnet d'erreurs

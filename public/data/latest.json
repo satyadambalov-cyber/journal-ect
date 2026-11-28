@@ -1,192 +1,192 @@
 {
  "quiz_version": 2,
- "date": "2026-11-27",
- "genere_le": "2026-11-27T05:35:58.181Z",
+ "date": "2026-11-28",
+ "genere_le": "2026-11-28T05:30:33.776Z",
  "modele": "claude-sonnet-5-5",
  "notion_du_jour": {
-  "titre": "Concurrence et substituts (les 5 forces de Porter)",
-  "definition": "Selon M. Porter (1979), la rivalité dans un secteur dépend de 5 forces : concurrents directs, entrants potentiels, produits substituts, pouvoir de négociation des clients et des fournisseurs. Un substitut est un produit différent qui répond au même besoin (la seconde main face au sac neuf). Quand les substituts sont nombreux et peu chers, le pouvoir de marché de l'entreprise diminue. Les barrières à l'entrée (marque, savoir-faire) protègent les entreprises en place.",
-  "exemple": "Les plateformes chinoises de revente de luxe d'occasion et les jeunes marques locales menacent Louis Vuitton et Gucci : ce sont des substituts et de nouveaux entrants.",
-  "matiere": "Management"
+  "titre": "La valeur ajoutée et le PIB",
+  "definition": "La valeur ajoutée d'une entreprise est la richesse qu'elle crée : production moins consommations intermédiaires (matières, énergie, services achetés et entièrement utilisés pour produire). Le PIB (produit intérieur brut) additionne les valeurs ajoutées de tous les producteurs résidant sur le territoire, plus les impôts sur les produits moins les subventions sur les produits. Il mesure la richesse produite sur une période, en général un trimestre ou une année. Le PIB a des limites : il ignore le travail domestique et bénévole, les dégâts écologiques et les inégalités.",
+  "exemple": "Une boulangerie achète pour 40 € de farine et vend pour 100 € de pain : sa valeur ajoutée est de 100 − 40 = 60 €. Compter aussi la farine dans le PIB reviendrait à la compter deux fois.",
+  "matiere": "Économie"
  },
  "rubriques": {
   "eco": [
    {
-    "id": "a7",
-    "theme": "Concurrence et marchés",
-    "titre": "À Shanghaï, la seconde main bouscule le marché du luxe",
-    "resume": "Des plateformes chinoises de revente, dans des magasins aussi grands que des supermarchés, attirent de jeunes clients. Ceux-ci, dans un contexte de crise de la consommation, refusent de payer les prix très élevés des grandes maisons. La seconde main devient une alternative au neuf.",
-    "contexte": "Le luxe repose sur une image de marque et des prix élevés. Une demande plus sensible au prix et des produits de substitution fragilisent ce modèle. Cela illustre le lien entre pouvoir d'achat, choix du consommateur et concurrence.",
+    "id": "a73",
+    "theme": "Croissance et conjoncture",
+    "titre": "La France en récession : que signifie la baisse du PIB sur trois trimestres ?",
+    "resume": "L'Insee a indiqué que le PIB de la France a reculé sur les trois premiers trimestres de l'année, après avoir révisé à la baisse son évolution du deuxième trimestre. L'annonce de l'entrée en récession est présentée comme un calcul « technique » qui illustre un « décrochage » économique. La récession se repère habituellement par des baisses du PIB sur au moins deux trimestres consécutifs.",
+    "contexte": "Le PIB est l'indicateur central de la croissance : sa baisse affecte les revenus, l'emploi et les recettes de l'État. Cette annonce pèse sur le débat sur le pouvoir d'achat et la confiance des investisseurs.",
     "notions": [
-     "Effet revenu / effet de substitution",
-     "Élasticités",
-     "Classement des biens",
-     "Utilité et équilibre du consommateur"
+     "PIB",
+     "Valeur ajoutée",
+     "Limites du PIB",
+     "Niveau de vie, pouvoir d'achat"
     ],
-    "copie": "Utilisable en QRA sur les comportements de consommation : quand le pouvoir d'achat est contraint, l'effet de substitution et l'effet revenu poussent vers un bien moins cher. Servez-vous-en comme exemple d'accroche ou d'illustration de l'élasticité-prix.",
-    "niveau": 2,
-    "source": "Le Monde",
-    "lien": "https://www.lemonde.fr/economie/article/2026/11/27/a-shanghai-le-boom-de-la-seconde-main-bouscule-le-marche-du-luxe_6815800_3234.html",
-    "date": "2026-11-27T05:00:22.000Z",
-    "titre_original": "A Shanghaï, le boom de la seconde main bouscule le marché du luxe"
+    "copie": "En QRA, utilise-la comme accroche pour définir le PIB (somme des valeurs ajoutées) et distinguer croissance et récession. Tu peux ensuite rappeler que le PIB ne mesure ni le bien-être ni les inégalités, avec le PIB vert ou l'IDH comme compléments.",
+    "niveau": 1,
+    "source": "franceinfo",
+    "lien": "https://www.franceinfo.fr/economie/croissance/un-calcul-technique-qui-illustre-un-decrochage-economique-que-signifie-l-annonce-de-l-entree-en-recession-de-la-france_8303169.html#xtor=RSS-3-%5Beconomie%5D",
+    "date": "2026-11-27T17:27:16.000Z",
+    "titre_original": "Un calcul \"technique\" qui illustre un \"d&#xE9;crochage\" &#xE9;conomique&#xA0;: que signifie l'annonce de l'entr&#xE9;e en r&#xE9;cession de la France&#xA0;?"
    }
   ],
   "droit": [
    {
-    "id": "a37",
+    "id": "a64",
     "theme": "Sources et institutions du droit",
-    "titre": "Le bâtonnier de Paris rappelle l'État de droit et la « juste mesure »",
-    "resume": "Louis Degos, bâtonnier de Paris, appelle au respect de l'État de droit. Selon lui, celui-ci est remis en cause par l'État face aux manifestations, mais aussi par les propositions de nombreux candidats à la présidentielle. Il invoque un principe essentiel : la juste mesure.",
-    "contexte": "L'État de droit suppose que les autorités respectent les règles supérieures et que leurs actes soient contrôlables par un juge. Il renvoie à la hiérarchie des normes et aux libertés fondamentales. Le débat est d'actualité à l'approche de la présidentielle.",
+    "titre": "Journalistes et secret de l'instruction : ce que dit le droit après les propos de Marine Le Pen",
+    "resume": "La candidate du RN à la présidentielle veut « aggraver les peines qui existent » quand un journaliste est condamné pour recel de violation du secret de l'instruction. L'article du Monde rappelle ce que prévoit le droit actuel. Il s'agit d'une proposition politique, non d'une loi adoptée.",
+    "contexte": "Les infractions et les peines relèvent de la loi, votée par le Parlement. Toute modification doit respecter la hiérarchie des normes, notamment la Constitution et les engagements européens qui protègent la liberté de la presse.",
     "notions": [
+     "Loi ou règlement : qui est compétent ? (art. 34 Constitution)",
      "Hiérarchie des normes (Kelsen)",
-     "Contrôle de constitutionnalité / conventionnalité / légalité",
-     "Bloc de constitutionnalité",
-     "Sécurité juridique"
+     "Contrôle de constitutionnalité",
+     "Loi pénale plus douce (art. 112-1 C. pén.)"
     ],
-    "copie": "En veille juridique, la hiérarchie des normes et les contrôles de constitutionnalité, de conventionnalité et de légalité sont de bons fondements pour discuter des limites que l'État peut imposer aux libertés. Citez cette tribune comme exemple récent de débat sur l'État de droit.",
+    "copie": "En veille juridique, utilise-la pour montrer que seule la loi fixe les crimes, délits et peines (art. 34). Tu peux aussi rappeler que la loi doit respecter le bloc de constitutionnalité et la CESDH. Pour une loi plus sévère, la non-rétroactivité s'applique : art. 112-1 C. pén., et in mitius pour la loi plus douce.",
     "niveau": 2,
     "source": "Le Monde",
-    "lien": "https://www.lemonde.fr/societe/article/2026/11/27/louis-degos-batonnier-de-paris-l-etat-a-oublie-un-principe-essentiel-de-droit-la-juste-mesure_6815791_3224.html",
-    "date": "2026-11-27T04:15:06.000Z",
-    "titre_original": "Louis Degos, bâtonnier de Paris : « L’Etat a oublié un principe essentiel de droit : la juste mesure »"
+    "lien": "https://www.lemonde.fr/societe/article/2026/11/27/journalistes-et-secret-de-l-instruction-comprendre-ce-que-dit-le-droit-apres-les-declarations-de-marine-le-pen_6815927_3224.html",
+    "date": "2026-11-27T19:14:46.000Z",
+    "titre_original": "Journalistes et secret de l’instruction : comprendre ce que dit le droit après les déclarations de Marine Le Pen"
    }
   ],
   "mgmt": [
    {
-    "id": "a0",
+    "id": "a66",
     "theme": "Stratégie d'entreprise",
-    "titre": "À Shanghaï, les marques chinoises menacent les champions européens du luxe",
-    "resume": "Les Shanghaïens délaissent les sacs Louis Vuitton et Gucci au profit de modèles de jeunes marques locales. Comme dans l'automobile, l'industrie française du luxe craint la concurrence chinoise. Les groupes européens doivent donc défendre leur position sur un marché majeur.",
-    "contexte": "La Chine est un marché clé pour le luxe. L'arrivée de concurrents locaux modifie le rapport de force et pose la question de l'avantage concurrentiel durable des maisons européennes.",
+    "titre": "BYD l'emporte pour racheter l'usine Ineos de Hambach, en Moselle",
+    "resume": "BYD a remporté la bataille entre constructeurs chinois pour racheter l'usine d'Ineos Automotive en Moselle. Le groupe prévoit de produire dès 2027 un SUV hybride sur le site d'Hambach et de multiplier ses volumes par dix d'ici 2030. Il a annoncé aux salariés d'importants investissements et des recrutements.",
+    "contexte": "Le rachat d'un site de production est une décision stratégique lourde, qui engage des ressources sur le long terme. Elle illustre aussi l'internationalisation des constructeurs chinois en Europe.",
     "notions": [
-     "5 (+1) forces (M. Porter (1979))",
-     "Barrières à l'entrée",
-     "Avantage concurrentiel (M. Porter (1985))",
-     "PESTEL"
+     "Stratégie (A. Chandler)",
+     "Corporate / business strategy",
+     "Ressources tangibles et intangibles",
+     "Approche par les ressources (RBV)"
     ],
-    "copie": "En étude de cas, mobilisez les 5 forces de Porter : menace des nouveaux entrants et des substituts, intensité de la rivalité. Concluez sur les moyens de préserver l'avantage concurrentiel (image de marque, ressources rares).",
+    "copie": "En étude de cas (méthode TAC), présente cette acquisition comme un choix de stratégie qui mobilise des ressources tangibles (usine) et des compétences. Interroge-la avec la RBV : l'usine est-elle une ressource de valeur, rare et difficile à imiter ? Elle sert aussi d'exemple d'objectif chiffré : volumes × 10 d'ici 2030.",
     "niveau": 2,
     "source": "Le Monde",
-    "lien": "https://www.lemonde.fr/economie/article/2026/11/27/dans-les-rues-de-shanghai-l-essor-des-marques-chinoises-menace-les-champions-europeens-du-luxe_6815807_3234.html",
-    "date": "2026-11-27T05:30:07.000Z",
-    "titre_original": "Dans les rues de Shanghaï, l’essor des marques chinoises menace les champions européens du luxe"
+    "lien": "https://www.lemonde.fr/economie/article/2026/11/27/comment-byd-a-remporte-la-bataille-entre-constructeurs-chinois-pour-racheter-l-usine-d-ineos-automotive-en-moselle_6815921_3234.html",
+    "date": "2026-11-27T18:22:02.000Z",
+    "titre_original": "Comment BYD a remporté la bataille entre constructeurs chinois pour racheter l’usine d’Ineos Automotive en Moselle"
    }
   ]
  },
  "langues": {
   "vocab": [
    {
-    "mot": "shortage",
+    "mot": "outlook",
     "langue": "en",
-    "traduction": "pénurie",
-    "exemple": "There is a shortage of skilled workers."
+    "traduction": "perspective (d'une note, d'une économie)",
+    "exemple": "The agency cut France's outlook to negative."
    },
    {
-    "mot": "stocks",
+    "mot": "deficit",
     "langue": "en",
-    "traduction": "actions / stocks (Bourse)",
-    "exemple": "Tech stocks fell sharply this month."
+    "traduction": "déficit",
+    "exemple": "The government must reduce the public deficit."
    },
    {
-    "mot": "household debt",
+    "mot": "to tackle",
     "langue": "en",
-    "traduction": "endettement des ménages",
-    "exemple": "Household debt is falling in China."
+    "traduction": "s'attaquer à, traiter",
+    "exemple": "Ministers want to tackle unemployment."
    },
    {
-    "mot": "shareholder",
+    "mot": "outage",
     "langue": "en",
-    "traduction": "actionnaire",
-    "exemple": "Shareholders will vote on the merger."
+    "traduction": "panne, interruption de service",
+    "exemple": "A cyber incident caused outages in online services."
    },
    {
-    "mot": "el poder adquisitivo",
+    "mot": "la vivienda",
     "langue": "es",
-    "traduction": "le pouvoir d'achat",
-    "exemple": "Los salarios han perdido poder adquisitivo."
+    "traduction": "le logement",
+    "exemple": "La vivienda es una de las principales preocupaciones de los votantes."
    },
    {
-    "mot": "el desahucio",
+    "mot": "la encuesta",
     "langue": "es",
-    "traduction": "l'expulsion (locative)",
-    "exemple": "Muchos inquilinos temen el desahucio."
+    "traduction": "le sondage",
+    "exemple": "Las encuestas dan ventaja a la oposición."
    },
    {
-    "mot": "la tasa de pobreza",
+    "mot": "el alquiler",
     "langue": "es",
-    "traduction": "le taux de pauvreté",
-    "exemple": "La tasa de pobreza infantil es alta."
+    "traduction": "le loyer, la location",
+    "exemple": "El precio del alquiler ha subido mucho."
    },
    {
-    "mot": "el crecimiento",
+    "mot": "la mayoría",
     "langue": "es",
-    "traduction": "la croissance",
-    "exemple": "El crecimiento del PIB supera al de Europa."
+    "traduction": "la majorité",
+    "exemple": "Ningún partido logró la mayoría absoluta."
    }
   ],
   "trous": {
    "en": {
-    "texte": "Tech stocks are set {1} their worst month {2} four years as volatility surges. Investors struggle {3} price future earnings, and the artificial intelligence trade, which {4} the market for months, has been eclipsed. {5} analysts expect a rebound, others warn that prices could fall {6}.",
+    "texte": "Standard & Poor's has cut France's outlook {1} negative, warning that political instability will make it harder {2} tackle the public deficit. The agency said it {3} closely monitor the budget, {4} investors are worried about rising borrowing costs. {5} the economy shrank in recent quarters, ministers insist that growth will recover {6} next year.",
     "blancs": [
      {
       "choix": [
-       "for",
        "to",
-       "at"
-      ],
-      "bonne": 0,
-      "explication": "« set for » = en passe de connaître."
-     },
-     {
-      "choix": [
        "in",
-       "since",
-       "for"
+       "at"
       ],
       "bonne": 0,
-      "explication": "« in four years » après un superlatif : en quatre ans."
+      "explication": "On dit « cut something to » pour indiquer le niveau atteint."
      },
      {
       "choix": [
        "to",
        "for",
-       "at"
+       "of"
       ],
       "bonne": 0,
-      "explication": "« struggle to + verbe »."
+      "explication": "« harder to + verbe » : infinitif après un adjectif."
      },
      {
       "choix": [
-       "has dominated",
-       "dominates",
-       "is dominated"
+       "would",
+       "will",
+       "is"
       ],
       "bonne": 0,
-      "explication": "Présent perfect : action commencée dans le passé et qui dure."
+      "explication": "Discours rapporté au passé (said) : concordance, donc would."
      },
      {
       "choix": [
-       "While",
-       "Because",
-       "Unless"
+       "as",
+       "despite",
+       "unless"
       ],
       "bonne": 0,
-      "explication": "« While » exprime l'opposition."
+      "explication": "« as » introduit la cause ; despite est suivi d'un nom, unless exprime une condition."
      },
      {
       "choix": [
-       "further",
-       "farther away",
-       "more far"
+       "Although",
+       "Despite",
+       "However"
       ],
       "bonne": 0,
-      "explication": "« further » = davantage."
+      "explication": "Although introduit une concession suivie d'un sujet et d'un verbe."
+     },
+     {
+      "choix": [
+       "by",
+       "since",
+       "during"
+      ],
+      "bonne": 0,
+      "explication": "« by next year » : au plus tard, avec un futur."
      }
     ]
    },
    "es": {
-    "texte": "España llega {1} las elecciones con un crecimiento fuerte, {2} los salarios han perdido poder adquisitivo. El empleo {3} un récord, pero muchas familias no {4} llegar a fin de mes. {5} el precio de la vivienda sube, el debate {6} desahucios es central.",
+    "texte": "Los españoles están llamados {1} las urnas este domingo tras una campaña muy {2}. Las encuestas {3} que el PP y Vox podrían sumar mayoría, aunque dentro {4} margen de error cabe otro resultado. La vivienda es {5} de los temas que más preocupan, {6} los precios del alquiler han subido mucho.",
     "blancs": [
      {
       "choix": [
@@ -195,52 +195,52 @@
        "por"
       ],
       "bonne": 0,
-      "explication": "« llegar a » + lieu ou événement."
+      "explication": "« Llamar a las urnas » : préposition a."
      },
      {
       "choix": [
+       "reñida",
+       "reñido",
+       "reñidas"
+      ],
+      "bonne": 0,
+      "explication": "Accord avec campaña (féminin singulier)."
+     },
+     {
+      "choix": [
+       "señalan",
+       "señala",
+       "señalaba"
+      ],
+      "bonne": 0,
+      "explication": "Sujet pluriel (las encuestas) au présent."
+     },
+     {
+      "choix": [
+       "del",
+       "de",
+       "en el"
+      ],
+      "bonne": 0,
+      "explication": "« dentro de + el » se contracte en « dentro del »."
+     },
+     {
+      "choix": [
+       "uno",
+       "una",
+       "unos"
+      ],
+      "bonne": 0,
+      "explication": "« uno de los temas » : masculin singulier."
+     },
+     {
+      "choix": [
+       "puesto que",
        "aunque",
-       "porque",
-       "sino"
+       "para que"
       ],
       "bonne": 0,
-      "explication": "« aunque » = bien que, introduit un contraste."
-     },
-     {
-      "choix": [
-       "ha alcanzado",
-       "alcanzó ayer",
-       "alcanzaba"
-      ],
-      "bonne": 0,
-      "explication": "Passé composé : résultat présent."
-     },
-     {
-      "choix": [
-       "consiguen",
-       "consigue",
-       "consiguiendo"
-      ],
-      "bonne": 0,
-      "explication": "Sujet « muchas familias » : pluriel."
-     },
-     {
-      "choix": [
-       "Como",
-       "Cuando",
-       "Sino"
-      ],
-      "bonne": 0,
-      "explication": "« Como » = comme, puisque (cause)."
-     },
-     {
-      "choix": [
-       "sobre",
-       "de los",
-       "a"
-      ],
-      "bonne": 0,
-      "explication": "« debate sobre » = débat sur."
+      "explication": "« puesto que » exprime la cause, ici avec l'indicatif."
      }
     ]
    }
@@ -248,184 +248,188 @@
   "pieges": [
    {
     "langue": "en",
-    "question": "Quelle forme est correcte pour dire « Le chômage a baissé depuis 2020 » ?",
+    "question": "Choisis la phrase correcte : « La France est en récession depuis trois trimestres. »",
     "choix": [
-     "Unemployment has fallen since 2020",
-     "Unemployment fell since 2020",
-     "Unemployment falls since 2020",
-     "Unemployment is falling since 2020"
+     "France has been in recession for three quarters.",
+     "France is in recession since three quarters.",
+     "France was in recession for three quarters now.",
+     "France has been in recession since three quarters."
     ],
     "bonne": 0,
-    "explication": "Avec « since », on emploie le present perfect."
+    "explication": "Durée avec le present perfect : « has been … for + durée ». « Since » s'emploie avec un point de départ."
    },
    {
     "langue": "en",
-    "question": "« Actually » en anglais signifie :",
+    "question": "« Actually, the deficit is rising. » Que signifie « actually » ?",
     "choix": [
-     "en fait",
-     "actuellement",
-     "finalement",
-     "récemment"
+     "Actuellement",
+     "En fait",
+     "Finalement",
+     "Récemment"
     ],
-    "bonne": 0,
-    "explication": "Faux-ami : actuellement = currently."
+    "bonne": 1,
+    "explication": "« Actually » est un faux-ami : il signifie « en fait ». « Actuellement » se dit currently."
    },
    {
     "langue": "en",
-    "question": "Choisir la bonne préposition : « The company is responsible ___ the damage. »",
+    "question": "Quelle forme est correcte ? « Les salaires ont moins augmenté que prévu. »",
     "choix": [
-     "for",
-     "of",
-     "about",
-     "to"
+     "Wages have risen less than expected.",
+     "Wages have risen fewer than expected.",
+     "Wages has risen less than expected.",
+     "Wages have rose less than expected."
     ],
     "bonne": 0,
-    "explication": "On dit « responsible for »."
+    "explication": "Wages est pluriel, et le participe de rise est risen. « Less » convient ici (quantité non dénombrée)."
    },
    {
     "langue": "es",
-    "question": "Choisir la forme correcte : « Espero que el gobierno ___ los salarios. »",
+    "question": "« El alquiler ___ muy caro en Madrid. » (caractéristique actuelle d'un prix)",
     "choix": [
-     "suba",
-     "sube",
-     "subirá",
-     "subiendo"
+     "es",
+     "está",
+     "hay",
+     "tiene"
     ],
-    "bonne": 0,
-    "explication": "« Esperar que » + subjonctif."
+    "bonne": 1,
+    "explication": "Pour un état ou une situation constatée à un moment donné, on emploie estar."
    },
    {
     "langue": "es",
-    "question": "« Embarazada » en espagnol signifie :",
+    "question": "« Trabajo ___ ganar más dinero. » (but)",
     "choix": [
-     "enceinte",
-     "embarrassée",
-     "gênée",
-     "fatiguée"
+     "por",
+     "para",
+     "de",
+     "a"
     ],
-    "bonne": 0,
-    "explication": "Faux-ami : embarrassée = avergonzada."
+    "bonne": 1,
+    "explication": "Para exprime le but ou la finalité. Por exprime la cause."
    },
    {
     "langue": "es",
-    "question": "« Hace tres años que vivo aquí » se traduit :",
+    "question": "« Aunque ___ difícil, votaremos. » (hypothèse, incertain)",
     "choix": [
-     "Je vis ici depuis trois ans",
-     "J'ai vécu ici trois ans",
-     "Je vivrai ici trois ans",
-     "Il y a trois ans je vivais ici"
+     "es",
+     "sea",
+     "fue",
+     "será"
     ],
-    "bonne": 0,
-    "explication": "« Hace + durée + que + présent » = depuis."
+    "bonne": 1,
+    "explication": "Aunque + subjonctif exprime une hypothèse ou une concession non assurée."
    }
   ],
   "traduction": []
  },
  "plan": {
-  "matiere": "Économie (QRA)",
-  "sujet": "Dans quelle mesure la baisse du pouvoir d'achat modifie-t-elle les comportements de consommation ?",
-  "analyse": "Le pouvoir d'achat est la quantité de biens et services que permet d'acheter le revenu. Les comportements de consommation désignent les arbitrages des ménages entre biens. La tension : une contrainte de revenu pousse à renoncer ou substituer, mais certains biens (nécessaires) restent consommés.",
-  "problematique": "Comment la contrainte de revenu conduit-elle les ménages à arbitrer entre biens, et quelles limites présente cette réaction ?",
+  "matiere": "Droit (veille juridique)",
+  "sujet": "Vie privée du salarié et pouvoirs de contrôle de l'employeur à l'ère des objets connectés",
+  "analyse": "La vie privée est un droit extrapatrimonial protégé par l'art. 9 du Code civil et l'art. 8 de la CESDH. L'employeur dispose d'un pouvoir de contrôle sur l'activité de ses salariés (caméras, GPS, messagerie). La tension oppose la liberté d'organiser l'activité de l'entreprise au droit du salarié à l'intimité, y compris dans le cadre professionnel.",
+  "problematique": "Dans quelle mesure l'employeur peut-il contrôler ses salariés au moyen d'outils numériques sans porter atteinte à leur vie privée, et quelles conséquences en tire le juge sur la preuve ?",
   "parties": [
    {
-    "titre": "La contrainte de revenu pousse à substituer et à réduire",
+    "titre": "Un droit au respect de la vie privée opposable à l'employeur",
     "sous": [
-     "Effet revenu et effet de substitution : vers des biens moins chers (seconde main)",
-     "Élasticités : les biens de luxe sont plus sensibles au revenu"
+     "Le fondement : art. 9 C. civ. et art. 8 CESDH, droit extrapatrimonial",
+     "Les limites du contrôle : finalité légitime, proportionnalité et information du salarié"
     ]
    },
    {
-    "titre": "Des réponses inégales selon les biens et les ménages",
+    "titre": "Les sanctions d'un contrôle excessif",
     "sous": [
-     "Lois d'Engel : la structure de consommation varie avec le revenu",
-     "Biens nécessaires peu élastiques, effets sur le tissu productif"
+     "Le licenciement fondé sur la vie privée est en principe injustifié",
+     "La preuve obtenue à l'insu du salarié : de Cass. soc. 1991 à Ass. plén. 2023"
     ]
    }
   ],
   "exemples": [
-   "E. Engel (lois d'Engel, 1857)",
-   "Seconde main du luxe à Shanghaï",
-   "Effet revenu / substitution"
+   "Art. 9 C. civ. et art. 8 CESDH (respect de la vie privée)",
+   "Cass. soc. 1991 : preuve par un procédé clandestin jugée illicite",
+   "Ass. plén. 2023 : recevabilité éventuelle d'une preuve déloyale si elle est indispensable et proportionnée"
   ]
  },
  "cas_pratique": {
-  "faits": "La société Alpha emploie Mme Durand comme comptable. Pour surveiller les salariés, le dirigeant installe un logiciel qui enregistre en secret les mails personnels, puis un GPS sur le véhicule de service qu'elle utilise aussi le week-end. Il découvre ainsi que Mme Durand fréquente une association politique et la licencie pour ce motif. Il produit en justice, comme preuve, une conversation enregistrée à son insu. Mme Durand conteste le licenciement et la preuve.",
-  "question": "Le licenciement et la preuve produite sont-ils réguliers ?",
-  "qualification": "Un employeur surveille secrètement les communications et les déplacements d'une salariée, la licencie pour des faits de sa vie privée, puis utilise un enregistrement à l'insu comme preuve.",
-  "probleme": "Un employeur peut-il surveiller un salarié à son insu, le licencier pour des faits relevant de sa vie privée, et prouver par un enregistrement obtenu de manière déloyale ?",
-  "majeure": "Toute personne a droit au respect de sa vie privée (art. 9 C. civ. ; art. 8 CESDH), y compris dans l'entreprise : une surveillance doit être justifiée, proportionnée et connue du salarié. Un licenciement fondé sur la vie privée porte atteinte à ce droit. En matière de preuve, la preuve obtenue de façon déloyale est en principe écartée, mais l'Assemblée plénière (2023) admet qu'elle puisse être recevable si elle est indispensable à l'exercice du droit à la preuve et proportionnée aux intérêts en présence.",
-  "conclusion": "La surveillance secrète est illicite, et le licenciement fondé sur la vie privée est injustifié. L'enregistrement à l'insu sera en principe écarté, sauf à démontrer qu'il est indispensable et proportionné, ce qui est peu probable ici. Mme Durand a de fortes chances de l'emporter."
+  "faits": "La société Boisfrance, commerçante, a vendu un canapé de 3 200 € à M. Lemoine, un particulier. M. Lemoine refuse de payer et affirme n'avoir jamais commandé. La société produit un bon de commande qu'elle a elle-même rédigé et que M. Lemoine n'a pas signé. Elle verse aussi un courriel de ce dernier, écrit après sa visite du magasin : « Le canapé gris me plaît beaucoup, je vous confirme mon intérêt ». Elle propose enfin le témoignage d'un vendeur du magasin. M. Lemoine soutient que ces éléments ne prouvent pas l'existence d'une commande.",
+  "question": "La société Boisfrance peut-elle prouver la vente par ces éléments ?",
+  "qualification": "Il s'agit d'un acte mixte (commerçant contre particulier) portant sur une vente de plus de 1 500 € que le commerçant doit prouver contre le particulier. Les éléments produits sont un document émanant de la société elle-même, un courriel de M. Lemoine et un témoignage.",
+  "probleme": "Comment un commerçant peut-il prouver contre un non-commerçant un acte juridique d'un montant supérieur à 1 500 € ? Un écrit établi par soi-même, un courriel de l'adversaire et un témoignage suffisent-ils ?",
+  "majeure": "Dans un acte mixte, la liberté de la preuve de l'art. L. 110-3 du Code de commerce ne joue que contre le commerçant. Contre le non-commerçant, le commerçant est soumis au droit commun (art. 1359 C. civ.) : l'acte juridique de plus de 1 500 € se prouve par écrit. Nul ne peut se constituer une preuve à soi-même : le document rédigé par une partie n'a pas de valeur probante contre l'autre. Le témoignage ne peut pas prouver seul. Toutefois, un écrit qui émane de la partie adverse et rend vraisemblable le fait allégué constitue un commencement de preuve par écrit, qui peut être complété par d'autres moyens, dont le témoignage (art. 1362 C. civ.).",
+  "conclusion": "Le bon de commande est un document établi par la société seule : il ne prouve rien contre M. Lemoine. Le témoignage du vendeur est insuffisant seul pour un montant de 3 200 €. Le courriel émane de M. Lemoine, mais il exprime seulement un « intérêt » : il rend la commande vraisemblable sans la prouver certainement. Il peut donc constituer un commencement de preuve par écrit, que le juge pourra compléter par le témoignage et apprécier librement. La société peut ainsi prouver la vente, mais son succès dépend de ce courriel."
  },
  "maths": [
   {
-   "titre": "Suite arithmétique et somme",
-   "niveau": 1,
-   "enonce": "(u_n) est arithmétique de raison r = 3 avec u_2 = 5. 1) Exprimer u_n en fonction de n. 2) Calculer u_10. 3) Calculer S = u_2 + u_3 + … + u_10.",
+   "titre": "Suite arithmético-géométrique et somme",
+   "niveau": 2,
+   "enonce": "Soit (u_n) définie par u_0 = 10 et, pour tout n ≥ 0, u_(n+1) = (1/2)u_n + 4. 1) Déterminer le point fixe ℓ. 2) Donner u_n en fonction de n. 3) Calculer S_n = u_0 + u_1 + … + u_n en fonction de n.",
    "etapes": [
-    "Formule : u_n = u_p + (n−p)r. Ici u_n = 5 + (n−2)×3 = 3n − 1.",
-    "Formule identique pour n = 10 : u_10 = 3×10 − 1 = 29.",
-    "Formule : somme arithmétique = (n−p+1)(u_p+u_n)/2.",
-    "Application : nombre de termes = 10−2+1 = 9, donc S = 9×(5+29)/2 = 9×17 = 153."
+    "Formule : ℓ = b/(1−a) pour u_(n+1) = a u_n + b. Ici a = 1/2 et b = 4, donc ℓ = 4/(1 − 1/2) = 4/(1/2) = 8. Vérification : (1/2)×8 + 4 = 8.",
+    "Formule : u_n = ℓ + (u_0 − ℓ)a^n. Application : u_n = 8 + (10 − 8)(1/2)^n = 8 + 2(1/2)^n.",
+    "Linéarité : S_n = Σ(k=0 à n) 8 + 2 Σ(k=0 à n) (1/2)^k.",
+    "Somme de constantes : (n−p+1)a avec p = 0 et a = 8, donc Σ 8 = 8(n+1).",
+    "Somme géométrique : u_p(1−q^(n−p+1))/(1−q) avec premier terme 1 et q = 1/2, donc Σ (1/2)^k = (1 − (1/2)^(n+1))/(1/2) = 2(1 − (1/2)^(n+1)).",
+    "Donc S_n = 8(n+1) + 4(1 − (1/2)^(n+1)) = 8n + 12 − 4(1/2)^(n+1). Contrôle : n = 0 donne 12 − 2 = 10 = u_0, et n = 1 donne 20 − 1 = 19 = 10 + 9."
    ],
-   "resultat": "u_n = 3n − 1 ; u_10 = 29 ; S = 153",
-   "piege": "Se tromper sur le nombre de termes : de 2 à 10 il y en a 9 (n−p+1), pas 8."
+   "resultat": "ℓ = 8 ; u_n = 8 + 2(1/2)^n ; S_n = 8n + 12 − 4(1/2)^(n+1).",
+   "piege": "Oublier que la somme de k = 0 à n contient n+1 termes (et non n) : c'est le facteur (n−p+1) des formules."
   },
   {
-   "titre": "Suite arithmético-géométrique",
+   "titre": "Sommes arithmétique, géométrique et récurrence",
    "niveau": 3,
-   "enonce": "u_0 = 5 et u_{n+1} = 0,5 u_n + 3. 1) Trouver le point fixe ℓ. 2) Montrer que v_n = u_n − ℓ est géométrique. 3) Exprimer u_n puis calculer u_2.",
+   "enonce": "(u_n) est arithmétique avec u_3 = 11 et u_7 = 23. (v_n) est géométrique avec v_0 = 3 et de raison 2. 1) Déterminer r et u_n. 2) Calculer u_3 + u_4 + … + u_10. 3) Calculer v_2 + … + v_6. 4) Montrer par récurrence que Σ(k=0 à n) u_k = (n+1)(3n+4)/2.",
    "etapes": [
-    "Formule : ℓ = b/(1−a) avec a = 0,5 et b = 3. Application : ℓ = 3/(1−0,5) = 6.",
-    "v_{n+1} = u_{n+1} − 6 = 0,5u_n + 3 − 6 = 0,5(u_n − 6) = 0,5 v_n : v est géométrique de raison 0,5, v_0 = 5−6 = −1.",
-    "Formule : u_n = ℓ + (u_0−ℓ)a^n. Application : u_n = 6 − 0,5^n.",
-    "Application pour n = 2 : u_2 = 6 − 0,25 = 5,75. Vérification : u_1 = 0,5×5+3 = 5,5 ; u_2 = 0,5×5,5+3 = 5,75."
+    "Formule : u_n = u_p + (n−p)r. Avec p = 3 et n = 7 : 23 = 11 + 4r, donc r = 3. Puis u_0 = u_3 − 3r = 11 − 9 = 2, donc u_n = 2 + 3n.",
+    "Somme arithmétique : (n−p+1)(u_p+u_n)/2. Ici p = 3, n = 10, u_10 = 2 + 30 = 32, donc 8 × (11 + 32)/2 = 8 × 43/2 = 172.",
+    "v_n = v_0 q^n = 3×2^n, donc v_2 = 12. Somme géométrique : u_p(1−q^(n−p+1))/(1−q) avec p = 2, n = 6, q = 2 : 12(1 − 2^5)/(1 − 2) = 12 × (−31)/(−1) = 372.",
+    "Initialisation (n = 0) : la somme vaut u_0 = 2 et la formule donne 1×4/2 = 2. Vrai.",
+    "Hérédité : on suppose Σ(k=0 à n) u_k = (n+1)(3n+4)/2. Alors Σ(k=0 à n+1) u_k = (n+1)(3n+4)/2 + 3(n+1) + 2 = [(n+1)(3n+4) + 6n + 10]/2 = (3n² + 13n + 14)/2.",
+    "Or (n+2)(3(n+1)+4)/2 = (n+2)(3n+7)/2 = (3n² + 13n + 14)/2. La propriété est héréditaire, donc vraie pour tout n."
    ],
-   "resultat": "ℓ = 6 ; u_n = 6 − (0,5)^n ; u_2 = 5,75",
-   "piege": "Oublier de retrancher ℓ à u_0 : on utilise (u_0−ℓ) = −1 et non u_0 = 5."
+   "resultat": "r = 3, u_n = 2 + 3n ; Σ(k=3 à 10) u_k = 172 ; Σ(k=2 à 6) v_k = 372 ; la formule de récurrence est démontrée.",
+   "piege": "Utiliser (n−p) au lieu de (n−p+1) comme nombre de termes dans une somme de p à n, ou oublier de justifier l'initialisation en récurrence."
   }
  ],
  "quiz": [
   {
    "matiere": "eco",
-   "question": "Dans le cas des jeunes Shanghaïens qui achètent de la seconde main au lieu de sacs neufs de luxe, face à une contrainte de pouvoir d'achat, quelle notion est illustrée ?",
+   "question": "Le PIB de la France a reculé sur trois trimestres. Que mesure le PIB ?",
    "choix": [
-    "L'effet de substitution",
-    "La loi d'Engel sur les biens alimentaires",
-    "La maladie des coûts de Baumol",
-    "La neutralité de la monnaie"
+    "La somme des valeurs ajoutées produites sur le territoire, plus impôts moins subventions sur les produits",
+    "Le total des ventes de toutes les entreprises, consommations intermédiaires comprises",
+    "Le patrimoine total des ménages et des entreprises",
+    "Le niveau de bien-être de la population"
    ],
    "bonne": 0,
-   "explication": "Le consommateur remplace un bien par un autre moins cher répondant au même besoin : c'est l'effet de substitution, amplifié par la contrainte de revenu.",
-   "id": "a7",
-   "lien": "https://www.lemonde.fr/economie/article/2026/11/27/a-shanghai-le-boom-de-la-seconde-main-bouscule-le-marche-du-luxe_6815800_3234.html"
+   "explication": "Le PIB additionne les valeurs ajoutées (production moins consommations intermédiaires), pour éviter les doubles comptes. Il ne mesure ni le patrimoine ni le bien-être.",
+   "id": "a73",
+   "lien": "https://www.franceinfo.fr/economie/croissance/un-calcul-technique-qui-illustre-un-decrochage-economique-que-signifie-l-annonce-de-l-entree-en-recession-de-la-france_8303169.html#xtor=RSS-3-%5Beconomie%5D"
   },
   {
    "matiere": "droit",
-   "question": "Le bâtonnier de Paris évoque le respect de l'État de droit. Quel mécanisme permet de contester un décret illégal devant le juge ?",
+   "question": "Marine Le Pen propose d'aggraver les peines pour recel de violation du secret de l'instruction. Qui est compétent pour fixer les peines des délits ?",
    "choix": [
-    "Le recours pour excès de pouvoir (REP)",
-    "La QPC",
-    "Le contrôle de l'article 54",
-    "L'appel en cassation"
+    "La loi, selon l'art. 34 de la Constitution",
+    "Le pouvoir réglementaire seul, par décret",
+    "Le juge, par la jurisprudence",
+    "Le Conseil d'État, par un avis"
    ],
    "bonne": 0,
-   "explication": "Le REP permet de demander l'annulation d'un acte administratif illégal, au titre du contrôle de légalité. La QPC vise une loi, et l'article 54 un traité.",
-   "id": "a37",
-   "lien": "https://www.lemonde.fr/societe/article/2026/11/27/louis-degos-batonnier-de-paris-l-etat-a-oublie-un-principe-essentiel-de-droit-la-juste-mesure_6815791_3224.html"
+   "explication": "L'art. 34 de la Constitution réserve à la loi la détermination des crimes, des délits et des peines. Un règlement ne peut donc pas les créer.",
+   "id": "a64",
+   "lien": "https://www.lemonde.fr/societe/article/2026/11/27/journalistes-et-secret-de-l-instruction-comprendre-ce-que-dit-le-droit-apres-les-declarations-de-marine-le-pen_6815927_3224.html"
   },
   {
    "matiere": "mgmt",
-   "question": "Face aux marques chinoises de luxe et à la seconde main, quel outil de diagnostic externe permet d'analyser menace des entrants, substituts et rivalité ?",
+   "question": "BYD rachète une usine pour produire en Europe. Avec la RBV (E. Penrose), comment qualifier cette usine ?",
    "choix": [
-    "Les 5 forces de Porter",
-    "La matrice VRIO",
-    "La pyramide de Carroll",
-    "Le modèle de l'agence de Jensen et Meckling"
+    "Une ressource tangible, potentiellement source d'avantage concurrentiel selon VRIO",
+    "Une ressource intangible comme la réputation",
+    "Une capacité dynamique au sens de Teece",
+    "Une barrière à la sortie de la matrice BCG"
    ],
    "bonne": 0,
-   "explication": "Porter analyse l'environnement concurrentiel via 5 forces dont les nouveaux entrants, les substituts et la rivalité. VRIO relève du diagnostic interne.",
-   "id": "a0",
-   "lien": "https://www.lemonde.fr/economie/article/2026/11/27/dans-les-rues-de-shanghai-l-essor-des-marques-chinoises-menace-les-champions-europeens-du-luxe_6815807_3234.html"
+   "explication": "Une usine est une ressource matérielle donc tangible. Selon VRIO (Barney), elle crée un avantage si elle est de valeur, rare, difficile à imiter et bien exploitée par l'organisation.",
+   "id": "a66",
+   "lien": "https://www.lemonde.fr/economie/article/2026/11/27/comment-byd-a-remporte-la-bataille-entre-constructeurs-chinois-pour-racheter-l-usine-d-ineos-automotive-en-moselle_6815921_3234.html"
   }
  ]
 }
